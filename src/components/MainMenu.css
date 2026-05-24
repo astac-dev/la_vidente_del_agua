@@ -1,12 +1,15 @@
 .menu-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Alinea el menú a la derecha */
+    align-items: flex-end;
     justify-content: center;
-    height: 100vh; /* Ocupa toda la altura de la ventana */
+    height: 100vh;
     width: 100%;
     box-sizing: border-box;
-    padding-right: 15vw; /* Espacio desde el borde derecho */
+    padding-right: 15vw;
+    gap: 2rem;
+    position: relative; /* Asegura un contexto de apilamiento correcto */
+    z-index: 1; /* Garantiza que el menú esté sobre el fondo */
 }
 
 /* Animaciones sutiles para la transición entre menús */

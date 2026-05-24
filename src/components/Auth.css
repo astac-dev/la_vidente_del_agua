@@ -1,0 +1,107 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    min-height: 48px; /* Reserve space to prevent layout shift */
+    box-sizing: border-box;
+}
+
+.auth-container.placeholder {
+    background-color: rgba(224, 224, 224, 0.1); /* Fondo sutil para hacerlo visible */
+    border-radius: 8px;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.login-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    opacity: 0.7;
+}
+
+.login-button:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.login-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Logged in state */
+.logged-in-view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 0.75rem; /* Equivalente a space-x-3 de Tailwind */
+}
+
+.user-display-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--accent-color); /* Color cian sutil */
+    filter: drop-shadow(0 0 8px rgba(58, 123, 213, 0.5));
+}
+
+.user-avatar {
+    width: 32px; /* w-8 */
+    height: 32px; /* h-8 */
+    border-radius: 50%; /* rounded-full */
+    border: 2px solid rgba(58, 123, 213, 0.5); /* border-cyan-400/50 */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+}
+
+.user-avatar-fallback {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid rgba(58, 123, 213, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(224, 224, 224, 0.1);
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 8px rgba(58, 123, 213, 0.5));
+}
+
+.logout-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    opacity: 0.7;
+    transition: all 0.2s ease-in-out;
+}
+.logout-button:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes pulse {
+    50% {
+        opacity: 0.5;
+    }
+}

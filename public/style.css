@@ -38,7 +38,7 @@ body::before {
     height: 100%;
     background: var(--background-color) url('./assets/ui/fondo_menu_principal.jpg') no-repeat center center;
     background-size: cover;
-    z-index: -1;
+    z-index: -2; /* Se envía al fondo de todo */
     /* Preparado para animaciones, por ejemplo: transition: transform 10s linear; */
 }
 
@@ -51,7 +51,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Se asegura que esté detrás del contenido pero sobre la imagen de fondo */
+    z-index: -1; /* Se posiciona sobre la imagen de fondo pero detrás del menú */
     pointer-events: none; /* Evita que intercepte clics */
 }
 

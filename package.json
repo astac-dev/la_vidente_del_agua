@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "firebase": "^12.13.0",
     "i18next": "^26.2.0",
     "i18next-http-backend": "^4.0.0",
     "react": "^19.2.6",

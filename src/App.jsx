@@ -1,7 +1,11 @@
 import React, { useState, useRef, useLayoutEffect } from 'react';
 import MainMenu from './components/MainMenu';
 import ExtrasMenu from './components/ExtrasMenu';
+import LanguageSelector from './components/LanguageSelector';
+import Auth from './components/Auth';
 import './components/MainMenu.css';
+import './components/LanguageSelector.css';
+import './components/Auth.css';
 
 const App = () => {
   const [currentView, setCurrentView] = useState('mainMenu');
@@ -94,6 +98,8 @@ const App = () => {
         <div className="torch-flicker" style={torchStyle}></div>
       </div>
       <div className={`menu-container ${animationClass}`} onAnimationEnd={handleAnimationEnd}>
+        <Auth />
+        <LanguageSelector />
         {renderView()}
       </div>
     </>

@@ -5,15 +5,27 @@
 ### Añadido
 - **Submenú de Extras**: Se creó un nuevo componente de React (`ExtrasMenu.jsx`) para la sección "Extras".
 - **Componentes de Menú**: Se crearon componentes reutilizables (`MenuButton.jsx`) y un controlador de vistas (`App.jsx`) para gestionar la navegación entre menús.
+- **Gestor de Estado Global**: Se implementó un contexto de React (`GameStateContext`) para gestionar y persistir las opciones del juego (idioma, volumen, etc.) en `localStorage`.
 - **Navegación de Menú**: Se implementó una lógica de estado simple en `App.jsx` para cambiar entre el menú principal y el submenú de extras.
 - **Animación de Menú**: Se añadieron animaciones de fundido (fade) para una transición suave entre el menú principal y el submenú de extras.
+- **Fondo de Menú Dinámico**: Se integró una imagen de fondo en el menú principal.
 - **Animación de Antorcha**: Se añadió un efecto de parpadeo a la antorcha en la imagen de fondo para dar vida al menú.
+- **Selector de Idioma**: Se reincorporó el selector de idioma, ubicándolo sobre el menú principal.
+- **Integración de Firebase**: Se añadió el archivo de configuración inicial de Firebase (Auth y Firestore) utilizando variables de entorno para las credenciales.
+- **Botón de Guardado en la Nube**: Se añadió un componente de autenticación para iniciar y cerrar sesión con Google.
+- **Fallback de Avatar**: Se implementó una vista alternativa con un ícono para usuarios que no tienen foto de perfil en Google.
 
 ### Cambiado
-- **Estructura del Menú Principal**: Se reorganizó el `MainMenu.jsx` según las nuevas especificaciones: "Continuar", "Nueva Partida", "Cargar Partida", "Extras", "Opciones", "Créditos" y "Salir".
-- **Traducciones del Menú**: Se actualizaron los archivos de traducción (`es`, `en`, `my`) con las claves para los nuevos elementos del menú y el submenú de extras.
-- **Estilos**: Se añadieron estilos básicos para los botones y la disposición de los menús en `MainMenu.css`.
+- **Estructura del Menú Principal**: Se reorganizó el `MainMenu.jsx` según las nuevas especificaciones.
+- **Traducciones del Menú**: Se actualizaron los archivos de traducción (`es`, `en`, `my`) con las nuevas claves.
+- **Selector de Idioma**: El componente ahora utiliza el contexto global para cambiar y reflejar el idioma actual.
+- **Gestor de Estado Global**: Ahora se sincroniza con Firebase (Auth y Firestore) cuando un usuario inicia sesión, usando `localStorage` como respaldo cuando está desconectado.
+- **Flujo de Autenticación**: Se mejoró el componente `Auth.jsx` para actualizar la interfaz de manera instantánea tras un inicio de sesión exitoso.
+- **Visualización de Avatar**: Se corrigió el problema que impedía mostrar las fotos de perfil de Google añadiendo la `referrerPolicy` correcta.
+- **Funcionalidad del Botón Salir**: El botón "Salir" ahora intenta cerrar la ventana o pestaña del navegador.
+- **Diseño Responsivo del Menú**: El menú ahora se alinea a la derecha en pantallas grandes y se centra en dispositivos móviles.
 - **Fuente del Menú**: Se cambió la fuente principal a "Kaushan Script" y se incluyó localmente para su uso sin conexión.
+- **Animación de Antorcha Responsiva**: La posición y el tamaño del efecto de la antorcha ahora se calculan dinámicamente para mantenerse fijos y proporcionados en la imagen sin importar el tamaño de la pantalla.
 
 ---
 

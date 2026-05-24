@@ -9,5 +9,10 @@
     "options": "U Yéeyajilo'ob",
     "credits": "U K'ajóoltbilo'ob",
     "exit": "Jóok'ol",
-    "back": "Pach"
+    "back": "Pach",
+    "language": "T'aan",
+    "signInWithGoogle": "Guardar ti' le múuyalil",
+    "signOut": "Tselik",
+    "greeting": "Ba'ax, {{name}}",
+    "userProfilePicture": "U yich máak"
 }

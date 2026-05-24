@@ -9,5 +9,10 @@
     "options": "Options",
     "credits": "Credits",
     "exit": "Exit",
-    "back": "Back"
+    "back": "Back",
+    "language": "Language",
+    "signInWithGoogle": "Cloud Save",
+    "signOut": "Disconnect",
+    "greeting": "Hi, {{name}}",
+    "userProfilePicture": "User profile picture"
 }

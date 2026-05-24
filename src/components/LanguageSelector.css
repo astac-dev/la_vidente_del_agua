@@ -1,0 +1,53 @@
+.language-selector-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem; /* Espacio entre la etiqueta y los botones */
+    width: 100%;
+    max-width: 400px;
+}
+
+.language-label {
+    padding: 0.5rem;
+    font-family: var(--font-family);
+    font-size: 1.8rem; /* Mismo tamaño que las opciones del menú */
+    color: var(--primary-color);
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.language-buttons {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: flex-end; /* Alinea los botones a la derecha dentro de su contenedor */
+}
+
+.language-buttons button {
+    font-family: var(--font-family);
+    font-size: 1.2rem;
+    font-weight: 700; /* Negritas */
+    color: var(--primary-color);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    opacity: 0.6;
+}
+
+.language-buttons button:hover,
+.language-buttons button.active {
+    color: var(--accent-color);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .language-selector-wrapper {
+        align-items: center; /* Centra todo el bloque en móvil */
+    }
+
+    .language-buttons {
+        justify-content: center; /* Centra los botones en pantallas pequeñas */
+    }
+}

@@ -1,0 +1,51 @@
+.auth-container {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10; /* Se asegura que esté por encima de otros elementos */
+}
+
+.auth-container.placeholder {
+    height: 38px; /* Altura aproximada del botón para evitar saltos de diseño */
+}
+
+.user-greeting {
+    color: var(--primary-color);
+    font-family: var(--font-family);
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.auth-button {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.auth-button:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .auth-container {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .user-greeting {
+        display: none; /* Oculta el saludo en pantallas pequeñas para ahorrar espacio */
+    }
+}

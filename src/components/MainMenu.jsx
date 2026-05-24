@@ -5,6 +5,10 @@ import MenuButton from './MenuButton';
 const MainMenu = ({ onNavigate }) => {
   const { t } = useTranslation();
 
+  const handleExit = () => {
+    window.close();
+  };
+
   return (
     <div className="main-menu">
       <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('continueGame')}</MenuButton>
@@ -13,7 +17,7 @@ const MainMenu = ({ onNavigate }) => {
       <MenuButton onClick={() => onNavigate('extrasMenu')}>{t('extras')}</MenuButton>
       <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('options')}</MenuButton>
       <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('credits')}</MenuButton>
-      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('exit')}</MenuButton>
+      <MenuButton onClick={handleExit}>{t('exit')}</MenuButton>
     </div>
   );
 };
