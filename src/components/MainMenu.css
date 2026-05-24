@@ -1,0 +1,48 @@
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding-left: 5vw;
+}
+
+.main-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-menu li {
+  margin-bottom: 1rem;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-family: var(--font-family);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+
+.menu-button:hover {
+  color: var(--accent-color);
+  transform: translateX(10px);
+}
+
+/* --- Estilos para Responsividad --- */
+@media (max-width: 768px) and (orientation: landscape) {
+  .menu-button {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .menu-button {
+    font-size: 1.2rem;
+  }
+}

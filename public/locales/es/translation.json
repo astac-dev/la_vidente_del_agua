@@ -1,0 +1,12 @@
+{
+  "main_menu": {
+    "new_game": "Nueva partida",
+    "load_game": "Partida guardada",
+    "continue_game": "Continuar partida",
+    "gallery": "Galería",
+    "scenes": "Escenas",
+    "options": "Opciones",
+    "credits": "Créditos",
+    "exit": "Salir"
+  }
+}

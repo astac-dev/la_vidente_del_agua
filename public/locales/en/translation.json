@@ -1,0 +1,12 @@
+{
+  "main_menu": {
+    "new_game": "New Game",
+    "load_game": "Load Game",
+    "continue_game": "Continue Game",
+    "gallery": "Gallery",
+    "scenes": "Scenes",
+    "options": "Options",
+    "credits": "Credits",
+    "exit": "Exit"
+  }
+}

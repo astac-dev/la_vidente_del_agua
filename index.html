@@ -1,13 +1,36 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vidente-del-agua-game</title>
+    <title>Vidente del Agua - Cargando...</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="root"></div>
+
+    <!-- Contenedor de la Pantalla de Carga -->
+    <div id="loader-container">
+        <div class="loader-content">
+            <h1>Vidente del Agua</h1>
+            <p id="loading-status">Cargando recursos...</p>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <p id="loading-percentage">0%</p>
+        </div>
+    </div>
+
+    <!-- Contenedor Principal del Juego (Vite/React app root), inicialmente oculto -->
+    <div id="root" class="hidden"></div>
+
+    <!-- El script del loader se ejecuta primero -->
+    <script src="/loader.js"></script>
+
+    <!-- El punto de entrada de tu aplicación Vite/React -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
