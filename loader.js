@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Pequeña pausa antes de mostrar el juego
         setTimeout(() => {
-            loaderContainer.classList.add('fade-out');
+            loaderContainer.classList.add('loader-fade-out');
 
             // Después de la animación de desvanecimiento, oculta el loader y muestra el juego.
             loaderContainer.addEventListener('transitionend', () => {
