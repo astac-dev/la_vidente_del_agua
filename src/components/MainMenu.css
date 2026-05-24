@@ -1,48 +1,60 @@
-.main-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  padding-left: 5vw;
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinea el menú a la derecha */
+    justify-content: center;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 15vw; /* Espacio desde el borde derecho */
 }
 
-.main-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Animaciones sutiles para la transición entre menús */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.main-menu li {
-  margin-bottom: 1rem;
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-in forwards;
+}
+
+.main-menu, .extras-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 400px;
 }
 
 .menu-button {
-  background: none;
-  border: none;
-  color: var(--primary-color);
-  font-family: var(--font-family);
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-align: left;
-  cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
-  padding: 0.5rem 1rem;
+    padding: 0.5rem;
+    font-family: var(--font-family);
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 .menu-button:hover {
-  color: var(--accent-color);
-  transform: translateX(10px);
+    color: var(--accent-color);
 }
 
-/* --- Estilos para Responsividad --- */
-@media (max-width: 768px) and (orientation: landscape) {
-  .menu-button {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-height: 500px) and (orientation: landscape) {
-  .menu-button {
-    font-size: 1.2rem;
-  }
+/* Regla de responsividad para dispositivos móviles */
+@media (max-width: 768px) {
+    .menu-container {
+        align-items: center; /* Centra el menú en pantallas pequeñas */
+        padding-right: 0; /* Elimina el padding derecho */
+    }
 }

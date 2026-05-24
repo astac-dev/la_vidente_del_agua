@@ -1,31 +1,20 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import './MainMenu.css';
+import MenuButton from './MenuButton';
 
-const MainMenu = () => {
+const MainMenu = ({ onNavigate }) => {
   const { t } = useTranslation();
 
-  const menuItems = [
-    'new_game',
-    'load_game',
-    'continue_game',
-    'gallery',
-    'scenes',
-    'options',
-    'credits',
-    'exit',
-  ];
-
   return (
-    <nav className="main-menu">
-      <ul>
-        {menuItems.map((item) => (
-          <li key={item}>
-            <button className="menu-button">{t(`main_menu.${item}`)}</button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div className="main-menu">
+      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('continueGame')}</MenuButton>
+      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('newGame')}</MenuButton>
+      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('loadGame')}</MenuButton>
+      <MenuButton onClick={() => onNavigate('extrasMenu')}>{t('extras')}</MenuButton>
+      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('options')}</MenuButton>
+      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('credits')}</MenuButton>
+      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('exit')}</MenuButton>
+    </div>
   );
 };
 

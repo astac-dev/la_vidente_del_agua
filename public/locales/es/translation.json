@@ -1,12 +1,13 @@
 {
-  "main_menu": {
-    "new_game": "Nueva partida",
-    "load_game": "Partida guardada",
-    "continue_game": "Continuar partida",
-    "gallery": "Galería",
-    "scenes": "Escenas",
+    "continueGame": "Continuar partida",
+    "newGame": "Nueva partida",
+    "loadGame": "Cargar partida",
+    "extras": "Extras",
+    "artGallery": "Galería de Arte",
+    "sceneSelector": "Selector de Escenas",
+    "bioculturalGlossary": "Glosario Biocultural",
     "options": "Opciones",
     "credits": "Créditos",
-    "exit": "Salir"
-  }
+    "exit": "Salir",
+    "back": "Volver"
 }

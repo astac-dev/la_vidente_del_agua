@@ -1,12 +1,13 @@
 {
-  "main_menu": {
-    "new_game": "New Game",
-    "load_game": "Load Game",
-    "continue_game": "Continue Game",
-    "gallery": "Gallery",
-    "scenes": "Scenes",
+    "continueGame": "Continue",
+    "newGame": "New Game",
+    "loadGame": "Load Game",
+    "extras": "Extras",
+    "artGallery": "Art Gallery",
+    "sceneSelector": "Scene Selector",
+    "bioculturalGlossary": "Biocultural Glossary",
     "options": "Options",
     "credits": "Credits",
-    "exit": "Exit"
-  }
+    "exit": "Exit",
+    "back": "Back"
 }

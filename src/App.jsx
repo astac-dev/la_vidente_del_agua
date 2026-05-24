@@ -1,29 +1,50 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useState, useRef } from 'react';
 import MainMenu from './components/MainMenu';
-import './App.css';
+import ExtrasMenu from './components/ExtrasMenu';
+import './components/MainMenu.css';
 
-function App() {
-  const { i18n } = useTranslation();
+const App = () => {
+  const [currentView, setCurrentView] = useState('mainMenu');
+  const [animationClass, setAnimationClass] = useState('fade-in');
+  const nextViewRef = useRef(null);
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
+  const handleNavigate = (view) => {
+    // Evita iniciar una nueva animación si ya se está desvaneciendo
+    if (view !== currentView && animationClass !== 'fade-out') {
+      nextViewRef.current = view;
+      setAnimationClass('fade-out');
+    }
+  };
+
+  const handleAnimationEnd = () => {
+    // Cambia la vista solo cuando la animación de desvanecimiento termina
+    if (animationClass === 'fade-out') {
+      setCurrentView(nextViewRef.current);
+      setAnimationClass('fade-in');
+    }
+  };
+
+  const renderView = () => {
+    switch (currentView) {
+      case 'extrasMenu':
+        return <ExtrasMenu onBack={() => handleNavigate('mainMenu')} />;
+      case 'mainMenu':
+      default:
+        return <MainMenu onNavigate={handleNavigate} />;
+    }
   };
 
   return (
-    <div className="app-container">
-      <header className="app-header">
-        <div className="language-switcher">
-          <button onClick={() => changeLanguage('es')} disabled={i18n.language === 'es'}>ES</button>
-          <button onClick={() => changeLanguage('en')} disabled={i18n.language === 'en'}>EN</button>
-          <button onClick={() => changeLanguage('my')} disabled={i18n.language === 'my'}>MY</button>
-        </div>
-      </header>
-      <main className="app-main">
-        <MainMenu />
-      </main>
-    </div>
+    <>
+      {/* Contenedor para las animaciones de fondo, como la antorcha */}
+      <div className="background-animations">
+        <div className="torch-flicker"></div>
+      </div>
+      <div className={`menu-container ${animationClass}`} onAnimationEnd={handleAnimationEnd}>
+        {renderView()}
+      </div>
+    </>
   );
-}
+};
 
 export default App;

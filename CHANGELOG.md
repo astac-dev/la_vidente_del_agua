@@ -1,5 +1,22 @@
 # Historial de Cambios
 
+## [0.2.0] - 2026-05-24
+
+### Añadido
+- **Submenú de Extras**: Se creó un nuevo componente de React (`ExtrasMenu.jsx`) para la sección "Extras".
+- **Componentes de Menú**: Se crearon componentes reutilizables (`MenuButton.jsx`) y un controlador de vistas (`App.jsx`) para gestionar la navegación entre menús.
+- **Navegación de Menú**: Se implementó una lógica de estado simple en `App.jsx` para cambiar entre el menú principal y el submenú de extras.
+- **Animación de Menú**: Se añadieron animaciones de fundido (fade) para una transición suave entre el menú principal y el submenú de extras.
+- **Animación de Antorcha**: Se añadió un efecto de parpadeo a la antorcha en la imagen de fondo para dar vida al menú.
+
+### Cambiado
+- **Estructura del Menú Principal**: Se reorganizó el `MainMenu.jsx` según las nuevas especificaciones: "Continuar", "Nueva Partida", "Cargar Partida", "Extras", "Opciones", "Créditos" y "Salir".
+- **Traducciones del Menú**: Se actualizaron los archivos de traducción (`es`, `en`, `my`) con las claves para los nuevos elementos del menú y el submenú de extras.
+- **Estilos**: Se añadieron estilos básicos para los botones y la disposición de los menús en `MainMenu.css`.
+- **Fuente del Menú**: Se cambió la fuente principal a "Kaushan Script" y se incluyó localmente para su uso sin conexión.
+
+---
+
 ## [0.1.0] - 2026-05-24
 
 ### Añadido
