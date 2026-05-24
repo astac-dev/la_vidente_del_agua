@@ -58,13 +58,9 @@ body::before {
 /* Destello de la antorcha */
 .torch-flicker {
     position: absolute;
-    left: 42.2%; /* (Coordenada X: 463px / Ancho Imagen: 1024px) */
-    top: 60.4%;  /* (Coordenada Y: 418px / Alto Imagen: 768px) */
-    width: 100px;
-    height: 100px;
     background: #ffc300; /* Color base de la llama */
     border-radius: 50%;
-    animation: antorcha 0.15s ease-in-out infinite alternate;
+    animation: antorcha 0.55s ease-in-out infinite alternate;
 }
 
 @keyframes antorcha {
