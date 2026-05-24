@@ -16,7 +16,7 @@ i18n
     defaultNS: 'translation',
     backend: {
       // Ruta a los archivos de traducción en la carpeta `public`
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+       loadPath: `${import.meta.env.BASE_URL}locales/{{lng}}/{{ns}}.json`,
     },
     // Activar logs de depuración en la consola del navegador
     debug: true,
