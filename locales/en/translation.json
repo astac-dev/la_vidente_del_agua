@@ -21,7 +21,9 @@
     "exitMessageTitle": "Thanks for playing!",
     "exitMessageBody": "You can now safely close this tab.",
     "clickToContinue": "Click to continue",
-    "rotateDevicePrompt": "Please rotate your device horizontally to continue."
+    "rotateDevicePrompt": "Please rotate your device horizontally to continue.",
+    "toggleFullscreen": "Toggle fullscreen",
+    "backToMenu": "Back to main menu"
   },
   "personajes": {
     "narrador": "",

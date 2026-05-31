@@ -21,7 +21,9 @@
     "exitMessageTitle": "¡Nib óolal ti' teech úuchik a báaxal!",
     "exitMessageBody": "Bejla'e' je'el u páajtal a k'aliko' le u joolil k'áat chi'a'.",
     "clickToContinue": "P'iit' xook utial a k'áaxal",
-    "rotateDevicePrompt": "Je'el u béeytale', sut a nu'ukulil ti' u tselil utial a t'óoch'k'al."
+    "rotateDevicePrompt": "Je'el u béeytale', sut a nu'ukulil ti' u tselil utial a t'óoch'k'al.",
+    "toggleFullscreen": "T'u'ul/k'al le chuunpak",
+    "backToMenu": "Suut ti' le yáax chun"
   },
   "personajes": {
     "narrador": "",
