@@ -1,4 +1,5 @@
 {
+  "menu": {
     "continueGame": "Continuar partida",
     "newGame": "Nueva partida",
     "loadGame": "Cargar partida",
@@ -10,9 +11,84 @@
     "credits": "Créditos",
     "exit": "Salir",
     "back": "Volver",
-    "language": "Idioma",
+    "language": "Idioma"
+  },
+  "interface": {
     "signInWithGoogle": "Guardar en la Nube",
     "signOut": "Desconectar",
     "greeting": "Hola, {{name}}",
-    "userProfilePicture": "Foto de perfil del usuario"
+    "userProfilePicture": "Foto de perfil del usuario",
+    "exitMessageTitle": "¡Gracias por jugar!",
+    "exitMessageBody": "Ahora puedes cerrar esta pestaña de forma segura.",
+    "clickToContinue": "Haz clic para continuar",
+    "rotateDevicePrompt": "Por favor, gira tu dispositivo a una posición horizontal para continuar."
+  },
+  "personajes": {
+    "narrador": "",
+    "protagonista": "Investigador",
+    "sofia": "Dra. Sofía (INAH)",
+    "pescador": "Don Mateo"
+  },
+  "historia": {
+    "capitulo_1": {
+      "titulo": "Capítulo 1: Ecos del Arrecife",
+      "escenas": {
+        "escena_intro": {
+          "titulo_escena": "El Puerto de Veracruz",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "narrador",
+              "texto": "El oleaje golpea con suavidad el muelle. El viento trae consigo el aroma a sal y el eco de viejas historias sumergidas."
+            },
+            {
+              "id": 2,
+              "personaje": "sofia",
+              "texto": "Qué bueno que llegas. Los pescadores locales encontraron restos de madera vieja cerca del arrecife exterior. Podría ser un pecio arqueológico importante."
+            },
+            {
+              "id": 3,
+              "personaje": "protagonista",
+              "texto": "Excelente. Debemos preparar el equipo de registro fotográfico antes de que la marea cambie."
+            }
+          ],
+          "elecciones": {
+            "pregunta": "¿Cómo deseas proceder con el reporte inicial?",
+            "opciones": [
+              {
+                "id": "opcion_legal",
+                "texto": "Registrar las coordenadas oficiales y dar aviso inmediato a las autoridades.",
+                "siguiente_escena": "escena_registro_oficial"
+              },
+              {
+                "id": "opcion_explorar",
+                "texto": "Hacer una inmersión rápida de reconocimiento sin alertar a nadie más.",
+                "siguiente_escena": "escena_inmersion_secreta"
+              }
+            ]
+          }
+        },
+        "escena_registro_oficial": {
+          "titulo_escena": "Protocolo de Conservación",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "sofia",
+              "texto": "Es la decisión correcta. El patrimonio subacuático está protegido por la ley y cada fragmento fuera de su sitio altera el contexto histórico."
+            }
+          ]
+        },
+        "escena_inmersion_secreta": {
+          "titulo_escena": "Riesgo en las Profundidades",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "narrador",
+              "texto": "Al descender sin los permisos ni el equipo de soporte adecuado, la corriente se vuelve traicionera..."
+            }
+          ]
+        }
+      }
+    }
+  }
 }

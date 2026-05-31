@@ -1,18 +1,94 @@
 {
-    "continueGame": "Ts'o'okol",
-    "newGame": "Túumben Bix",
-    "loadGame": "Kaxta'an Bix",
-    "extras": "Extras",
-    "artGallery": "U Dzíibil Ich",
-    "sceneSelector": "U Yéeyajil Ich",
-    "bioculturalGlossary": "Glosario Biocultural",
-    "options": "U Yéeyajilo'ob",
-    "credits": "U K'ajóoltbilo'ob",
+  "menu": {
+    "continueGame": "Utzkíint báaxal",
+    "newGame": "Túumben báaxal",
+    "loadGame": "Ch'a' bix yanil báaxal",
+    "extras": "U ya'alalo'ob",
+    "artGallery": "U wejch'il bájutalo'ob",
+    "sceneSelector": "U yéeybal e'esajilo'ob",
+    "bioculturalGlossary": "U tsol t'aanil kuxtal yeetel miatsil",
+    "options": "U yéeybilo'ob bix u beetal",
+    "credits": "J-beetejilo'ob",
     "exit": "Jóok'ol",
-    "back": "Pach",
-    "language": "T'aan",
-    "signInWithGoogle": "Guardar ti' le múuyalil",
-    "signOut": "Tselik",
-    "greeting": "Ba'ax, {{name}}",
-    "userProfilePicture": "U yich máak"
+    "back": "Suut",
+    "language": "T'aan"
+  },
+  "interface": {
+    "signInWithGoogle": "Li'isaj t'aan ti' muuyal",
+    "signOut": "T'ox t'aan",
+    "greeting": "Ki'imak óolal, {{name}}",
+    "userProfilePicture": "U yoochel j-báaxal",
+    "exitMessageTitle": "¡Nib óolal ti' teech úuchik a báaxal!",
+    "exitMessageBody": "Bejla'e' je'el u páajtal a k'aliko' le u joolil k'áat chi'a'.",
+    "clickToContinue": "P'iit' xook utial a k'áaxal",
+    "rotateDevicePrompt": "Je'el u béeytale', sut a nu'ukulil ti' u tselil utial a t'óoch'k'al."
+  },
+  "personajes": {
+    "narrador": "",
+    "protagonista": "J-xak'al t'aan",
+    "sofia": "X-Doctora Sofía (INAH)",
+    "pescador": "Don Mateo"
+  },
+  "historia": {
+    "capitulo_1": {
+      "titulo": "Yáax t'ool: U juum le ch'eene'",
+      "escenas": {
+        "escena_intro": {
+          "titulo_escena": "U jool k'áaj Veracruz",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "narrador",
+              "texto": "Le oolajo'obo' ku jats'iko'ob u muelleil chaambelil. Le iik'o' ku taasak u booxil ta'ab yeetel u juum úuchben tsikbalo'ob bulano'ob tu yáanal ja'..."
+            },
+            {
+              "id": 2,
+              "personaje": "sofia",
+              "texto": "Ki'imak in wóol joolen. Le j-chuk kaye'ob ti' le kaajo' tu kaxánto'ob u p'itil úuchben che'ob naats' ti' le áaktun ka'anal. Je'el u béeytal u p'áatal jump'éel k'a'anan úuchben k'axbil che' sumerjidoi'."
+            },
+            {
+              "id": 3,
+              "personaje": "protagonista",
+              "texto": "Jach ma'alob. K'a'anan k-utzkíintik le nu'ukulo'ob utial u yoocheltsilil táanil ti' u k'expajal u k'áajal ja'."
+            }
+          ],
+          "elecciones": {
+            "pregunta": "¿Bix a k'áat a beetej yeetel le yáax k'áat chi'a'?",
+            "opciones": [
+              {
+                "id": "opcion_legal",
+                "texto": "Ts'íibta'al u p'isilo'ob ti' tsol t'aan yeetel a wa'alik ti' le j-jalachilo'ob táanichel.",
+                "siguiente_escena": "escena_registro_oficial"
+              },
+              {
+                "id": "opcion_explorar",
+                "texto": "Beel jump'éel séeb bulul utial xak'al t'aan minaan máax u yojéeltej.",
+                "siguiente_escena": "escena_inmersion_secreta"
+              }
+            ]
+          }
+        },
+        "escena_registro_oficial": {
+          "titulo_escena": "U tsolil Kaláantaj",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "sofia",
+              "texto": "Leti' u ma'alob yéeybil. Le úuchben miatsil tu yáanal ja' kaláanta'an tumen le aalmaj t'aano', yeetel tuláakal p'itil ba'al ku jóok'sa'al ku k'expajal u kuxtalil úuchben bej."
+            }
+          ]
+        },
+        "escena_inmersion_secreta": {
+          "titulo_escena": "Sáasamil ti' u Taamil",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "narrador",
+              "texto": "Úuchik a lúubul minaan a páajtalil mix a ma'alob nu'ukulil kaláantaj, le ja' ku p'áatal jach k'aas..."
+            }
+          ]
+        }
+      }
+    }
+  }
 }
