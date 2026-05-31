@@ -18,10 +18,9 @@
     width: 95%;
     min-height: 150px; /* Altura mínima */
     max-height: 35%;   /* Altura máxima */
-    background-color: rgba(10, 10, 25, 0.75);
-    border: 2px solid rgba(58, 123, 213, 0.6);
-    border-radius: 10px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 80%, transparent);
     padding: 20px;
+    padding-top: 40px; /* Más espacio superior para que el texto no comience en el área transparente */
     box-sizing: border-box;
     text-align: left;
 }
