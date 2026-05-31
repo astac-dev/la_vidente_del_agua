@@ -1,5 +1,6 @@
 {
-    "continueGame": "Continue",
+  "menu": {
+    "continueGame": "Continue Game",
     "newGame": "New Game",
     "loadGame": "Load Game",
     "extras": "Extras",
@@ -10,9 +11,84 @@
     "credits": "Credits",
     "exit": "Exit",
     "back": "Back",
-    "language": "Language",
-    "signInWithGoogle": "Cloud Save",
+    "language": "Language"
+  },
+  "interface": {
+    "signInWithGoogle": "Save to Cloud",
     "signOut": "Disconnect",
-    "greeting": "Hi, {{name}}",
-    "userProfilePicture": "User profile picture"
+    "greeting": "Hello, {{name}}",
+    "userProfilePicture": "User profile picture",
+    "exitMessageTitle": "Thanks for playing!",
+    "exitMessageBody": "You can now safely close this tab.",
+    "clickToContinue": "Click to continue",
+    "rotateDevicePrompt": "Please rotate your device horizontally to continue."
+  },
+  "personajes": {
+    "narrador": "",
+    "protagonista": "Researcher",
+    "sofia": "Dr. Sofia (INAH)",
+    "pescador": "Don Mateo"
+  },
+  "historia": {
+    "capitulo_1": {
+      "titulo": "Chapter 1: Echoes of the Reef",
+      "escenas": {
+        "escena_intro": {
+          "titulo_escena": "The Port of Veracruz",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "narrador",
+              "texto": "The waves gently hit the dock. The wind brings the scent of salt and the echo of old submerged stories..."
+            },
+            {
+              "id": 2,
+              "personaje": "sofia",
+              "texto": "I'm glad you're here. Local fishermen found remains of old wood near the outer reef. It could be an important archaeological shipwreck."
+            },
+            {
+              "id": 3,
+              "personaje": "protagonista",
+              "texto": "Excellent. We must prepare the photographic registration equipment before the tide changes."
+            }
+          ],
+          "elecciones": {
+            "pregunta": "How do you wish to proceed with the initial report?",
+            "opciones": [
+              {
+                "id": "opcion_legal",
+                "texto": "Register the official coordinates and notify the authorities immediately.",
+                "siguiente_escena": "escena_registro_oficial"
+              },
+              {
+                "id": "opcion_explorar",
+                "texto": "Do a quick reconnaissance dive without alerting anyone else.",
+                "siguiente_escena": "escena_inmersion_secreta"
+              }
+            ]
+          }
+        },
+        "escena_registro_oficial": {
+          "titulo_escena": "Conservation Protocol",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "sofia",
+              "texto": "It's the right decision. Underwater heritage is protected by law, and every fragment out of its site alters the historical context."
+            }
+          ]
+        },
+        "escena_inmersion_secreta": {
+          "titulo_escena": "Risk in the Deep",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "narrador",
+              "texto": "By descending without the proper permits or support equipment, the current becomes treacherous..."
+            }
+          ]
+        }
+      }
+    }
+  }
 }

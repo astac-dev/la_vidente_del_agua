@@ -1,0 +1,69 @@
+/* Contenedor principal para la pantalla de la novela visual */
+.visual-novel-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinea el cuadro de diálogo abajo */
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: sans-serif; /* Fuente más legible para diálogos */
+}
+
+/* Marcador de posición para el cuadro de diálogo */
+.dialogue-box {
+    width: 95%;
+    min-height: 150px; /* Altura mínima */
+    max-height: 35%;   /* Altura máxima */
+    background-color: rgba(10, 10, 25, 0.75);
+    border: 2px solid rgba(58, 123, 213, 0.6);
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.character-name {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    color: var(--accent-color);
+    font-family: var(--font-family); /* Usar la fuente del tema para nombres */
+}
+
+.dialogue-text {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Estilos para el aviso de rotación del dispositivo */
+.rotate-prompt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    color: white;
+    text-align: center;
+}
+
+.rotate-prompt-content p {
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    max-width: 80%;
+}
+
+.rotate-icon {
+    fill: white;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+}

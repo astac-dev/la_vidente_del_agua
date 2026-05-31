@@ -14,6 +14,8 @@
 - **Integración de Firebase**: Se añadió el archivo de configuración inicial de Firebase (Auth y Firestore) utilizando variables de entorno para las credenciales.
 - **Botón de Guardado en la Nube**: Se añadió un componente de autenticación para iniciar y cerrar sesión con Google.
 - **Fallback de Avatar**: Se implementó una vista alternativa con un ícono para usuarios que no tienen foto de perfil en Google.
+- **Música de Fondo**: Se añadió música de fondo al menú principal, controlada por el estado global de volumen.
+- **Pantalla de Interacción**: Se añadió una pantalla "Haz clic para continuar" para cumplir con las políticas de auto-reproducción de audio de los navegadores.
 
 ### Cambiado
 - **Estructura del Menú Principal**: Se reorganizó el `MainMenu.jsx` según las nuevas especificaciones.
@@ -22,7 +24,7 @@
 - **Gestor de Estado Global**: Ahora se sincroniza con Firebase (Auth y Firestore) cuando un usuario inicia sesión, usando `localStorage` como respaldo cuando está desconectado.
 - **Flujo de Autenticación**: Se mejoró el componente `Auth.jsx` para actualizar la interfaz de manera instantánea tras un inicio de sesión exitoso.
 - **Visualización de Avatar**: Se corrigió el problema que impedía mostrar las fotos de perfil de Google añadiendo la `referrerPolicy` correcta.
-- **Funcionalidad del Botón Salir**: El botón "Salir" ahora intenta cerrar la ventana o pestaña del navegador.
+- **Funcionalidad del Botón Salir**: Se refactorizó la función de salida para usar la API global de Tauri (`window.__TAURI__`), eliminando las importaciones dinámicas y solucionando errores de compilación en Vite.
 - **Diseño Responsivo del Menú**: El menú ahora se alinea a la derecha en pantallas grandes y se centra en dispositivos móviles.
 - **Fuente del Menú**: Se cambió la fuente principal a "Kaushan Script" y se incluyó localmente para su uso sin conexión.
 - **Animación de Antorcha Responsiva**: La posición y el tamaño del efecto de la antorcha ahora se calculan dinámicamente para mantenerse fijos y proporcionados en la imagen sin importar el tamaño de la pantalla.
