@@ -104,7 +104,7 @@ const App = () => {
       case 'extrasMenu':
         return <ExtrasMenu onBack={() => handleNavigate('mainMenu')} />;
       case 'visualNovel':
-        return <VisualNovelContainer />;
+        return <VisualNovelContainer onNavigate={handleNavigate} />;
       case 'mainMenu':
       default:
         return <MainMenu onNavigate={handleNavigate} onExit={() => setIsExited(true)} />;
@@ -120,8 +120,13 @@ const App = () => {
   }
 
   if (currentView === 'visualNovel') {
-    // La novela visual ocupa toda la pantalla y tiene su propia lógica de fondo/UI.
-    return renderView();
+    // La novela visual ocupa toda la pantalla. Se envuelve en un contenedor
+    // que gestiona las animaciones de entrada y salida para que la navegación funcione.
+    return (
+      <div className={animationClass} onAnimationEnd={handleAnimationEnd}>
+        {renderView()}
+      </div>
+    );
   }
 
   return (

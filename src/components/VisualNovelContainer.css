@@ -8,7 +8,7 @@
     flex-direction: column;
     justify-content: flex-end; /* Alinea el cuadro de diálogo abajo */
     align-items: center;
-    padding: 20px;
+    padding: 0; /* Eliminamos el padding para que el diálogo ocupe todo el ancho */
     box-sizing: border-box;
     font-family: sans-serif; /* Fuente más legible para diálogos */
 }
@@ -19,7 +19,7 @@
     min-height: 150px; /* Altura mínima */
     max-height: 35%;   /* Altura máxima */
     background: linear-gradient(to top, rgba(0, 0, 0, 1) 80%, transparent);
-    padding: 20px;
+    padding: 20px 20px 30px 20px; /* Añadimos más padding inferior */
     padding-top: 40px; /* Más espacio superior para que el texto no comience en el área transparente */
     box-sizing: border-box;
     text-align: left;
@@ -36,6 +36,39 @@
 .dialogue-text {
     font-size: 1.2rem;
     margin: 0;
+}
+
+/* Contenedor para los botones de la UI en la esquina superior derecha */
+.ui-buttons-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column; /* Apila los botones verticalmente */
+    gap: 10px; /* Espacio entre los botones */
+    z-index: 10;
+}
+
+/* Estilo genérico para los botones de la UI (pantalla completa, menú, etc.) */
+.ui-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.ui-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.ui-button svg {
+    fill: white;
 }
 
 /* Estilos para el aviso de rotación del dispositivo */
@@ -65,4 +98,21 @@
     width: 64px;
     height: 64px;
     margin-bottom: 1rem;
+}
+
+/* --- Estilos para Responsividad --- */
+/* Para móviles en horizontal o pantallas pequeñas */
+@media (max-width: 1024px) and (orientation: landscape) {
+    .dialogue-box {
+        max-height: 45%; /* Más altura para el texto en pantallas más pequeñas */
+        padding-top: 20px;
+    }
+
+    .character-name {
+        font-size: 1.3rem; /* Reducir tamaño de fuente para el nombre */
+    }
+
+    .dialogue-text {
+        font-size: 1.1rem; /* Reducir tamaño de fuente para el diálogo */
+    }
 }

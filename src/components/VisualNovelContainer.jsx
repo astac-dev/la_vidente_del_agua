@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import FullscreenEnterIcon from './icons/FullscreenEnterIcon.jsx';
+import FullscreenExitIcon from './icons/FullscreenExitIcon.jsx';
+import HomeIcon from './HomeIcon.jsx';
 
 // Componente interno para mostrar el aviso de rotación.
 const RotateDevicePrompt = () => {
@@ -14,21 +17,60 @@ const RotateDevicePrompt = () => {
     );
 };
 
-const VisualNovelContainer = () => {
+const VisualNovelContainer = ({ onNavigate }) => {
     // Estado para saber si la orientación es horizontal (landscape)
+    const { t } = useTranslation();
     const [isLandscape, setIsLandscape] = useState(window.innerWidth > window.innerHeight);
+    const [isFullscreen, setIsFullscreen] = useState(!!document.fullscreenElement);
+
+    const handleGoToMenu = () => {
+        if (onNavigate) {
+            onNavigate('mainMenu');
+        }
+    };
+
+    const toggleFullscreen = () => {
+        if (!document.fullscreenElement) {
+            // Entrar en pantalla completa
+            document.documentElement.requestFullscreen().catch(err => {
+                console.error(`Error al intentar activar el modo de pantalla completa: ${err.message} (${err.name})`);
+            });
+        } else {
+            // Salir de pantalla completa
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    };
 
     useEffect(() => {
         const checkOrientation = () => {
             setIsLandscape(window.innerWidth > window.innerHeight);
         };
 
+        const handleFullscreenChange = () => {
+            setIsFullscreen(!!document.fullscreenElement);
+        };
+
+        // Listener para la orientación
         // Se revisa la orientación cada vez que la ventana cambia de tamaño.
         window.addEventListener('resize', checkOrientation);
         checkOrientation(); // Comprobación inicial
 
+        // Listeners para el estado de pantalla completa
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange); // Safari
+        document.addEventListener('mozfullscreenchange', handleFullscreenChange); // Firefox
+        document.addEventListener('MSFullscreenChange', handleFullscreenChange); // IE/Edge
+
         // Limpieza del evento al desmontar el componente.
-        return () => window.removeEventListener('resize', checkOrientation);
+        return () => {
+            window.removeEventListener('resize', checkOrientation);
+            document.removeEventListener('fullscreenchange', handleFullscreenChange);
+            document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+            document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+            document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+        };
     }, []);
 
     // Si no es horizontal, muestra el aviso.
@@ -39,6 +81,19 @@ const VisualNovelContainer = () => {
     // Si es horizontal, muestra el contenedor de la novela visual.
     return (
         <div className="visual-novel-container">
+            <div className="ui-buttons-container">
+                <button onClick={toggleFullscreen} className="ui-button" title={t('interface.toggleFullscreen')}>
+                    {isFullscreen ? (
+                        <FullscreenExitIcon />
+                    ) : (
+                        <FullscreenEnterIcon />
+                    )}
+                </button>
+                <button onClick={handleGoToMenu} className="ui-button" title={t('interface.backToMenu')}>
+                    <HomeIcon />
+                </button>
+            </div>
+
             {/* Aquí se integraría el motor de la novela visual. */}
             {/* Por ahora, es un marcador de posición. */}
             <div className="dialogue-box">
