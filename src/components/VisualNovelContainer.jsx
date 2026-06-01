@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import FullscreenEnterIcon from './icons/FullscreenEnterIcon.jsx';
 import FullscreenExitIcon from './icons/FullscreenExitIcon.jsx';
 import HomeIcon from './HomeIcon.jsx';
+import glifoAgua from '/public/arte/glifoaguafluyendo.png';
 
 // Componente interno para mostrar el aviso de rotación.
 const RotateDevicePrompt = () => {
@@ -102,7 +103,12 @@ const VisualNovelContainer = ({ onNavigate }) => {
                     <button onClick={toggleFullscreen} className="ui-button" title={t('interface.toggleFullscreen')}>
                         {isFullscreen ? <FullscreenExitIcon /> : <FullscreenEnterIcon />}
                     </button>
-                    <button onClick={handleGoToMenu} className="ui-button" title={t('interface.backToMenu')}>
+                    <button
+                        onClick={handleGoToMenu}
+                        className="ui-button"
+                        title={t('interface.backToMenu')}
+                        disabled={isFullscreen}
+                    >
                         <HomeIcon />
                     </button>
                 </div>
@@ -125,7 +131,7 @@ const VisualNovelContainer = ({ onNavigate }) => {
                     <p className="dialogue-text">Qué bueno que llegas. Los pescadores locales encontraron restos de madera vieja cerca del arrecife exterior. Podría ser un pecio arqueológico importante.</p>
                     
                     {/* Indicador de Glifo de Agua */}
-                    {isTextFinished && <img src="/arte/glifoaguafluyendo.png" alt="Continuar" className="vn-glifo-indicator" />}
+                    {isTextFinished && <img src={glifoAgua} alt="Continuar" className="vn-glifo-indicator" />}
                 </div>
             </div>
         </div>
