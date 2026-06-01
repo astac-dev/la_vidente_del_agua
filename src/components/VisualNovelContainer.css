@@ -1,118 +1,189 @@
-/* Contenedor principal para la pantalla de la novela visual */
-.visual-novel-container {
+/* Contenedor principal que centra la escena en la pantalla */
+.ark-view-wrapper {
     width: 100vw;
     height: 100vh;
-    background-color: black;
-    color: white;
+    background-color: #000;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Alinea el cuadro de diálogo abajo */
     align-items: center;
-    padding: 0; /* Eliminamos el padding para que el diálogo ocupe todo el ancho */
-    box-sizing: border-box;
-    font-family: sans-serif; /* Fuente más legible para diálogos */
+    justify-content: center;
+    font-family: sans-serif;
 }
 
-/* Marcador de posición para el cuadro de diálogo */
-.dialogue-box {
-    width: 95%;
-    min-height: 150px; /* Altura mínima */
-    max-height: 35%;   /* Altura máxima */
-    background: linear-gradient(to top, rgba(0, 0, 0, 1) 80%, transparent);
-    padding: 20px 20px 30px 20px; /* Añadimos más padding inferior */
-    padding-top: 40px; /* Más espacio superior para que el texto no comience en el área transparente */
+/* Contenedor de la escena con relación de aspecto 16:9 */
+.ark-scene-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-width: 100vw;
+    max-height: 100vh;
+    background-color: #111; /* Color de fondo si no hay imagen */
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    color: white;
+}
+
+/* Superposición oscura sutil para mejorar contraste */
+.scene-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%);
+    pointer-events: none;
+}
+
+/* --- Sprites de Personajes --- */
+.character-sprite-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.character-sprite {
+    height: 95%; /* Ajusta esto para cortar el sprite a la altura deseada */
+    object-fit: contain;
+    object-position: bottom center;
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+    filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
+}
+
+/* --- Caja de Diálogo Cinematográfica --- */
+.dialogue-box-cinematic {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 28%; /* Altura de la barra de diálogo */
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 20%, rgba(15, 23, 42, 0.75) 85%, transparent 100%);
+    display: flex;
+    align-items: flex-start;
+    padding: 2rem 2.5rem;
     box-sizing: border-box;
-    text-align: left;
+}
+
+.character-name-container {
+    flex-basis: 22%; /* Espacio reservado para el nombre */
+    flex-shrink: 0;
+    padding-right: 2rem;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(115, 194, 251, 0.3); /* Línea estilo códice */
 }
 
 .character-name {
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin: 0 0 10px 0;
-    color: var(--accent-color);
-    font-family: var(--font-family); /* Usar la fuente del tema para nombres */
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
 }
 
 .dialogue-text {
-    font-size: 1.2rem;
-    margin: 0;
+    flex-grow: 1;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: white;
 }
 
-/* Contenedor para los botones de la UI en la esquina superior derecha */
-.ui-buttons-container {
+/* --- UI HUD --- */
+
+/* Controles Superiores Izquierdos (Existentes) */
+.ui-buttons-container-topleft {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 1rem;
+    left: 1rem;
     display: flex;
-    flex-direction: column; /* Apila los botones verticalmente */
-    gap: 10px; /* Espacio entre los botones */
-    z-index: 10;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 20;
 }
 
-/* Estilo genérico para los botones de la UI (pantalla completa, menú, etc.) */
+/* Controles Superiores Derechos (Nuevos) */
+.ui-buttons-container-topright {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 15px;
+    z-index: 20;
+}
+
+/* Estilo para los botones de control de texto (AUTO, SKIP) */
+.ark-uibutton {
+    background-color: rgba(18, 22, 25, 0.8);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 1.2rem;
+    font-family: 'Roboto Condensed', sans-serif; /* Fuente compacta */
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    border-radius: 2px;
+}
+
+.ark-uibutton:hover {
+    background-color: rgba(0, 168, 107, 0.8);
+    border-color: rgba(0, 168, 107, 1);
+    color: #fff;
+}
+
+.auto-button.active {
+    background-color: #00A86B; /* Verde Jade Sagrado */
+    color: white;
+    border-color: #00A86B;
+}
+
+/* Estilo para los botones redondos existentes */
 .ui-button {
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: background-color 0.2s;
 }
-
 .ui-button:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
-
 .ui-button svg {
     fill: white;
+    width: 24px;
+    height: 24px;
 }
 
-/* Estilos para el aviso de rotación del dispositivo */
-.rotate-prompt-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    color: white;
-    text-align: center;
+/* Indicador de avance con Glifo de Agua */
+.vn-glifo-indicator {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2.5rem;
+    width: 40px;
+    height: auto;
+    pointer-events: none;
+    animation: glifo-pulse 2s ease-in-out infinite;
 }
 
-.rotate-prompt-content p {
-    font-size: 1.5rem;
-    font-family: sans-serif;
-    max-width: 80%;
-}
-
-.rotate-icon {
-    fill: white;
-    width: 64px;
-    height: 64px;
-    margin-bottom: 1rem;
-}
-
-/* --- Estilos para Responsividad --- */
-/* Para móviles en horizontal o pantallas pequeñas */
-@media (max-width: 1024px) and (orientation: landscape) {
-    .dialogue-box {
-        max-height: 45%; /* Más altura para el texto en pantallas más pequeñas */
-        padding-top: 20px;
+@keyframes glifo-pulse {
+    0% {
+        opacity: 0.7;
     }
-
-    .character-name {
-        font-size: 1.3rem; /* Reducir tamaño de fuente para el nombre */
+    50% {
+        opacity: 1;
     }
-
-    .dialogue-text {
-        font-size: 1.1rem; /* Reducir tamaño de fuente para el diálogo */
+    100% {
+        opacity: 0.7;
     }
 }

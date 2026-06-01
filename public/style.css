@@ -154,3 +154,26 @@ body.game-ready::before {
         margin-bottom: 1rem;
     }
 }
+
+/* --- Ajustes de Responsividad para el Menú Principal --- */
+
+/* Se asegura que el contenedor del menú pueda hacer scroll en pantallas bajas */
+.menu-container {
+    max-height: 90vh; /* Altura máxima del 90% del viewport */
+    overflow-y: auto; /* Habilita el scroll si el contenido excede la altura */
+    padding-top: 1rem; /* Añade espacio para que no se pegue al borde */
+    padding-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+/* En dispositivos en horizontal con poca altura, se reduce el tamaño de los botones */
+@media (max-height: 500px) and (orientation: landscape) {
+    .menu-container {
+        gap: 0.5rem !important; /* Reduce el espacio entre botones */
+    }
+    /* Asumimos que los botones del menú tienen la clase .menu-button */
+    .menu-button {
+        font-size: 1.1rem !important; /* Reduce el tamaño de la fuente */
+        padding: 0.5rem 1.5rem !important; /* Reduce el padding del botón */
+    }
+}

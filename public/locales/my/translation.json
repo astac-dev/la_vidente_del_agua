@@ -23,7 +23,10 @@
     "clickToContinue": "P'iit' xook utial a k'áaxal",
     "rotateDevicePrompt": "Je'el u béeytale', sut a nu'ukulil ti' u tselil utial a t'óoch'k'al.",
     "toggleFullscreen": "T'u'ul/k'al le chuunpak",
-    "backToMenu": "Suut ti' le yáax chun"
+    "backToMenu": "Suut ti' le yáax chun",
+    "Dialogoautomaticos": "Diálogo automático",
+    "saltardialogo": "P'at le diálogo",
+    "velocidadDialogo": "Velocidad del diálogo"
   },
   "personajes": {
     "narrador": "",

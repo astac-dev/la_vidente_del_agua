@@ -23,7 +23,10 @@
     "clickToContinue": "Haz clic para continuar",
     "rotateDevicePrompt": "Por favor, gira tu dispositivo a una posición horizontal para continuar.",
     "toggleFullscreen": "Activar/desactivar pantalla completa",
-    "backToMenu": "Volver al menú principal"
+    "backToMenu": "Volver al menú principal",
+    "Dialogoautomaticos": "Diálogo automático",
+    "saltardialogo": "Saltar diálogo",
+    "velocidadDialogo": "Velocidad del diálogo"
   },
   "personajes": {
     "narrador": "",

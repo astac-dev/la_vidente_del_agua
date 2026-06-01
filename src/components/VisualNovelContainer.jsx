@@ -22,11 +22,17 @@ const VisualNovelContainer = ({ onNavigate }) => {
     const { t } = useTranslation();
     const [isLandscape, setIsLandscape] = useState(window.innerWidth > window.innerHeight);
     const [isFullscreen, setIsFullscreen] = useState(!!document.fullscreenElement);
+    const [isAuto, setIsAuto] = useState(false);
+    const [isTextFinished, setIsTextFinished] = useState(true); // Para controlar el indicador de avance
 
     const handleGoToMenu = () => {
         if (onNavigate) {
             onNavigate('mainMenu');
         }
+    };
+
+    const toggleAuto = () => {
+        setIsAuto(prev => !prev);
     };
 
     const toggleFullscreen = () => {
@@ -80,25 +86,47 @@ const VisualNovelContainer = ({ onNavigate }) => {
 
     // Si es horizontal, muestra el contenedor de la novela visual.
     return (
-        <div className="visual-novel-container">
-            <div className="ui-buttons-container">
-                <button onClick={toggleFullscreen} className="ui-button" title={t('interface.toggleFullscreen')}>
-                    {isFullscreen ? (
-                        <FullscreenExitIcon />
-                    ) : (
-                        <FullscreenEnterIcon />
-                    )}
-                </button>
-                <button onClick={handleGoToMenu} className="ui-button" title={t('interface.backToMenu')}>
-                    <HomeIcon />
-                </button>
-            </div>
+        <div className="ark-view-wrapper">
+            <div className="ark-scene-container">
+                {/* La imagen de fondo de la escena se controla por CSS */}
+                <div className="scene-overlay"></div>
 
-            {/* Aquí se integraría el motor de la novela visual. */}
-            {/* Por ahora, es un marcador de posición. */}
-            <div className="dialogue-box">
-                <p className="character-name">Personaje</p>
-                <p className="dialogue-text">Este es el espacio donde se mostrará el diálogo de la novela visual...</p>
+                {/* Contenedor para los Sprites de Personajes */}
+                <div className="character-sprite-container">
+                    {/* <img src="/path/to/character.png" alt="Character" className="character-sprite" /> */}
+                </div>
+
+                {/* --- UI HUD --- */}
+                {/* Controles Superiores Izquierdos (Existentes) */}
+                <div className="ui-buttons-container-topleft">
+                    <button onClick={toggleFullscreen} className="ui-button" title={t('interface.toggleFullscreen')}>
+                        {isFullscreen ? <FullscreenExitIcon /> : <FullscreenEnterIcon />}
+                    </button>
+                    <button onClick={handleGoToMenu} className="ui-button" title={t('interface.backToMenu')}>
+                        <HomeIcon />
+                    </button>
+                </div>
+
+                {/* Controles Superiores Derechos (Nuevos) */}
+                <div className="ui-buttons-container-topright">
+                    <button onClick={toggleAuto} className={`ark-uibutton auto-button ${isAuto ? 'active' : ''}`}>
+                        AUTO
+                    </button>
+                    <button className="ark-uibutton skip-button">
+                        SKIP ▶
+                    </button>
+                </div>
+
+                {/* Caja de Diálogo Cinematográfica */}
+                <div className="dialogue-box-cinematic">
+                    <div className="character-name-container">
+                        <p className="character-name">Dra. Sofía (INAH)</p>
+                    </div>
+                    <p className="dialogue-text">Qué bueno que llegas. Los pescadores locales encontraron restos de madera vieja cerca del arrecife exterior. Podría ser un pecio arqueológico importante.</p>
+                    
+                    {/* Indicador de Glifo de Agua */}
+                    {isTextFinished && <img src="/arte/glifoaguafluyendo.png" alt="Continuar" className="vn-glifo-indicator" />}
+                </div>
             </div>
         </div>
     );
