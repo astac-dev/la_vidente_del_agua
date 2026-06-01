@@ -23,7 +23,10 @@
     "clickToContinue": "Click to continue",
     "rotateDevicePrompt": "Please rotate your device horizontally to continue.",
     "toggleFullscreen": "Toggle fullscreen",
-    "backToMenu": "Back to main menu"
+    "backToMenu": "Back to main menu",
+    "Dialogoautomaticos": "Automatic Dialogue",
+    "saltardialogo": "Skip Dialogue",
+    "velocidadDialogo": "Dialogue Speed"
   },
   "personajes": {
     "narrador": "",
