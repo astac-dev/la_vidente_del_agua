@@ -88,7 +88,7 @@
 
 .dialogue-text {
     flex-grow: 1;
-    font-size: 1.4rem;
+    font-size: calc(1.4rem * var(--dialogue-font-size-multiplier, 1));
     line-height: 1.5;
     color: white;
 }
@@ -214,7 +214,7 @@
     }
 
     .dialogue-text {
-        font-size: 1.15rem; /* Reducimos el tamaño del texto del diálogo */
+        font-size: calc(1.15rem * var(--dialogue-font-size-multiplier, 1)); /* Reducimos el tamaño del texto del diálogo */
         line-height: 1.45;
     }
 }

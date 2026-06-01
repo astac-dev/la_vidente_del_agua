@@ -10,7 +10,7 @@ const defaultSettings = {
   idioma: 'es',
   volumenMusica: 80,
   volumenEfectos: 100,
-  velocidadTexto: 50,
+  tamanoLetra: 100, // Representa el 100% del tamaño base
 };
 
 export const GameStateProvider = ({ children }) => {

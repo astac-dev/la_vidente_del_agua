@@ -26,7 +26,9 @@
     "backToMenu": "Suut ti' le yáax chun",
     "Dialogoautomaticos": "Diálogo automático",
     "saltardialogo": "P'at le diálogo",
-    "velocidadDialogo": "Velocidad del diálogo"
+    "tamanoLetra": "U nojochil ts'íib",
+    "musicVolume": "U je'ek'ab paax",
+    "effectsVolume": "U je'ek'ab ulandzilo'ob"
   },
   "personajes": {
     "narrador": "",

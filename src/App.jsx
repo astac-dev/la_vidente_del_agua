@@ -2,6 +2,7 @@ import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import MainMenu from './components/MainMenu';
 import ExtrasMenu from './components/ExtrasMenu';
 import LanguageSelector from './components/LanguageSelector';
+import OptionsMenu from './components/OptionsMenu';
 import VisualNovelContainer from './components/VisualNovelContainer';
 import ClickToContinue from './components/ClickToContinue';
 import ExitScreen from './components/ExitScreen';
@@ -11,6 +12,7 @@ import './components/LanguageSelector.css';
 import './components/Auth.css';
 import './components/ExitScreen.css';
 import './components/ClickToContinue.css';
+import './components/OptionsMenu.css';
 import './components/VisualNovelContainer.css';
 
 const App = () => {
@@ -103,6 +105,8 @@ const App = () => {
     switch (currentView) {
       case 'extrasMenu':
         return <ExtrasMenu onBack={() => handleNavigate('mainMenu')} />;
+      case 'optionsMenu':
+        return <OptionsMenu onBack={() => handleNavigate('mainMenu')} />;
       case 'visualNovel':
         return <VisualNovelContainer onNavigate={handleNavigate} />;
       case 'mainMenu':

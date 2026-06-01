@@ -64,7 +64,7 @@ const MainMenu = ({ onNavigate, onExit }) => {
       <MenuButton onClick={() => onNavigate('visualNovel')}>{t('menu.newGame')}</MenuButton>
       <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('menu.loadGame')}</MenuButton>
       <MenuButton onClick={() => onNavigate('extrasMenu')}>{t('menu.extras')}</MenuButton>
-      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('menu.options')}</MenuButton>
+      <MenuButton onClick={() => onNavigate('optionsMenu')}>{t('menu.options')}</MenuButton>
       <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('menu.credits')}</MenuButton>
       <MenuButton onClick={handleExit}>{t('menu.exit')}</MenuButton>
     </div>

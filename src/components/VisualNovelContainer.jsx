@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useGameState } from '../context/GameStateContext';
 import FullscreenEnterIcon from './icons/FullscreenEnterIcon.jsx';
 import FullscreenExitIcon from './icons/FullscreenExitIcon.jsx';
 import HomeIcon from './HomeIcon.jsx';
@@ -21,6 +22,7 @@ const RotateDevicePrompt = () => {
 const VisualNovelContainer = ({ onNavigate }) => {
     // Estado para saber si la orientación es horizontal (landscape)
     const { t } = useTranslation();
+    const { settings } = useGameState();
     const [isLandscape, setIsLandscape] = useState(window.innerWidth > window.innerHeight);
     const [isFullscreen, setIsFullscreen] = useState(!!document.fullscreenElement);
     const [isAuto, setIsAuto] = useState(false);
@@ -88,7 +90,12 @@ const VisualNovelContainer = ({ onNavigate }) => {
     // Si es horizontal, muestra el contenedor de la novela visual.
     return (
         <div className="ark-view-wrapper">
-            <div className="ark-scene-container">
+            <div
+                className="ark-scene-container"
+                style={{
+                    '--dialogue-font-size-multiplier': `${settings.tamanoLetra / 100}`
+                }}
+            >
                 {/* La imagen de fondo de la escena se controla por CSS */}
                 <div className="scene-overlay"></div>
 
