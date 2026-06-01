@@ -196,3 +196,26 @@
         opacity: 0.7;
     }
 }
+
+/* --- Estilos para Responsividad --- */
+/* Para tabletas y móviles en horizontal (ancho de pantalla menor a 1024px) */
+@media (max-width: 1024px) {
+    .dialogue-box-cinematic {
+        padding: 1.5rem;
+        min-height: 33%; /* Aumentamos un poco la altura para compensar el texto más pequeño */
+    }
+
+    .character-name-container {
+        flex-basis: 30%; /* Damos un poco más de espacio al nombre en pantallas chicas */
+    }
+
+    .character-name {
+        font-size: 1.3rem; /* Reducimos el tamaño del nombre del personaje */
+    }
+
+    .dialogue-text {
+        font-size: 1.15rem; /* Reducimos el tamaño del texto del diálogo */
+        line-height: 1.45;
+    }
+}
+}
