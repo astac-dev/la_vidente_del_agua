@@ -26,7 +26,9 @@
     "backToMenu": "Back to main menu",
     "Dialogoautomaticos": "Automatic Dialogue",
     "saltardialogo": "Skip Dialogue",
-    "velocidadDialogo": "Dialogue Speed"
+    "tamanoLetra": "Font Size",
+    "musicVolume": "Music Volume",
+    "effectsVolume": "Effects Volume"
   },
   "personajes": {
     "narrador": "",
