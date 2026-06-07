@@ -11,6 +11,19 @@ const defaultSettings = {
   volumenMusica: 80,
   volumenEfectos: 100,
   tamanoLetra: 100, // Representa el 100% del tamaño base
+  autoPlaySpeed: 0, // 0: off, 1-4: speeds
+};
+
+// Nuevo: Estado inicial de la partida
+const initialGameState = {
+  currentChapter: 'capitulo_1',
+  currentSceneId: 'escena_intro',
+  dialogueIndex: 0,
+  stats: {
+    preservacion: 0,
+    confianza: 0,
+  },
+  inventory: [],
 };
 
 export const GameStateProvider = ({ children }) => {
@@ -23,6 +36,12 @@ export const GameStateProvider = ({ children }) => {
       return defaultSettings;
     }
   });
+
+  // Nuevo: Estado para el progreso de la partida
+  const [gameState, setGameState] = useState(initialGameState);
+
+  // Nuevo: Estado para la visibilidad de la UI
+  const [uiVisibility, setUiVisibility] = useState(true);
 
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // Para gestionar la comprobación inicial de autenticación
@@ -102,7 +121,42 @@ export const GameStateProvider = ({ children }) => {
     setSettings(prevSettings => ({ ...prevSettings, [key]: value }));
   };
 
-  const value = { settings, updateSetting, user, isLoading, setUser };
+  const toggleUiVisibility = () => {
+    setUiVisibility(prev => !prev);
+  };
+
+  // --- Funciones para controlar el estado de la partida ---
+
+  const goToScene = (sceneId, chapterId, dialogueIndex = 0) => {
+    setGameState(prev => ({
+      ...prev,
+      currentChapter: chapterId || prev.currentChapter,
+      currentSceneId: sceneId,
+      dialogueIndex: dialogueIndex,
+    }));
+  };
+
+  const advanceDialogue = () => {
+    setGameState(prev => ({
+      ...prev,
+      dialogueIndex: prev.dialogueIndex + 1,
+    }));
+  };
+
+  const updateStat = (stat, operation, value) => {
+    setGameState(prev => {
+      const oldValue = prev.stats[stat] || 0;
+      const newValue = operation === 'add' ? oldValue + value : value;
+      return {
+        ...prev,
+        stats: { ...prev.stats, [stat]: newValue },
+      };
+    });
+  };
+
+  // --- Valor del contexto ---
+
+  const value = { settings, updateSetting, user, isLoading, setUser, gameState, goToScene, advanceDialogue, updateStat, uiVisibility, toggleUiVisibility };
 
   return (
     <GameStateContext.Provider value={value}>

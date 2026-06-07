@@ -1,9 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite'; // <- Añade esta importación
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  // 🚀 Esto permite que funcione en local y que GitHub Pages encuentre los archivos en internet
-  base: '/la_vidente_del_agua/',
-})
+  plugins: [
+    react(),
+    tailwindcss(), // <- Activa el compilador aquí
+  ],
+  base: '/la_vidente_del_agua/', // Mantiene tu ruta base de gh-pages
+});

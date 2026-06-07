@@ -34,20 +34,26 @@
 .main-menu, .extras-menu {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: calc(1.5rem * var(--ui-scale-multiplier, 1));
     width: 100%;
-    max-width: 400px;
+    max-width: calc(400px * var(--ui-scale-multiplier, 1));
 }
 
 .menu-button {
-    padding: 0.5rem;
+    padding: calc(0.5rem * var(--ui-scale-multiplier, 1));
     font-family: var(--font-family);
-    font-size: 1.8rem;
+    font-size: calc(1.8rem * var(--ui-scale-multiplier, 1));
     color: var(--primary-color);
     background-color: transparent;
     border: none;
     cursor: pointer;
     transition: color 0.3s ease;
+    min-height: calc(48px * var(--ui-scale-multiplier, 1));
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .menu-button:hover {
@@ -59,5 +65,11 @@
     .menu-container {
         align-items: center; /* Centra el menú en pantallas pequeñas */
         padding-right: 0; /* Elimina el padding derecho */
+    }
+
+    .menu-button {
+        justify-content: center; /* Centra el texto en móviles */
+        font-size: calc(1.5rem * var(--ui-scale-multiplier, 1)); /* Ajuste fino de accesibilidad para móviles */
+        padding: calc(0.4rem * var(--ui-scale-multiplier, 1));
     }
 }

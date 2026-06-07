@@ -10,7 +10,7 @@ const ClickToContinue = ({ onContinue }) => {
     <div className="click-to-continue-container" onClick={onContinue}>
       <LanguageSelector />
       <div className="click-to-continue-content">
-        <h1>{t('clickToContinue')}</h1>
+        <h1>{t('interface.clickToContinue')}</h1>
       </div>
     </div>
   );

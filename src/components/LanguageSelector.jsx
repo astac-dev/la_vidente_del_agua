@@ -8,8 +8,10 @@ const LanguageSelector = () => {
   const { settings, updateSetting } = useGameState();
 
   return (
-    <div className="language-selector-wrapper">
-      <div className="language-label">{t('language')}</div>
+    // Añadimos un evento onClick aquí para detener la propagación.
+    // Cualquier clic dentro de este div (incluyendo los botones) no "burbujeará" hacia arriba.
+    <div className="language-selector-wrapper" onClick={(e) => e.stopPropagation()}>
+      <div className="language-label">{t('menu.language')}</div>
       <div className="language-buttons">
         <button onClick={() => updateSetting('idioma', 'es')} className={settings.idioma === 'es' ? 'active' : ''}>Español</button>
         <button onClick={() => updateSetting('idioma', 'en')} className={settings.idioma === 'en' ? 'active' : ''}>English</button>

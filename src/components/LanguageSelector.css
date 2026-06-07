@@ -2,15 +2,15 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 0.5rem; /* Espacio entre la etiqueta y los botones */
+    gap: calc(0.5rem * var(--ui-scale-multiplier, 1));
     width: 100%;
-    max-width: 400px;
+    max-width: calc(400px * var(--ui-scale-multiplier, 1));
 }
 
 .language-label {
-    padding: 0.5rem;
+    padding: calc(0.5rem * var(--ui-scale-multiplier, 1));
     font-family: var(--font-family);
-    font-size: 1.8rem; /* Mismo tamaño que las opciones del menú */
+    font-size: calc(1.8rem * var(--ui-scale-multiplier, 1));
     color: var(--primary-color);
     width: 100%;
     text-align: center;
@@ -19,21 +19,22 @@
 
 .language-buttons {
     display: flex;
-    gap: 1.5rem;
+    gap: calc(1.5rem * var(--ui-scale-multiplier, 1));
     width: 100%;
-    justify-content: flex-end; /* Alinea los botones a la derecha dentro de su contenedor */
+    justify-content: flex-end;
 }
 
 .language-buttons button {
     font-family: var(--font-family);
-    font-size: 1.2rem;
-    font-weight: 700; /* Negritas */
+    font-size: calc(1.2rem * var(--ui-scale-multiplier, 1));
+    font-weight: 700;
     color: var(--primary-color);
     background: transparent;
     border: none;
     cursor: pointer;
     transition: color 0.3s ease;
     opacity: 0.6;
+    min-height: calc(44px * var(--ui-scale-multiplier, 1));
 }
 
 .language-buttons button:hover,
@@ -44,10 +45,14 @@
 
 @media (max-width: 768px) {
     .language-selector-wrapper {
-        align-items: center; /* Centra todo el bloque en móvil */
+        align-items: center;
     }
 
     .language-buttons {
-        justify-content: center; /* Centra los botones en pantallas pequeñas */
+        justify-content: center;
+    }
+
+    .language-buttons button {
+        font-size: calc(1.1rem * var(--ui-scale-multiplier, 1));
     }
 }

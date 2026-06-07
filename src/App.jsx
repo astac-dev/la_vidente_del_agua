@@ -3,19 +3,21 @@ import MainMenu from './components/MainMenu';
 import ExtrasMenu from './components/ExtrasMenu';
 import LanguageSelector from './components/LanguageSelector';
 import OptionsMenu from './components/OptionsMenu';
-import VisualNovelContainer from './components/VisualNovelContainer';
+import VisualNovelEngine from './components/VisualNovel/VisualNovelEngine';
+import OrientationBlocker from './components/VisualNovel/OrientationBlocker';
 import ClickToContinue from './components/ClickToContinue';
 import ExitScreen from './components/ExitScreen';
 import Auth from './components/Auth';
+import { useGameState } from './context/GameStateContext';
 import './components/MainMenu.css';
 import './components/LanguageSelector.css';
 import './components/Auth.css';
 import './components/ExitScreen.css';
 import './components/ClickToContinue.css';
 import './components/OptionsMenu.css';
-import './components/VisualNovelContainer.css';
 
 const App = () => {
+  const { settings } = useGameState();
   const [isExited, setIsExited] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [currentView, setCurrentView] = useState('mainMenu');
@@ -25,12 +27,12 @@ const App = () => {
 
   useLayoutEffect(() => {
     const updateTorchPosition = () => {
-      // Dimensiones y coordenadas originales de la imagen y la antorcha
+      // Dimensiones base de tu ilustración original
       const imageWidth = 1024;
       const imageHeight = 768;
       const torchX = 400;
       const torchY = 418;
-      const baseTorchSize = 80; // Tamaño base del destello en píxeles
+      const baseTorchSize = 80; 
 
       const imageRatio = imageWidth / imageHeight;
       const torchXRelative = torchX / imageWidth;
@@ -42,25 +44,26 @@ const App = () => {
 
       let renderedWidth, renderedHeight, offsetX, offsetY;
 
+      // CORRECCIÓN CORAZÓN DEL PROBLEMA: Cambiamos la matemática a modo "COVER" 
+      // para expandir el fondo al 100% de la ventana y destruir las líneas de recorte.
       if (viewportRatio > imageRatio) {
-        // El viewport es más ancho que la imagen, la imagen se ajusta a la altura.
+        // El monitor es más ancho: la imagen cubre todo el ancho y se autoajusta verticalmente
+        renderedWidth = viewportWidth;
+        renderedHeight = viewportWidth / imageRatio;
+        offsetX = 0;
+        offsetY = (viewportHeight - renderedHeight) / 2; 
+      } else {
+        // El monitor es más alto/estrecho: la imagen cubre todo el alto y se autoajusta a los lados
         renderedHeight = viewportHeight;
         renderedWidth = viewportHeight * imageRatio;
         offsetX = (viewportWidth - renderedWidth) / 2;
         offsetY = 0;
-      } else {
-        // El viewport es más angosto, la imagen se ajusta al ancho.
-        renderedWidth = viewportWidth;
-        renderedHeight = viewportWidth / imageRatio;
-        offsetX = 0;
-        offsetY = (viewportHeight - renderedHeight) / 2;
       }
 
-      // Se calcula la escala actual de la imagen y el tamaño dinámico del destello
+      // El tamaño del destello de la antorcha ahora escala proporcionalmente al llenado real
       const scaleRatio = renderedWidth / imageWidth;
       const dynamicTorchSize = baseTorchSize * scaleRatio;
 
-      // Se calcula la posición y el tamaño final en píxeles
       setTorchStyle({
         left: `${offsetX + (renderedWidth * torchXRelative)}px`,
         top: `${offsetY + (renderedHeight * torchYRelative)}px`,
@@ -69,24 +72,20 @@ const App = () => {
       });
     };
 
-    updateTorchPosition(); // Calcular al inicio
-    window.addEventListener('resize', updateTorchPosition); // Recalcular al redimensionar
+    updateTorchPosition(); 
+    window.addEventListener('resize', updateTorchPosition); 
 
-    return () => window.removeEventListener('resize', updateTorchPosition); // Limpiar el evento
+    return () => window.removeEventListener('resize', updateTorchPosition); 
   }, []);
 
-  // Efecto para controlar la visibilidad del fondo principal
   useEffect(() => {
     if (isReady) {
       document.body.classList.add('game-ready');
     }
-
-    // Función de limpieza para remover la clase si el componente se desmonta
     return () => document.body.classList.remove('game-ready');
   }, [isReady]);
 
   const handleNavigate = (view) => {
-    // Evita iniciar una nueva animación si ya se está desvaneciendo
     if (view !== currentView && animationClass !== 'fade-out') {
       nextViewRef.current = view;
       setAnimationClass('fade-out');
@@ -94,7 +93,6 @@ const App = () => {
   };
 
   const handleAnimationEnd = () => {
-    // Cambia la vista solo cuando la animación de desvanecimiento termina
     if (animationClass === 'fade-out') {
       setCurrentView(nextViewRef.current);
       setAnimationClass('fade-in');
@@ -108,7 +106,7 @@ const App = () => {
       case 'optionsMenu':
         return <OptionsMenu onBack={() => handleNavigate('mainMenu')} />;
       case 'visualNovel':
-        return <VisualNovelContainer onNavigate={handleNavigate} />;
+        return <VisualNovelEngine onNavigate={handleNavigate} />;
       case 'mainMenu':
       default:
         return <MainMenu onNavigate={handleNavigate} onExit={() => setIsExited(true)} />;
@@ -124,22 +122,27 @@ const App = () => {
   }
 
   if (currentView === 'visualNovel') {
-    // La novela visual ocupa toda la pantalla. Se envuelve en un contenedor
-    // que gestiona las animaciones de entrada y salida para que la navegación funcione.
     return (
-      <div className={animationClass} onAnimationEnd={handleAnimationEnd}>
-        {renderView()}
-      </div>
+      <>
+        <div className={animationClass} onAnimationEnd={handleAnimationEnd}>
+          {renderView()}
+        </div>
+        <OrientationBlocker />
+      </>
     );
   }
 
   return (
     <>
-      {/* Contenedor para las animaciones de fondo, como la antorcha */}
       <div className="background-animations">
         <div className="torch-flicker" style={torchStyle}></div>
       </div>
-      <div className={`menu-container ${animationClass}`} onAnimationEnd={handleAnimationEnd}>
+      {/* CORRECCIÓN: Quitamos cualquier restricción horizontal previa de clases nativas */}
+      <div 
+        className={`menu-container w-full h-screen min-h-screen relative overflow-hidden flex flex-col ${animationClass}`} 
+        onAnimationEnd={handleAnimationEnd}
+        style={{ '--ui-scale-multiplier': `${(settings.tamanoLetra || 100) / 100}` }}
+      >
         <Auth />
         <LanguageSelector />
         {renderView()}

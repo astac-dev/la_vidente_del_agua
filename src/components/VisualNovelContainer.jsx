@@ -4,7 +4,7 @@ import { useGameState } from '../context/GameStateContext';
 import FullscreenEnterIcon from './icons/FullscreenEnterIcon.jsx';
 import FullscreenExitIcon from './icons/FullscreenExitIcon.jsx';
 import HomeIcon from './HomeIcon.jsx';
-import glifoAgua from '/public/arte/glifoaguafluyendo.png';
+import glifoAgua from "/src/assets/arte/glifoaguafluyendo.png";
 
 // Componente interno para mostrar el aviso de rotación.
 const RotateDevicePrompt = () => {
