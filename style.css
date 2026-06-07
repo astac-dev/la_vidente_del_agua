@@ -22,7 +22,7 @@ html, body {
 }
 
 body {
-    background-color: transparent; /* El fondo lo manejará el pseudo-elemento */
+    background-color: transparent; /* El fondo lo manejarÃ¡ el pseudo-elemento */
     color: var(--primary-color);
     font-family: var(--font-family);
     overflow: hidden; /* Evita el scroll mientras carga */
@@ -40,7 +40,7 @@ body::before {
     background-image: none;
     background-size: cover;
     background-position: center;
-    z-index: -2; /* Se envía al fondo de todo */
+    z-index: -2; /* Se envÃ­a al fondo de todo */
     transition: opacity 0.5s ease-in-out;
 }
 
@@ -57,7 +57,7 @@ body.game-ready::before {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Se posiciona sobre la imagen de fondo pero detrás del menú */
+    z-index: -1; /* Se posiciona sobre la imagen de fondo pero detrÃ¡s del menÃº */
     pointer-events: none; /* Evita que intercepte clics */
 }
 
@@ -142,10 +142,10 @@ body.game-ready::before {
 
 /* --- Estilos para Responsividad --- */
 
-/* Para dispositivos móviles en modo horizontal (paisaje) donde el alto es limitado */
+/* Para dispositivos mÃ³viles en modo horizontal (paisaje) donde el alto es limitado */
 @media (max-height: 500px) and (orientation: landscape) {
     .loader-content h1 {
-        font-size: 2rem; /* Reducimos el tamaño del título para ahorrar espacio vertical */
+        font-size: 2rem; /* Reducimos el tamaÃ±o del tÃ­tulo para ahorrar espacio vertical */
         margin-bottom: 0.5rem;
     }
 
@@ -155,25 +155,25 @@ body.game-ready::before {
     }
 }
 
-/* --- Ajustes de Responsividad para el Menú Principal --- */
+/* --- Ajustes de Responsividad para el MenÃº Principal --- */
 
-/* Se asegura que el contenedor del menú pueda hacer scroll en pantallas bajas */
+/* Se asegura que el contenedor del menÃº pueda hacer scroll en pantallas bajas */
 .menu-container {
     max-height: 90vh; /* Altura máxima del 90% del viewport */
     overflow-y: auto; /* Habilita el scroll si el contenido excede la altura */
-    padding-top: 1rem; /* Añade espacio para que no se pegue al borde */
+    padding-top: 1rem; /* AÃ±ade espacio para que no se pegue al borde */
     padding-bottom: 1rem;
     box-sizing: border-box;
 }
 
-/* En dispositivos en horizontal con poca altura, se reduce el tamaño de los botones */
+/* En dispositivos en horizontal con poca altura, se reduce el tamaÃ±o de los botones */
 @media (max-height: 500px) and (orientation: landscape) {
     .menu-container {
         gap: 0.5rem !important; /* Reduce el espacio entre botones */
     }
-    /* Asumimos que los botones del menú tienen la clase .menu-button */
+    /* Asumimos que los botones del menÃº tienen la clase .menu-button */
     .menu-button {
-        font-size: 1.1rem !important; /* Reduce el tamaño de la fuente */
-        padding: 0.5rem 1.5rem !important; /* Reduce el padding del botón */
+        font-size: 1.1rem !important; /* Reduce el tamaÃ±o de la fuente */
+        padding: 0.5rem 1.5rem !important; /* Reduce el padding del botÃ³n */
     }
 }
