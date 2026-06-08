@@ -28,13 +28,24 @@
     "saltardialogo": "P'at le diálogo",
     "tamanoLetra": "U nojochil ts'íib",
     "musicVolume": "U je'ek'ab paax",
-    "effectsVolume": "U je'ek'ab ulandzilo'ob"
+    "effectsVolume": "U je'ek'ab ulandzilo'ob",
+    "hideUI": "Ta'ak e'esajil",
+    "hideUIButton": "TA'AK",
+    "showUI": "P'iit' e'esajil",
+    "fullscreenEnter": "Chuunpak",
+    "fullscreenExit": "Jóok'ol chuunpak",
+    "fullscreenLabel": "SYS.CP",
+    "homeLabel": "YÁAX"
   },
   "personajes": {
-    "narrador": "",
+    "narrador": "J-tsikbal",
     "protagonista": "J-xak'al t'aan",
     "sofia": "X-Doctora Sofía (INAH)",
-    "pescador": "Don Mateo"
+    "pescador": "Don Mateo",
+    "amaranta": "Amaranta",
+    "naia": "Naia",
+    "mama": "Mamá",
+    "sistema": "Sistema"
   },
   "historia": {
     "capitulo_1": {

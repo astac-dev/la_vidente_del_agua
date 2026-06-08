@@ -28,13 +28,24 @@
     "saltardialogo": "Skip Dialogue",
     "tamanoLetra": "Font Size",
     "musicVolume": "Music Volume",
-    "effectsVolume": "Effects Volume"
+    "effectsVolume": "Effects Volume",
+    "hideUI": "Hide interface",
+    "hideUIButton": "HIDE",
+    "showUI": "Click anywhere to show interface",
+    "fullscreenEnter": "Fullscreen",
+    "fullscreenExit": "Exit fullscreen",
+    "fullscreenLabel": "SYS.FS",
+    "homeLabel": "HOME"
   },
   "personajes": {
-    "narrador": "",
+    "narrador": "Narrator",
     "protagonista": "Researcher",
     "sofia": "Dr. Sofia (INAH)",
-    "pescador": "Don Mateo"
+    "pescador": "Don Mateo",
+    "amaranta": "Amaranta",
+    "naia": "Naia",
+    "mama": "Mom",
+    "sistema": "System"
   },
   "historia": {
     "capitulo_1": {
