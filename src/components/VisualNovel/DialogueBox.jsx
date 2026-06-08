@@ -15,23 +15,28 @@ const DialogueBox = React.memo(({ character, text }) => {
     <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/95 via-black/60 to-transparent pt-20 pb-6 px-6 md:px-12 pointer-events-none z-20">
       <div className="w-full flex items-start gap-4 md:gap-8 max-w-5xl mx-auto">
         
-        {/* Nombre del Personaje: Gris claro, tipografía sans-serif y ancho responsivo controlado */}
-        {character && character !== 'narrador' ? (
-          <div className="w-20 md:w-32 flex-shrink-0 text-right mt-0.5">
+        {/* Elemento invisible para lectores de pantalla: lee todo el diálogo de golpe con su emisor */}
+        <div className="sr-only" aria-live="polite">
+          {characterName ? `${characterName}: ` : ''}{text}
+        </div>
+
+        {/* Nombre del Personaje: Ámbar de alto contraste, tipografía sans-serif y ancho responsivo */}
+        {character && characterName ? (
+          <div className="w-20 md:w-32 flex-shrink-0 text-right mt-0.5" aria-hidden="true">
             <span 
-              className="text-neutral-400 font-sans text-sm md:text-base lg:text-lg font-medium tracking-wider"
+              className="text-amber-400 font-sans text-sm md:text-base lg:text-lg font-semibold tracking-wider"
               style={{ fontSize: 'calc(1em * var(--ui-scale-multiplier, 1))' }}
             >
               {characterName}
             </span>
           </div>
         ) : (
-          // Espacio en blanco estructural para mantener alineado el texto del narrador
-          <div className="w-20 md:w-32 flex-shrink-0"></div>
+          // Espacio en blanco estructural para mantener alineado el texto
+          <div className="w-20 md:w-32 flex-shrink-0" aria-hidden="true"></div>
         )}
 
-        {/* Cuerpo del Diálogo: Blanco de alta legibilidad, escala fluida según resolución */}
-        <div className="flex-1 min-w-0">
+        {/* Cuerpo del Diálogo: Oculto para lectores de pantalla para evitar lectura deletreada del efecto máquina de escribir */}
+        <div className="flex-1 min-w-0" aria-hidden="true">
           <p 
             className={`font-sans text-xs sm:text-sm md:text-base lg:text-lg tracking-wide leading-relaxed drop-shadow-md ${character === 'narrador' ? 'text-neutral-300 italic' : 'text-white'}`}
             style={{ fontSize: 'calc(1em * var(--ui-scale-multiplier, 1))' }}

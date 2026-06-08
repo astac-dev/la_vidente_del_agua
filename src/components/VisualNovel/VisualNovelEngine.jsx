@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useVisualNovelEngine } from '../../hooks/useVisualNovelEngine';
 import { useGameState } from '../../context/GameStateContext';
@@ -20,11 +20,27 @@ const HomeIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10
 const AutoIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"></path></svg>;
 const SkipIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"></path></svg>;
 
+const getFullscreenElement = () => {
+  return document.fullscreenElement || 
+         document.webkitFullscreenElement || 
+         document.mozFullScreenElement || 
+         document.msFullscreenElement;
+};
+
 const VisualNovelEngine = ({ onNavigate }) => {
   const { t } = useTranslation();
   const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice } = useVisualNovelEngine();
   const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState } = useGameState();
-  const [isFullscreen, setIsFullscreen] = useState(!!document.fullscreenElement);
+  const [isFullscreen, setIsFullscreen] = useState(!!getFullscreenElement());
+  const [fullscreenError, setFullscreenError] = useState('');
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (fullscreenError) {
+      const timer = setTimeout(() => setFullscreenError(''), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [fullscreenError]);
 
   if (!currentScene) {
     return <div className="ark-view-wrapper"><div>Cargando historia...</div></div>;
@@ -36,16 +52,80 @@ const VisualNovelEngine = ({ onNavigate }) => {
   };
 
   useEffect(() => {
-    const handleFullscreenChange = () => setIsFullscreen(!!document.fullscreenElement);
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!getFullscreenElement());
+    };
     document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    };
   }, []);
 
   const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(err => console.error(err));
+    const element = document.documentElement;
+    const fullscreenElement = getFullscreenElement();
+
+    const handleFullscreenBlock = (err) => {
+      console.error(err);
+      if (window.self !== window.top) {
+        setFullscreenError("Modo pantalla completa (F11) bloqueado por el contenedor de vista previa. Abre el juego en una pestaña externa de Chrome/Edge.");
+      } else {
+        setFullscreenError(err.message || String(err));
+      }
+    };
+
+    if (!fullscreenElement) {
+      if (element.requestFullscreen) {
+        element.requestFullscreen().catch(handleFullscreenBlock);
+      } else if (element.webkitRequestFullscreen) {
+        try {
+          element.webkitRequestFullscreen();
+        } catch (err) {
+          handleFullscreenBlock(err);
+        }
+      } else if (element.mozRequestFullScreen) {
+        try {
+          element.mozRequestFullScreen();
+        } catch (err) {
+          handleFullscreenBlock(err);
+        }
+      } else if (element.msRequestFullscreen) {
+        try {
+          element.msRequestFullscreen();
+        } catch (err) {
+          handleFullscreenBlock(err);
+        }
+      } else {
+        setFullscreenError("Su navegador no admite la API de pantalla completa.");
+      }
     } else {
-      document.exitFullscreen();
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(handleFullscreenBlock);
+      } else if (document.webkitExitFullscreen) {
+        try {
+          document.webkitExitFullscreen();
+        } catch (err) {
+          handleFullscreenBlock(err);
+        }
+      } else if (document.mozCancelFullScreen) {
+        try {
+          document.mozCancelFullScreen();
+        } catch (err) {
+          handleFullscreenBlock(err);
+        }
+      } else if (document.msExitFullscreen) {
+        try {
+          document.msExitFullscreen();
+        } catch (err) {
+          handleFullscreenBlock(err);
+        }
+      }
     }
   };
 
@@ -110,60 +190,78 @@ const VisualNovelEngine = ({ onNavigate }) => {
         
         {/* CORRECCIÓN: Se limita la anchura máxima proporcional al alto (177.78vh) para mantener 16:9 exacto y centrado */}
         <div 
+          ref={containerRef}
           className="ark-scene-container relative w-full max-w-[177.78vh] aspect-video max-h-screen overflow-hidden"
           style={{ '--ui-scale-multiplier': `${(settings.tamanoLetra || 100) / 100}` }}
         >
+          {fullscreenError && (
+            <div className="absolute top-20 left-1/2 -translate-x-1/2 z-[100] bg-red-950/90 border border-red-500 text-red-200 px-4 py-2 rounded shadow-lg font-mono text-xs max-w-md text-center pointer-events-auto">
+              <strong className="block text-red-400 font-bold mb-0.5">ERROR PANTALLA COMPLETA:</strong>
+              {fullscreenError}
+            </div>
+          )}
           <BackgroundLayer background={currentScene.background} />
           <CharacterLayer sprites={currentLine?.sprites || currentScene.sprites} />
           <div className="scene-overlay" />
 
-          <div className="absolute top-0 left-0 right-0 z-50 flex justify-between items-start p-4 pointer-events-none select-none bg-gradient-to-b from-black/70 to-transparent">
-            
-            <div className="flex flex-col items-start gap-1.5 pointer-events-auto">
-              <div className="flex items-start gap-1.5">
-                <button onClick={toggleFullscreen} className={buttonBaseClasses} title="Pantalla Completa">
-                  <div className="pt-1">
-                    {isFullscreen ? <FullscreenExitIcon /> : <FullscreenEnterIcon />}
-                  </div>
-                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">SYS.FS</span>
+          {uiVisibility && (
+            <div className="absolute top-0 left-0 right-0 z-50 flex justify-between items-start p-4 pointer-events-none select-none bg-gradient-to-b from-black/70 to-transparent">
+              
+              <div className="flex flex-col items-start gap-1.5 pointer-events-auto">
+                <div className="flex items-start gap-1.5">
+                  <button onClick={toggleFullscreen} className={buttonBaseClasses} title={isFullscreen ? t('interface.fullscreenExit', 'Salir de pantalla completa') : t('interface.fullscreenEnter', 'Pantalla completa')}>
+                    <div className="pt-1">
+                      {isFullscreen ? <FullscreenExitIcon /> : <FullscreenEnterIcon />}
+                    </div>
+                    <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">
+                      {t('interface.fullscreenLabel', 'SYS.FS')}
+                    </span>
+                  </button>
+                  <button 
+                    onClick={() => !isFullscreen && onNavigate('mainMenu')} 
+                    disabled={isFullscreen} 
+                    className={`${buttonBaseClasses} ${isFullscreen ? 'opacity-25 pointer-events-none' : ''}`}
+                    title={t('interface.backToMenu', 'Volver al Menú')}
+                  >
+                    {!isFullscreen && <div className="absolute top-0 left-0 w-1 h-1 bg-amber-500" />}
+                    <div className="pt-1"><HomeIcon /></div>
+                    <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">
+                      {t('interface.homeLabel', 'HOME')}
+                    </span>
+                  </button>
+                </div>
+                <HUD />
+              </div>
+
+              <div className="absolute left-1/2 -translate-x-1/2 top-4 flex flex-col border-l-2 border-amber-500 pl-2 pr-4 py-0.5 bg-black/30 font-mono hidden sm:flex pointer-events-auto">
+                <span className="text-[10px] font-bold text-neutral-200 tracking-wider">INAH-SAS // EXP.2011</span>
+                <span className="text-[8px] text-neutral-500 tracking-widest mt-0.5">SITE: HOYO_NEGRO</span>
+              </div>
+
+              <div className="flex gap-1.5">
+                <button onClick={handleToggleLog} className={buttonBaseClasses} title="Historial">
+                  <div className="pt-1"><LogIcon /></div>
+                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">REC.LOG</span>
                 </button>
-                <button onClick={() => onNavigate('mainMenu')} disabled={isFullscreen} className={buttonBaseClasses} title="Volver al Menú">
-                  {!isFullscreen && <div className="absolute top-0 left-0 w-1 h-1 bg-amber-500" />}
-                  <div className="pt-1"><HomeIcon /></div>
-                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">HOME</span>
+                <button onClick={handleToggleSkip} className={buttonBaseClasses} title="Saltar">
+                  <div className="pt-1"><SkipIcon /></div>
+                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">NARR.SKP</span>
+                </button>
+                <button onClick={handleAutoClick} className={`${buttonBaseClasses} ${settings.autoPlaySpeed > 0 ? 'border-amber-500 bg-amber-500/10 text-amber-400 hover:text-amber-300' : ''}`} title="Modo Automático">
+                  {settings.autoPlaySpeed > 0 && <div className="absolute top-0 right-0 w-1 h-1 bg-amber-500 animate-pulse" />}
+                  <div className="pt-1 flex items-center justify-center gap-0.5">
+                    <AutoIcon />
+                    {settings.autoPlaySpeed > 0 && (<span className="text-[9px] font-mono font-bold leading-none">X{settings.autoPlaySpeed}</span>)}
+                  </div>
+                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">PLAY.AT</span>
+                </button>
+                <button onClick={toggleUiVisibility} className={buttonBaseClasses} title={t('interface.hideUI', 'Ocultar Interfaz')}>
+                    <div className="pt-1">{uiVisibility ? <HideUIIcon /> : <ShowUIIcon />}</div>
+                    <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.hideUIButton', 'UI.HIDE')}</span>
                 </button>
               </div>
-              <HUD />
             </div>
-
-            <div className="absolute left-1/2 -translate-x-1/2 top-4 flex flex-col border-l-2 border-amber-500 pl-2 pr-4 py-0.5 bg-black/30 font-mono hidden sm:flex pointer-events-auto">
-              <span className="text-[10px] font-bold text-neutral-200 tracking-wider">INAH-SAS // EXP.2011</span>
-              <span className="text-[8px] text-neutral-500 tracking-widest mt-0.5">SITE: HOYO_NEGRO</span>
-            </div>
-
-            <div className="flex gap-1.5">
-              <button onClick={handleToggleLog} className={buttonBaseClasses} title="Historial">
-                <div className="pt-1"><LogIcon /></div>
-                <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">REC.LOG</span>
-              </button>
-              <button onClick={handleToggleSkip} className={buttonBaseClasses} title="Saltar">
-                <div className="pt-1"><SkipIcon /></div>
-                <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">NARR.SKP</span>
-              </button>
-              <button onClick={handleAutoClick} className={`${buttonBaseClasses} ${settings.autoPlaySpeed > 0 ? 'border-amber-500 bg-amber-500/10 text-amber-400 hover:text-amber-300' : ''}`} title="Modo Automático">
-                {settings.autoPlaySpeed > 0 && <div className="absolute top-0 right-0 w-1 h-1 bg-amber-500 animate-pulse" />}
-                <div className="pt-1 flex items-center justify-center gap-0.5">
-                  <AutoIcon />
-                  {settings.autoPlaySpeed > 0 && (<span className="text-[9px] font-mono font-bold leading-none">X{settings.autoPlaySpeed}</span>)}
-                </div>
-                <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">PLAY.AT</span>
-              </button>
-              <button onClick={toggleUiVisibility} className={buttonBaseClasses} title="Ocultar Interfaz">
-                  <div className="pt-1">{uiVisibility ? <HideUIIcon /> : <ShowUIIcon />}</div>
-                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">UI.HIDE</span>
-              </button>
-            </div>
-          </div>
+          )}
 
           {uiVisibility && (
             <>
@@ -193,6 +291,14 @@ const VisualNovelEngine = ({ onNavigate }) => {
                 />
               )}
             </>
+          )}
+
+          {!uiVisibility && (
+            <div 
+              className="absolute inset-0 z-50 cursor-pointer pointer-events-auto bg-transparent"
+              onClick={toggleUiVisibility}
+              title={t('interface.showUI', 'Haga clic en cualquier parte para mostrar la interfaz')}
+            />
           )}
         </div>
       </div>

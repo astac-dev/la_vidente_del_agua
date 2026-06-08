@@ -10,7 +10,7 @@ export const useTypewriter = (text, speed = 40) => {
       setDisplayedText(''); // Limpiar al recibir nuevo texto
       const intervalId = setInterval(() => {
         if (i < text.length) {
-          setDisplayedText(prev => prev + text.charAt(i));
+          setDisplayedText(text.slice(0, i + 1));
           i++;
         } else {
           clearInterval(intervalId);

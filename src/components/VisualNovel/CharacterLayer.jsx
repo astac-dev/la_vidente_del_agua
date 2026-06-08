@@ -20,14 +20,19 @@ const CharacterLayer = React.memo(({ sprites }) => {
   return (
     // Contenedor bloqueado al ras inferior del marco de juego
     <div className="absolute inset-0 flex items-end justify-center pointer-events-none z-10 overflow-hidden">
-      {sprites.map(sprite => (
-        <img
-          key={sprite.id}
-          src={sprite.src}
-          alt={sprite.id}
-          className={`absolute bottom-0 h-[85%] object-contain transition-all duration-500 ease-in-out ${getPositionClasses(sprite.position)}`}
-        />
-      ))}
+      {sprites.map(sprite => {
+        const spriteSrc = sprite.src.startsWith('/') 
+          ? `${import.meta.env.BASE_URL}${sprite.src.slice(1)}` 
+          : sprite.src;
+        return (
+          <img
+            key={sprite.id}
+            src={spriteSrc}
+            alt={sprite.id}
+            className={`absolute bottom-0 h-[85%] object-contain transition-all duration-500 ease-in-out ${getPositionClasses(sprite.position)}`}
+          />
+        );
+      })}
     </div>
   );
 });

@@ -21,12 +21,17 @@ export const useVisualNovelEngine = () => {
   const advance = () => {
     if (isChoice) return; // No se puede avanzar en una elección
 
-    if (isEndOfScene) {
+    const dialogueLength = currentScene?.dialogos?.length || 0;
+
+    // Si estamos en el último diálogo o ya al final, transicionamos inmediatamente
+    if (isEndOfScene || gameState.dialogueIndex >= dialogueLength - 1) {
       if (currentScene.next) {
         goToScene(currentScene.next);
       } else {
         console.log("Fin de la rama de la historia.");
-        // Aquí podrías navegar de vuelta al menú principal, por ejemplo.
+        if (!isEndOfScene) {
+          advanceDialogue();
+        }
       }
     } else {
       advanceDialogue();
