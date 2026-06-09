@@ -6,6 +6,8 @@
     max-width: calc(500px * var(--ui-scale-multiplier, 1));
     padding: calc(1rem * var(--ui-scale-multiplier, 1));
     box-sizing: border-box;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .options-title {

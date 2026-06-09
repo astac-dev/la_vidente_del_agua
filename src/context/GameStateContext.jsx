@@ -17,7 +17,7 @@ const defaultSettings = {
 // Nuevo: Estado inicial de la partida
 const initialGameState = {
   currentChapter: 'capitulo_1',
-  currentSceneId: 'escena_intro',
+  currentSceneId: 'guia_naia',
   dialogueIndex: 0,
   stats: {
     preservacion: 0,
@@ -39,6 +39,17 @@ export const GameStateProvider = ({ children }) => {
 
   // Nuevo: Estado para el progreso de la partida
   const [gameState, setGameState] = useState(initialGameState);
+
+  // Nuevo: Estado para las 3 ranuras de guardado (semi-automático)
+  const [saves, setSaves] = useState(() => {
+    try {
+      const storedSaves = localStorage.getItem('vidente_agua_saves');
+      return storedSaves ? JSON.parse(storedSaves) : [null, null, null];
+    } catch (error) {
+      console.error("Error al leer las partidas de localStorage:", error);
+      return [null, null, null];
+    }
+  });
 
   // Nuevo: Estado para la visibilidad de la UI
   const [uiVisibility, setUiVisibility] = useState(true);
@@ -62,14 +73,25 @@ export const GameStateProvider = ({ children }) => {
           const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
             // Existe un guardado en la nube, lo usamos.
-            setSettings({ ...defaultSettings, ...docSnap.data() });
+            const data = docSnap.data();
+            const cloudSettings = data.settings || {
+              idioma: data.idioma,
+              volumenMusica: data.volumenMusica,
+              volumenEfectos: data.volumenEfectos,
+              tamanoLetra: data.tamanoLetra,
+              autoPlaySpeed: data.autoPlaySpeed
+            };
+            setSettings({ ...defaultSettings, ...cloudSettings });
+            if (data.saves) {
+              setSaves(data.saves);
+            }
           }
-          // Si no hay guardado en la nube, el estado actual (de localStorage) se usará
-          // y se guardará en Firestore mediante el otro useEffect.
         } else {
           // El usuario ha cerrado sesión, volver a localStorage
           const storedSettings = localStorage.getItem('vidente_agua_settings');
           setSettings(storedSettings ? JSON.parse(storedSettings) : defaultSettings);
+          const storedSaves = localStorage.getItem('vidente_agua_saves');
+          setSaves(storedSaves ? JSON.parse(storedSaves) : [null, null, null]);
         }
         setUser(currentUser);
       } catch (error) {
@@ -77,6 +99,8 @@ export const GameStateProvider = ({ children }) => {
         // En caso de error, volvemos a la configuración local por seguridad
         const storedSettings = localStorage.getItem('vidente_agua_settings');
         setSettings(storedSettings ? JSON.parse(storedSettings) : defaultSettings);
+        const storedSaves = localStorage.getItem('vidente_agua_saves');
+        setSaves(storedSaves ? JSON.parse(storedSaves) : [null, null, null]);
         setUser(null);
       } finally {
         setIsLoading(false);
@@ -86,7 +110,7 @@ export const GameStateProvider = ({ children }) => {
     return () => unsubscribe && unsubscribe(); // Limpiar el listener al desmontar
   }, []); // Se ejecuta solo una vez
 
-  // Efecto para persistir las configuraciones
+  // Efecto para persistir las configuraciones y las partidas guardadas
   useEffect(() => {
     // No ejecutar la lógica de persistencia hasta que la comprobación de autenticación inicial esté completa
     if (isLoading) return;
@@ -96,7 +120,7 @@ export const GameStateProvider = ({ children }) => {
       if (auth && user) {
         // El usuario está conectado, guardar en Firestore
         try {
-          await setDoc(doc(db, 'usuarios_progreso', user.uid), settings);
+          await setDoc(doc(db, 'usuarios_progreso', user.uid), { settings, saves });
         } catch (error) {
           console.error("Error al guardar en Firestore:", error);
         }
@@ -104,6 +128,7 @@ export const GameStateProvider = ({ children }) => {
         // De lo contrario, guardar en localStorage
         try {
           localStorage.setItem('vidente_agua_settings', JSON.stringify(settings));
+          localStorage.setItem('vidente_agua_saves', JSON.stringify(saves));
         } catch (error) {
           console.error("Error al guardar la configuración en localStorage:", error);
         }
@@ -115,7 +140,7 @@ export const GameStateProvider = ({ children }) => {
     if (i18n.language !== settings.idioma) {
       i18n.changeLanguage(settings.idioma);
     }
-  }, [settings, user, isLoading]);
+  }, [settings, saves, user, isLoading]);
 
   const updateSetting = (key, value) => {
     setSettings(prevSettings => ({ ...prevSettings, [key]: value }));
@@ -154,9 +179,52 @@ export const GameStateProvider = ({ children }) => {
     });
   };
 
+  const saveGameToSlot = (slotIndex) => {
+    setSaves(prevSaves => {
+      const newSaves = [...prevSaves];
+      newSaves[slotIndex] = {
+        gameState: { ...gameState },
+        timestamp: Date.now(),
+        chapterId: gameState.currentChapter,
+        sceneId: gameState.currentSceneId,
+        dialogueIndex: gameState.dialogueIndex,
+      };
+      return newSaves;
+    });
+  };
+
+  const loadGameFromSlot = (slotIndex) => {
+    const save = saves[slotIndex];
+    if (save && save.gameState) {
+      setGameState({ ...save.gameState });
+      return true;
+    }
+    return false;
+  };
+
+  const resetGameState = () => {
+    setGameState(initialGameState);
+  };
+
   // --- Valor del contexto ---
 
-  const value = { settings, updateSetting, user, isLoading, setUser, gameState, goToScene, advanceDialogue, updateStat, uiVisibility, toggleUiVisibility };
+  const value = {
+    settings,
+    updateSetting,
+    user,
+    isLoading,
+    setUser,
+    gameState,
+    goToScene,
+    advanceDialogue,
+    updateStat,
+    uiVisibility,
+    toggleUiVisibility,
+    saves,
+    saveGameToSlot,
+    loadGameFromSlot,
+    resetGameState,
+  };
 
   return (
     <GameStateContext.Provider value={value}>

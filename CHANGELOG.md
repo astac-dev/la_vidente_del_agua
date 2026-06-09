@@ -1,5 +1,22 @@
 # Historial de Cambios
 
+## [0.3.0] - 2026-06-08
+
+### Añadido
+- **Sistema de Guardado Semi-automático**: Implementación de un sistema de 3 ranuras para registrar el progreso del juego en LocalStorage (y Firestore si el usuario está autenticado).
+- **Submenú de Continuar partida**: Creación del componente `ContinueMenu.jsx` y su hoja de estilos `ContinueMenu.css` para permitir al usuario reanudar partidas guardadas, mostrando de forma dinámica el capítulo, la escena y la fecha/hora de guardado en cada ranura.
+- **Modal de Guardado al Salir**: Integración de un modal interactivo en `VisualNovelEngine.jsx` que se muestra al intentar salir al menú principal (botón "HOME"), facilitando la selección de ranura para registrar el progreso antes de salir, o bien permitiendo salir sin guardar.
+- **Traducciones**: Soporte multi-idioma (español, inglés y maya) para toda la interfaz del sistema de guardado y carga de ranuras en `translation.json`.
+- **Traducción de Escenas y Capítulos**: Agregadas las traducciones faltantes de todos los capítulos y escenas en los archivos `en/translation.json` y `my/translation.json` para garantizar un correcto funcionamiento multilenguaje al mostrar el punto de guardado.
+- **Internacionalización Dinámica de Fechas**: Soporte en `ContinueMenu.jsx` y `VisualNovelEngine.jsx` para formatear los timestamps de guardado usando la locale del idioma seleccionado en el juego.
+
+### Cambiado
+- **Tipografía y Estilos Consistentes**: Ajuste en `ContinueMenu.css` para heredar las tipografías globales del proyecto (`var(--font-family)`, `var(--sans)` y `var(--mono)`) y soportar de forma nativa el factor de escala de tamaño de letra de las opciones (`tamanoLetra` a través de `var(--ui-scale-multiplier)`).
+- **Reiniciar Estado en Nueva Partida**: Ajuste en `MainMenu.jsx` para invocar la función `resetGameState` al presionar "Nueva partida", asegurando que el estado del juego empiece de cero.
+- **Gestión de Estado Global**: Modificación en `GameStateContext.jsx` para soportar las ranuras de guardado en sincronía con base de datos e incorporar funciones utilitarias de guardado (`saveGameToSlot`), carga (`loadGameFromSlot`) y reinicio (`resetGameState`).
+
+---
+
 ## [0.2.0] - 2026-05-24
 
 ### Añadido

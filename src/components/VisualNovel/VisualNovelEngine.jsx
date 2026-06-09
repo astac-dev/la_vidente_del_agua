@@ -28,12 +28,29 @@ const getFullscreenElement = () => {
 };
 
 const VisualNovelEngine = ({ onNavigate }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice } = useVisualNovelEngine();
-  const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState } = useGameState();
+  const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState, saves, saveGameToSlot } = useGameState();
+  const [showSaveModal, setShowSaveModal] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(!!getFullscreenElement());
   const [fullscreenError, setFullscreenError] = useState('');
   const containerRef = useRef(null);
+
+  const handleHomeClick = () => {
+    if (isFullscreen) return;
+    setShowSaveModal(true);
+  };
+
+  const handleSaveAndExit = (slotIndex) => {
+    saveGameToSlot(slotIndex);
+    setShowSaveModal(false);
+    onNavigate('mainMenu');
+  };
+
+  const handleExitWithoutSaving = () => {
+    setShowSaveModal(false);
+    onNavigate('mainMenu');
+  };
 
   useEffect(() => {
     if (fullscreenError) {
@@ -209,7 +226,11 @@ const VisualNovelEngine = ({ onNavigate }) => {
               
               <div className="flex flex-col items-start gap-1.5 pointer-events-auto">
                 <div className="flex items-start gap-1.5">
-                  <button onClick={toggleFullscreen} className={buttonBaseClasses} title={isFullscreen ? t('interface.fullscreenExit', 'Salir de pantalla completa') : t('interface.fullscreenEnter', 'Pantalla completa')}>
+                  <button 
+                    onClick={toggleFullscreen} 
+                    className={`${buttonBaseClasses} ${currentLine?.highlight === 'btn-fullscreen' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`} 
+                    title={isFullscreen ? t('interface.fullscreenExit', 'Salir de pantalla completa') : t('interface.fullscreenEnter', 'Pantalla completa')}
+                  >
                     <div className="pt-1">
                       {isFullscreen ? <FullscreenExitIcon /> : <FullscreenEnterIcon />}
                     </div>
@@ -218,9 +239,9 @@ const VisualNovelEngine = ({ onNavigate }) => {
                     </span>
                   </button>
                   <button 
-                    onClick={() => !isFullscreen && onNavigate('mainMenu')} 
+                    onClick={handleHomeClick} 
                     disabled={isFullscreen} 
-                    className={`${buttonBaseClasses} ${isFullscreen ? 'opacity-25 pointer-events-none' : ''}`}
+                    className={`${buttonBaseClasses} ${isFullscreen ? 'opacity-25 pointer-events-none' : ''} ${currentLine?.highlight === 'btn-home' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`}
                     title={t('interface.backToMenu', 'Volver al Menú')}
                   >
                     {!isFullscreen && <div className="absolute top-0 left-0 w-1 h-1 bg-amber-500" />}
@@ -233,29 +254,45 @@ const VisualNovelEngine = ({ onNavigate }) => {
                 <HUD />
               </div>
 
-              <div className="absolute left-1/2 -translate-x-1/2 top-4 flex flex-col border-l-2 border-amber-500 pl-2 pr-4 py-0.5 bg-black/30 font-mono hidden sm:flex pointer-events-auto">
-                <span className="text-[10px] font-bold text-neutral-200 tracking-wider">INAH-SAS // EXP.2011</span>
-                <span className="text-[8px] text-neutral-500 tracking-widest mt-0.5">SITE: HOYO_NEGRO</span>
+              <div className="absolute left-1/2 -translate-x-1/2 top-4 flex flex-col border-l-2 border-amber-500 pl-2 pr-4 py-0.5 bg-black/30 font-mono hidden sm:flex pointer-events-auto vn-site-badge">
+                <span className="text-[10px] font-bold text-neutral-200 tracking-wider vn-site-badge-title">INAH-SAS // EXP.2011</span>
+                <span className="text-[8px] text-neutral-500 tracking-widest mt-0.5 vn-site-badge-subtitle">SITE: HOYO_NEGRO</span>
               </div>
 
               <div className="flex gap-1.5">
-                <button onClick={handleToggleLog} className={buttonBaseClasses} title="Historial">
+                <button 
+                  onClick={handleToggleLog} 
+                  className={`${buttonBaseClasses} ${currentLine?.highlight === 'btn-log' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`} 
+                  title={t('interface.history', 'Historial')}
+                >
                   <div className="pt-1"><LogIcon /></div>
-                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">REC.LOG</span>
+                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.recLogLabel', 'REC.LOG')}</span>
                 </button>
-                <button onClick={handleToggleSkip} className={buttonBaseClasses} title="Saltar">
+                <button 
+                  onClick={handleToggleSkip} 
+                  className={`${buttonBaseClasses} ${currentLine?.highlight === 'btn-skip' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`} 
+                  title={t('interface.skip', 'Saltar')}
+                >
                   <div className="pt-1"><SkipIcon /></div>
-                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">NARR.SKP</span>
+                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.narrSkpLabel', 'NARR.SKP')}</span>
                 </button>
-                <button onClick={handleAutoClick} className={`${buttonBaseClasses} ${settings.autoPlaySpeed > 0 ? 'border-amber-500 bg-amber-500/10 text-amber-400 hover:text-amber-300' : ''}`} title="Modo Automático">
+                <button 
+                  onClick={handleAutoClick} 
+                  className={`${buttonBaseClasses} ${settings.autoPlaySpeed > 0 ? 'border-amber-500 bg-amber-500/10 text-amber-400 hover:text-amber-300' : ''} ${currentLine?.highlight === 'btn-auto' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`} 
+                  title={t('interface.autoMode', 'Modo Automático')}
+                >
                   {settings.autoPlaySpeed > 0 && <div className="absolute top-0 right-0 w-1 h-1 bg-amber-500 animate-pulse" />}
                   <div className="pt-1 flex items-center justify-center gap-0.5">
                     <AutoIcon />
                     {settings.autoPlaySpeed > 0 && (<span className="text-[9px] font-mono font-bold leading-none">X{settings.autoPlaySpeed}</span>)}
                   </div>
-                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">PLAY.AT</span>
+                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.playAtLabel', 'PLAY.AT')}</span>
                 </button>
-                <button onClick={toggleUiVisibility} className={buttonBaseClasses} title={t('interface.hideUI', 'Ocultar Interfaz')}>
+                <button 
+                  onClick={toggleUiVisibility} 
+                  className={`${buttonBaseClasses} ${currentLine?.highlight === 'btn-hide' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`} 
+                  title={t('interface.hideUI', 'Ocultar Interfaz')}
+                >
                     <div className="pt-1">{uiVisibility ? <HideUIIcon /> : <ShowUIIcon />}</div>
                     <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.hideUIButton', 'UI.HIDE')}</span>
                 </button>
@@ -270,6 +307,7 @@ const VisualNovelEngine = ({ onNavigate }) => {
                   key={translatedDialogue} 
                   character={currentLine.personaje}
                   text={translatedDialogue}
+                  isHighlighted={currentLine?.highlight === 'dialogue-box'}
                 />
               )}
 
@@ -284,7 +322,7 @@ const VisualNovelEngine = ({ onNavigate }) => {
               {!isChoice && !isEndOfScene && (
                 <img
                   src={glifoAgua}
-                  className="vn-glifo-indicator"
+                  className={`vn-glifo-indicator ${currentLine?.highlight === 'glifo-agua' ? 'vn-highlight-active' : ''}`}
                   alt="Continuar"
                   onClick={handleAdvanceClick}
                   style={{ cursor: 'pointer', pointerEvents: 'auto', zIndex: 25 }}
@@ -299,6 +337,72 @@ const VisualNovelEngine = ({ onNavigate }) => {
               onClick={toggleUiVisibility}
               title={t('interface.showUI', 'Haga clic en cualquier parte para mostrar la interfaz')}
             />
+          )}
+
+          {showSaveModal && (
+            <div className="absolute inset-0 bg-black/85 flex items-center justify-center z-[200] pointer-events-auto select-none">
+              <div className="bg-neutral-900/95 border border-amber-500/30 p-6 rounded-lg shadow-2xl max-w-md w-full mx-4 font-mono text-left vn-save-modal">
+                <h3 className="text-lg font-bold text-amber-400 mb-2 border-b border-amber-500/20 pb-2 flex justify-between items-center vn-save-modal-title">
+                  <span>{t('interface.saveSlotTitle', 'GUARDAR PARTIDA')}</span>
+                  <span className="text-[9px] font-normal text-neutral-500 tracking-wider vn-save-modal-subtitle">SYS.SAV // SLOT_SELECT</span>
+                </h3>
+                <p className="text-xs text-neutral-400 mb-4 leading-relaxed vn-save-modal-prompt">
+                  {t('interface.saveSlotPrompt', 'Selecciona una ranura de guardado para registrar tu progreso antes de salir:')}
+                </p>
+                
+                <div className="flex flex-col gap-2.5 mb-5 vn-save-slots-container">
+                  {[0, 1, 2].map((slotIndex) => {
+                    const save = saves[slotIndex];
+                    const hasSave = !!save;
+                    let saveName = t('interface.emptySlot', 'Espacio Vacío');
+                    let saveTime = '';
+                    if (hasSave) {
+                      const chTitle = t(`historia.${save.chapterId}.titulo`, save.chapterId);
+                      const scTitle = t(`historia.${save.chapterId}.escenas.${save.sceneId}.titulo_escena`, save.sceneId);
+                      saveName = `${chTitle} - ${scTitle}`;
+                      // Map custom 'my' code to 'es-MX' to avoid Burmese date formatting
+                      const dateLocale = i18n.language === 'my' ? 'es-MX' : i18n.language;
+                      saveTime = new Date(save.timestamp).toLocaleString(dateLocale);
+                    }
+
+                    return (
+                      <button
+                        key={slotIndex}
+                        onClick={() => handleSaveAndExit(slotIndex)}
+                        className="w-full text-left p-3 rounded border border-neutral-800 bg-neutral-950/70 hover:bg-neutral-900 hover:border-amber-400 transition-all group flex flex-col gap-1 cursor-pointer vn-save-slot-btn"
+                      >
+                        <div className="flex justify-between items-center w-full vn-save-slot-header">
+                          <span className="text-[10px] font-bold text-neutral-500 group-hover:text-amber-400 vn-save-slot-label">
+                            {t('interface.saveSlot', 'Ranura').toUpperCase()} 0{slotIndex + 1}
+                          </span>
+                          {saveTime && (
+                            <span className="text-[9px] text-neutral-500 vn-save-slot-time">{saveTime}</span>
+                          )}
+                        </div>
+                        <span className={`text-xs truncate max-w-full vn-save-slot-text ${hasSave ? 'text-neutral-200' : 'text-neutral-600 italic'}`}>
+                          {saveName}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+                
+                <div className="flex justify-between gap-3 pt-1 border-t border-neutral-800 vn-save-modal-actions">
+                  <button
+                    onClick={handleExitWithoutSaving}
+                    className="px-3 py-1.5 border border-red-900/40 bg-red-950/10 hover:bg-red-900/30 text-red-400 text-[10px] font-bold uppercase tracking-wider rounded transition-all cursor-pointer vn-save-modal-exit-btn"
+                  >
+                    {t('interface.exitWithoutSaving', 'SALIR SIN GUARDAR')}
+                  </button>
+                  <button
+                    onClick={() => setShowSaveModal(false)}
+                    className="px-3 py-1.5 border border-neutral-700 bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-[10px] font-bold uppercase tracking-wider rounded transition-all cursor-pointer vn-save-modal-cancel-btn"
+                  >
+                    {t('interface.cancel', 'CANCELAR')}
+                  </button>
+                </div>
+              </div>
+            </div>
           )}
         </div>
       </div>

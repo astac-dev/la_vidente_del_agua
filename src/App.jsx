@@ -1,6 +1,7 @@
 import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import MainMenu from './components/MainMenu';
 import ExtrasMenu from './components/ExtrasMenu';
+import ContinueMenu from './components/ContinueMenu';
 import LanguageSelector from './components/LanguageSelector';
 import OptionsMenu from './components/OptionsMenu';
 import VisualNovelEngine from './components/VisualNovel/VisualNovelEngine';
@@ -15,6 +16,7 @@ import './components/Auth.css';
 import './components/ExitScreen.css';
 import './components/ClickToContinue.css';
 import './components/OptionsMenu.css';
+import './components/ContinueMenu.css';
 
 const App = () => {
   const { settings } = useGameState();
@@ -86,16 +88,24 @@ const App = () => {
   }, [isReady]);
 
   const handleNavigate = (view) => {
-    if (view !== currentView && animationClass !== 'fade-out') {
+    if (view !== currentView && animationClass !== 'fade-out' && animationClass !== 'fade-out-cinematic') {
       nextViewRef.current = view;
-      setAnimationClass('fade-out');
+      if (view === 'visualNovel' || currentView === 'visualNovel') {
+        setAnimationClass('fade-out-cinematic');
+      } else {
+        setAnimationClass('fade-out');
+      }
     }
   };
 
   const handleAnimationEnd = () => {
-    if (animationClass === 'fade-out') {
+    if (animationClass === 'fade-out' || animationClass === 'fade-out-cinematic') {
       setCurrentView(nextViewRef.current);
-      setAnimationClass('fade-in');
+      if (nextViewRef.current === 'visualNovel' || currentView === 'visualNovel') {
+        setAnimationClass('fade-in-cinematic');
+      } else {
+        setAnimationClass('fade-in');
+      }
     }
   };
 
@@ -105,6 +115,8 @@ const App = () => {
         return <ExtrasMenu onBack={() => handleNavigate('mainMenu')} />;
       case 'optionsMenu':
         return <OptionsMenu onBack={() => handleNavigate('mainMenu')} />;
+      case 'continueMenu':
+        return <ContinueMenu onBack={() => handleNavigate('mainMenu')} onNavigate={handleNavigate} />;
       case 'visualNovel':
         return <VisualNovelEngine onNavigate={handleNavigate} />;
       case 'mainMenu':
@@ -139,7 +151,7 @@ const App = () => {
       </div>
       {/* CORRECCIÓN: Quitamos cualquier restricción horizontal previa de clases nativas */}
       <div 
-        className={`menu-container w-full h-screen min-h-screen relative overflow-hidden flex flex-col ${animationClass}`} 
+        className={`menu-container w-full min-h-screen relative overflow-y-auto flex flex-col ${animationClass}`} 
         onAnimationEnd={handleAnimationEnd}
         style={{ '--ui-scale-multiplier': `${(settings.tamanoLetra || 100) / 100}` }}
       >

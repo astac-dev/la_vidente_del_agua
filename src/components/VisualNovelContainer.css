@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: center;
     font-family: sans-serif;
+    overflow: auto; /* Habilita barras de desplazamiento si el contenedor es menor a 1024x576 */
 }
 
 /* Contenedor de la escena con relación de aspecto 16:9 */
@@ -21,6 +22,15 @@
     background-position: center;
     overflow: hidden;
     color: white;
+    container-type: inline-size;
+}
+
+/* Restricción de resolución mínima para computadoras de escritorio/laptops de secundaria */
+@media (min-width: 768px) {
+    .ark-scene-container {
+        min-width: 1024px;
+        min-height: 576px;
+    }
 }
 
 /* Superposición oscura sutil para mejorar contraste */
@@ -272,3 +282,166 @@
         min-width: calc(170px * var(--ui-scale-multiplier, 1)) !important;
     }
 }
+
+/* --- Clases de Accesibilidad y Tipografía Responsiva de Diálogos (clamp + cqw) --- */
+.vn-dialogue-container {
+    gap: calc(0.35rem * var(--ui-scale-multiplier, 1));
+}
+
+.vn-character-name-container {
+    border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+    padding-bottom: calc(0.2rem * var(--ui-scale-multiplier, 1));
+    margin-bottom: calc(0.25rem * var(--ui-scale-multiplier, 1));
+    display: inline-block;
+}
+
+.vn-character-name {
+    font-size: calc(clamp(13px, 1.8cqw, 24px) * var(--ui-scale-multiplier, 1));
+    transition: font-size 0.15s ease-in-out;
+}
+
+.vn-dialogue-text {
+    font-size: calc(clamp(14px, 2.0cqw, 28px) * var(--ui-scale-multiplier, 1));
+    line-height: 1.6;
+    transition: font-size 0.15s ease-in-out;
+}
+
+/* --- Estilos Dinámicos del Menú de Decisiones (ChoiceMenu) --- */
+.vn-choice-container {
+    padding: calc(2rem * var(--ui-scale-multiplier, 1));
+}
+
+.vn-choice-question {
+    font-size: calc(clamp(13px, 1.8cqw, 24px) * var(--ui-scale-multiplier, 1));
+    margin-bottom: calc(1.5rem * var(--ui-scale-multiplier, 1));
+    transition: font-size 0.15s ease-in-out;
+}
+
+.vn-choices-list {
+    gap: calc(0.75rem * var(--ui-scale-multiplier, 1));
+    max-width: calc(600px * var(--ui-scale-multiplier, 1));
+}
+
+.vn-choice-button {
+    font-size: calc(clamp(13px, 1.8cqw, 24px) * var(--ui-scale-multiplier, 1));
+    padding: calc(0.75rem * var(--ui-scale-multiplier, 1)) calc(1.5rem * var(--ui-scale-multiplier, 1));
+    border-radius: calc(4px * var(--ui-scale-multiplier, 1));
+    min-height: calc(48px * var(--ui-scale-multiplier, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease-in-out;
+}
+
+/* --- Placa del Sitio Arqueológico (Site Badge) --- */
+.vn-site-badge {
+    padding-left: calc(0.5rem * var(--ui-scale-multiplier, 1)) !important;
+    padding-right: calc(1rem * var(--ui-scale-multiplier, 1)) !important;
+    padding-top: calc(0.125rem * var(--ui-scale-multiplier, 1)) !important;
+    padding-bottom: calc(0.125rem * var(--ui-scale-multiplier, 1)) !important;
+    border-left-width: calc(2px * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-site-badge-title {
+    font-size: calc(10px * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-site-badge-subtitle {
+    font-size: calc(8px * var(--ui-scale-multiplier, 1)) !important;
+    margin-top: calc(2px * var(--ui-scale-multiplier, 1)) !important;
+}
+
+/* --- Modal de Guardado (Save/Exit Modal) --- */
+.vn-save-modal {
+    max-width: calc(450px * var(--ui-scale-multiplier, 1)) !important;
+    padding: calc(1.5rem * var(--ui-scale-multiplier, 1)) !important;
+    border-radius: calc(8px * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-save-modal-title {
+    font-size: calc(clamp(14px, 1.8cqw, 20px) * var(--ui-scale-multiplier, 1)) !important;
+    margin-bottom: calc(0.5rem * var(--ui-scale-multiplier, 1)) !important;
+    padding-bottom: calc(0.5rem * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-save-modal-subtitle {
+    font-size: calc(9px * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-save-modal-prompt {
+    font-size: calc(clamp(11px, 1.4cqw, 14px) * var(--ui-scale-multiplier, 1)) !important;
+    margin-bottom: calc(1rem * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-save-slots-container {
+    gap: calc(0.65rem * var(--ui-scale-multiplier, 1)) !important;
+    margin-bottom: calc(1.25rem * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-save-slot-btn {
+    padding: calc(0.75rem * var(--ui-scale-multiplier, 1)) !important;
+    border-radius: calc(4px * var(--ui-scale-multiplier, 1)) !important;
+    gap: calc(0.25rem * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-save-slot-header {
+    gap: calc(0.5rem * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-save-slot-label {
+    font-size: calc(10px * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-save-slot-time {
+    font-size: calc(9px * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-save-slot-text {
+    font-size: calc(clamp(11px, 1.4cqw, 14px) * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-save-modal-actions {
+    gap: calc(0.75rem * var(--ui-scale-multiplier, 1)) !important;
+    padding-top: calc(0.5rem * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.vn-save-modal-exit-btn,
+.vn-save-modal-cancel-btn {
+    padding: calc(0.35rem * var(--ui-scale-multiplier, 1)) calc(0.75rem * var(--ui-scale-multiplier, 1)) !important;
+    font-size: calc(10px * var(--ui-scale-multiplier, 1)) !important;
+    border-radius: calc(4px * var(--ui-scale-multiplier, 1)) !important;
+}
+
+/* --- Efecto de Resaltado para el Tutorial del Capítulo 0 --- */
+@keyframes vn-highlight-blink {
+    0% {
+        box-shadow: 0 0 4px #00ffd5, inset 0 0 2px #00ffd5;
+        outline: 2px solid #00ffd5;
+        border-color: #00ffd5 !important;
+    }
+    100% {
+        box-shadow: 0 0 16px #00f6ff, inset 0 0 8px #00f6ff;
+        outline: 4px solid #00f6ff;
+        border-color: #00f6ff !important;
+    }
+}
+
+.vn-highlight-active {
+    animation: vn-highlight-blink 0.8s ease-in-out infinite alternate !important;
+    z-index: 50 !important;
+    position: relative;
+    border-radius: 4px;
+}
+
+/* Ajustes especiales para que el contorno del cuadro de diálogo sea estético y no distorsione el layout */
+.vn-dialogue-container.vn-highlight-active {
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin: -0.75rem auto !important;
+    animation: vn-highlight-blink 0.8s ease-in-out infinite alternate !important;
+}
+
+/* Estilo para el glifo de agua resaltado */
+.vn-glifo-indicator.vn-highlight-active {
+    border-radius: 50%;
+}

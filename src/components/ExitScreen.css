@@ -14,13 +14,13 @@
 }
 
 .exit-screen-content h1 {
-    font-size: 2.5rem;
+    font-size: calc(2.5rem * var(--ui-scale-multiplier, 1));
     color: var(--accent-color);
-    margin-bottom: 1rem;
+    margin-bottom: calc(1rem * var(--ui-scale-multiplier, 1));
 }
 
 .exit-screen-content p {
-    font-size: 1.2rem;
+    font-size: calc(1.2rem * var(--ui-scale-multiplier, 1));
     color: var(--primary-color);
     opacity: 0.8;
 }

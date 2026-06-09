@@ -7,10 +7,10 @@ const ExtrasMenu = ({ onBack }) => {
 
   return (
     <div className="extras-menu">
-      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('artGallery')}</MenuButton>
-      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('sceneSelector')}</MenuButton>
-      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('bioculturalGlossary')}</MenuButton>
-      <MenuButton onClick={onBack}>{t('back')}</MenuButton>
+      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('menu.artGallery')}</MenuButton>
+      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('menu.sceneSelector')}</MenuButton>
+      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('menu.bioculturalGlossary')}</MenuButton>
+      <MenuButton onClick={onBack}>{t('menu.back')}</MenuButton>
     </div>
   );
 };

@@ -5,7 +5,7 @@
     justify-content: center;
     height: 100vh;
     width: 100%;
-    cursor: pointer;
+    cursor: default;
     background-color: var(--background-color);
     animation: fadeIn 1s ease-out forwards;
     gap: 4rem;
@@ -21,10 +21,25 @@
     justify-content: center;
 }
 
+.click-to-continue-content {
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.click-to-continue-content:hover {
+    transform: scale(1.05);
+}
+
 .click-to-continue-content h1 {
-    font-size: 2rem;
+    font-size: calc(2rem * var(--ui-scale-multiplier, 1));
     color: var(--primary-color);
     animation: blink-caret 1.5s step-end infinite;
+    transition: color 0.3s ease;
+}
+
+.click-to-continue-content:hover h1 {
+    color: var(--accent-color);
+    animation: none;
 }
 
 /* Blinking animation for the text */

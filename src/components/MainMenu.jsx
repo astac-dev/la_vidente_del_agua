@@ -6,7 +6,7 @@ import mainMenuMusic from '/bgm/theme_main_menu.mp3';
 
 const MainMenu = ({ onNavigate, onExit }) => {
   const { t } = useTranslation();
-  const { settings } = useGameState();
+  const { settings, resetGameState } = useGameState();
   const audioRef = useRef(null);
 
   // Efecto para inicializar y limpiar la música de fondo
@@ -43,6 +43,28 @@ const MainMenu = ({ onNavigate, onExit }) => {
     }
   }, [settings.volumenMusica]);
   
+  const handleNewGame = () => {
+    if (audioRef.current) {
+      const audio = audioRef.current;
+      const startVolume = audio.volume;
+      const fadeDuration = 1500; // 1.5s
+      const steps = 30;
+      const stepVolume = startVolume / steps;
+      const intervalTime = fadeDuration / steps;
+
+      const fadeInterval = setInterval(() => {
+        if (audio.volume > stepVolume) {
+          audio.volume -= stepVolume;
+        } else {
+          audio.volume = 0;
+          clearInterval(fadeInterval);
+        }
+      }, intervalTime);
+    }
+    resetGameState();
+    onNavigate('visualNovel');
+  };
+
   const handleExit = async () => {
     // Comprueba si la API de Tauri está disponible.
     if (window.__TAURI__) {
@@ -60,9 +82,9 @@ const MainMenu = ({ onNavigate, onExit }) => {
 
   return (
     <div className="main-menu">
-      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('menu.continueGame')}</MenuButton>
-      <MenuButton onClick={() => onNavigate('visualNovel')}>{t('menu.newGame')}</MenuButton>
-      <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('menu.loadGame')}</MenuButton>
+      <MenuButton onClick={() => onNavigate('continueMenu')}>{t('menu.continueGame')}</MenuButton>
+      <MenuButton onClick={handleNewGame}>{t('menu.newGame')}</MenuButton>
+      <MenuButton onClick={() => onNavigate('continueMenu')}>{t('menu.loadGame')}</MenuButton>
       <MenuButton onClick={() => onNavigate('extrasMenu')}>{t('menu.extras')}</MenuButton>
       <MenuButton onClick={() => onNavigate('optionsMenu')}>{t('menu.options')}</MenuButton>
       <MenuButton onClick={() => alert('Funcionalidad no implementada.')}>{t('menu.credits')}</MenuButton>

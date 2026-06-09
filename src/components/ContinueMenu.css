@@ -1,0 +1,100 @@
+.continue-menu {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1.5rem * var(--ui-scale-multiplier, 1));
+    width: 100%;
+    max-width: calc(600px * var(--ui-scale-multiplier, 1));
+    padding: calc(1rem * var(--ui-scale-multiplier, 1));
+    box-sizing: border-box;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.continue-title {
+    font-family: var(--font-family);
+    font-size: calc(2.5rem * var(--ui-scale-multiplier, 1));
+    color: var(--primary-color);
+    margin-bottom: calc(1rem * var(--ui-scale-multiplier, 1));
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    align-self: center;
+}
+
+.slots-container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1rem * var(--ui-scale-multiplier, 1));
+    width: 100%;
+}
+
+.slot-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.3rem * var(--ui-scale-multiplier, 1));
+    padding: calc(1rem * var(--ui-scale-multiplier, 1));
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.slot-card.has-save {
+    cursor: pointer;
+}
+
+.slot-card.has-save:hover {
+    border-color: var(--accent-color);
+    background: rgba(58, 123, 213, 0.15);
+    box-shadow: 0 0 10px rgba(58, 123, 213, 0.3);
+}
+
+.slot-card.empty-slot {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.slot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.slot-number {
+    font-family: var(--mono);
+    font-weight: bold;
+    font-size: calc(0.9rem * var(--ui-scale-multiplier, 1));
+    color: var(--accent-color);
+}
+
+.slot-date {
+    font-family: var(--sans);
+    font-size: calc(0.8rem * var(--ui-scale-multiplier, 1));
+    color: #888;
+}
+
+.slot-body {
+    width: 100%;
+}
+
+.slot-title-text {
+    font-family: var(--sans);
+    font-size: calc(1.1rem * var(--ui-scale-multiplier, 1));
+    color: var(--primary-color);
+}
+
+.continue-footer {
+    margin-top: calc(2rem * var(--ui-scale-multiplier, 1));
+    align-self: center;
+}
+
+@media (max-width: 768px) {
+    .continue-title {
+        font-size: calc(2rem * var(--ui-scale-multiplier, 1));
+    }
+    .slot-title-text {
+        font-size: calc(1rem * var(--ui-scale-multiplier, 1));
+    }
+}

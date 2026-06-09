@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGameState } from '../context/GameStateContext';
 import MenuButton from './MenuButton';
@@ -7,9 +7,15 @@ import './OptionsMenu.css';
 const OptionsMenu = ({ onBack }) => {
     const { t } = useTranslation();
     const { settings, updateSetting } = useGameState();
+    const [tempFontSize, setTempFontSize] = useState(settings.tamanoLetra || 100);
 
     const handleSettingChange = (key, value) => {
         updateSetting(key, parseInt(value, 10));
+    };
+
+    const handleBackClick = () => {
+        updateSetting('tamanoLetra', tempFontSize);
+        onBack();
     };
 
     return (
@@ -49,20 +55,33 @@ const OptionsMenu = ({ onBack }) => {
             <div className="option-item">
                 <label htmlFor="font-size">{t('interface.tamanoLetra')}</label>
                 <div className="slider-container">
+                    <span 
+                        className="font-size-preview" 
+                        style={{ 
+                            fontSize: `calc(1.1rem * ${tempFontSize / 100})`,
+                            color: 'var(--accent-color)',
+                            minWidth: '80px',
+                            textAlign: 'left',
+                            display: 'inline-block',
+                            transition: 'font-size 0.05s ease-out'
+                        }}
+                    >
+                        {t('interface.previewText', 'Texto')}
+                    </span>
                     <input
                         type="range"
                         id="font-size"
                         min="80"  // 80% del tamaño base
-                        max="150" // 150% del tamaño base
-                        value={settings.tamanoLetra}
-                        onChange={(e) => handleSettingChange('tamanoLetra', e.target.value)}
+                        max="200" // 200% del tamaño base
+                        value={tempFontSize}
+                        onChange={(e) => setTempFontSize(parseInt(e.target.value, 10))}
                     />
-                    <span className="slider-value">{settings.tamanoLetra}%</span>
+                    <span className="slider-value">{tempFontSize}%</span>
                 </div>
             </div>
 
             <div className="options-footer">
-                <MenuButton onClick={onBack}>{t('menu.back')}</MenuButton>
+                <MenuButton onClick={handleBackClick}>{t('menu.back')}</MenuButton>
             </div>
         </div>
     );
