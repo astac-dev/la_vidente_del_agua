@@ -35,7 +35,22 @@
     "fullscreenEnter": "Pantalla completa",
     "fullscreenExit": "Salir de pantalla completa",
     "fullscreenLabel": "SYS.PL",
-    "homeLabel": "INICIO"
+    "homeLabel": "INICIO",
+    "saveSlotTitle": "GUARDAR PARTIDA",
+    "saveSlotPrompt": "Selecciona una ranura de guardado para registrar tu progreso antes de salir:",
+    "exitWithoutSaving": "SALIR SIN GUARDAR",
+    "emptySlot": "Espacio Vacío",
+    "cancel": "CANCELAR",
+    "saveSlot": "Ranura",
+    "recLogLabel": "REG.HIST",
+    "narrSkpLabel": "SALT.DIAL",
+    "playAtLabel": "REPR.AUTO",
+    "orientationBlockerTitle": "MODO VERTICAL NO SOPORTADO",
+    "orientationBlockerBody": "Para disfrutar de la experiencia completa de La vidente del agua, por favor rota tu dispositivo a posición horizontal.",
+    "history": "Historial",
+    "skip": "Saltar",
+    "autoMode": "Modo Automático",
+    "previewText": "Texto"
   },
   "personajes": {
     "narrador": "Narrador",
@@ -51,6 +66,76 @@
     "capitulo_1": {
       "titulo": "Capítulo 1: Ecos en el Espejo de Agua (Parte 1)",
       "escenas": {
+        "guia_naia": {
+          "titulo_escena": "Capítulo 0: Una guía muy necesaria",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Sistema",
+              "texto": "[ENTRA SPRITE: SP_NAIA_NEU CENTRO]\nNaia aparece en pantalla sosteniendo una pequeña antorcha apagada. Observa los bordes del marco con curiosidad y luego mira directamente al jugador."
+            },
+            {
+              "id": 2,
+              "personaje": "Naia",
+              "texto": "¡Hey, caminante! No temas. Sé que este territorio es extraño para ti, pero en mi clan yo era la encargada de abrir los senderos en la oscuridad. Déjame enseñarte las marcas de este mapa digital para que no te pierdas en el abismo."
+            },
+            {
+              "id": 3,
+              "personaje": "Naia",
+              "texto": "Mira aquí abajo. Esto funciona como las huellas que dejamos en el lodo. Arriba verás el NOMBRE DEL PERSONAJE, para que sepas qué miembro de la tribu está hablando, y justo abajo aparecerá el TEXTO DEL DIÁLOGO con sus palabras."
+            },
+            {
+              "id": 4,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: El símbolo de agua al final de la caja comienza a parpadear en cian]"
+            },
+            {
+              "id": 5,
+              "personaje": "Naia",
+              "texto": "¿Ves este SÍMBOLO DE AGUA flotando al final? El agua pura siempre corre y busca su camino. Cuando termines de leer, tócalo; funcionará como una flecha que te hará avanzar al siguiente fragmento de la historia."
+            },
+            {
+              "id": 6,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: Los botones de control del marco superior se iluminan uno a uno]"
+            },
+            {
+              "id": 7,
+              "personaje": "Naia",
+              "texto": "Ahora mira las herramientas de supervivencia en los bordes de tu visor. Si tocas PANTALLA COMPLETA, expandirás tu horizonte para que la selva y la cueva te rodeen por completo, borrando las distracciones del exterior."
+            },
+            {
+              "id": 8,
+              "personaje": "Naia",
+              "texto": "Si necesitas un descanso, el botón de MENÚ PRINCIPAL te llevará de vuelta a tu campamento base. Desde ahí puedes guardar tus avances en la nube, cambiar el volumen o ajustar el idioma de la expedición."
+            },
+            {
+              "id": 9,
+              "personaje": "Naia",
+              "texto": "¿Olvidaste un rastro atrás? El REGISTRO DE DIÁLOGOS te permite mirar tus propias pisadas. Ábrelo si necesitas revisar las palabras que ya se desvanecieron de la pantalla para entender mejor el misterio."
+            },
+            {
+              "id": 10,
+              "personaje": "Naia",
+              "texto": "Si estás cruzando por un sendero que ya recorriste en una vida anterior y quieres avanzar rápido, usa SALTAR DIÁLOGOS. Tu vista correrá a toda velocidad hasta encontrar un nuevo dilema."
+            },
+            {
+              "id": 11,
+              "personaje": "Naia",
+              "texto": "Si prefieres explorar con las manos libres, activa la REPRODUCCIÓN AUTOMÁTICA. Tú manejas el ritmo de la marcha en cuatro velocidades: \"x1\" es una caminata firme, \"x2\" un trote ligero, \"x3\" una carrera veloz y \"x4\" es tan rápido como una ráfaga de viento en la Era de Hielo."
+            },
+            {
+              "id": 12,
+              "personaje": "Naia",
+              "texto": "Por último, si quieres apreciar el paisaje puro sin que nada te estorbe, presiona OCULTAR INTERFAZ. Toda la herramienta desaparecerá para que observes los secretos del fondo marino. Solo toca cualquier parte de la pantalla y las marcas volverán."
+            },
+            {
+              "id": 13,
+              "personaje": "Naia",
+              "texto": "(Enciende su antorcha con un destello, expresión seria y decidida) El mapa está trazado y las herramientas listas, explorador. El rastro de Hoyo Negro está fresco... ¿estás listo para adentrarte conmigo en la oscuridad?"
+            }
+          ]
+        },
         "escena_intro": {
           "titulo_escena": "El Precio del Insomnio",
           "dialogos": [

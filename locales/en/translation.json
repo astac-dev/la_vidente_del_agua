@@ -35,7 +35,22 @@
     "fullscreenEnter": "Fullscreen",
     "fullscreenExit": "Exit fullscreen",
     "fullscreenLabel": "SYS.FS",
-    "homeLabel": "HOME"
+    "homeLabel": "HOME",
+    "saveSlotTitle": "SAVE GAME",
+    "saveSlotPrompt": "Select a save slot to record your progress before exiting:",
+    "exitWithoutSaving": "EXIT WITHOUT SAVING",
+    "emptySlot": "Empty Slot",
+    "cancel": "CANCEL",
+    "saveSlot": "Slot",
+    "recLogLabel": "REC.LOG",
+    "narrSkpLabel": "NARR.SKP",
+    "playAtLabel": "PLAY.AT",
+    "orientationBlockerTitle": "PORTRAIT MODE NOT SUPPORTED",
+    "orientationBlockerBody": "To enjoy the full experience of La vidente del agua, please rotate your device to landscape position.",
+    "history": "History",
+    "skip": "Skip",
+    "autoMode": "Auto Play",
+    "previewText": "Text"
   },
   "personajes": {
     "narrador": "Narrator",
@@ -49,62 +64,116 @@
   },
   "historia": {
     "capitulo_1": {
-      "titulo": "Chapter 1: Echoes of the Reef",
+      "titulo": "Chapter 1: Echoes in the Water Mirror (Part 1)",
       "escenas": {
-        "escena_intro": {
-          "titulo_escena": "The Port of Veracruz",
+        "guia_naia": {
+          "titulo_escena": "Chapter 0: A much-needed guide",
           "dialogos": [
             {
               "id": 1,
-              "personaje": "narrador",
-              "texto": "The waves gently hit the dock. The wind brings the scent of salt and the echo of old submerged stories..."
+              "personaje": "System",
+              "texto": "[ENTRA SPRITE: SP_NAIA_NEU CENTRO]\nNaia appears on screen holding a small unlit torch. She observes the edges of the frame with curiosity and then looks directly at the player."
             },
             {
               "id": 2,
-              "personaje": "sofia",
-              "texto": "I'm glad you're here. Local fishermen found remains of old wood near the outer reef. It could be an important archaeological shipwreck."
+              "personaje": "Naia",
+              "texto": "Hey, traveler! Do not fear. I know this territory is strange to you, but in my clan I was in charge of opening paths in the darkness. Let me teach you the markings of this digital map so you do not get lost in the abyss."
             },
             {
               "id": 3,
-              "personaje": "protagonista",
-              "texto": "Excellent. We must prepare the photographic registration equipment before the tide changes."
-            }
-          ],
-          "elecciones": {
-            "pregunta": "How do you wish to proceed with the initial report?",
-            "opciones": [
-              {
-                "id": "opcion_legal",
-                "texto": "Register the official coordinates and notify the authorities immediately.",
-                "siguiente_escena": "escena_registro_oficial"
-              },
-              {
-                "id": "opcion_explorar",
-                "texto": "Do a quick reconnaissance dive without alerting anyone else.",
-                "siguiente_escena": "escena_inmersion_secreta"
-              }
-            ]
-          }
-        },
-        "escena_registro_oficial": {
-          "titulo_escena": "Conservation Protocol",
-          "dialogos": [
+              "personaje": "Naia",
+              "texto": "Look down here. This works like the footprints we leave in the mud. Above you will see the CHARACTER NAME, so you know which tribe member is speaking, and right below will appear the DIALOGUE TEXT with their words."
+            },
             {
-              "id": 1,
-              "personaje": "sofia",
-              "texto": "It's the right decision. Underwater heritage is protected by law, and every fragment out of its site alters the historical context."
+              "id": 4,
+              "personaje": "System",
+              "texto": "[VISUAL EFFECT: The water symbol at the end of the box starts blinking in cyan]"
+            },
+            {
+              "id": 5,
+              "personaje": "Naia",
+              "texto": "Do you see this WATER SYMBOL floating at the end? Pure water always runs and finds its way. When you finish reading, touch it; it will work as an arrow that will make you advance to the next part of the story."
+            },
+            {
+              "id": 6,
+              "personaje": "System",
+              "texto": "[VISUAL EFFECT: The control buttons on the upper frame light up one by one]"
+            },
+            {
+              "id": 7,
+              "personaje": "Naia",
+              "texto": "Now look at the survival tools on the edges of your viewer. If you tap FULL SCREEN, you will expand your horizon so that the jungle and the cave surround you completely, erasing outside distractions."
+            },
+            {
+              "id": 8,
+              "personaje": "Naia",
+              "texto": "If you need a break, the MAIN MENU button will take you back to your base camp. From there you can save your progress to the cloud, change the volume, or adjust the expedition language."
+            },
+            {
+              "id": 9,
+              "personaje": "Naia",
+              "texto": "Forgot a track behind? The DIALOGUE LOG allows you to look at your own steps. Open it if you need to review the words that have already vanished from the screen to better understand the mystery."
+            },
+            {
+              "id": 10,
+              "personaje": "Naia",
+              "texto": "If you are crossing a path you already traveled in a previous life and want to advance quickly, use SKIP DIALOGUE. Your view will run at full speed until it finds a new dilemma."
+            },
+            {
+              "id": 11,
+              "personaje": "Naia",
+              "texto": "If you prefer to explore hands-free, activate AUTO PLAY. You control the pace of the march in four speeds: 'x1' is a steady walk, 'x2' a light jog, 'x3' a fast run, and 'x4' is as fast as a gust of wind in the Ice Age."
+            },
+            {
+              "id": 12,
+              "personaje": "Naia",
+              "texto": "Finally, if you want to appreciate the pure landscape without anything in the way, press HIDE INTERFACE. The entire tool will disappear so you can observe the secrets of the seabed. Just tap anywhere on the screen and the markings will return."
+            },
+            {
+              "id": 13,
+              "personaje": "Naia",
+              "texto": "(Lights her torch with a flash, serious and determined expression) The map is drawn and the tools ready, explorer. The Hoyo Negro trail is fresh... are you ready to enter the darkness with me?"
             }
           ]
         },
-        "escena_inmersion_secreta": {
-          "titulo_escena": "Risk in the Deep",
+        "escena_intro": {
+          "titulo_escena": "The Price of Insomnia",
           "dialogos": [
-            {
-              "id": 1,
-              "personaje": "narrador",
-              "texto": "By descending without the proper permits or support equipment, the current becomes treacherous..."
-            }
+            { "id": 1, "personaje": "Narrator", "texto": "Mexico City. December 15, 2011." },
+            { "id": 2, "personaje": "Narrator", "texto": "For most students, December is synonymous with parties, rest, and the successful end of a school term." },
+            { "id": 3, "personaje": "Narrator", "texto": "For Amaranta, it is a reminder that her mind is falling apart." },
+            { "id": 4, "personaje": "System", "texto": "[VISUAL EFFECT: Faint red screen flicker / Camera blur]\n[SFX: Sound of heavy breathing and throbbing headache]" },
+            { "id": 5, "personaje": "Amaranta", "texto": "(With a lost gaze, holding a glass of water with trembling hands) Again... Again the same cursed thirst. I feel like my lungs are full of dust... and my head is about to explode." },
+            { "id": 6, "personaje": "Narrator", "texto": "At 16 years old, Amaranta's life used to be predictable and bright. Daughter of a doctor and a sales manager, grades had never been a problem. She was the model student, the smiling friend." },
+            { "id": 7, "personaje": "Narrator", "texto": "Until the dreams arrived. Or rather, the absences." },
+            { "id": 8, "personaje": "Amaranta", "texto": "(Frustrada, arroja el vaso de plástico sobre el escritorio) I don't want to sleep! Every time I close my eyes, that cursed void swallows me. I feel the coldness of the stone, the darkness... and the fear of someone who is not me." },
+            { "id": 9, "personaje": "Narrator", "texto": "Chronic insomnia did not take long to take its toll. Her flawless academic performance plummeted; accumulated fatigue transformed her usual warmth into a grey, sad version with sudden mood swings that frightened her parents and distanced her friends." },
+            { "id": 10, "personaje": "Narrator", "texto": "After a vast number of medical studies in the hospital to rule out neurological and hormonal issues, the final diagnosis was clear: 'Nervous breakdown due to severe stress.' The prescription? Three months of isolation outside the city and rest." }
           ]
+        },
+        "escena_1_2": {
+          "titulo_escena": "Tulum's Respite"
+        },
+        "escena_1_3": {
+          "titulo_escena": "Guardians of the Abyss"
+        },
+        "escena_1_4": {
+          "titulo_escena": "The Warning of the Bottle"
+        },
+        "escena_1_5": {
+          "titulo_escena": "The Natural Trap (Naia's Dream)"
+        },
+        "escena_1_5_ruta_a": {
+          "titulo_escena": "Fetal Position Fall"
+        },
+        "escena_1_5_ruta_b": {
+          "titulo_escena": "Extended Arms Fall"
+        },
+        "escena_1_6": {
+          "titulo_escena": "Return to the Present"
+        },
+        "escena_1_7": {
+          "titulo_escena": "The Morning of the 24th"
         }
       }
     }
