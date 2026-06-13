@@ -1,0 +1,100 @@
+{
+  "escenas": {
+    "guia_naia": {
+      "type": "dialogue",
+      "background": { "src": "/backgrounds/bg_hoyo_negro_tutorial.jpg", "transition": "fade", "duration": 1000 },
+      "bgm": { "src": "/music/bgm_misterio_cientifico.mp3", "action": "play" },
+      "sfx": { "src": "/sfx/sfx_activacion_don.wav", "action": "play" },
+      "dialogos": [
+        {
+          "personaje": "sistema",
+          "texto": "[ENTRA SPRITE: SP_NAIA_NEU CENTRO]\nNaia aparece en pantalla sosteniendo una pequeña antorcha apagada. Observa los bordes del marco con curiosidad y luego mira directamente al jugador."
+        },
+        {
+          "personaje": "naia",
+          "texto": "¡Hey, caminante! No temas. Sé que este territorio es extraño para ti, pero en mi clan yo era la encargada de abrir los senderos en la oscuridad. Déjame enseñarte las marcas de este mapa digital para que no te pierdas en el abismo."
+        },
+        {
+          "personaje": "naia",
+          "texto": "Mira aquí abajo. Esto funciona como las huellas que dejamos en el lodo. Arriba verás el NOMBRE DEL PERSONAJE, para que sepas qué miembro de la tribu está hablando, y justo abajo aparecerá el TEXTO DEL DIÁLOGO con sus palabras.",
+          "highlight": "dialogue-box"
+        },
+        {
+          "personaje": "sistema",
+          "texto": "[EFECTO VISUAL: El símbolo de agua al final de la caja comienza a parpadear en cian]"
+        },
+        {
+          "personaje": "naia",
+          "texto": "¿Ves este SÍMBOLO DE AGUA flotando al final? El agua pura siempre corre y busca su camino. Cuando termines de leer, tócalo; funcionará como una flecha que te hará avanzar al siguiente fragmento de la historia."
+        },
+        {
+          "personaje": "sistema",
+          "texto": "[EFECTO VISUAL: Los botones de control del marco superior se iluminan uno a uno]",
+          "highlight": "hud-buttons"
+        },
+        {
+          "personaje": "naia",
+          "texto": "Ahora mira las herramientas de supervivencia en los bordes de tu visor. Si tocas PANTALLA COMPLETA, expandirás tu horizonte para que la sabana y la cueva te rodeen por completo, borrando las distracciones del exterior.",
+          "highlight": "btn-fullscreen"
+        },
+        {
+          "personaje": "naia",
+          "texto": "Si necesitas un descanso, el botón de MENÚ PRINCIPAL te llevará de vuelta a tu campamento base. Desde ahí puedes guardar tus avances en la nube, cambiar el volumen o ajustar el idioma de la expedición.",
+          "highlight": "btn-home"
+        },
+        {
+          "personaje": "naia",
+          "texto": "¿Olvidaste un rastro atrás? El REGISTRO DE DIÁLOGOS te permite mirar tus propias pisadas. Ábrelo si necesitas revisar las palabras que ya se desvanecieron de la pantalla para entender mejor el misterio.",
+          "highlight": "btn-log"
+        },
+        {
+          "personaje": "naia",
+          "texto": "Si estás cruzando por un sendero que ya recorriste en una vida anterior y quieres avanzar rápido, usa SALTAR DIÁLOGOS. Tu vista correrá a toda velocidad hasta encontrar un nuevo dilema.",
+          "highlight": "btn-skip"
+        },
+        {
+          "personaje": "naia",
+          "texto": "Si prefieres explorar con las manos libres, activa la REPRODUCCIÓN AUTOMÁTICA. Tú manejas el ritmo de la marcha en cuatro velocidades: \"x1\" es una caminata firme, \"x2\" un trote ligero, \"x3\" una carrera veloz y \"x4\" es tan rápido como una ráfaga de viento en la Era de Hielo.",
+          "highlight": "btn-auto"
+        },
+        {
+          "personaje": "naia",
+          "texto": "Por último, si quieres apreciar el paisaje puro sin que nada te estorbe, presiona OCULTAR INTERFAZ. Toda la herramienta desaparecerá para que observes los secretos del fondo marino. Solo toca cualquier parte de la pantalla y las marcas volverán.",
+          "highlight": "btn-hide"
+        },
+        {
+          "personaje": "naia",
+          "texto": "(Enciende su antorcha con un destello, expresión seria y decidida) El mapa está trazado y las herramientas listas, explorador. El rastro de Hoyo Negro está fresco... ¿estás listo para adentrarte conmigo en la oscuridad?"
+        }
+      ],
+      "next": "guia_naia_eleccion"
+    },
+    "guia_naia_eleccion": {
+      "type": "choice",
+      "background": { "src": "/backgrounds/bg_pantalla_negra.jpg", "transition": "fade", "duration": 1000 },
+      "pregunta": "Casi se me olvida, habra menus como este que te pida tomar desiciones en el destino de la historia, crees poder aceptar esta responsabilidad.? ",
+      "opciones": [
+        {
+          "texto": "SI",
+          "next": "guia_naia_si_mensaje"
+        },
+        {
+          "texto": "No",
+          "next": "guia_naia_no_mensaje"
+        }
+      ]
+    },
+    "guia_naia_si_mensaje": {
+      "type": "custom_message",
+      "background": { "src": "/backgrounds/bg_pantalla_negra.jpg", "transition": "fade", "duration": 1000 },
+      "text": "Entonces sigamos, tus manos guiaran esta historia, click para continuar",
+      "next": "capitulo_1_intro"
+    },
+    "guia_naia_no_mensaje": {
+      "type": "custom_message",
+      "background": { "src": "/backgrounds/bg_pantalla_negra.jpg", "transition": "fade", "duration": 1000 },
+      "text": "No te preocupes, vuelve cuando te sientas list@.",
+      "next": "mainMenu"
+    }
+  }
+}

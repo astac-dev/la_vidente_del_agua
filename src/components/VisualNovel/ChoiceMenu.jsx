@@ -1,11 +1,15 @@
 // src/components/VisualNovel/ChoiceMenu.jsx
 import React from 'react';
 
+// NOTA DE DISEÑO: Todos los menús de elección (ChoiceMenu) deben utilizar una transición
+// de entrada suave de tipo 'fadeIn' con una duración de 1 segundo (animate-[fadeIn_1s_ease-out_forwards])
+// para evitar apariciones bruscas y mantener consistencia visual a lo largo del juego.
 const ChoiceMenu = ({ question, options, onChoice }) => {
   return (
     // Overlay absoluto adaptado al contenedor 16:9 que oscurece el fondo
+    // Se incluye la animación de entrada suave de 1 segundo (fadeIn)
     <div
-      className="absolute inset-0 z-40 flex flex-col items-center justify-center bg-black/75 transition-opacity duration-500 pointer-events-auto backdrop-blur-[2px] vn-choice-container"
+      className="absolute inset-0 z-40 flex flex-col items-center justify-center bg-black/75 transition-opacity duration-500 pointer-events-auto backdrop-blur-[2px] vn-choice-container animate-[fadeIn_1s_ease-out_forwards]"
       onClick={(e) => e.stopPropagation()}
     >
       {/* Pregunta o contexto: Tipografía responsiva y espaciado compacto */}

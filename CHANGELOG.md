@@ -1,5 +1,50 @@
 # Historial de Cambios
 
+## [0.3.5] - 2026-06-13
+
+### Añadido
+- **Fundidos de Transición de Escena (Fade Out/In)**: Implementada una capa de transición de opacidad animada de 500ms al cambiar de escena en `GameEngine.jsx` y `GameStateContext.jsx`, bloqueando clics accidentales del usuario durante el cambio.
+
+### Cambiado
+- **Correcciones de Texto e i18n**:
+  - Corregido el diálogo del hospital psiquiátrico de Amaranta a `"Sí, claro. Directito al hospital psiquiátrico."` en español.
+  - Actualizado el diálogo de las camionetas en la ruta de negligencia (`escena_1_7_ruta_a`) para mencionar uniformes extraños e instrumentos raros en español, inglés y maya.
+  - Removido el indicador de fin de ruta `(FIN DE LA RUTA DE LA NEGLIGENCIA)` en los diálogos del narrador.
+  - Creada una nueva escena de tipo mensaje centrado (`escena_1_7_ruta_a_fin`) que muestra de manera premium el mensaje de fin de ruta de negligencia y redirige al menú principal.
+
+## [0.3.4] - 2026-06-13
+
+### Añadido
+- **Bifurcaciones de Decisión Crítica en Capítulo 1**: Añadidas las nuevas escenas `escena_1_7_eleccion`, `escena_1_7_ruta_a` y `escena_1_7_ruta_b` que corresponden a la segunda decisión crítica del juego.
+- **Traducciones Multilingües**: Añadidas localizaciones en español, inglés y maya yucateco para las nuevas escenas en sus respectivos archivos `translation.json`.
+- **Nuevos Personajes Localizados**: Se agregaron los personajes `abuela` y `papa` a los archivos de traducción para una correcta localización en todos los idiomas soportados.
+
+### Cambiado
+- **Flujo de Escena 1.7**: Modificado el atributo `next` de la escena `escena_1_7` en `capitulo_1.json` para conectar con el selector de decisiones `escena_1_7_eleccion`.
+
+## [0.3.3] - 2026-06-10
+
+### Añadido
+- **Validación de Capítulos**: Creación del script de validación `validate-script.cjs`.
+
+### Cambiado
+- **Migración a JSON**: Migración del guion narrativo de `script.js` a archivos JSON por capítulo.
+- **Carga Dinámica**: Implementación del cargador dinámico asíncrono `GameEngine.jsx` con Dynamic Imports.
+- **Internacionalización**: Actualización de traducciones multiidioma para el Capítulo 0.
+
+## [0.3.2] - 2026-06-09
+
+### Cambiado
+- **Escena Guía de Naia**: Integración de Naia al juego como personaje de guía para presentar las herramientas de la interfaz.
+- **Escena Introductoria**: Adición de la escena inicial `escena_intro` con Amaranta para comenzar el relato.
+- **Corrección de Errores**: Solución a errores de carga de Sprites y BGM en el `script.js`.
+- **Recursos Multimedia**: Actualización del archivo `index.html` para incluir los enlaces a nuevas fuentes (PNG) y archivos de audio (BGM y SFX).
+
+## [0.3.1] - 2026-06-09
+
+### Cambiado
+- **Resolución Mínima**: Eliminada la restricción de resolución mínima de 1024x576 en el contenedor de la novela visual (`VisualNovelContainer.css`).
+
 ## [0.3.0] - 2026-06-08
 
 ### Añadido

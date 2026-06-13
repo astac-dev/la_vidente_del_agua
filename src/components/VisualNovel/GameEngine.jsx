@@ -1,3 +1,4 @@
+// src/components/VisualNovel/GameEngine.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useVisualNovelEngine } from '../../hooks/useVisualNovelEngine';
@@ -27,14 +28,35 @@ const getFullscreenElement = () => {
          document.msFullscreenElement;
 };
 
-const VisualNovelEngine = ({ onNavigate }) => {
+/**
+ * Componente principal administrador del motor de la novela visual.
+ * Carga de forma dinámica los guiones de los capítulos bajo demanda
+ * para optimizar la memoria y evitar la importación estática masiva de datos.
+ */
+const GameEngine = ({ onNavigate }) => {
   const { t, i18n } = useTranslation();
-  const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice } = useVisualNovelEngine();
-  const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState, saves, saveGameToSlot } = useGameState();
+  const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState, saves, saveGameToSlot, isFading } = useGameState();
   const [showSaveModal, setShowSaveModal] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(!!getFullscreenElement());
   const [fullscreenError, setFullscreenError] = useState('');
+  const [scriptData, setScriptData] = useState(null);
   const containerRef = useRef(null);
+
+  // Carga dinámica asíncrona del capítulo actual de la novela visual
+  useEffect(() => {
+    const loadChapterData = async () => {
+      try {
+        const chapterModule = await import(`../../data/chapters/${gameState.currentChapter}.json`);
+        setScriptData(chapterModule.default);
+      } catch (error) {
+        console.error("Error crítico al cargar el mapa narrativo:", error);
+      }
+    };
+    loadChapterData();
+  }, [gameState.currentChapter]);
+
+  // Hook del motor adaptado para recibir scriptData cargado dinámicamente
+  const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice } = useVisualNovelEngine(scriptData);
 
   const handleHomeClick = () => {
     if (isFullscreen) return;
@@ -58,10 +80,6 @@ const VisualNovelEngine = ({ onNavigate }) => {
       return () => clearTimeout(timer);
     }
   }, [fullscreenError]);
-
-  if (!currentScene) {
-    return <div className="ark-view-wrapper"><div>Cargando historia...</div></div>;
-  }
 
   const handleAdvanceClick = (e) => {
     e.stopPropagation();
@@ -181,6 +199,16 @@ const VisualNovelEngine = ({ onNavigate }) => {
     console.log("Historial de Diálogo (lógica pendiente)");
   };
 
+  if (!scriptData || !currentScene) {
+    return (
+      <div className="ark-view-wrapper w-full h-screen bg-neutral-950 flex items-center justify-center">
+        <div className="text-amber-500 font-mono text-sm tracking-wider animate-pulse">
+          Sincronizando bitácora de campo...
+        </div>
+      </div>
+    );
+  }
+
   const buttonBaseClasses = "hud-button-custom relative flex flex-col items-center justify-center transition-all duration-150 bg-black/40 border border-neutral-800 hover:bg-neutral-900/80 hover:border-amber-400 text-neutral-400 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed pointer-events-auto";
 
   const dialogueKey = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.dialogos.${gameState?.dialogueIndex}.texto`;
@@ -205,7 +233,6 @@ const VisualNovelEngine = ({ onNavigate }) => {
 
       <div className="ark-view-wrapper w-full h-screen bg-neutral-950 flex items-center justify-center overflow-hidden">
         
-        {/* CORRECCIÓN: Se limita la anchura máxima proporcional al alto (177.78vh) para mantener 16:9 exacto y centrado */}
         <div 
           ref={containerRef}
           className="ark-scene-container relative w-full max-w-[177.78vh] aspect-video max-h-screen overflow-hidden"
@@ -220,6 +247,9 @@ const VisualNovelEngine = ({ onNavigate }) => {
           <BackgroundLayer background={currentScene.background} />
           <CharacterLayer sprites={currentLine?.sprites || currentScene.sprites} />
           <div className="scene-overlay" />
+          
+          {/* Overlay de transición de fundido a negro (fade out/in) */}
+          <div className={`absolute inset-0 bg-black z-[300] transition-opacity duration-500 ${isFading ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} />
 
           {uiVisibility && (
             <div className="absolute top-0 left-0 right-0 z-50 flex justify-between items-start p-4 pointer-events-none select-none bg-gradient-to-b from-black/70 to-transparent">
@@ -339,6 +369,28 @@ const VisualNovelEngine = ({ onNavigate }) => {
             />
           )}
 
+          {currentScene.type === 'custom_message' && (
+            <div 
+              className="absolute inset-0 z-[210] flex items-center justify-center bg-black pointer-events-auto cursor-pointer animate-[fadeIn_1s_ease-out_forwards]"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (currentScene.next === 'mainMenu') {
+                  onNavigate('mainMenu');
+                } else if (currentScene.next) {
+                  advance();
+                } else {
+                  onNavigate('mainMenu');
+                }
+              }}
+            >
+              <div className="text-center px-8 text-neutral-200 font-sans max-w-xl">
+                <p className="text-base md:text-lg leading-relaxed tracking-wide">
+                  {t(`historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.texto`, currentScene.text)}
+                </p>
+              </div>
+            </div>
+          )}
+
           {showSaveModal && (
             <div className="absolute inset-0 bg-black/85 flex items-center justify-center z-[200] pointer-events-auto select-none">
               <div className="bg-neutral-900/95 border border-amber-500/30 p-6 rounded-lg shadow-2xl max-w-md w-full mx-4 font-mono text-left vn-save-modal">
@@ -360,7 +412,6 @@ const VisualNovelEngine = ({ onNavigate }) => {
                       const chTitle = t(`historia.${save.chapterId}.titulo`, save.chapterId);
                       const scTitle = t(`historia.${save.chapterId}.escenas.${save.sceneId}.titulo_escena`, save.sceneId);
                       saveName = `${chTitle} - ${scTitle}`;
-                      // Map custom 'my' code to 'es-MX' to avoid Burmese date formatting
                       const dateLocale = i18n.language === 'my' ? 'es-MX' : i18n.language;
                       saveTime = new Date(save.timestamp).toLocaleString(dateLocale);
                     }
@@ -410,4 +461,4 @@ const VisualNovelEngine = ({ onNavigate }) => {
   );
 };
 
-export default VisualNovelEngine;
+export default GameEngine;

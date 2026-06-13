@@ -60,9 +60,105 @@
     "amaranta": "Amaranta",
     "naia": "Naia",
     "mama": "Mom",
-    "sistema": "System"
+    "sistema": "System",
+    "abuela": "Grandmother",
+    "papa": "Dad"
   },
   "historia": {
+    "capitulo_0": {
+      "titulo": "Chapter 0: A much-needed guide",
+      "escenas": {
+        "guia_naia": {
+          "titulo_escena": "Chapter 0: A much-needed guide",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "System",
+              "texto": "[ENTRA SPRITE: SP_NAIA_NEU CENTRO]\nNaia appears on screen holding a small unlit torch. She observes the edges of the frame with curiosity and then looks directly at the player."
+            },
+            {
+              "id": 2,
+              "personaje": "Naia",
+              "texto": "Hey, traveler! Do not fear. I know this territory is strange to you, but in my clan I was in charge of opening paths in the darkness. Let me teach you the markings of this digital map so you do not get lost in the abyss."
+            },
+            {
+              "id": 3,
+              "personaje": "Naia",
+              "texto": "Look down here. This works like the footprints we leave in the mud. Above you will see the CHARACTER NAME, so you know which tribe member is speaking, and right below will appear the DIALOGUE TEXT with their words."
+            },
+            {
+              "id": 4,
+              "personaje": "System",
+              "texto": "[VISUAL EFFECT: The water symbol at the end of the box starts blinking in cyan]"
+            },
+            {
+              "id": 5,
+              "personaje": "Naia",
+              "texto": "Do you see this WATER SYMBOL floating at the end? Pure water always runs and finds its way. When you finish reading, touch it; it will work as an arrow that will make you advance to the next part of the story."
+            },
+            {
+              "id": 6,
+              "personaje": "System",
+              "texto": "[VISUAL EFFECT: The control buttons on the upper frame light up one by one]"
+            },
+            {
+              "id": 7,
+              "personaje": "Naia",
+              "texto": "Now look at the survival tools on the edges of your viewer. If you tap FULL SCREEN, you will expand your horizon so that the jungle and the cave surround you completely, erasing outside distractions."
+            },
+            {
+              "id": 8,
+              "personaje": "Naia",
+              "texto": "If you need a break, the MAIN MENU button will take you back to your base camp. From there you can save your progress to the cloud, change the volume, or adjust the expedition language."
+            },
+            {
+              "id": 9,
+              "personaje": "Naia",
+              "texto": "Forgot a track behind? The DIALOGUE LOG allows you to look at your own steps. Open it if you need to review the words that have already vanished from the screen to better understand the mystery."
+            },
+            {
+              "id": 10,
+              "personaje": "Naia",
+              "texto": "If you are crossing a path you already traveled in a previous life and want to advance quickly, use SKIP DIALOGUE. Your view will run at full speed until it finds a new dilemma."
+            },
+            {
+              "id": 11,
+              "personaje": "Naia",
+              "texto": "If you prefer to explore hands-free, activate AUTO PLAY. You control the pace of the march in four speeds: 'x1' is a steady walk, 'x2' a light jog, 'x3' a fast run, and 'x4' is as fast as a gust of wind in the Ice Age."
+            },
+            {
+              "id": 12,
+              "personaje": "Naia",
+              "texto": "Finally, if you want to appreciate the pure landscape without anything in the way, press HIDE INTERFACE. The entire tool will disappear so you can observe the secrets of the seabed. Just tap anywhere on the screen and the markings will return."
+            },
+            {
+              "id": 13,
+              "personaje": "Naia",
+              "texto": "(Lights her torch with a flash, serious and determined expression) The map is drawn and the tools ready, explorer. The Hoyo Negro trail is fresh... are you ready to enter the darkness with me?"
+            }
+          ]
+        },
+        "guia_naia_eleccion": {
+          "elecciones": {
+            "pregunta": "Almost forgot, there will be menus like this that ask you to make decisions in the destiny of the story, do you think you can accept this responsibility?",
+            "opciones": [
+              {
+                "texto": "YES"
+              },
+              {
+                "texto": "No"
+              }
+            ]
+          }
+        },
+        "guia_naia_si_mensaje": {
+          "texto": "Then let's continue, your hands will guide this story, click to continue"
+        },
+        "guia_naia_no_mensaje": {
+          "texto": "Don't worry, come back when you feel ready."
+        }
+      }
+    },
     "capitulo_1": {
       "titulo": "Chapter 1: Echoes in the Water Mirror (Part 1)",
       "escenas": {
@@ -136,6 +232,22 @@
             }
           ]
         },
+        "guia_naia_eleccion": {
+          "elecciones": {
+            "pregunta": "Right, I almost forgot, there will be paths you must choose yourself to determine the characters' fates, select an option below and see what happens.",
+            "opciones": [
+              {
+                "texto": "YES"
+              },
+              {
+                "texto": "No"
+              }
+            ]
+          }
+        },
+        "guia_naia_no": {
+          "texto": "No problem when you feel ready, we start our story, click anywhere to continue"
+        },
         "escena_intro": {
           "titulo_escena": "The Price of Insomnia",
           "dialogos": [
@@ -174,6 +286,187 @@
         },
         "escena_1_7": {
           "titulo_escena": "The Morning of the 24th"
+        },
+        "escena_1_7_eleccion": {
+          "elecciones": {
+            "pregunta": "Which path will Amaranta decide to take in the face of her surroundings' suspicions?",
+            "opciones": [
+              {
+                "texto": "Ignore the mysteries and focus on her family recovery."
+              },
+              {
+                "texto": "Investigate thoroughly what is happening in the cenotes."
+              }
+            ]
+          }
+        },
+        "escena_1_7_ruta_a": {
+          "titulo_escena": "Path of Negligence",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrator",
+              "texto": "December 20. 10:30 PM. The television lights flicker in the living room while the aroma of grandmother's dinner tries to drive away the cold of the night."
+            },
+            {
+              "id": 2,
+              "personaje": "Amaranta",
+              "texto": "(Pensive, looking at the screen, without paying attention) Those scientist trucks... That strange uniform... their rare instruments..."
+            },
+            {
+              "id": 3,
+              "personaje": "System",
+              "texto": "[SFX: Firm knocks on the door: SFX_TOCAR_PUERTA]"
+            },
+            {
+              "id": 4,
+              "personaje": "Grandmother",
+              "texto": "(From the kitchen) Ami, my child! Could you open the door, please? It must be your parents, the bus from the capital was running late."
+            },
+            {
+              "id": 5,
+              "personaje": "System",
+              "texto": "[VISUAL EFFECT: Quick transition to a close-up of the door opening]"
+            },
+            {
+              "id": 6,
+              "personaje": "Mom",
+              "texto": "(Hugging Amaranta tightly) Look at you, how thin you are! Are you okay, my love? We have missed you so much..."
+            },
+            {
+              "id": 7,
+              "personaje": "Amaranta",
+              "texto": "(Hiding her face on her shoulder) Me too, Mom. I feel like I haven't seen you in ages."
+            },
+            {
+              "id": 8,
+              "personaje": "Narrator",
+              "texto": "Behind them, her father enters carrying the heavy family suitcases, greeting Amaranta with the relief of someone who recovers their greatest treasure after a long absence."
+            },
+            {
+              "id": 9,
+              "personaje": "Narrator",
+              "texto": "Dinner passes between laughter, embarrassing anecdotes of her mother's childhood, and memories that manage, for a few hours, to bring color back to Amaranta's grey complexion."
+            },
+            {
+              "id": 10,
+              "personaje": "Dad",
+              "texto": "(Staring at her, lowering his voice) Tell me, Ami... how is the rest going? Have you followed your treatment and pills to the letter?"
+            },
+            {
+              "id": 11,
+              "personaje": "Amaranta",
+              "texto": "(Looking down, playing with the cutlery) Yes, Dad. Only yesterday I had a... strange episode. But I took half a dose and managed to control it."
+            },
+            {
+              "id": 12,
+              "personaje": "Narrator",
+              "texto": "Upon going up to her room, Amaranta observes the dark horizon of the jungle through the window. One part of her screams to investigate what INAH is hiding in those cenotes; the other, tired and scared, prefers comfort."
+            },
+            {
+              "id": 13,
+              "personaje": "Amaranta",
+              "texto": "(Closing the curtains, sighing) I'm not a movie spy. I'm just a high school student with enough problems. It's better to let it go."
+            },
+            {
+              "id": 14,
+              "personaje": "Narrator",
+              "texto": "Days turn into weeks. The Christmas spirit and morning exercise routines with her mother manage to mitigate the insomnia. By January 7, 2012, her parents return to Mexico City, leaving her under the promise to keep taking her medication."
+            },
+            {
+              "id": 15,
+              "personaje": "Narrator",
+              "texto": "March 16, 2012. The three months of isolation conclude and Amaranta returns to the capital. Her academic performance returns to normal. She is happy, or at least she believes she is, while burying the mystery of Naia in oblivion."
+            },
+            {
+              "id": 16,
+              "personaje": "System",
+              "texto": "[VISUAL EFFECT: The screen tints with a melancholic grey filter]\n[SFX: Sound of pill bottle shaking]"
+            },
+            {
+              "id": 17,
+              "personaje": "Narrator",
+              "texto": "Routine has returned, but now there is a price: Amaranta depends completely on doses of anxiolytics to be able to sleep. She has forgotten the dream, but she has exchanged her gift for an artificial silence."
+            }
+          ]
+        },
+        "escena_1_7_ruta_a_fin": {
+          "texto": "END OF THE PATH OF NEGLIGENCE"
+        },
+        "escena_1_7_ruta_b": {
+          "titulo_escena": "Path of Investigation",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrator",
+              "texto": "The days after her parents' arrival pass in a tense calm, but Amaranta's curiosity remains intact. The suspicion that something big is happening in the jungle does not leave her in peace."
+            },
+            {
+              "id": 2,
+              "personaje": "Narrator",
+              "texto": "December 30. 07:45 AM. Down in the living room for breakfast before their family outing, she finds her grandmother standing still in front of the old wooden shelf, gazing with glassy eyes at an old photograph."
+            },
+            {
+              "id": 3,
+              "personaje": "Amaranta",
+              "texto": "(Approaching gently) Grandmother? What are you looking at so intently?"
+            },
+            {
+              "id": 4,
+              "personaje": "Grandmother",
+              "texto": "(Startled, putting her hand to her chest) Oh, my child! I didn't hear you coming... Let me catch my breath, you gave me quite a scare."
+            },
+            {
+              "id": 5,
+              "personaje": "Amaranta",
+              "texto": "Sorry, I didn't mean to scare you. It's just that... you look very sad. Who is the man in the photo?"
+            },
+            {
+              "id": 6,
+              "personaje": "Grandmother",
+              "texto": "(Smiling with nostalgia, inviting her to sit) It's your grandfather. A wonderful man. Few remember that he was one of the most respected marine biologists in all of Tulum, specialized in the mysteries of the cenotes."
+            },
+            {
+              "id": 7,
+              "personaje": "Grandmother",
+              "texto": "He used to say that underground water wasn't just wells of water, but libraries of time hidden beneath our feet. Sadly, he passed away on an excursion in the Caribbean Sea... An unexpected storm sank his ship and took the entire crew to the bottom."
+            },
+            {
+              "id": 8,
+              "personaje": "Amaranta",
+              "texto": "(Taking her grandmother's wrinkled hands) Don't be sad, grandmother. I didn't know him, but Mom always tells me about him. She says he was an intrepid explorer, the happiest man in the world, and that he never got depressed if something went wrong. He would want you to be very happy."
+            },
+            {
+              "id": 9,
+              "personaje": "Narrator",
+              "texto": "Amaranta's words comfort the old woman's soul, but inside the young girl, a spark has been ignited. Her lineage is tied to deep water."
+            },
+            {
+              "id": 10,
+              "personaje": "System",
+              "texto": "[VISUAL EFFECT: Scene transition to BG_PUEBLO_TULUM_DIA]\n[BGM: Changes to BGM_MISTERIO_CIENTIFICO]"
+            },
+            {
+              "id": 11,
+              "personaje": "Narrator",
+              "texto": "Later that same day, during a walk through the local stands of Tulum, the mystery collides head-on with reality."
+            },
+            {
+              "id": 12,
+              "personaje": "Amaranta",
+              "texto": "(Watching the food stalls discreetly) There they are again...!"
+            },
+            {
+              "id": 13,
+              "personaje": "Narrator",
+              "texto": "Sitting at communal tables, several men and women eat lunch in silence. They wear technical diving uniforms, vests with the acronym INAH, and carry maps and heavy-duty waterproof folders."
+            },
+            {
+              "id": 14,
+              "personaje": "Amaranta",
+              "texto": "(With determination in her eyes) The underwater archaeology team... It's the same people from the trail. They are looking for something massive here in Tulum. And my visions are the key to discovering it."
+            }
+          ]
         }
       }
     }

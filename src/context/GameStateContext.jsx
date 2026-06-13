@@ -16,7 +16,7 @@ const defaultSettings = {
 
 // Nuevo: Estado inicial de la partida
 const initialGameState = {
-  currentChapter: 'capitulo_1',
+  currentChapter: 'capitulo_0',
   currentSceneId: 'guia_naia',
   dialogueIndex: 0,
   stats: {
@@ -53,6 +53,9 @@ export const GameStateProvider = ({ children }) => {
 
   // Nuevo: Estado para la visibilidad de la UI
   const [uiVisibility, setUiVisibility] = useState(true);
+  
+  // Nuevo: Estado para transiciones suaves de escena (fade)
+  const [isFading, setIsFading] = useState(false);
 
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // Para gestionar la comprobación inicial de autenticación
@@ -153,12 +156,18 @@ export const GameStateProvider = ({ children }) => {
   // --- Funciones para controlar el estado de la partida ---
 
   const goToScene = (sceneId, chapterId, dialogueIndex = 0) => {
-    setGameState(prev => ({
-      ...prev,
-      currentChapter: chapterId || prev.currentChapter,
-      currentSceneId: sceneId,
-      dialogueIndex: dialogueIndex,
-    }));
+    setIsFading(true);
+    setTimeout(() => {
+      setGameState(prev => ({
+        ...prev,
+        currentChapter: chapterId || prev.currentChapter,
+        currentSceneId: sceneId,
+        dialogueIndex: dialogueIndex,
+      }));
+      setTimeout(() => {
+        setIsFading(false);
+      }, 100);
+    }, 400);
   };
 
   const advanceDialogue = () => {
@@ -224,6 +233,7 @@ export const GameStateProvider = ({ children }) => {
     saveGameToSlot,
     loadGameFromSlot,
     resetGameState,
+    isFading,
   };
 
   return (

@@ -4,7 +4,7 @@ import ExtrasMenu from './components/ExtrasMenu';
 import ContinueMenu from './components/ContinueMenu';
 import LanguageSelector from './components/LanguageSelector';
 import OptionsMenu from './components/OptionsMenu';
-import VisualNovelEngine from './components/VisualNovel/VisualNovelEngine';
+import GameEngine from './components/VisualNovel/GameEngine';
 import OrientationBlocker from './components/VisualNovel/OrientationBlocker';
 import ClickToContinue from './components/ClickToContinue';
 import ExitScreen from './components/ExitScreen';
@@ -118,7 +118,7 @@ const App = () => {
       case 'continueMenu':
         return <ContinueMenu onBack={() => handleNavigate('mainMenu')} onNavigate={handleNavigate} />;
       case 'visualNovel':
-        return <VisualNovelEngine onNavigate={handleNavigate} />;
+        return <GameEngine onNavigate={handleNavigate} />;
       case 'mainMenu':
       default:
         return <MainMenu onNavigate={handleNavigate} onExit={() => setIsExited(true)} />;

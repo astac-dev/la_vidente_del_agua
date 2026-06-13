@@ -10,8 +10,11 @@ const BackgroundLayer = React.memo(({ background }) => {
 
   return (
     <div 
-      className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out z-0" 
-      style={{ backgroundImage: `url(${bgUrl})` }}
+      className="absolute inset-0 bg-cover bg-center transition-all ease-in-out z-0" 
+      style={{ 
+        backgroundImage: `url(${bgUrl})`,
+        transitionDuration: background.duration ? `${background.duration}ms` : '500ms'
+      }}
     />
   );
 });
