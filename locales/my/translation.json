@@ -60,9 +60,105 @@
     "amaranta": "Amaranta",
     "naia": "Naia",
     "mama": "Mamá",
-    "sistema": "Sistema"
+    "sistema": "Sistema",
+    "abuela": "Chiich",
+    "papa": "Yuum"
   },
   "historia": {
+    "capitulo_0": {
+      "titulo": "Yáax t'ool 0: U nu'ukulil Naia",
+      "escenas": {
+        "guia_naia": {
+          "titulo_escena": "Yáax t'ool 0: U nu'ukulil Naia",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Sistema",
+              "texto": "[ENTRA SPRITE: SP_NAIA_NEU CENTRO]\nNaia ku yáalkab te' chuunpak yéetel jump'éel ch'ilich' t'áabaj ma' t'áabani'. Ku yilik u tselilo'ob le visor yéetel ki'imak óolal, ku yilik u yich j-báaxal."
+            },
+            {
+              "id": 2,
+              "personaje": "Naia",
+              "texto": "¡Hey, x-caminante! Ma' saajkilti'. In woojel le lu'uma' yaanal ti' teech, ba'ale' ti' in ch'i'ibal tene' j-kaláantaj bejo'ob ti' e'esajil. Cha'a in we'esik teech u beelil le máapa digital utial ma' a satik a beel te' taamil."
+            },
+            {
+              "id": 3,
+              "personaje": "Naia",
+              "texto": "Ila yáanal. Lela' bey u peek' u yook lo'ol te' lodo. Ka'anal ka wilik u K'AABA' MÁAK, utial a woojeltik máax ti' le tribu t'aan, yéetel yáanale' u yoochel u T'AANIL yéetel u t'aan."
+            },
+            {
+              "id": 4,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: U yoochel ja' tu ts'o'okol le ch'iich' ku t'áabal cian]"
+            },
+            {
+              "id": 5,
+              "personaje": "Naia",
+              "texto": "¿K-awilik le U YOOCHEL JA' ku jáan páatal tu ts'o'okol? U ja'il ja' ku máan beel. K-a ts'o'okol a xook, t'u'ule'; leti' bey jump'éel ch'iich' u t'u'ul utial a máan ti' le tsikbal."
+            },
+            {
+              "id": 6,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: U nu'ukulil ka'anal ku t'áabal jump'éelil ti' jump'éel]"
+            },
+            {
+              "id": 7,
+              "personaje": "Naia",
+              "texto": "Bejla'e' ila u nu'ukulil kuxtal ti' u tselil a visor. K-a t'u'ulik CHUUNPAK, yaan a noj-beetal utial le k'áax yeetel le aktun ku ba'al teech, ta'akaj ba'al yaanal."
+            },
+            {
+              "id": 8,
+              "personaje": "Naia",
+              "texto": "K-a k'áat je'elel, u botónil YÁAX CHUN ku bisik teech ta campamento. Te'elo' je'el a li'isik a báaxal ti' muuyal, a k'exik u je'ek'ab paax wa a yéeyik u t'aanil a beel."
+            },
+            {
+              "id": 9,
+              "personaje": "Naia",
+              "texto": "¿K-awilik jump'éel peek' u yook paachil? Le REGISTROIL TSIKBAL ku cha'ik a wilik a peek' u yook. Je'ek'te' k-a k'áat a wilik u t'aanil ts'o'ok u jóok'ol utial a na'atiko'ob u tsikbalil."
+            },
+            {
+              "id": 10,
+              "personaje": "Naia",
+              "texto": "K-a máan ti' jump'éel bej ts'o'ok a binil ka'achile' yeetel a k'áat bin séeb, t'u'ul P'AT TSIKBAL. A wich yaan u yáalkab séeb utial a kaxtik u yaanal báaxal."
+            },
+            {
+              "id": 11,
+              "personaje": "Naia",
+              "texto": "K-a k'áat a wilik k'ab ja'alk'ab, t'áab BÁAXAL AUTO. Teech k-a beetik u séebil a máanal: 'x1' bey a xíimbal, 'x2' bey a jáan áalkab, 'x3' bey a séeb áalkab, yéetel 'x4' bey u iq'il k'áax ti' le Era ti' K'áaj Ja'."
+            },
+            {
+              "id": 12,
+              "personaje": "Naia",
+              "texto": "Tu ts'o'okilo', k-a k'áat a wilik le k'áax ma'alob, t'u'ul TA'AK E'ESAJIL. Tuláakal u nu'ukulil yaan u sa'atal utial a wilik u tsolilo'ob le ja'. Solo t'u'ul je'el máakalmak k'iin te' chuunpak yéetel le tsolilo'ob yaan u suut."
+            },
+            {
+              "id": 13,
+              "personaje": "Naia",
+              "texto": "(Ku t'áabik u ch'ilich' yéetel jump'éel t'áabaj, u yich ma'alob) Le máapa ts'o'ok u beetal yeetel u nu'ukulil yaan, x-caminante. U peek' u yook Hoyo Negro ts'o'oki'... ¿a k'áat a máanal tin wéetel te' e'esajil?"
+            }
+          ]
+        },
+        "guia_naia_eleccion": {
+          "elecciones": {
+            "pregunta": "Tubten ba'ax, yaan u yéeybilo'ob j-báaxal bey lela' utial a k'exik u beelil le tsikbal, ¿je'el a páajtal a machik le beela'?",
+            "opciones": [
+              {
+                "texto": "SI"
+              },
+              {
+                "texto": "No"
+              }
+            ]
+          }
+        },
+        "guia_naia_si_mensaje": {
+          "texto": "Béeychajal k-ts'o'ok beel, a k'abo'ob yaan u machik le kuxtala', p'iit' utial a k'áaxal"
+        },
+        "guia_naia_no_mensaje": {
+          "texto": "Ma' k'aas ti', suut le k-a wu'uyik a kuxtal ma'alob."
+        }
+      }
+    },
     "capitulo_1": {
       "titulo": "Yáax t'ool: U juum le Ja' (Yáax jaats)",
       "escenas": {
@@ -136,6 +232,22 @@
             }
           ]
         },
+        "guia_naia_eleccion": {
+          "elecciones": {
+            "pregunta": "Cierto, casi se me olvida, habra senderos que debes elegir tu mism@ para poder determinar el destino de los personajes, a continuación elige una opción y ve lo que sucede.",
+            "opciones": [
+              {
+                "texto": "SI"
+              },
+              {
+                "texto": "No"
+              }
+            ]
+          }
+        },
+        "guia_naia_no": {
+          "texto": "No hay problema cuando te sientas list@, empezamos nuestra historia, click en cualquier parte para continuar"
+        },
         "escena_intro": {
           "titulo_escena": "U bo'olil le ma' wenel",
           "dialogos": [
@@ -174,6 +286,187 @@
         },
         "escena_1_7": {
           "titulo_escena": "U ja'atskab k'iin ti' 24"
+        },
+        "escena_1_7_eleccion": {
+          "elecciones": {
+            "pregunta": "¿Bix u yéeyik Amaranta u beelil tu taanil u saajkiltil u wíinkilal?",
+            "opciones": [
+              {
+                "texto": "Ma' u ts'áaik óol ti' le tsikbalo'ob yaanal yéetel u ts'áaik óol ti' u yutzkíintik u láak'o'ob."
+              },
+              {
+                "texto": "Xak'altik ma'alob ba'ax ku yúuchul te' ts'onoto'obo'."
+              }
+            ]
+          }
+        },
+        "escena_1_7_ruta_a": {
+          "titulo_escena": "U beelil le ma' kaláan",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "J-tsikbal",
+              "texto": "20 ti' diciembre. 10:30 PM. U sáasilil le t.v. ku jáan sáastal te' najil táan, le k'i'itil u bo'olil u jo'och u ch'i'ibal ku yóotik u jóok'sik le ke'elil ti' le áak'aba'."
+            },
+            {
+              "id": 2,
+              "personaje": "Amaranta",
+              "texto": "(Tuukul, ku yilik le chuunpak, ma' u ts'áaik óoli') Le camionetaso'ob j-xak'alo'ob... le jela'an nook'o'... u jela'an nu'ukulo'ob..."
+            },
+            {
+              "id": 3,
+              "personaje": "Sistema",
+              "texto": "[SFX: Jats'ma' ma'alob te' jool naj: SFX_TOCAR_PUERTA]"
+            },
+            {
+              "id": 4,
+              "personaje": "Chiich",
+              "texto": "(Ti' le kuchina) ¡Ami, in paal! ¿Je'el a páajtal a je'ik le jool najo'? Leti'obe' a yáaxo'ob, le camión ti' le capital bin t'il."
+            },
+            {
+              "id": 5,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: Séeb k'expajal ti' u yáax yich jool naj je'ebal]"
+            },
+            {
+              "id": 6,
+              "personaje": "Mamá",
+              "texto": "(Ku méek'ik Amaranta yéetel mu'uk') ¡Ila a wíinkilal, jach bejla'e' ts'o'oyech! ¿Ma'alob yanilech, in yaabilaj? Jach k-k'áat a wilech..."
+            },
+            {
+              "id": 7,
+              "personaje": "Amaranta",
+              "texto": "(Ku ta'akik u yich tu tselil u kelembal) Ten xan, mamá. Bey ma' tin wilaj a wichech ti' ya'ab ja'abo'ob."
+            },
+            {
+              "id": 8,
+              "personaje": "J-tsikbal",
+              "texto": "Tu paachilo'ob, u yáax ku yook'ol ku ch'a'ik u kucho'ob láak'tsil, ku ki'imaktal u yóol Amaranta yéetel u je'elel máax ku kaxtik u noj k'áajal tu paach ya'ab k'iin."
+            },
+            {
+              "id": 9,
+              "personaje": "J-tsikbal",
+              "texto": "Le jo'och ku máan yéetel che'ej, tsikbalo'ob subtsilil ti' u paalil u maam yéetel k'a'ajsajilo'ob ku béeytal, ti' p'íit k'iin, u suut u boonil u yich gray Amaranta."
+            },
+            {
+              "id": 10,
+              "personaje": "Yuum",
+              "texto": "(Ku yilik ma'alob, ku yáalkab u t'aanil) A'al ten, Ami... ¿bix le je'elel? ¿Ts'o'ok a beetik u ya'alajil le ts'akyaj yéetel a pastillas?"
+            },
+            {
+              "id": 11,
+              "personaje": "Amaranta",
+              "texto": "(Ku yilik yáanal, ku báaxal yéetel u nu'ukulil jaanal) Bey, papá. Jo'olje'en jo'op' in wilik... jump'éel wáay. Ba'ale' tin ch'a'aj u tselil ka'ats'íits' yéetel tin kaláantaj."
+            },
+            {
+              "id": 12,
+              "personaje": "J-tsikbal",
+              "texto": "Ti' u na'akal tu kuchil wenel, Amaranta ku yilik u yich e'esajil k'áax te' ventana. Jump'éel tselil ti' ku k'áat xak'altik ba'ax ku ta'akik INAH te' ts'onoto'obo'; le yaanal, ka'an yéetel saajkil, ku yéeyik u je'elel."
+            },
+            {
+              "id": 13,
+              "personaje": "Amaranta",
+              "texto": "(Ku k'alik le cortinas, ku p'u'uyil) Ma' ten spy ti' película. Ten jump'éel x-xokbil paal ti' prepa yéetel ya'ab talamilo'ob. Ma'alob in p'atik beyo'."
+            },
+            {
+              "id": 14,
+              "personaje": "J-tsikbal",
+              "texto": "U k'iinilo'ob ku sutik bey semanas. U yóol Navidad yéetel u beelil ejercicio ja'atskab k'iin yéetel u maam ku yutzkíintik u ma' wenel. Utial 7 ti' enero ti' 2012, u yáaxo'ob ku suuto'ob México, ku p'atiko'ob yéetel u ya'alajil u wenel yéetel ts'akyaj."
+            },
+            {
+              "id": 15,
+              "personaje": "J-tsikbal",
+              "texto": "16 ti' marzo ti' 2012. Le oox p'éel u k'iinil ta'akal ku ts'o'okol yéetel Amaranta ku suut te' noj kaj. U xook ku suut ma'alob. Ki'imak u yóol, wa bey u tuukul, táan u mukik u tsikbalil Naia te' tu'ubul."
+            },
+            {
+              "id": 16,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: U chuunpak ku bonil yéetel jump'éel filtro gray melancólico]\n[SFX: U juum u peek' u ch'ilich' pastillas]"
+            },
+            {
+              "id": 17,
+              "personaje": "J-tsikbal",
+              "texto": "U beelil ku suut, ba'ale' bejla'e' yán u bo'olil: Amaranta ku wenel yéetel ansiolíticos. Ts'o'ok u tu'ubul u wáay, ba'ale' ts'o'ok u k'exik u siibal yéetel jump'éel ma' jaaj ch'enebil."
+            }
+          ]
+        },
+        "escena_1_7_ruta_a_fin": {
+          "texto": "U TS'O'OKOL U BEELIL LE MA' KALÁAN"
+        },
+        "escena_1_7_ruta_b": {
+          "titulo_escena": "U beelil le xak'al",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "J-tsikbal",
+              "texto": "U k'iinilo'ob paachil ti' u k'uchul u yáaxo'obe' ku máan te' ch'eneb ch'ooj, ba'ale' u k'áat u yóol Amaranta p'aat ma'alob. Le t'aanil ti' jump'éel nojoch ba'al ku yúuchul te' k'áax ma' tu p'atik ti' ki'imak."
+            },
+            {
+              "id": 2,
+              "personaje": "J-tsikbal",
+              "texto": "30 ti' diciembre. 07:45 AM. Úuchik u yáalkab te' sala utial jaanal táanil ti' u jóok'ol láak'tsil, ku kaxtik u ch'i'ibal ma' tu peek' táan ti' le ts'o'ots'che'il che', ku yilik yéetel u yich ja' jump'éel úuchben oochel."
+            },
+            {
+              "id": 3,
+              "personaje": "Amaranta",
+              "texto": "(Ku náats'al ch'enebil) ¿Abuela? ¿Ba'ax ka wilik yéetel nojoch óol?"
+            },
+            {
+              "id": 4,
+              "personaje": "Chiich",
+              "texto": "(Jáan saajkil, ku ts'áaik u k'ab tu tsem) ¡Ay, in paal! Ma' tin wu'uyaj a tal... Cha'a in ch'a'ik iik', tin ch'a'aj nojoch saajkil."
+            },
+            {
+              "id": 5,
+              "personaje": "Amaranta",
+              "texto": "Sa'asa in k'eban, ma' in k'áat in saajkiltik. Leti'e'... ku yila'al jach yaaj a wóol. ¿Máax le xi'ipal te' oochel?"
+            },
+            {
+              "id": 6,
+              "personaje": "Chiich",
+              "texto": "(Ku che'ej yéetel nostalgia, ku yóotik u kutal) Leti' a nool. Leti' jump'éel xi'ipal jach ma'alob. J-p'íit ku k'a'ajsiko'ob leti'e' jump'éel j-biólogo marino jach nojoch t'aan ti' tuláakal Tulum, xak'al ti' u wáayil ts'onoto'ob."
+            },
+            {
+              "id": 7,
+              "personaje": "Chiich",
+              "texto": "Ku ya'alik ka'ach le ja' yáanal lu'ume' ma' ch'een ja'ili', leti' u najil xookil k'iin ta'akan yáanal k-ook. Subtsilil, kíim ti' jump'éel xíimbal te' k'áab Caribe... Jump'éel k'aas iik' tu bulaj u che' yéetel tu bisaj tuláakal j-beetejo'ob te' taamil."
+            },
+            {
+              "id": 8,
+              "personaje": "Amaranta",
+              "texto": "(Ku machik u k'abo'ob ch'i'ibal) Ma' a ts'áaik yaajil a wóol, abuela. Ten ma' tin k'ajóoltaji', ba'ale' mamá mantats' ku t'aan ten ti' leti'. Ku ya'alike' leti' jump'éel j-xak'al ch'ich', le xi'ipal jach ki'imak u yóol ti' yóok'ol kaab yéetel ma' jach yaaj u yóol k-a k'aas ba'al. Leti' u k'áat ka yanak ki'imak óolal ti' teech."
+            },
+            {
+              "id": 9,
+              "personaje": "J-tsikbal",
+              "texto": "U t'aanil Amaranta ku ki'imaktal u yóol le ch'i'ibal, ba'ale' tu tuukul le x-ch'úupal, jump'éel sáasil ts'o'ok u t'áabal. U k'i'ibalil ku ts'a'al te' taamil ja'."
+            },
+            {
+              "id": 10,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: K'expajal ti' u yáax yich BG_PUEBLO_TULUM_DIA]\n[BGM: Ku k'exil ti' BGM_MISTERIO_CIENTIFICO]"
+            },
+            {
+              "id": 11,
+              "personaje": "J-tsikbal",
+              "texto": "Tula'ak' ti' le k'iina', ti' jump'éel xíimbal te' bejo'ob Tulum, le wáay ku jats'ik táan ti' le jaajil."
+            },
+            {
+              "id": 12,
+              "personaje": "Amaranta",
+              "texto": "(Ku yilik ch'enebil le kuchilo'ob jaanal) ¡Te'elo' yano'ob ka'aten...!"
+            },
+            {
+              "id": 13,
+              "personaje": "J-tsikbal",
+              "texto": "Kutalo'ob te' t'aanil mesail, ya'ab xi'ipalo'ob yéetel x-ch'úupalo'ob ku jaantajo'ob ti' ch'eneb. U ts'a'amaj u nook' buceo, chalecos yéetel ts'íibil INAH yéetel ku bisiko'ob máapas yéetel carpetas mu'uk'an."
+            },
+            {
+              "id": 14,
+              "personaje": "Amaranta",
+              "texto": "(Yéetel u yich tsolil) U j-kuchilo'ob arqueología subacuática... Leti'e' j-máako'ob te' bejo'. Ku kaxtiko'ob jump'éel nojoch ba'al way Tulum. Yéetel in wáayo'ob leti' u beelil utial in kaxtik."
+            }
+          ]
         }
       }
     }
