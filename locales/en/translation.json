@@ -11,7 +11,16 @@
     "credits": "Credits",
     "exit": "Exit",
     "back": "Back",
-    "language": "Language"
+    "language": "Language",
+    "storyMap": "Route Map",
+    "storyMapTitle": "Memory Route Map",
+    "nodeLocked": "Node Locked",
+    "storyMapNodes": {
+      "cap_0": "Chapter 0: Awakening the Map",
+      "cap_1_intro": "Chapter 1: Tulum's Respite",
+      "ruta_a_negligencia": "Alternate Ending: Artificial Silence",
+      "ruta_b_investigacion": "Main Path: The Underwater Legacy"
+    }
   },
   "interface": {
     "signInWithGoogle": "Save to Cloud",
@@ -470,5 +479,58 @@
         }
       }
     }
+  },
+  "credits": {
+    "title": "La Vidente del Agua",
+    "subtitle": "A Narrative Adventure in the Pleistocene",
+    "developmentTeam": "Development Team",
+    "generalCredits": "General Credits",
+    "closeCredits": "Close credits",
+    "backToMenu": "Back to main menu",
+    "roles": {
+      "directionScript": "Direction & Script",
+      "softwareEngineering": "Software Engineering",
+      "interfaceDesign": "Interface Design",
+      "artIllustrations": "Illustrations & Concept Art",
+      "musicBgm": "Music & BGM",
+      "scientificAdvisory": "Scientific Advisory",
+      "specialThanks": "Special Thanks",
+      "producedBy": "Produced by",
+      "technicalDirection": "Technical Direction & Lead Programming",
+      "screenplayNarrative": "Screenplay & Narrative Design",
+      "coArtLeadEnvUI": "Co-Art Lead, Environment & UI Design",
+      "coArtLeadChar": "Co-Art Lead & Character Illustration",
+      "audioMusic": "Sound Design & Music Composition"
+    },
+    "names": {
+      "amarantaRuiz": "Amaranta Ruiz",
+      "alexGomez": "Alex Gomez",
+      "antigravity": "Antigravity AI",
+      "googleAntigravity": "Google Antigravity Team",
+      "tulumArtists": "Tulum Divers & Scientists",
+      "hoyoNegroPaintings": "Hoyo Negro Rock Paintings",
+      "ambientMusic": "Naia Pleistocene Ambient",
+      "soundscapes": "Don Mateo Soundscape",
+      "inahInstitution": "National Institute of Anthropology and History (INAH)",
+      "hoyoNegroCollab": "Hoyo Negro Project Collaborators",
+      "quintanaRooCavediving": "Quintana Roo Cavediving Community",
+      "inahDivers": "INAH Underwater Rescue Divers",
+      "inahGameStudio": "INAH Game Studio 2026",
+      "manuelAzuara": "Manuel Alejandro Azuara V.",
+      "yamileSanchez": "Yamile Sánchez Castro",
+      "fernandaRojas": "María Fernanda Rojas Aquino",
+      "yaquelinMartinez": "Yaquelin Martínez Aldana",
+      "carlosMartinez": "Carlos Gael Martínez Jaimes"
+    }
+  },
+  "gallery": {
+    "title": "Art Gallery",
+    "subtitle": "Illustrations and Findings of the Pleistocene",
+    "page": "Page",
+    "of": "of",
+    "prev": "Previous",
+    "next": "Next",
+    "closeLightbox": "Close viewer",
+    "closeGallery": "Close gallery"
   }
 }

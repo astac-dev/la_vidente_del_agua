@@ -11,7 +11,16 @@
     "credits": "J-beetejilo'ob",
     "exit": "Jóok'ol",
     "back": "Suut",
-    "language": "T'aan"
+    "language": "T'aan",
+    "storyMap": "U beelil tsikbal",
+    "storyMapTitle": "U beelil tsikbal k'a'ajsaj",
+    "nodeLocked": "K'alán u beelil",
+    "storyMapNodes": {
+      "cap_0": "Ts'íits' 0: U lik'il u beelil",
+      "cap_1_intro": "Ts'íits' 1: U je'elel Tulum",
+      "ruta_a_negligencia": "U ts'ook xéot': Ma' jaaj ch'enebil",
+      "ruta_b_investigacion": "Noj bej: U k'ubul yáanal ja'"
+    }
   },
   "interface": {
     "signInWithGoogle": "Li'isaj t'aan ti' muuyal",
@@ -470,5 +479,58 @@
         }
       }
     }
+  },
+  "credits": {
+    "title": "La Vidente del Agua",
+    "subtitle": "Jump'éel Tsikbal Báaxal ti' le Pleistoceno",
+    "developmentTeam": "Múuch' Meyajil",
+    "generalCredits": "Múuch' J-Beetejilo'ob",
+    "closeCredits": "K'al j-beetejilo'ob",
+    "backToMenu": "Suut ti' le yáax chun",
+    "roles": {
+      "directionScript": "U Nu'ukulil yeetel Ts'íib",
+      "softwareEngineering": "Ingeniería ti' Software",
+      "interfaceDesign": "U Yutzkíintal E'esajil",
+      "artIllustrations": "Oochel yeetel Bájutalo'ob",
+      "musicBgm": "Paax yeetel BGM",
+      "scientificAdvisory": "U Nu'ukulil INAH",
+      "specialThanks": "Nojoch Nib Óolal",
+      "producedBy": "Beeta'ab tumen",
+      "technicalDirection": "Nu'ukil Meyajil yéetel Ts'íib-Pat",
+      "screenplayNarrative": "U Ts'íibilo'ob yéetel Nu'ukil Tsikbal",
+      "coArtLeadEnvUI": "Nu'ukil Bon, Noj-Oochelo'ob yéetel UI",
+      "coArtLeadChar": "Nu'ukil Bon yéetel u yoochelo'ob Máako'ob",
+      "audioMusic": "U Kilbalil Juum yéetel u Paaxil Sutt'aan"
+    },
+    "names": {
+      "amarantaRuiz": "Amaranta Ruiz",
+      "alexGomez": "Alex Gomez",
+      "antigravity": "Antigravity AI",
+      "googleAntigravity": "Google Antigravity Team",
+      "tulumArtists": "J-Tulum divers yeetel J-Xak'al",
+      "hoyoNegroPaintings": "U Yoochel e'esajil Hoyo Negro",
+      "ambientMusic": "Naia Pleistocene Ambient",
+      "soundscapes": "Don Mateo Soundscape",
+      "inahInstitution": "Instituto Nacional de Antropología e Historia (INAH)",
+      "hoyoNegroCollab": "Múuch' J-xak'al Hoyo Negro",
+      "quintanaRooCavediving": "Comunidad Espeleobuceo Quintana Roo",
+      "inahDivers": "J-Divers Rescate Subacuático INAH",
+      "inahGameStudio": "INAH Game Studio 2026",
+      "manuelAzuara": "Manuel Alejandro Azuara V.",
+      "yamileSanchez": "Yamile Sánchez Castro",
+      "fernandaRojas": "María Fernanda Rojas Aquino",
+      "yaquelinMartinez": "Yaquelin Martínez Aldana",
+      "carlosMartinez": "Carlos Gael Martínez Jaimes"
+    }
+  },
+  "gallery": {
+    "title": "U wejch'il bájutalo'ob",
+    "subtitle": "Oochel yeetel Xak'alil Pleistoceno",
+    "page": "Páajina",
+    "of": "ti'",
+    "prev": "Yáax",
+    "next": "U láak'",
+    "closeLightbox": "K'al e'esajil",
+    "closeGallery": "K'al wejch'il"
   }
 }
