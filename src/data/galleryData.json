@@ -1,0 +1,114 @@
+[
+  {
+    "id": "mascara_de_la_tierra",
+    "filename": "arte/Mascara de la Tierra.jpg",
+    "title": {
+      "es": "Máscara de la Tierra",
+      "en": "Mask of the Earth",
+      "my": "U K'óobil Lu'um"
+    },
+    "caption": {
+      "es": "Máscara de la Tierra que lleva signos de agua adornando la parte inferior de la Estructura H-X-Sub-3 de Uaxactun, construida en el Preclásico Tardío (200 a.C.-200 d.C., modificado de Schele y Freidel 1990: 138, fig. 4-7).",
+      "en": "Earth Mask bearing water signs adorning the lower part of Structure H-X-Sub-3 of Uaxactun, built in the Late Preclassic (200 B.C.-200 A.D., modified from Schele and Freidel 1990: 138, fig. 4-7).",
+      "my": "U k'óobil Lu'um yéetel u chíikulal ja' ku yutzkíintik u yáanal u chunpakil le E'esajil H-X-Sub-3 ti' Uaxactun, beeta'ab ti' le Uts'ook Preclásico (200 a.C.-200 d.C., k'exi' ti' Schele yéetel Freidel 1990: 138, fig. 4-7)."
+    }
+  },
+  {
+    "id": "item_2",
+    "filename": "logo.jpg",
+    "title": {
+      "es": "Logotipo La Vidente del Agua",
+      "en": "La Vidente del Agua Logo",
+      "my": "U chíikulal La Vidente del Agua"
+    },
+    "caption": {
+      "es": "Logotipo oficial de la experiencia interactiva que narra los misterios arqueológicos sumergidos.",
+      "en": "Official logo of the interactive experience narrating submerged archaeological mysteries.",
+      "my": "U noj chíikulal le báaxal ku tsikbaltik u yáanal ja' xak'al meyaj."
+    }
+  },
+  {
+    "id": "item_3",
+    "filename": "assets/ui/fondo_menu_principal.jpg",
+    "title": {
+      "es": "Fondo del Menú Principal",
+      "en": "Main Menu Background",
+      "my": "U yoochel yáax chun"
+    },
+    "caption": {
+      "es": "Ilustración de la selva y el portal del cenote iluminado bajo la luna pleistocénica.",
+      "en": "Illustration of the jungle and the cenote portal illuminated under the Pleistocene moon.",
+      "my": "U yoochel le k'áax yéetel u joolil le ch'e'en yáanal u j-ujil Pleistoceno."
+    }
+  },
+  {
+    "id": "item_4",
+    "filename": "logo.jpg",
+    "title": {
+      "es": "Glifo de Agua",
+      "en": "Water Glyph",
+      "my": "U chíikulal ja'"
+    },
+    "caption": {
+      "es": "Símbolo ancestral del agua fluyendo que representa los canales subterráneos de Yucatán.",
+      "en": "Ancestral symbol of flowing water representing the underground canals of Yucatan.",
+      "my": "U yáax chíikulal le ja' ku yáalkab representing u beelil ja' ti' Yucatán."
+    }
+  },
+  {
+    "id": "item_5",
+    "filename": "logo.jpg",
+    "title": {
+      "es": "Espejo del Tiempo",
+      "en": "Mirror of Time",
+      "my": "U nenil k'iin"
+    },
+    "caption": {
+      "es": "Reflejo del agua cristalina en las profundidades que conecta el pasado Pleistocénico con el presente.",
+      "en": "Reflection of crystalline water in the deep connecting the Pleistocene past with the present.",
+      "my": "U yich ja' ku léets'bal yáanal ja' ku nupik u beelil úuch yéetel bejla'e'."
+    }
+  },
+  {
+    "id": "item_6",
+    "filename": "logo.jpg",
+    "title": {
+      "es": "Portal de Hoyo Negro",
+      "en": "Hoyo Negro Portal",
+      "my": "U jool Hoyo Negro"
+    },
+    "caption": {
+      "es": "Entrada natural a una de las cuevas inundadas más importantes de la península de Yucatán.",
+      "en": "Natural entrance to one of the most important flooded caves in the Yucatan peninsula.",
+      "my": "U joolil le noj ch'e'en but'án yéetel ja' ti' le lu'umil Yucatán."
+    }
+  },
+  {
+    "id": "item_7",
+    "filename": "logo.jpg",
+    "title": {
+      "es": "Exploración Subacuática",
+      "en": "Underwater Exploration",
+      "my": "Xak'al yáanal ja'"
+    },
+    "caption": {
+      "es": "Registro visual de los buzos científicos mapeando las profundidades calcáreas de Quintana Roo.",
+      "en": "Visual record of scientific divers mapping the limestone depths of Quintana Roo.",
+      "my": "U yoochel j-xak'alo'ob yáanal ja' ku beetej u ts'íibilo'ob Quintana Roo."
+    }
+  },
+  {
+    "id": "item_8",
+    "filename": "logo.jpg",
+    "title": {
+      "es": "Huesos del Pasado",
+      "en": "Bones of the Past",
+      "my": "U baakil úuch"
+    },
+    "caption": {
+      "es": "Restos fósiles de megafauna extinta recuperados por los arqueólogos del INAH.",
+      "en": "Fossil remains of extinct megafauna recovered by INAH archaeologists.",
+      "my": "U baakil noj ba'alche'ob ts'o'ok u k'astal beeta'ab tumen J-xak'al INAH."
+    }
+  }
+]

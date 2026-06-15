@@ -1,0 +1,302 @@
+/* src/components/CreditsScreen.css */
+
+.credits-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: #ffffff;
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  user-select: none;
+}
+
+/* Capas de Fondo Duales para Crossfade */
+.credits-bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 1500ms ease-in-out, filter 1500ms ease-in-out, transform 1500ms ease-in-out;
+  pointer-events: none;
+}
+
+.credits-bg-layer.under {
+  z-index: 1;
+}
+
+.credits-bg-layer.over {
+  z-index: 2;
+}
+
+/* Efecto Kinetic-Parallax para la Imagen de Fondo (Ken Burns + Blur) */
+.credits-bg-layer.kinetic {
+  animation: bg-kinetic-anim var(--animation-duration) linear forwards;
+}
+
+@keyframes bg-kinetic-anim {
+  0% {
+    transform: scale(1.02);
+    filter: blur(4px);
+  }
+  15% {
+    filter: blur(0px);
+  }
+  85% {
+    filter: blur(0px);
+  }
+  100% {
+    transform: scale(1.10);
+    filter: blur(3px);
+  }
+}
+
+/* Overlay de Oscurecimiento Premium */
+.credits-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Contenedor de Contenido */
+.credits-content-container {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* --- ANIMACIONES DE TEXTO --- */
+
+/* 1. FADE (Estático en el Centro) */
+.credits-block-fade {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  animation: text-fade-anim var(--animation-duration) cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes text-fade-anim {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  12% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  88% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* 2. KINETIC PARALLAX (Cine Moderno) */
+.credits-block-kinetic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 850px;
+  animation: text-kinetic-anim var(--animation-duration) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes text-kinetic-anim {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateZ(0);
+    filter: blur(8px);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1.0) translateZ(0);
+    filter: blur(0px);
+  }
+  82% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.05) translateZ(0);
+    filter: blur(6px);
+  }
+}
+
+/* 3. SCROLL (Desplazamiento Clásico) */
+.credits-block-scroll {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  animation: text-scroll-anim var(--animation-duration) linear forwards;
+}
+
+@keyframes text-scroll-anim {
+  0% {
+    transform: translateY(90vh);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+}
+
+/* --- ELEMENTOS DE TIPOGRAFÍA --- */
+
+.credits-title-large {
+  font-family: 'Kaushan Script', cursive, sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: normal;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #a5f3fc 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+}
+
+.credits-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 300;
+  color: #e2e8f0;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.credits-title-medium {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: #22d3ee;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid rgba(34, 211, 238, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+/* Grillas de Roles y Nombres */
+.credits-roles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.credits-block-scroll .credits-roles-grid {
+  gap: 2.2rem;
+}
+
+.credits-role-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* En resoluciones grandes, dividimos rol y nombres a los lados */
+@media (min-width: 600px) {
+  .credits-role-pair {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    text-align: left;
+    gap: 2rem;
+  }
+
+  .credits-role-name {
+    text-align: right;
+  }
+}
+
+.credits-role-label {
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  font-weight: 400;
+  color: #a5f3fc;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
+.credits-role-name {
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.credits-role-name-item {
+  margin-bottom: 0.2rem;
+}
+
+/* --- BOTÓN DE CERRAR --- */
+
+.credits-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.credits-close-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #22d3ee;
+  color: #22d3ee;
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+}
+
+.credits-close-btn:active {
+  transform: scale(0.9) rotate(90deg);
+}
+
+.credits-close-btn svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}

@@ -11,7 +11,16 @@
     "credits": "Créditos",
     "exit": "Salir",
     "back": "Volver",
-    "language": "Idioma"
+    "language": "Idioma",
+    "storyMap": "Mapa de Rutas",
+    "storyMapTitle": "Mapa de Rutas de la Memoria",
+    "nodeLocked": "Nodo Bloqueado",
+    "storyMapNodes": {
+      "cap_0": "Capítulo 0: El Despertar del Mapa",
+      "cap_1_intro": "Capítulo 1: El Respiro de Tulum",
+      "ruta_a_negligencia": "Final Alterno: Silencio Artificial",
+      "ruta_b_investigacion": "Ruta Principal: El Legado Subacuático"
+    }
   },
   "interface": {
     "signInWithGoogle": "Guardar en la Nube",
@@ -804,5 +813,58 @@
         }
       }
     }
+  },
+  "credits": {
+    "title": "La Vidente del Agua",
+    "subtitle": "Una Aventura Narrativa en el Pleistoceno",
+    "developmentTeam": "Equipo de Desarrollo",
+    "generalCredits": "Créditos Generales",
+    "closeCredits": "Cerrar créditos",
+    "backToMenu": "Volver al menú principal",
+    "roles": {
+      "directionScript": "Dirección y Guion",
+      "softwareEngineering": "Ingeniería de Software",
+      "interfaceDesign": "Diseño de Interfaz",
+      "artIllustrations": "Ilustraciones y Concept Art",
+      "musicBgm": "Música y BGM",
+      "scientificAdvisory": "Asesoría Científica",
+      "specialThanks": "Agradecimientos Especiales",
+      "producedBy": "Producido por",
+      "technicalDirection": "Dirección Técnica y Programación Principal",
+      "screenplayNarrative": "Guion y Diseño Narrativo",
+      "coArtLeadEnvUI": "Co-Liderazgo de Arte, Fondos e Interfaz de Usuario",
+      "coArtLeadChar": "Co-Liderazgo de Arte e Ilustración de Personajes",
+      "audioMusic": "Diseño de Audio y Composición Musical"
+    },
+    "names": {
+      "amarantaRuiz": "Amaranta Ruiz",
+      "alexGomez": "Alex Gomez",
+      "antigravity": "Antigravity AI",
+      "googleAntigravity": "Google Antigravity Team",
+      "tulumArtists": "Buzos y Científicos de Tulum",
+      "hoyoNegroPaintings": "Pinturas Rupestres Hoyo Negro",
+      "ambientMusic": "Naia Pleistocene Ambient",
+      "soundscapes": "Don Mateo Soundscape",
+      "inahInstitution": "Instituto Nacional de Antropología e Historia (INAH)",
+      "hoyoNegroCollab": "Colaboradores del Proyecto Hoyo Negro",
+      "quintanaRooCavediving": "Comunidad de Espeleobuceo de Quintana Roo",
+      "inahDivers": "Buzos de Rescate Subacuático del INAH",
+      "inahGameStudio": "INAH Game Studio 2026",
+      "manuelAzuara": "Manuel Alejandro Azuara V.",
+      "yamileSanchez": "Yamile Sánchez Castro",
+      "fernandaRojas": "María Fernanda Rojas Aquino",
+      "yaquelinMartinez": "Yaquelin Martínez Aldana",
+      "carlosMartinez": "Carlos Gael Martínez Jaimes"
+    }
+  },
+  "gallery": {
+    "title": "Galería de Arte",
+    "subtitle": "Ilustraciones y Hallazgos del Pleistoceno",
+    "page": "Página",
+    "of": "de",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "closeLightbox": "Cerrar visor",
+    "closeGallery": "Cerrar galería"
   }
 }

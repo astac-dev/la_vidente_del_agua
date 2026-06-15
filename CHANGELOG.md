@@ -1,5 +1,82 @@
 # Historial de Cambios
 
+## [0.3.14] - 2026-06-15
+
+### Añadido
+- **Pantalla de Carga Real (`loader.js`)**: Reemplazada la simulación por un sistema de precarga real que descarga secuencialmente los 10 recursos multimedia y tipográficos más pesados del juego, calculando el progreso acumulado según los bytes reales transferidos (vía stream reader de HTTP) y mostrando dinámicamente el nombre y tamaño de cada archivo en pantalla.
+
+## [0.3.13] - 2026-06-15
+
+### Cambiado
+- **Submenú de Extras (`ExtrasMenu.jsx`)**: Removida la opción "Selector de escenas" (Scene Selector) según la solicitud de limpieza del menú de extras.
+
+## [0.3.12] - 2026-06-15
+
+### Corregido
+- **Botón Cerrar de la Galería (`GalleryMenu.jsx` & `GalleryMenu.css`)**:
+  - Se simplificó la navegación llamando a `onBack()` directamente al hacer clic en el botón de cierre, delegando de forma consistente la animación de salida en la clase cinematográfica del contenedor `App.jsx`. Esto elimina la condición de carrera por eventos de animación bubbled.
+  - Se incrementó el `z-index: 10` del botón de cierre para garantizar que se posicione sobre el encabezado y sea completamente interactivo.
+
+## [0.3.11] - 2026-06-15
+
+### Añadido
+- **Sistema Modular de Galería de Arte (`GalleryMenu.jsx`, `GalleryMenu.css`, `galleryData.json`)**: Creación de un menú e interfaz a pantalla completa para la galería de arte, configurada externamente mediante JSON y con soporte trilingüe dinámico.
+- **Paginación Inteligente**: Limita la visualización de imágenes a un máximo de 6 por página, calculando y gestionando dinámicamente las páginas y controles de navegación anterior/siguiente.
+- **Lightbox de Detalle**: Modal interactivo inmersivo que maximiza la obra al hacer clic e incluye un panel lateral/inferior de información (título y pie de foto) localizado, con soporte para scroll interno en textos de gran longitud.
+- **Traducciones Multilingües del Sistema de Galería**: Integradas claves de traducción de interfaz de la galería (`gallery.title`, `gallery.page`, etc.) en español, inglés y maya yucateco.
+
+## [0.3.10] - 2026-06-15
+
+### Añadido
+- **Matriz de Responsabilidades de Créditos (`creditsData.json`)**: Configurado el bloque de desarrollo principal (`block2`) con los 5 cargos profesionales del equipo y los nombres de los desarrolladores correspondientes.
+- **Traducciones Multilingües de la Matriz (`translation.json`)**: Mapeadas e integradas las traducciones oficiales de los 5 roles profesionales en Español, Inglés y Maya Yucateco.
+
+## [0.3.9] - 2026-06-15
+
+### Cambiado
+- **Localización Total de Créditos (`CreditsScreen.jsx`)**: Se reemplazaron los atributos de texto hardcodeados (`aria-label` y `title`) del botón de cierre por claves de traducción dinámicas utilizando el hook `useTranslation`.
+- **Traducciones Multi-idioma del Botón (`translation.json`)**: Agregadas las claves `"closeCredits"` y `"backToMenu"` en español, inglés y maya yucateco bajo el namespace `"credits"`.
+
+## [0.3.8] - 2026-06-15
+
+### Añadido
+- **Pantalla de Créditos Cinematográficos (`CreditsScreen.jsx`)**: Creación de un componente premium para presentar los créditos del juego, integrado con transiciones de fundido cinematográficas automáticas controladas por tiempo.
+- **Configuración mediante JSON (`creditsData.json`)**: Configuración descentralizada que permite establecer las personas, sus roles, imágenes de fondo, duración de exhibición y tipo de animación para cada diapositiva de créditos.
+- **Efectos y Estilos de Animación Premium (`CreditsScreen.css`)**:
+  - `fade`: Texto estático en el centro con transición suave de opacidad y desplazamiento.
+  - `scroll`: Desplazamiento clásico vertical de abajo hacia arriba con velocidad de movimiento controlada por la duración.
+  - `kinetic-parallax`: Zoom suave de fondo (efecto Ken Burns) combinado con desenfoque (`blur`) gradual y ligero zoom forward del texto para otorgar una profundidad cinematográfica.
+- **Salida Interactiva Rápida**: Permitida la interrupción y regreso inmediato al menú principal en cualquier instante presionando cualquier tecla física del teclado o haciendo clic en el botón flotante de cierre (`X`).
+
+### Cambiado
+- **Integración en Menú Principal (`MainMenu.jsx`)**: Vinculación del botón "Créditos" para navegar a la vista de créditos.
+- **Navegación Fluida (`App.jsx`)**: Registro de la nueva vista de créditos para heredar las transiciones de pantalla completa de fundido a negro y bloqueo de orientación.
+
+## [0.3.7] - 2026-06-15
+
+### Añadido
+- **Sincronización Bidireccional de Guardados**: Implementada la lógica de sincronización al iniciar sesión en `GameStateContext.jsx`, la cual compara ranuras locales y de la nube y conserva las más recientes por marca de tiempo (`timestamp`). Además, realiza una fusión de nodos desbloqueados (`unlockedNodes`) para evitar la pérdida de progreso.
+- **Soporte Offline Robusto**: La persistencia del juego se escribe siempre a `localStorage`, actuando como caché local e impidiendo la pérdida de datos si la conexión con la base de datos de Firebase falla o se interrumpe temporalmente.
+- **Reglas de Seguridad en Firestore**: Creado el archivo de configuración `firestore.rules` que limita las lecturas y escrituras en la colección `usuarios_progreso/{userId}` de tal modo que sólo el usuario autenticado propietario del UID correspondiente pueda acceder a sus datos.
+
+### Cambiado
+- **Marcas de Tiempo en Configuración**: Añadido el campo `lastUpdated` a `settings` para posibilitar la comparación cronológica y resolución automática de conflictos en las opciones del usuario.
+- **Documentación de Código**: Incorporación de comentarios JSDoc/TSDoc en funciones y hooks clave de `GameStateContext.jsx` aclarando el "por qué" de su diseño y flujo lógico interno.
+
+## [0.3.6] - 2026-06-14
+
+### Añadido
+- **Mapa de Rutas de la Memoria (StoryMap)**: Implementación de un mapa interactivo con raíces bioluminiscentes en SVG utilizando la pintura rupestre `mapa_novela.png` como fondo. Los caminos crecen y brillan cian/verde/rojo dinámicamente según se desbloqueen los capítulos.
+- **Acceso Directo en Extras**: Añadida la opción "Mapa de Rutas" directamente al menú de Extras junto a "Galería de Arte".
+- **Miniaturas de Capítulos**: Creadas 4 miniaturas PNG circulares para los nodos de los capítulos 0, 1 y las dos bifurcaciones críticas.
+- **Saltos de Navegación**: Permitido el salto directo a cualquier capítulo o ruta desbloqueada desde los nodos del mapa.
+
+### Cambiado
+- **Persistencia de Desbloqueo**: Guardado de los nodos desbloqueados globalmente en la configuración general del perfil y actualización retroactiva en la carga de partidas.
+- **Restructuración a Pantalla Completa**: Se extrajo el Mapa de Rutas de la restricción del contenedor `menu-container` principal para renderizarlo de manera independiente y en pantalla completa a un ratio 16:9, evitando interferencias con los menús de fondo.
+- **Transiciones Cinematográficas de Entrada/Salida**: Implementadas transiciones fluidas de fundido a negro (1.5 segundos) al navegar al mapa y al regresar a los menús.
+- **Localización Completa e Interactiva**: Se corrigieron los atributos nativos de tooltips (`title`) y textos alternativos (`alt`) para que respondan dinámicamente al idioma activo (Español, Inglés y Maya).
+
 ## [0.3.5] - 2026-06-13
 
 ### Añadido

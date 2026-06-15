@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Reglas de seguridad para las partidas de la novela visual
+    match /usuarios_progreso/{userId} {
+      // Solo permite lectura y escritura si el usuario está autenticado y accede a su propio ID de documento
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}

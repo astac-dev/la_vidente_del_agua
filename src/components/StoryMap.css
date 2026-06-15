@@ -1,0 +1,90 @@
+/* src/components/StoryMap.css */
+
+.story-map-screen {
+  background-color: #000000;
+  font-family: var(--font-family, sans-serif);
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Glassmorphism Header */
+.story-map-header {
+  border-bottom: none;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.story-map-title {
+  color: var(--amber-400, #f59e0b);
+  font-family: var(--font-family, sans-serif);
+}
+
+/* Contenedor del Mapa */
+.story-map-wrapper {
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95), inset 0 0 80px rgba(0, 0, 0, 0.95);
+}
+
+/* Botón del Nodo */
+.story-map-node-btn {
+  width: calc(48px * var(--ui-scale-multiplier, 1));
+  height: calc(48px * var(--ui-scale-multiplier, 1));
+  cursor: pointer;
+  outline: none;
+  background-color: #000;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  pointer-events: auto;
+}
+
+.story-map-node-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px currentColor !important;
+}
+
+/* Animación de respiración / parpadeo para nodos desbloqueados */
+.node-unlocked .story-map-node-btn {
+  animation: nodeGlowPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes nodeGlowPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Etiquetas flotantes de los Nodos (Tooltips) */
+.story-map-node-label {
+  top: calc(56px * var(--ui-scale-multiplier, 1));
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 50;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  font-size: calc(9px * var(--ui-scale-multiplier, 1));
+}
+
+.story-map-node-wrapper:hover .story-map-node-label {
+  opacity: 1;
+}
+
+/* Transiciones SVG bioluminiscentes */
+svg path {
+  transition: stroke 1s ease, filter 1s ease, stroke-width 1s ease;
+}
+
+/* Responsive Scaling */
+@media (max-width: 640px) {
+  .story-map-node-btn {
+    width: calc(36px * var(--ui-scale-multiplier, 1));
+    height: calc(36px * var(--ui-scale-multiplier, 1));
+  }
+  .story-map-node-label {
+    top: calc(42px * var(--ui-scale-multiplier, 1));
+    font-size: calc(8px * var(--ui-scale-multiplier, 1));
+  }
+}

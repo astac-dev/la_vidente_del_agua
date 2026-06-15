@@ -1,0 +1,79 @@
+[
+  {
+    "id": "block1",
+    "animationType": "fade",
+    "duration": 5000,
+    "background": "/assets/ui/fondo_menu_principal.jpg",
+    "title": "credits.title",
+    "subtitle": "credits.subtitle",
+    "roles": []
+  },
+  {
+    "id": "block2",
+    "animationType": "kinetic-parallax",
+    "duration": 9500,
+    "background": "/arte/Ame_2016_arnauld_fig3.jpg",
+    "title": "credits.developmentTeam",
+    "roles": [
+      {
+        "role": "credits.roles.technicalDirection",
+        "names": ["credits.names.manuelAzuara"]
+      },
+      {
+        "role": "credits.roles.screenplayNarrative",
+        "names": ["credits.names.yamileSanchez"]
+      },
+      {
+        "role": "credits.roles.coArtLeadEnvUI",
+        "names": ["credits.names.fernandaRojas"]
+      },
+      {
+        "role": "credits.roles.coArtLeadChar",
+        "names": ["credits.names.yaquelinMartinez"]
+      },
+      {
+        "role": "credits.roles.audioMusic",
+        "names": ["credits.names.carlosMartinez"]
+      }
+    ]
+  },
+  {
+    "id": "block3",
+    "animationType": "scroll",
+    "duration": 13000,
+    "background": "/assets/ui/fondo_menu_principal.jpg",
+    "title": "credits.generalCredits",
+    "roles": [
+      {
+        "role": "credits.roles.artIllustrations",
+        "names": [
+          "credits.names.tulumArtists",
+          "credits.names.hoyoNegroPaintings"
+        ]
+      },
+      {
+        "role": "credits.roles.musicBgm",
+        "names": [
+          "credits.names.ambientMusic",
+          "credits.names.soundscapes"
+        ]
+      },
+      {
+        "role": "credits.roles.scientificAdvisory",
+        "names": ["credits.names.inahInstitution"]
+      },
+      {
+        "role": "credits.roles.specialThanks",
+        "names": [
+          "credits.names.hoyoNegroCollab",
+          "credits.names.quintanaRooCavediving",
+          "credits.names.inahDivers"
+        ]
+      },
+      {
+        "role": "credits.roles.producedBy",
+        "names": ["credits.names.inahGameStudio"]
+      }
+    ]
+  }
+]

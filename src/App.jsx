@@ -2,9 +2,12 @@ import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import MainMenu from './components/MainMenu';
 import ExtrasMenu from './components/ExtrasMenu';
 import ContinueMenu from './components/ContinueMenu';
+import StoryMap from './components/StoryMap';
 import LanguageSelector from './components/LanguageSelector';
 import OptionsMenu from './components/OptionsMenu';
 import GameEngine from './components/VisualNovel/GameEngine';
+import CreditsScreen from './components/CreditsScreen';
+import GalleryMenu from './components/GalleryMenu';
 import OrientationBlocker from './components/VisualNovel/OrientationBlocker';
 import ClickToContinue from './components/ClickToContinue';
 import ExitScreen from './components/ExitScreen';
@@ -90,7 +93,7 @@ const App = () => {
   const handleNavigate = (view) => {
     if (view !== currentView && animationClass !== 'fade-out' && animationClass !== 'fade-out-cinematic') {
       nextViewRef.current = view;
-      if (view === 'visualNovel' || currentView === 'visualNovel') {
+      if (view === 'visualNovel' || currentView === 'visualNovel' || view === 'storyMap' || currentView === 'storyMap' || view === 'credits' || currentView === 'credits' || view === 'artGallery' || currentView === 'artGallery') {
         setAnimationClass('fade-out-cinematic');
       } else {
         setAnimationClass('fade-out');
@@ -101,7 +104,7 @@ const App = () => {
   const handleAnimationEnd = () => {
     if (animationClass === 'fade-out' || animationClass === 'fade-out-cinematic') {
       setCurrentView(nextViewRef.current);
-      if (nextViewRef.current === 'visualNovel' || currentView === 'visualNovel') {
+      if (nextViewRef.current === 'visualNovel' || currentView === 'visualNovel' || nextViewRef.current === 'storyMap' || currentView === 'storyMap' || nextViewRef.current === 'credits' || currentView === 'credits' || nextViewRef.current === 'artGallery' || currentView === 'artGallery') {
         setAnimationClass('fade-in-cinematic');
       } else {
         setAnimationClass('fade-in');
@@ -112,13 +115,19 @@ const App = () => {
   const renderView = () => {
     switch (currentView) {
       case 'extrasMenu':
-        return <ExtrasMenu onBack={() => handleNavigate('mainMenu')} />;
+        return <ExtrasMenu onBack={() => handleNavigate('mainMenu')} onNavigate={handleNavigate} />;
+      case 'storyMap':
+        return <StoryMap onBack={() => handleNavigate('extrasMenu')} onNavigate={handleNavigate} />;
       case 'optionsMenu':
         return <OptionsMenu onBack={() => handleNavigate('mainMenu')} />;
       case 'continueMenu':
         return <ContinueMenu onBack={() => handleNavigate('mainMenu')} onNavigate={handleNavigate} />;
       case 'visualNovel':
         return <GameEngine onNavigate={handleNavigate} />;
+      case 'credits':
+        return <CreditsScreen onBack={() => handleNavigate('mainMenu')} />;
+      case 'artGallery':
+        return <GalleryMenu onBack={() => handleNavigate('extrasMenu')} />;
       case 'mainMenu':
       default:
         return <MainMenu onNavigate={handleNavigate} onExit={() => setIsExited(true)} />;
@@ -133,7 +142,7 @@ const App = () => {
     return <ExitScreen />;
   }
 
-  if (currentView === 'visualNovel') {
+  if (currentView === 'visualNovel' || currentView === 'storyMap' || currentView === 'credits' || currentView === 'artGallery') {
     return (
       <>
         <div className={animationClass} onAnimationEnd={handleAnimationEnd}>
