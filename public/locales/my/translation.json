@@ -83,7 +83,7 @@
             {
               "id": 1,
               "personaje": "Sistema",
-              "texto": "[ENTRA SPRITE: SP_NAIA_NEU CENTRO]\nNaia ku yáalkab te' chuunpak yéetel jump'éel ch'ilich' t'áabaj ma' t'áabani'. Ku yilik u tselilo'ob le visor yéetel ki'imak óolal, ku yilik u yich j-báaxal."
+              "texto": "Naia ku yáalkab te' chuunpak yéetel jump'éel ch'ilich' t'áabaj ma' t'áabani'. Ku yilik u tselilo'ob le visor yéetel ki'imak óolal, ku yilik u yich j-báaxal."
             },
             {
               "id": 2,
@@ -98,7 +98,7 @@
             {
               "id": 4,
               "personaje": "Sistema",
-              "texto": "[EFECTO VISUAL: U yoochel ja' tu ts'o'okol le ch'iich' ku t'áabal cian]"
+              "texto": "U yoochel ja' tu ts'o'okol le ch'iich' ku t'áabal cian."
             },
             {
               "id": 5,
@@ -108,7 +108,7 @@
             {
               "id": 6,
               "personaje": "Sistema",
-              "texto": "[EFECTO VISUAL: U nu'ukulil ka'anal ku t'áabal jump'éelil ti' jump'éel]"
+              "texto": "U nu'ukulil ka'anal ku t'áabal jump'éelil ti' jump'éel."
             },
             {
               "id": 7,
@@ -143,7 +143,7 @@
             {
               "id": 13,
               "personaje": "Naia",
-              "texto": "(Ku t'áabik u ch'ilich' yéetel jump'éel t'áabaj, u yich ma'alob) Le máapa ts'o'ok u beetal yeetel u nu'ukulil yaan, x-caminante. U peek' u yook Hoyo Negro ts'o'oki'... ¿a k'áat a máanal tin wéetel te' e'esajil?"
+              "texto": "Le máapa ts'o'ok u beetal yeetel u nu'ukulil yaan, x-caminante. U peek' u yook Hoyo Negro ts'o'oki'... ¿a k'áat a máanal tin wéetel te' e'esajil?"
             }
           ]
         },
@@ -177,7 +177,7 @@
             {
               "id": 1,
               "personaje": "Sistema",
-              "texto": "[ENTRA SPRITE: SP_NAIA_NEU CENTRO]\nNaia ku yáalkab te' chuunpak yéetel jump'éel ch'ilich' t'áabaj ma' t'áabani'. Ku yilik u tselilo'ob le visor yéetel ki'imak óolal, ku yilik u yich j-báaxal."
+              "texto": "Naia ku yáalkab te' chuunpak yéetel jump'éel ch'ilich' t'áabaj ma' t'áabani'. Ku yilik u tselilo'ob le visor yéetel ki'imak óolal, ku yilik u yich j-báaxal."
             },
             {
               "id": 2,
@@ -192,7 +192,7 @@
             {
               "id": 4,
               "personaje": "Sistema",
-              "texto": "[EFECTO VISUAL: U yoochel ja' tu ts'o'okol le ch'iich' ku t'áabal cian]"
+              "texto": "U yoochel ja' tu ts'o'okol le ch'iich' ku t'áabal cian."
             },
             {
               "id": 5,
@@ -202,7 +202,7 @@
             {
               "id": 6,
               "personaje": "Sistema",
-              "texto": "[EFECTO VISUAL: U nu'ukulil ka'anal ku t'áabal jump'éelil ti' jump'éel]"
+              "texto": "U nu'ukulil ka'anal ku t'áabal jump'éelil ti' jump'éel."
             },
             {
               "id": 7,
@@ -237,7 +237,7 @@
             {
               "id": 13,
               "personaje": "Naia",
-              "texto": "(Ku t'áabik u ch'ilich' yéetel jump'éel t'áabaj, u yich ma'alob) Le máapa ts'o'ok u beetal yeetel u nu'ukulil yaan, x-caminante. U peek' u yook Hoyo Negro ts'o'oki'... ¿a k'áat a máanal tin wéetel te' e'esajil?"
+              "texto": "Le máapa ts'o'ok u beetal yeetel u nu'ukulil yaan, x-caminante. U peek' u yook Hoyo Negro ts'o'oki'... ¿a k'áat a máanal tin wéetel te' e'esajil?"
             }
           ]
         },

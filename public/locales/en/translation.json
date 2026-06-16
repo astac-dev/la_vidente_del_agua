@@ -83,7 +83,7 @@
             {
               "id": 1,
               "personaje": "System",
-              "texto": "[ENTRA SPRITE: SP_NAIA_NEU CENTRO]\nNaia appears on screen holding a small unlit torch. She observes the edges of the frame with curiosity and then looks directly at the player."
+              "texto": "Naia appears on screen holding a small unlit torch. She observes the edges of the frame with curiosity and then looks directly at the player."
             },
             {
               "id": 2,
@@ -98,7 +98,7 @@
             {
               "id": 4,
               "personaje": "System",
-              "texto": "[VISUAL EFFECT: The water symbol at the end of the box starts blinking in cyan]"
+              "texto": "The water symbol at the end of the box starts blinking in cyan."
             },
             {
               "id": 5,
@@ -108,7 +108,7 @@
             {
               "id": 6,
               "personaje": "System",
-              "texto": "[VISUAL EFFECT: The control buttons on the upper frame light up one by one]"
+              "texto": "The control buttons on the upper frame light up one by one."
             },
             {
               "id": 7,
@@ -143,7 +143,7 @@
             {
               "id": 13,
               "personaje": "Naia",
-              "texto": "(Lights her torch with a flash, serious and determined expression) The map is drawn and the tools ready, explorer. The Hoyo Negro trail is fresh... are you ready to enter the darkness with me?"
+              "texto": "The map is drawn and the tools ready, explorer. The Hoyo Negro trail is fresh... are you ready to enter the darkness with me?"
             }
           ]
         },
@@ -177,7 +177,7 @@
             {
               "id": 1,
               "personaje": "System",
-              "texto": "[ENTRA SPRITE: SP_NAIA_NEU CENTRO]\nNaia appears on screen holding a small unlit torch. She observes the edges of the frame with curiosity and then looks directly at the player."
+              "texto": "Naia appears on screen holding a small unlit torch. She observes the edges of the frame with curiosity and then looks directly at the player."
             },
             {
               "id": 2,
@@ -192,7 +192,7 @@
             {
               "id": 4,
               "personaje": "System",
-              "texto": "[VISUAL EFFECT: The water symbol at the end of the box starts blinking in cyan]"
+              "texto": "The water symbol at the end of the box starts blinking in cyan."
             },
             {
               "id": 5,
@@ -202,7 +202,7 @@
             {
               "id": 6,
               "personaje": "System",
-              "texto": "[VISUAL EFFECT: The control buttons on the upper frame light up one by one]"
+              "texto": "The control buttons on the upper frame light up one by one."
             },
             {
               "id": 7,
@@ -237,7 +237,7 @@
             {
               "id": 13,
               "personaje": "Naia",
-              "texto": "(Lights her torch with a flash, serious and determined expression) The map is drawn and the tools ready, explorer. The Hoyo Negro trail is fresh... are you ready to enter the darkness with me?"
+              "texto": "The map is drawn and the tools ready, explorer. The Hoyo Negro trail is fresh... are you ready to enter the darkness with me?"
             }
           ]
         },

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useVisualNovelEngine } from '../../hooks/useVisualNovelEngine';
 import { useGameState } from '../../context/GameStateContext';
+import { useTypewriter } from '../../hooks/useTypewriter';
 import BackgroundLayer from './BackgroundLayer';
 import CharacterLayer from './CharacterLayer';
 import DialogueBox from './DialogueBox';
@@ -199,6 +200,10 @@ const GameEngine = ({ onNavigate }) => {
     console.log("Historial de Diálogo (lógica pendiente)");
   };
 
+  const dialogueKey = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.dialogos.${gameState?.dialogueIndex}.texto`;
+  const translatedDialogue = t(dialogueKey, currentLine?.texto);
+  const { displayedText, isTyping } = useTypewriter(translatedDialogue, 40);
+
   if (!scriptData || !currentScene) {
     return (
       <div className="ark-view-wrapper w-full h-screen bg-neutral-950 flex items-center justify-center">
@@ -210,9 +215,6 @@ const GameEngine = ({ onNavigate }) => {
   }
 
   const buttonBaseClasses = "hud-button-custom relative flex flex-col items-center justify-center transition-all duration-150 bg-black/40 border border-neutral-800 hover:bg-neutral-900/80 hover:border-amber-400 text-neutral-400 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed pointer-events-auto";
-
-  const dialogueKey = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.dialogos.${gameState?.dialogueIndex}.texto`;
-  const translatedDialogue = t(dialogueKey, currentLine?.texto);
 
   const questionKey = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.elecciones.pregunta`;
   const translatedQuestion = t(questionKey, currentScene?.pregunta);
@@ -245,7 +247,23 @@ const GameEngine = ({ onNavigate }) => {
             </div>
           )}
           <BackgroundLayer background={currentScene.background} />
-          <CharacterLayer sprites={currentLine?.sprites || currentScene.sprites} />
+          <CharacterLayer 
+            sprites={
+              currentLine?.character_sprite 
+                ? [{
+                    id: currentLine.personaje || 'naia',
+                    src: currentLine.character_sprite.startsWith('/') 
+                      ? currentLine.character_sprite 
+                      : `/${currentLine.character_sprite}`,
+                    position: currentLine.position || 'center',
+                    expression: currentLine.expression,
+                    entry_animation: currentLine.entry_animation,
+                    isTalking: isTyping && (currentLine.personaje === 'naia' || currentLine.personaje === 'amaranta'),
+                    vibrationIntensity: currentLine.wiggle_effect || 'normal'
+                  }]
+                : (currentLine?.sprites || currentScene.sprites)
+            } 
+          />
           <div className="scene-overlay" />
           
           {/* Overlay de transición de fundido a negro (fade out/in) */}
@@ -336,7 +354,7 @@ const GameEngine = ({ onNavigate }) => {
                 <DialogueBox
                   key={translatedDialogue} 
                   character={currentLine.personaje}
-                  text={translatedDialogue}
+                  text={displayedText}
                   isHighlighted={currentLine?.highlight === 'dialogue-box'}
                 />
               )}

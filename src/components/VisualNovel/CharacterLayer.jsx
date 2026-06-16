@@ -24,13 +24,26 @@ const CharacterLayer = React.memo(({ sprites }) => {
         const spriteSrc = sprite.src.startsWith('/') 
           ? `${import.meta.env.BASE_URL}${sprite.src.slice(1)}` 
           : sprite.src;
+
+        const positionClass = getPositionClasses(sprite.position);
+
+        // Determinar clases de animación
+        let talkingClasses = '';
+        if (sprite.isTalking) {
+          talkingClasses = `is-talking is-talking--${sprite.vibrationIntensity || 'normal'}`;
+        }
+
         return (
-          <img
+          <div
             key={sprite.id}
-            src={spriteSrc}
-            alt={sprite.id}
-            className={`absolute bottom-0 h-[85%] object-contain transition-all duration-500 ease-in-out ${getPositionClasses(sprite.position)}`}
-          />
+            className={`absolute bottom-0 h-[85%] transition-all duration-500 ease-in-out ${positionClass}`}
+          >
+            <img
+              src={spriteSrc}
+              alt={sprite.id}
+              className={`character-sprite h-full w-auto object-contain transition-transform duration-200 ${talkingClasses}`}
+            />
+          </div>
         );
       })}
     </div>

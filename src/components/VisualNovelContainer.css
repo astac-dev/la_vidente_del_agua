@@ -456,3 +456,47 @@
 .vn-glifo-indicator.vn-highlight-active {
     border-radius: 50%;
 }
+
+/* --- Efecto de Vibración Paramétrico (Wiggle Effect / Talk Jitter) --- */
+@keyframes talk-wiggle-soft {
+    0%, 100% {
+        transform: translateY(0) scaleY(1);
+    }
+    50% {
+        transform: translateY(-1.5px) scaleY(1.005);
+    }
+}
+
+@keyframes talk-wiggle-normal {
+    0%, 100% {
+        transform: translateY(0) scaleY(1);
+    }
+    50% {
+        transform: translateY(-3px) scaleY(1.01);
+    }
+}
+
+@keyframes talk-wiggle-intense {
+    0%, 100% {
+        transform: translateY(0) scaleY(1);
+    }
+    50% {
+        transform: translateY(-5px) scaleY(1.02);
+    }
+}
+
+.character-sprite {
+    transition: transform 0.2s ease-out;
+}
+
+.character-sprite.is-talking--soft {
+    animation: talk-wiggle-soft 0.15s infinite ease-in-out;
+}
+
+.character-sprite.is-talking--normal {
+    animation: talk-wiggle-normal 0.12s infinite ease-in-out;
+}
+
+.character-sprite.is-talking--intense {
+    animation: talk-wiggle-intense 0.09s infinite ease-in-out;
+}

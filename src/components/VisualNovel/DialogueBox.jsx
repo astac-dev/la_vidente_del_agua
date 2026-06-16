@@ -1,12 +1,9 @@
 // src/components/VisualNovel/DialogueBox.jsx
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useTypewriter } from '../../hooks/useTypewriter';
-
 const DialogueBox = React.memo(({ character, text, isHighlighted }) => {
   const { t } = useTranslation();
   const characterName = t(`personajes.${character}`, character);
-  const displayedText = useTypewriter(text, 40);
 
   if (!text) return null;
 
@@ -32,7 +29,7 @@ const DialogueBox = React.memo(({ character, text, isHighlighted }) => {
         {/* Cuerpo del Diálogo: Oculto para lectores de pantalla para evitar lectura deletreada del efecto máquina de escribir */}
         <div className="flex-1 min-w-0 w-full" aria-hidden="true">
           <p className={`font-sans tracking-wide drop-shadow-md vn-dialogue-text ${character === 'narrador' ? 'text-neutral-300 italic' : 'text-white'}`}>
-            {displayedText}
+            {text}
           </p>
         </div>
 

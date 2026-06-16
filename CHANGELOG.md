@@ -1,5 +1,22 @@
 # Historial de Cambios
 
+## [0.3.16] - 2026-06-15
+
+### Añadido
+- **Sistema de Vibración Paramétrico "Wiggle Effect"**:
+  - Implementación de un efecto de vibración dinámico elástico en los sprites de los personajes cuando están hablando (`character-sprite.is-talking`).
+  - Animación controlada dinámicamente mediante el estado `isTyping` del hook `useTypewriter.js` de modo que la vibración se ejecute únicamente durante la escritura del texto en pantalla y se detenga suavemente al finalizar.
+  - Soporte para configurar la intensidad de vibración a través del parámetro opcional `wiggle_effect` ("soft", "normal", "intense") en el guion JSON.
+  - Creación de tres variantes de keyframes CSS (`talk-wiggle-soft`, `talk-wiggle-normal` y `talk-wiggle-intense`) y su desacoplamiento posicional en `CharacterLayer.jsx` para evitar colisiones con las clases de alineación responsivas.
+- **Corrección de Cuelgue (Pantalla Azul)**: Se reubicaron las declaraciones de hooks de máquina de escribir y traducción en `GameEngine.jsx` arriba del retorno temprano condicional. Esto evita violaciones a las reglas de hooks de React y soluciona el cuelgue (pantalla azul) al iniciar una nueva partida.
+
+## [0.3.15] - 2026-06-15
+
+### Cambiado
+- **Renderizado de Sprites en Motor (`GameEngine.jsx`)**: Se adaptó el motor de la novela visual para mapear dinámicamente las nuevas propiedades de personajes estructuradas en el JSON (`character_sprite`, `expression`, `position`, `entry_animation`) al formato esperado por el componente `CharacterLayer`. Esto corrige el problema por el cual el sprite de Naia no se mostraba en pantalla y asegura la jerarquía visual correcta (encima del fondo y detrás de la UI/diálogos).
+- **Localización y Diálogos de Naia**: Limpieza completa de las claves de traducción de diálogos de la escena tutorial `guia_naia` para el Capítulo 0 y el Capítulo 1 en Español, Inglés y Maya Yucateco (`es/translation.json`, `en/translation.json`, y `my/translation.json`).
+- Se eliminaron las etiquetas obsoletas de sprites y efectos visuales de los diálogos en texto plano (tales como `[ENTRA SPRITE: ...]`, `[EFECTO VISUAL: ...]`, y `(Enciende su antorcha...)`) y los sufijos de indicación de clicks en español para sincronizarlos con la estructura limpia del motor de juego y evitar problemas de renderizado en la interfaz de usuario.
+
 ## [0.3.14] - 2026-06-15
 
 ### Añadido
