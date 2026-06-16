@@ -83,12 +83,12 @@
             {
               "id": 1,
               "personaje": "Sistema",
-              "texto": "[ENTRA SPRITE: SP_NAIA_NEU CENTRO]\nNaia aparece en pantalla sosteniendo una pequeña antorcha apagada. Observa los bordes del marco con curiosidad y luego mira directamente al jugador. Click en el simbolo para continuar -->"
+              "texto": "Naia aparece en pantalla sosteniendo una pequeña antorcha apagada. Observa los bordes del marco con curiosidad y luego mira directamente al jugador."
             },
             {
               "id": 2,
               "personaje": "Naia",
-              "texto": "¡Hey, caminante! No temas. Sé que este territorio es extraño para ti, pero en mi clan yo era la encargada de abrir los senderos en la oscuridad. Déjame enseñarte las marcas de este mapa digital para que no te pierdas en el abismo. Click en el simbolo para continuar -->"
+              "texto": "¡Hey, caminante! No temas. Sé que este territorio es extraño para ti, pero en mi clan yo era la encargada de abrir los senderos en la oscuridad. Déjame enseñarte las marcas de este mapa digital para que no te pierdas en el abismo."
             },
             {
               "id": 3,
@@ -98,7 +98,7 @@
             {
               "id": 4,
               "personaje": "Sistema",
-              "texto": "[EFECTO VISUAL: El símbolo de agua al final de la caja comienza a parpadear en cian]"
+              "texto": "El símbolo de agua al final de la caja comienza a parpadear en cian."
             },
             {
               "id": 5,
@@ -108,12 +108,12 @@
             {
               "id": 6,
               "personaje": "Sistema",
-              "texto": "[EFECTO VISUAL: Los botones de control del marco superior se iluminan uno a uno]"
+              "texto": "Los botones de control del marco superior se iluminan uno a uno."
             },
             {
               "id": 7,
               "personaje": "Naia",
-              "texto": "Ahora mira las herramientas de supervivencia en los bordes de tu visor. Si tocas PANTALLA COMPLETA, expandirás tu horizonte para que la selva y la cueva te rodeen por completo, borrando las distracciones del exterior."
+              "texto": "Ahora mira las herramientas de supervivencia en los bordes de tu visor. Si tocas PANTALLA COMPLETA, expandirás tu horizonte para que la sabana y la cueva te rodeen por completo, borrando las distracciones del exterior."
             },
             {
               "id": 8,
@@ -143,7 +143,7 @@
             {
               "id": 13,
               "personaje": "Naia",
-              "texto": "(Enciende su antorcha con un destello, expresión seria y decidida) El mapa está trazado y las herramientas listas, explorador. El rastro de Hoyo Negro está fresco... ¿estás listo para adentrarte conmigo en la oscuridad?"
+              "texto": "El mapa está trazado y las herramientas listas, explorador. El rastro de Hoyo Negro está fresco... ¿estás listo para adentrarte conmigo en la oscuridad?"
             }
           ]
         },
@@ -177,12 +177,12 @@
             {
               "id": 1,
               "personaje": "Sistema",
-              "texto": "[ENTRA SPRITE: SP_NAIA_NEU CENTRO]\nNaia aparece en pantalla sosteniendo una pequeña antorcha apagada. Observa los bordes del marco con curiosidad y luego mira directamente al jugador. Click en el simbolo para continuar -->"
+              "texto": "Naia aparece en pantalla sosteniendo una pequeña antorcha apagada. Observa los bordes del marco con curiosidad y luego mira directamente al jugador."
             },
             {
               "id": 2,
               "personaje": "Naia",
-              "texto": "¡Hey, caminante! No temas. Sé que este territorio es extraño para ti, pero en mi clan yo era la encargada de abrir los senderos en la oscuridad. Déjame enseñarte las marcas de este mapa digital para que no te pierdas en el abismo. Click en el simbolo para continuar -->"
+              "texto": "¡Hey, caminante! No temas. Sé que este territorio es extraño para ti, pero en mi clan yo era la encargada de abrir los senderos en la oscuridad. Déjame enseñarte las marcas de este mapa digital para que no te pierdas en el abismo."
             },
             {
               "id": 3,
@@ -192,7 +192,7 @@
             {
               "id": 4,
               "personaje": "Sistema",
-              "texto": "[EFECTO VISUAL: El símbolo de agua al final de la caja comienza a parpadear en cian]"
+              "texto": "El símbolo de agua al final de la caja comienza a parpadear en cian."
             },
             {
               "id": 5,
@@ -202,12 +202,12 @@
             {
               "id": 6,
               "personaje": "Sistema",
-              "texto": "[EFECTO VISUAL: Los botones de control del marco superior se iluminan uno a uno]"
+              "texto": "Los botones de control del marco superior se iluminan uno a uno."
             },
             {
               "id": 7,
               "personaje": "Naia",
-              "texto": "Ahora mira las herramientas de supervivencia en los bordes de tu visor. Si tocas PANTALLA COMPLETA, expandirás tu horizonte para que la selva y la cueva te rodeen por completo, borrando las distracciones del exterior."
+              "texto": "Ahora mira las herramientas de supervivencia en los bordes de tu visor. Si tocas PANTALLA COMPLETA, expandirás tu horizonte para que la sabana y la cueva te rodeen por completo, borrando las distracciones del exterior."
             },
             {
               "id": 8,
@@ -237,7 +237,7 @@
             {
               "id": 13,
               "personaje": "Naia",
-              "texto": "(Enciende su antorcha con un destello, expresión seria y decidida) El mapa está trazado y las herramientas listas, explorador. El rastro de Hoyo Negro está fresco... ¿estás listo para adentrarte conmigo en la oscuridad?"
+              "texto": "El mapa está trazado y las herramientas listas, explorador. El rastro de Hoyo Negro está fresco... ¿estás listo para adentrarte conmigo en la oscuridad?"
             }
           ]
         },
