@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import i18n from '../i18n'; // Importar la instancia de i18n
 import { auth, db } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -27,6 +27,7 @@ const initialGameState = {
     confianza: 0,
   },
   inventory: [],
+  dialogueHistory: [],
 };
 
 /**
@@ -296,6 +297,25 @@ export const GameStateProvider = ({ children }) => {
     }));
   };
 
+  const addToHistory = useCallback((entry) => {
+    setGameState(prev => {
+      const history = prev.dialogueHistory || [];
+      const lastItem = history[history.length - 1];
+
+      const isDuplicate = lastItem && 
+        lastItem.chapter === entry.chapter &&
+        lastItem.sceneId === entry.sceneId &&
+        lastItem.dialogueIndex === entry.dialogueIndex;
+
+      if (isDuplicate) return prev;
+
+      return {
+        ...prev,
+        dialogueHistory: [...history, entry],
+      };
+    });
+  }, []);
+
   const updateStat = (stat, operation, value) => {
     setGameState(prev => {
       const oldValue = prev.stats[stat] || 0;
@@ -359,6 +379,7 @@ export const GameStateProvider = ({ children }) => {
     gameState,
     goToScene,
     advanceDialogue,
+    addToHistory,
     updateStat,
     uiVisibility,
     toggleUiVisibility,

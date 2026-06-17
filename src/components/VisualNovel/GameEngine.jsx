@@ -14,6 +14,7 @@ import FullscreenEnterIcon from '../icons/FullscreenEnterIcon';
 import FullscreenExitIcon from '../icons/FullscreenExitIcon';
 import glifoAgua from '../../assets/arte/glifoaguafluyendo.png';
 import '../VisualNovelContainer.css';
+import DialogueLogModal from './DialogueLogModal';
 
 const LogIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 5.2a1 1 0 0 0-1.4-1.4L19 5.2V4a1 1 0 0 0-2 0v1.2L15.6 3.8a1 1 0 0 0-1.4 1.4L15.6 6H8.4l1.4-1.4a1 1 0 0 0-1.4-1.4L7 5.2V4a1 1 0 0 0-2 0v1.2L3.6 3.8a1 1 0 0 0-1.4 1.4L3.6 6H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-.6l1.4-1.4zM19 19H5V8h14v11z"></path></svg>;
 const HideUIIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zm0 10c-2.48 0-4.5-2.02-4.5-4.5S9.52 5.5 12 5.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5zm0-7C10.62 7.5 9.5 8.62 9.5 10s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5S13.38 7.5 12 7.5z"></path></svg>;
@@ -36,8 +37,9 @@ const getFullscreenElement = () => {
  */
 const GameEngine = ({ onNavigate }) => {
   const { t, i18n } = useTranslation();
-  const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState, saves, saveGameToSlot, isFading } = useGameState();
+  const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState, saves, saveGameToSlot, isFading, addToHistory } = useGameState();
   const [showSaveModal, setShowSaveModal] = useState(false);
+  const [showLogModal, setShowLogModal] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(!!getFullscreenElement());
   const [fullscreenError, setFullscreenError] = useState('');
   const [scriptData, setScriptData] = useState(null);
@@ -58,6 +60,20 @@ const GameEngine = ({ onNavigate }) => {
 
   // Hook del motor adaptado para recibir scriptData cargado dinámicamente
   const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice } = useVisualNovelEngine(scriptData);
+
+  // Registrar cada diálogo visto en el historial
+  useEffect(() => {
+    if (!currentLine || isChoice) return;
+    
+    addToHistory({
+      chapter: gameState.currentChapter,
+      sceneId: gameState.currentSceneId,
+      dialogueIndex: gameState.dialogueIndex,
+      character: currentLine.personaje,
+      textKey: `historia.${gameState.currentChapter}.escenas.${gameState.currentSceneId}.dialogos.${gameState.dialogueIndex}.texto`,
+      fallbackText: currentLine.texto
+    });
+  }, [currentLine, isChoice, gameState.currentChapter, gameState.currentSceneId, gameState.dialogueIndex, addToHistory]);
 
   const handleHomeClick = () => {
     if (isFullscreen) return;
@@ -197,7 +213,7 @@ const GameEngine = ({ onNavigate }) => {
   };
 
   const handleToggleLog = () => {
-    console.log("Historial de Diálogo (lógica pendiente)");
+    setShowLogModal(true);
   };
 
   const dialogueKey = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.dialogos.${gameState?.dialogueIndex}.texto`;
@@ -251,15 +267,16 @@ const GameEngine = ({ onNavigate }) => {
             sprites={
               currentLine?.character_sprite 
                 ? [{
-                    id: currentLine.personaje || 'naia',
+                    id: currentLine.personaje && currentLine.personaje !== 'sistema' && currentLine.personaje !== 'narrador' ? currentLine.personaje : 'naia',
                     src: currentLine.character_sprite.startsWith('/') 
                       ? currentLine.character_sprite 
                       : `/${currentLine.character_sprite}`,
                     position: currentLine.position || 'center',
                     expression: currentLine.expression,
                     entry_animation: currentLine.entry_animation,
-                    isTalking: isTyping && (currentLine.personaje === 'naia' || currentLine.personaje === 'amaranta'),
-                    vibrationIntensity: currentLine.wiggle_effect || 'normal'
+                    isTalking: !isTyping && !!currentLine.wiggle_effect,
+                    vibrationIntensity: currentLine.wiggle_effect || 'normal',
+                    flameActive: gameState.currentChapter === 'capitulo_0' || currentLine.flame_active || false
                   }]
                 : (currentLine?.sprites || currentScene.sprites)
             } 
@@ -473,6 +490,11 @@ const GameEngine = ({ onNavigate }) => {
               </div>
             </div>
           )}
+          <DialogueLogModal
+            isOpen={showLogModal}
+            onClose={() => setShowLogModal(false)}
+            history={gameState.dialogueHistory}
+          />
         </div>
       </div>
     </>

@@ -1,5 +1,25 @@
 # Historial de Cambios
 
+## [0.3.18] - 2026-06-17
+
+### Añadido
+- **Destello Elástico de Antorcha de Naia**:
+  - Implementación definitiva de la lógica elástica de posicionamiento en porcentaje (`left: 81.165%`, `top: 16.458%` con respecto a las dimensiones de la imagen `1545x1999` píxeles) de forma 100% responsiva y libre de cálculos por JS.
+  - Añadido efecto de brillo variable simulando una flama real con variación de opacidad suave (entre `0.7` y `1.0`) y radio de desenfoque (`filter: blur()`) en `@keyframes naia-torch-flicker` en `VisualNovelContainer.css`.
+  - La antorcha se mantiene encendida de forma permanente durante todo el Capítulo 0 (tutorial) para Naia.
+  - Animación de entrada con desvanecimiento de 1 segundo (`naia-fade-in`) con 1 segundo de retraso para que el sprite de Naia aparezca después del brillo de la antorcha.
+- **Ajustes de Estabilidad de Renderizado**:
+  - Fijación estática de Naia durante la escritura del diálogo para evitar el jitter del texto, eliminando el wiggle.
+  - Sincronización del ID del sprite de Naia en `GameEngine.jsx` para evitar desmontajes innecesarios cuando el narrador (`sistema`) describe la escena inicial.
+
+## [0.3.17] - 2026-06-16
+
+### Añadido
+- **Correcciones de Texto e Idioma (Capítulo 0 y 1)**:
+  - Sincronización y corrección de la frase inicial de Naia en los locales de español (`es`), inglés (`en`) y maya (`my`), eliminando la mención a la antorcha "apagada" de forma consistente.
+- **Reversión de Efecto de Antorcha**:
+  - Se deshicieron los cambios visuales y la lógica de renderizado del efecto de iluminación elástica en `CharacterLayer.jsx`, `GameEngine.jsx` y `VisualNovelContainer.css` para resolver el error de React que impedía renderizar el menú de inicio tras la pantalla de carga.
+
 ## [0.3.16] - 2026-06-15
 
 ### Añadido

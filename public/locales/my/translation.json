@@ -52,6 +52,9 @@
     "cancel": "P'AT BEEL",
     "saveSlot": "Kuchil",
     "recLogLabel": "K'A'AJ.TS",
+    "logTitle": "U k'a'ajsajil tsikbalo'ob // Ts'íibilil tsikbal",
+    "closeBtn": "Suut",
+    "noLog": "Minaan tsikbalo'ob ti' le k'a'ajsajil.",
     "narrSkpLabel": "P'AT.TS",
     "playAtLabel": "BÁAX.UT",
     "orientationBlockerTitle": "MA' SOPORTADO TSELIL",
@@ -83,7 +86,7 @@
             {
               "id": 1,
               "personaje": "Sistema",
-              "texto": "Naia ku yáalkab te' chuunpak yéetel jump'éel ch'ilich' t'áabaj ma' t'áabani'. Ku yilik u tselilo'ob le visor yéetel ki'imak óolal, ku yilik u yich j-báaxal."
+              "texto": "Naia ku yáalkab te' chuunpak yéetel jump'éel ch'ilich' t'áabaj. Ku yilik u tselilo'ob le visor yéetel ki'imak óolal, ku yilik u yich j-báaxal."
             },
             {
               "id": 2,
@@ -177,7 +180,7 @@
             {
               "id": 1,
               "personaje": "Sistema",
-              "texto": "Naia ku yáalkab te' chuunpak yéetel jump'éel ch'ilich' t'áabaj ma' t'áabani'. Ku yilik u tselilo'ob le visor yéetel ki'imak óolal, ku yilik u yich j-báaxal."
+              "texto": "Naia ku yáalkab te' chuunpak yéetel jump'éel ch'ilich' t'áabaj. Ku yilik u tselilo'ob le visor yéetel ki'imak óolal, ku yilik u yich j-báaxal."
             },
             {
               "id": 2,

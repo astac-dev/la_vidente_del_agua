@@ -33,16 +33,26 @@ const CharacterLayer = React.memo(({ sprites }) => {
           talkingClasses = `is-talking is-talking--${sprite.vibrationIntensity || 'normal'}`;
         }
 
+        let entryClass = '';
+        if (sprite.entry_animation === 'fade-in') {
+          entryClass = 'naia-fade-in';
+        }
+
         return (
           <div
             key={sprite.id}
             className={`absolute bottom-0 h-[85%] transition-all duration-500 ease-in-out ${positionClass}`}
           >
-            <img
-              src={spriteSrc}
-              alt={sprite.id}
-              className={`character-sprite h-full w-auto object-contain transition-transform duration-200 ${talkingClasses}`}
-            />
+            <div className="relative h-full inline-block">
+              <img
+                src={spriteSrc}
+                alt={sprite.id}
+                className={`character-sprite h-full w-auto object-contain transition-transform duration-200 ${talkingClasses} ${entryClass}`}
+              />
+              {sprite.flameActive && sprite.id === 'naia' && (
+                <div className="naia-torch-glow" />
+              )}
+            </div>
           </div>
         );
       })}

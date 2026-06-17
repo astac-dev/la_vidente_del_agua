@@ -500,3 +500,86 @@
 .character-sprite.is-talking--intense {
     animation: talk-wiggle-intense 0.09s infinite ease-in-out;
 }
+
+/* Brillo dinámico y parpadeante de la antorcha para Naia */
+.naia-torch-glow {
+    position: absolute;
+    left: 81.165%;
+    /* Coordenada X (1254 / 1545) */
+    top: 16.458%;
+    /* Coordenada Y (329 / 1999) */
+    width: 25%;
+    /* Diámetro elástico proporcional al ancho del sprite */
+    aspect-ratio: 1;
+    /* Círculo perfecto */
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 220, 100, 0.95) 15%, rgba(255, 123, 0, 0.8) 45%, rgba(255, 60, 0, 0.35) 75%, rgba(0, 0, 0, 0) 100%);
+    box-shadow: 0 0 15px 5px rgba(255, 255, 230, 0.8), 0 0 35px 15px rgba(255, 123, 0, 0.6), 0 0 80px 30px rgba(255, 60, 0, 0.35);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: naia-torch-flicker 1.2s ease-in-out infinite;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 30;
+}
+
+@keyframes naia-torch-flicker {
+    0% {
+        transform: translate(-50%, -50%) scale(0.95) rotate(-1.5deg);
+        opacity: 0.82;
+        filter: blur(4px);
+        border-radius: 51% 49% 50% 50% / 49% 50% 51% 50%;
+        box-shadow: 0 0 12px 3px rgba(255, 255, 230, 0.8), 0 0 30px 10px rgba(255, 123, 0, 0.6), 0 0 70px 25px rgba(255, 60, 0, 0.3);
+    }
+    18% {
+        transform: translate(-50%, -50%) scale(1.05) rotate(2deg);
+        opacity: 0.94;
+        filter: blur(6px);
+        border-radius: 48% 52% 49% 51% / 52% 47% 53% 48%;
+        box-shadow: 0 0 18px 6px rgba(255, 255, 230, 0.9), 0 0 40px 18px rgba(255, 123, 0, 0.7), 0 0 90px 35px rgba(255, 60, 0, 0.4);
+    }
+    43% {
+        transform: translate(-50%, -50%) scale(0.93) rotate(-0.5deg);
+        opacity: 0.77;
+        filter: blur(5px);
+        border-radius: 53% 47% 52% 48% / 47% 53% 49% 51%;
+        box-shadow: 0 0 10px 2px rgba(255, 255, 230, 0.7), 0 0 25px 8px rgba(255, 123, 0, 0.5), 0 0 65px 20px rgba(255, 60, 0, 0.25);
+    }
+    71% {
+        transform: translate(-50%, -50%) scale(1.08) rotate(1.5deg);
+        opacity: 0.98;
+        filter: blur(8px);
+        border-radius: 49% 51% 53% 47% / 51% 48% 52% 49%;
+        box-shadow: 0 0 20px 8px rgba(255, 255, 230, 0.95), 0 0 45px 22px rgba(255, 123, 0, 0.85), 0 0 110px 45px rgba(255, 60, 0, 0.45);
+    }
+    85% {
+        transform: translate(-50%, -50%) scale(1.01) rotate(-1deg);
+        opacity: 0.88;
+        filter: blur(6px);
+        border-radius: 52% 48% 48% 52% / 50% 52% 48% 50%;
+        box-shadow: 0 0 15px 4px rgba(255, 255, 230, 0.85), 0 0 35px 12px rgba(255, 123, 0, 0.65), 0 0 80px 30px rgba(255, 60, 0, 0.35);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.95) rotate(-1.5deg);
+        opacity: 0.82;
+        filter: blur(4px);
+        border-radius: 51% 49% 50% 50% / 49% 50% 51% 50%;
+        box-shadow: 0 0 12px 3px rgba(255, 255, 230, 0.8), 0 0 30px 10px rgba(255, 123, 0, 0.6), 0 0 70px 25px rgba(255, 60, 0, 0.3);
+    }
+}
+
+/* Efecto de entrada en desvanecimiento (Fade-In) con retardo de 1s para Naia */
+.naia-fade-in {
+    opacity: 0;
+    /* Asegura que la imagen sea invisible durante el retardo inicial */
+    animation: naia-sprite-fade-in 1000ms ease-out 1000ms forwards;
+}
+
+@keyframes naia-sprite-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
