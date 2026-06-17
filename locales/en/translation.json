@@ -52,6 +52,9 @@
     "cancel": "CANCEL",
     "saveSlot": "Slot",
     "recLogLabel": "REC.LOG",
+    "logTitle": "Field Log // Dialogue History",
+    "closeBtn": "Close",
+    "noLog": "No records in the log yet.",
     "narrSkpLabel": "NARR.SKP",
     "playAtLabel": "PLAY.AT",
     "orientationBlockerTitle": "PORTRAIT MODE NOT SUPPORTED",
@@ -83,7 +86,7 @@
             {
               "id": 1,
               "personaje": "System",
-              "texto": "Naia appears on screen holding a small unlit torch. She observes the edges of the frame with curiosity and then looks directly at the player."
+              "texto": "Naia appears on screen holding a small torch. She observes the edges of the frame with curiosity and then looks directly at the player."
             },
             {
               "id": 2,
@@ -177,7 +180,7 @@
             {
               "id": 1,
               "personaje": "System",
-              "texto": "Naia appears on screen holding a small unlit torch. She observes the edges of the frame with curiosity and then looks directly at the player."
+              "texto": "Naia appears on screen holding a small torch. She observes the edges of the frame with curiosity and then looks directly at the player."
             },
             {
               "id": 2,

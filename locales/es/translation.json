@@ -52,6 +52,9 @@
     "cancel": "CANCELAR",
     "saveSlot": "Ranura",
     "recLogLabel": "REG.HIST",
+    "logTitle": "Bitácora de Campo // Historial de Diálogos",
+    "closeBtn": "Cerrar",
+    "noLog": "No hay registros en la bitácora todavía.",
     "narrSkpLabel": "SALT.DIAL",
     "playAtLabel": "REPR.AUTO",
     "orientationBlockerTitle": "MODO VERTICAL NO SOPORTADO",
@@ -83,7 +86,7 @@
             {
               "id": 1,
               "personaje": "Sistema",
-              "texto": "Naia aparece en pantalla sosteniendo una pequeña antorcha apagada. Observa los bordes del marco con curiosidad y luego mira directamente al jugador."
+              "texto": "Naia aparece en pantalla sosteniendo una pequeña antorcha. Observa los bordes del marco con curiosidad y luego mira directamente al jugador."
             },
             {
               "id": 2,
@@ -177,7 +180,7 @@
             {
               "id": 1,
               "personaje": "Sistema",
-              "texto": "Naia aparece en pantalla sosteniendo una pequeña antorcha apagada. Observa los bordes del marco con curiosidad y luego mira directamente al jugador."
+              "texto": "Naia aparece en pantalla sosteniendo una pequeña antorcha. Observa los bordes del marco con curiosidad y luego mira directamente al jugador."
             },
             {
               "id": 2,
