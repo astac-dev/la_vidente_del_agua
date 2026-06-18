@@ -43,3 +43,6 @@ dist-ssr
 
 # mk file
 *.mk
+
+# Zip files
+*.zip 
