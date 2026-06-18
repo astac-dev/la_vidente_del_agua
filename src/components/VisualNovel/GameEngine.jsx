@@ -31,6 +31,56 @@ const getFullscreenElement = () => {
 };
 
 /**
+ * Realiza una transición suave (fade) del volumen de un elemento de audio.
+ * Se implementa para evitar cortes de sonido secos que degraden la estética premium.
+ * 
+ * @param {HTMLAudioElement} audio - Elemento de audio a controlar.
+ * @param {number} targetVolume - Volumen objetivo (entre 0.0 y 1.0).
+ * @param {number} duration - Duración de la transición en milisegundos.
+ * @param {function} [callback] - Función a ejecutar al completarse la transición.
+ */
+const fadeAudio = (audio, targetVolume, duration, callback) => {
+  if (!audio) {
+    if (callback) callback();
+    return;
+  }
+
+  const startVolume = audio.volume;
+  const diff = targetVolume - startVolume;
+  if (diff === 0) {
+    if (callback) callback();
+    return;
+  }
+
+  const stepTime = 50;
+  const steps = duration / stepTime;
+  const stepChange = diff / steps;
+  let currentStep = 0;
+
+  if (audio.fadeInterval) {
+    clearInterval(audio.fadeInterval);
+  }
+
+  audio.fadeInterval = setInterval(() => {
+    currentStep++;
+    let newVolume = startVolume + (stepChange * currentStep);
+
+    if (diff > 0 && newVolume > targetVolume) newVolume = targetVolume;
+    if (diff < 0 && newVolume < targetVolume) newVolume = targetVolume;
+    if (newVolume < 0) newVolume = 0;
+    if (newVolume > 1) newVolume = 1;
+
+    audio.volume = newVolume;
+
+    if (currentStep >= steps || newVolume === targetVolume) {
+      clearInterval(audio.fadeInterval);
+      audio.fadeInterval = null;
+      if (callback) callback();
+    }
+  }, stepTime);
+};
+
+/**
  * Componente principal administrador del motor de la novela visual.
  * Carga de forma dinámica los guiones de los capítulos bajo demanda
  * para optimizar la memoria y evitar la importación estática masiva de datos.
@@ -44,6 +94,30 @@ const GameEngine = ({ onNavigate }) => {
   const [fullscreenError, setFullscreenError] = useState('');
   const [scriptData, setScriptData] = useState(null);
   const containerRef = useRef(null);
+
+  /**
+   * Referencias persistentes para la gestión nativa de los canales de audio BGM y SFX.
+   * Se declaran con useRef para mantener vivas las instancias del reproductor HTML5
+   * y controlarlas de forma directa evitando re-creaciones en cada render.
+   */
+  const bgmAudioRef = useRef(null);
+  const sfxAudioRef = useRef(null);
+  const currentBgmSrcRef = useRef(null);
+
+  /**
+   * Normaliza y resuelve las rutas del directorio público (/public) del juego.
+   * Modula la ruta base con import.meta.env.BASE_URL para garantizar consistencia
+   * en los despliegues de producción (GitHub Pages) y portabilidad (itch.io).
+   * 
+   * @param {string} src - Ruta original del recurso en el proyecto.
+   * @returns {string} Ruta de recurso final del entorno.
+   */
+  const getAssetUrl = (src) => {
+    if (!src) return '';
+    return src.startsWith('/') 
+      ? `${import.meta.env.BASE_URL}${src.slice(1)}` 
+      : src;
+  };
 
   // Carga dinámica asíncrona del capítulo actual de la novela visual
   useEffect(() => {
@@ -60,6 +134,135 @@ const GameEngine = ({ onNavigate }) => {
 
   // Hook del motor adaptado para recibir scriptData cargado dinámicamente
   const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice } = useVisualNovelEngine(scriptData);
+
+  /**
+   * Gestiona el inicio, cambio y detención de la música de fondo (BGM).
+   * Se dispara ante cambios en la escena actual; si la escena define la misma
+   * pista que la anterior, se da continuidad a la reproducción sin interrupción.
+   */
+  useEffect(() => {
+    if (!currentScene) return;
+
+    const bgm = currentScene.bgm;
+    if (bgm && bgm.action === 'play') {
+      const src = getAssetUrl(bgm.src);
+      if (currentBgmSrcRef.current !== src) {
+        if (bgmAudioRef.current) {
+          const prevAudio = bgmAudioRef.current;
+          fadeAudio(prevAudio, 0, 1000, () => {
+            prevAudio.pause();
+            prevAudio.src = '';
+          });
+        }
+
+        const audio = new Audio(src);
+        audio.loop = true;
+        audio.volume = 0; // Iniciar en 0 para el fade-in
+        
+        audio.addEventListener('error', (e) => {
+          console.warn(`No se pudo cargar el archivo BGM: ${src}`, e);
+        });
+
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            fadeAudio(audio, settings.volumenMusica / 100, 1000);
+          }).catch(err => {
+            console.warn(`Reproducción de BGM bloqueada o interrumpida: ${src}`, err);
+          });
+        }
+
+        bgmAudioRef.current = audio;
+        currentBgmSrcRef.current = src;
+      }
+    } else if (bgm && bgm.action === 'stop') {
+      if (bgmAudioRef.current) {
+        const audio = bgmAudioRef.current;
+        fadeAudio(audio, 0, 1000, () => {
+          audio.pause();
+          audio.src = '';
+        });
+        bgmAudioRef.current = null;
+      }
+      currentBgmSrcRef.current = null;
+    }
+  }, [currentScene]);
+
+  /**
+   * Gestiona la ejecución puntual de efectos de sonido (SFX).
+   * Reproduce el sonido de una sola vez sin loops y detiene cualquier
+   * efecto anterior activo para prevenir ruidos encimados.
+   */
+  useEffect(() => {
+    if (!currentScene) return;
+
+    const sfx = currentScene.sfx;
+    if (sfx && sfx.action === 'play') {
+      const src = getAssetUrl(sfx.src);
+      
+      if (sfxAudioRef.current) {
+        sfxAudioRef.current.pause();
+        sfxAudioRef.current.src = '';
+      }
+
+      const audio = new Audio(src);
+      audio.loop = false;
+      audio.volume = settings.volumenEfectos / 100;
+
+      audio.addEventListener('error', (e) => {
+        console.warn(`No se pudo cargar el archivo SFX: ${src}`, e);
+      });
+
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.warn(`Reproducción de SFX bloqueada o interrumpida: ${src}`, err);
+        });
+      }
+
+      sfxAudioRef.current = audio;
+    }
+  }, [currentScene]);
+
+  /**
+   * Sincroniza dinámicamente los cambios de volumen de música.
+   * Esto permite ajustar la música de fondo en tiempo real desde el menú de opciones.
+   */
+  useEffect(() => {
+    if (bgmAudioRef.current) {
+      bgmAudioRef.current.volume = settings.volumenMusica / 100;
+    }
+  }, [settings.volumenMusica]);
+
+  /**
+   * Sincroniza dinámicamente los cambios de volumen de efectos de sonido.
+   * Esto permite ajustar los efectos de sonido en tiempo real desde el menú de opciones.
+   */
+  useEffect(() => {
+    if (sfxAudioRef.current) {
+      sfxAudioRef.current.volume = settings.volumenEfectos / 100;
+    }
+  }, [settings.volumenEfectos]);
+
+  /**
+   * Limpia y libera los recursos de audio ocupados al desmontar el motor de juego.
+   * Esto previene fugas de audio de fondo y previene problemas al regresar al menú principal.
+   */
+  useEffect(() => {
+    return () => {
+      if (bgmAudioRef.current) {
+        if (bgmAudioRef.current.fadeInterval) {
+          clearInterval(bgmAudioRef.current.fadeInterval);
+        }
+        bgmAudioRef.current.pause();
+        bgmAudioRef.current.src = '';
+      }
+      if (sfxAudioRef.current) {
+        sfxAudioRef.current.pause();
+        sfxAudioRef.current.src = '';
+      }
+    };
+  }, []);
 
   // Registrar cada diálogo visto en el historial
   useEffect(() => {
@@ -83,11 +286,27 @@ const GameEngine = ({ onNavigate }) => {
   const handleSaveAndExit = (slotIndex) => {
     saveGameToSlot(slotIndex);
     setShowSaveModal(false);
+    if (bgmAudioRef.current) {
+      fadeAudio(bgmAudioRef.current, 0, 1500, () => {
+        if (bgmAudioRef.current) {
+          bgmAudioRef.current.pause();
+          bgmAudioRef.current.src = '';
+        }
+      });
+    }
     onNavigate('mainMenu');
   };
 
   const handleExitWithoutSaving = () => {
     setShowSaveModal(false);
+    if (bgmAudioRef.current) {
+      fadeAudio(bgmAudioRef.current, 0, 1500, () => {
+        if (bgmAudioRef.current) {
+          bgmAudioRef.current.pause();
+          bgmAudioRef.current.src = '';
+        }
+      });
+    }
     onNavigate('mainMenu');
   };
 
@@ -410,10 +629,26 @@ const GameEngine = ({ onNavigate }) => {
               onClick={(e) => {
                 e.stopPropagation();
                 if (currentScene.next === 'mainMenu') {
+                  if (bgmAudioRef.current) {
+                    fadeAudio(bgmAudioRef.current, 0, 1500, () => {
+                      if (bgmAudioRef.current) {
+                        bgmAudioRef.current.pause();
+                        bgmAudioRef.current.src = '';
+                      }
+                    });
+                  }
                   onNavigate('mainMenu');
                 } else if (currentScene.next) {
                   advance();
                 } else {
+                  if (bgmAudioRef.current) {
+                    fadeAudio(bgmAudioRef.current, 0, 1500, () => {
+                      if (bgmAudioRef.current) {
+                        bgmAudioRef.current.pause();
+                        bgmAudioRef.current.src = '';
+                      }
+                    });
+                  }
                   onNavigate('mainMenu');
                 }
               }}

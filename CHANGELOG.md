@@ -1,5 +1,26 @@
 # Historial de Cambios
 
+## [0.3.20] - 2026-06-17
+
+### Añadido
+- **Desvanecimientos de Volumen en Audio (BGM Fade In/Out)**:
+  - Implementación de la función utilitaria `fadeAudio` en `MainMenu.jsx` y `GameEngine.jsx` para realizar interpolaciones lineales suaves de volumen.
+  - **Transición de Menús**: La música del menú principal se eleva con desvanecimiento de entrada (fade in) de 1.5 segundos al cargar, y disminuye progresivamente (fade out) en 0.5s al cambiar a submenús (extras, opciones, cargar partida) o en 1.5s al iniciar nueva partida o ver créditos, sincronizando perfectamente con las animaciones de la UI.
+  - **Transición de Escenas y Capítulos**: En el motor de juego, la música anterior se desvanece de salida en 1.0s y la nueva música se desvanece de entrada en 1.0s al cambiar de escena o capítulo, creando un crossfade de audio continuo y fluido.
+  - **Transición al Salir**: Al presionar HOME para retornar al Menú Principal, la música del juego se desvanece suavemente a 0 en 1.5s sincronizado con el fundido cinematográfico de salida.
+
+## [0.3.19] - 2026-06-17
+
+### Añadido
+- **Soporte Nativo de BGM y SFX**:
+  - Implementación de un controlador de audio nativo en `GameEngine.jsx` basado en referencias y efectos secundarios reactivos.
+  - Soporte de transiciones suaves de música: mantiene la pista de fondo activa entre escenas si tienen la misma ruta BGM.
+  - Sincronización en tiempo real del volumen de música y efectos con la configuración del perfil de usuario.
+  - Gestión de errores de carga y bloqueos de autoreproducción del navegador al iniciar las pistas de audio para evitar cuelgues del motor.
+  - Liberación y parada total de canales de audio al desmontar la vista de juego para prevenir fugas de memoria y audio.
+- **Música de Fondo para Capítulo 0**:
+  - Configurado el archivo de audio `pluck_loop_01.mp3` como el fondo musical oficial del Capítulo 0 (`capitulo_0.json`) y configurado para reproducirse en loop constante durante todo el tutorial con Naia.
+
 ## [0.3.18] - 2026-06-17
 
 ### Añadido

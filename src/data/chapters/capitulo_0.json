@@ -8,7 +8,7 @@
         "duration": 1000
       },
       "bgm": {
-        "src": "/music/bgm_misterio_cientifico.mp3",
+        "src": "/bgm/pluck_loop_01.mp3",
         "action": "play"
       },
       "sfx": {
