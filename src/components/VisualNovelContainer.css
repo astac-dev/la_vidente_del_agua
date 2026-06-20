@@ -191,6 +191,7 @@
     height: auto;
     pointer-events: none;
     animation: glifo-pulse 2s ease-in-out infinite;
+    z-index: 100 !important;
 }
 
 @keyframes glifo-pulse {
@@ -325,6 +326,7 @@
     font-size: calc(clamp(13px, 1.8cqw, 24px) * var(--ui-scale-multiplier, 1));
     margin-bottom: calc(1.5rem * var(--ui-scale-multiplier, 1));
     transition: font-size 0.15s ease-in-out;
+    color: #e5e5e5 !important; /* Asegura contraste y legibilidad sobre fondo oscuro, anulando overrides globales */
 }
 
 .vn-choices-list {
@@ -455,6 +457,8 @@
 /* Estilo para el glifo de agua resaltado */
 .vn-glifo-indicator.vn-highlight-active {
     border-radius: 50%;
+    position: absolute !important;
+    z-index: 110 !important;
 }
 
 /* --- Efecto de Vibración Paramétrico (Wiggle Effect / Talk Jitter) --- */

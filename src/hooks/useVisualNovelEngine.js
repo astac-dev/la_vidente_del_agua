@@ -74,6 +74,62 @@ export const useVisualNovelEngine = (scriptData) => {
     goToScene(sceneId, chapterId);
   };
 
+  /**
+   * Navega de forma acelerada por el grafo de escenas en memoria para
+   * encontrar el siguiente nodo de decisión ('choice').
+   * Se diseña para evitar llamadas repetidas al despachador de transiciones,
+   * reduciendo el coste de renderizado y eludiendo múltiples fundidos
+   * visuales seguidos. Si detecta un cambio de capítulo, delega la carga
+   * asíncrona deteniéndose al inicio del nuevo archivo de guion.
+   */
+  const skipToNextChoice = () => {
+    if (!scriptData || isChoice) return;
+
+    let sceneId = gameState.currentSceneId;
+    const chapterId = gameState.currentChapter;
+
+    while (sceneId) {
+      const scene = scriptData.escenas?.[sceneId];
+      if (!scene) {
+        break;
+      }
+
+      // Detiene el salto si es una escena de elección interactiva
+      if (scene.type === 'choice') {
+        goToScene(sceneId, chapterId, 0);
+        return;
+      }
+
+      const nextTarget = scene.next;
+      if (!nextTarget) {
+        break;
+      }
+
+      // Detiene el salto si la ruta retorna al menú de inicio del juego
+      if (nextTarget === 'mainMenu') {
+        const dialogos = scene.dialogos || [];
+        goToScene(sceneId, chapterId, dialogos.length > 0 ? dialogos.length - 1 : 0);
+        return;
+      }
+
+      // Detiene el salto en la frontera del capítulo para permitir importación dinámica
+      if (nextTarget.startsWith('capitulo_')) {
+        const { sceneId: targetSceneId, chapterId: targetChapterId } = routeTransition(nextTarget);
+        goToScene(targetSceneId, targetChapterId, 0);
+        return;
+      } else {
+        sceneId = nextTarget;
+      }
+    }
+
+    // Si finalizó el recorrido sin encontrar elecciones, se sitúa al final de la escena actual
+    if (sceneId) {
+      const scene = scriptData.escenas?.[sceneId];
+      const dialogos = scene?.dialogos || [];
+      goToScene(sceneId, chapterId, dialogos.length > 0 ? dialogos.length - 1 : 0);
+    }
+  };
+
   return {
     currentScene,
     currentLine,
@@ -81,5 +137,6 @@ export const useVisualNovelEngine = (scriptData) => {
     isEndOfScene,
     advance,
     makeChoice,
+    skipToNextChoice,
   };
 };

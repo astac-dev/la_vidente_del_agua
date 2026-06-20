@@ -23,7 +23,10 @@
           "expression": "curious",
           "position": "center",
           "entry_animation": "fade-in",
-          "highlight": "btn-fullscreen"
+          "highlight": [
+            "btn-fullscreen",
+            "glifo-agua"
+          ]
         },
         {
           "personaje": "naia",
@@ -56,6 +59,7 @@
           "character_sprite": "sprites/Naia_frente_Normal_.png",
           "expression": "neutral",
           "position": "center",
+          "highlight": "glifo-agua",
           "visual_effects": {
             "focus_blur": true
           }

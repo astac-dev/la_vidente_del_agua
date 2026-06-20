@@ -2,9 +2,19 @@
   "escenas": {
     "escena_intro": {
       "type": "dialogue",
-      "background": { "src": "/backgrounds/bg_recamara_amaranta_cdmx_noche.jpg", "transition": "fade", "duration": 1000 },
-      "bgm": { "src": "/music/bgm_trauma_silencio.mp3", "action": "play" },
-      "sfx": { "src": "/sfx/sfx_reloj_tic_tac.wav", "action": "play" },
+      "background": {
+        "src": "/backgrounds/bg_recamara_amaranta_cdmx_noche.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "bgm": {
+        "src": "/music/bgm_trauma_silencio.mp3",
+        "action": "play"
+      },
+      "sfx": {
+        "src": "/sfx/sfx_reloj_tic_tac.wav",
+        "action": "play"
+      },
       "dialogos": [
         {
           "personaje": "narrador",
@@ -32,7 +42,7 @@
         },
         {
           "personaje": "narrador",
-          "texto": "Hasta que llegaron los sueños. O mejor dicho, las ausencias."
+          "texto": "Hasta que llegaron los sueños. O mejor dicho, las visiones."
         },
         {
           "personaje": "amaranta",
@@ -40,20 +50,30 @@
         },
         {
           "personaje": "narrador",
-          "texto": "El insomnio crónico no tardó en cobrar factura. Her rendimiento académico impecable cayó en picada; el cansancio acumulado transformó su habitual calidez en una versión gris, triste y de cambios de humor repentinos que asustaron a sus padres y alejaron a sus amigos."
+          "texto": "El insomnio crónico no tardó en cobrar factura. Su rendimiento académico impecable cayó en picada; el cansancio acumulado transformó su habitual calidez en una versión gris, triste y de cambios de humor repentinos que asustaron a sus padres y alejaron a sus amigos."
         },
         {
           "personaje": "narrador",
-          "texto": "Tras una gran cantidad de estudios médicos en el hospital para descartar problemas neurológicos y hormonales, el diagnóstico final fue tajante: \"Colapso nervioso por estrés severo\". ¿La receta? Tres meses de aislamiento fuera de la ciudad y reposo."
+          "texto": "Tras una gran cantidad de estudios médicos en el hospital para descartar problemas neurológicos y hormonales, el diagnóstico final fue tajante: \"Colapso nervioso por estrés severo\". ¿La receta? Tres meses de aislamiento fuera del estres de la ciudad y reposo."
         }
       ],
       "next": "escena_1_2"
     },
     "escena_1_2": {
       "type": "dialogue",
-      "background": { "src": "/backgrounds/bg_fachada_casa_abuela.jpg", "transition": "fade", "duration": 1000 },
-      "bgm": { "src": "/music/bgm_brisa_tropical.mp3", "action": "play" },
-      "sfx": { "src": "/sfx/sfx_candelilla_cigarras.wav", "action": "play" },
+      "background": {
+        "src": "/backgrounds/bg_fachada_casa_abuela.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "bgm": {
+        "src": "/music/bgm_brisa_tropical.mp3",
+        "action": "play"
+      },
+      "sfx": {
+        "src": "/sfx/sfx_candelilla_cigarras.wav",
+        "action": "play"
+      },
       "dialogos": [
         {
           "personaje": "narrador",
@@ -76,9 +96,19 @@
     },
     "escena_1_3": {
       "type": "dialogue",
-      "background": { "src": "/backgrounds/bg_sendero_selva_campamento.jpg", "transition": "fade", "duration": 1000 },
-      "bgm": { "src": "/music/bgm_misterio_cientifico.mp3", "action": "play" },
-      "sfx": { "src": "/sfx/sfx_motor_diesel.wav", "action": "play" },
+      "background": {
+        "src": "/backgrounds/bg_sendero_selva_campamento.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "bgm": {
+        "src": "/music/bgm_misterio_cientifico.mp3",
+        "action": "play"
+      },
+      "sfx": {
+        "src": "/sfx/sfx_motor_diesel.wav",
+        "action": "play"
+      },
       "dialogos": [
         {
           "personaje": "amaranta",
@@ -90,7 +120,7 @@
         },
         {
           "personaje": "narrador",
-          "texto": "No eran turistas, ni policías comunes. Eran buzos de exploración cargando tanques dobles de heliox, especialistas transportando computadoras de alta resistencia para mapeo tridimensional y científicos con chalecos de campo del INAH analizando planos topográficos."
+          "texto": "No eran turistas, ni policías comunes. Eran buzos de exploración cargando tanques de gas, especialistas transportando computadoras de alta resistencia y científicos con analizando planos."
         },
         {
           "personaje": "amaranta",
@@ -102,7 +132,7 @@
         },
         {
           "personaje": "amaranta",
-          "texto": "(Llevándose la mano a la frente con un gesto de dolor agudo) ¡Ah...! Maldita sea... ¿otra vez? Justo en el centro de la frente... Siento una punzada helada, como si me clavaran una aguja de hielo."
+          "texto": "(Llevándose la mano a la frente con un gesto de dolor agudo) ¡Ah...! ¿Otra vez? Justo en el centro de la frente... Siento una punzada helada, como si me clavaran una aguja de hielo."
         },
         {
           "personaje": "narrador",
@@ -113,9 +143,19 @@
     },
     "escena_1_4": {
       "type": "dialogue",
-      "background": { "src": "/backgrounds/bg_recamara_abuela_noche.jpg", "transition": "fade", "duration": 1000 },
-      "bgm": { "src": "/music/bgm_preludio_sueno.mp3", "action": "play" },
-      "sfx": { "src": "/sfx/sfx_viento_selva.wav", "action": "play" },
+      "background": {
+        "src": "/backgrounds/bg_recamara_abuela_noche.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "bgm": {
+        "src": "/music/bgm_preludio_sueno.mp3",
+        "action": "play"
+      },
+      "sfx": {
+        "src": "/sfx/sfx_viento_selva.wav",
+        "action": "play"
+      },
       "dialogos": [
         {
           "personaje": "narrador",
@@ -158,9 +198,19 @@
     },
     "escena_1_5": {
       "type": "dialogue",
-      "background": { "src": "/backgrounds/bg_hoyo_negro_pleistoceno_oscuro.jpg", "transition": "fade", "duration": 1000 },
-      "bgm": { "src": "/music/bgm_terror_ancestral.mp3", "action": "play" },
-      "sfx": { "src": "/sfx/sfx_eco_caverna_seca.wav", "action": "play" },
+      "background": {
+        "src": "/backgrounds/bg_hoyo_negro_pleistoceno_oscuro.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "bgm": {
+        "src": "/music/bgm_terror_ancestral.mp3",
+        "action": "play"
+      },
+      "sfx": {
+        "src": "/sfx/sfx_eco_caverna_seca.wav",
+        "action": "play"
+      },
       "dialogos": [
         {
           "personaje": "narrador",
@@ -203,25 +253,44 @@
     },
     "escena_1_5_eleccion": {
       "type": "choice",
-      "background": { "src": "/backgrounds/bg_pantalla_negra.jpg", "transition": "fade", "duration": 1000 },
+      "background": {
+        "src": "/backgrounds/bg_pantalla_negra.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
       "pregunta": "Elige la reacción de supervivencia de Naia.",
       "opciones": [
         {
           "texto": "Proteger la cabeza y encoger el cuerpo en posición fetal.",
-          "action": { "stat": "preservacion", "op": "add", "value": 1 },
+          "action": {
+            "stat": "preservacion",
+            "op": "add",
+            "value": 1
+          },
           "next": "escena_1_5_ruta_a"
         },
         {
           "texto": "Extender los brazos para intentar aferrarse a las paredes rugosas.",
-          "action": { "stat": "confianza", "op": "add", "value": 1 },
+          "action": {
+            "stat": "confianza",
+            "op": "add",
+            "value": 1
+          },
           "next": "escena_1_5_ruta_b"
         }
       ]
     },
     "escena_1_5_ruta_a": {
       "type": "dialogue",
-      "background": { "src": "/backgrounds/bg_pantalla_negra.jpg", "transition": "fade", "duration": 500 },
-      "sfx": { "src": "/sfx/sfx_caida_cuerpo_roca.wav", "action": "play" },
+      "background": {
+        "src": "/backgrounds/bg_pantalla_negra.jpg",
+        "transition": "fade",
+        "duration": 500
+      },
+      "sfx": {
+        "src": "/sfx/sfx_caida_cuerpo_roca.wav",
+        "action": "play"
+      },
       "dialogos": [
         {
           "personaje": "narrador",
@@ -244,8 +313,15 @@
     },
     "escena_1_5_ruta_b": {
       "type": "dialogue",
-      "background": { "src": "/backgrounds/bg_pantalla_negra.jpg", "transition": "fade", "duration": 500 },
-      "sfx": { "src": "/sfx/sfx_arrastre_piel_aspera.wav", "action": "play" },
+      "background": {
+        "src": "/backgrounds/bg_pantalla_negra.jpg",
+        "transition": "fade",
+        "duration": 500
+      },
+      "sfx": {
+        "src": "/sfx/sfx_arrastre_piel_aspera.wav",
+        "action": "play"
+      },
       "dialogos": [
         {
           "personaje": "narrador",
@@ -268,9 +344,19 @@
     },
     "escena_1_6": {
       "type": "dialogue",
-      "background": { "src": "/backgrounds/bg_recamara_abuela_noche.jpg", "transition": "fade", "duration": 1000 },
-      "bgm": { "src": "/music/bgm_despertar_trauma.mp3", "action": "play" },
-      "sfx": { "src": "/sfx/sfx_respiracion_agitada_amaranta.wav", "action": "play" },
+      "background": {
+        "src": "/backgrounds/bg_recamara_abuela_noche.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "bgm": {
+        "src": "/music/bgm_despertar_trauma.mp3",
+        "action": "play"
+      },
+      "sfx": {
+        "src": "/sfx/sfx_respiracion_agitada_amaranta.wav",
+        "action": "play"
+      },
       "dialogos": [
         {
           "personaje": "amaranta",
@@ -317,9 +403,19 @@
     },
     "escena_1_7": {
       "type": "dialogue",
-      "background": { "src": "/backgrounds/bg_cocina_abuela_dia.jpg", "transition": "fade", "duration": 1000 },
-      "bgm": { "src": "/music/bgm_diario_vivir.mp3", "action": "play" },
-      "sfx": { "src": "/sfx/sfx_remanso_cocina.wav", "action": "play" },
+      "background": {
+        "src": "/backgrounds/bg_cocina_abuela_dia.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "bgm": {
+        "src": "/music/bgm_diario_vivir.mp3",
+        "action": "play"
+      },
+      "sfx": {
+        "src": "/sfx/sfx_remanso_cocina.wav",
+        "action": "play"
+      },
       "dialogos": [
         {
           "personaje": "narrador",
@@ -354,21 +450,39 @@
       "opciones": [
         {
           "texto": "Ignorar los misterios y concentrarse en su recuperación familiar.",
-          "action": { "stat": "preservacion", "op": "add", "value": 0 },
+          "action": {
+            "stat": "preservacion",
+            "op": "add",
+            "value": 0
+          },
           "next": "escena_1_7_ruta_a"
         },
         {
           "texto": "Investigar a fondo qué está sucediendo en los cenotes.",
-          "action": { "stat": "confianza", "op": "add", "value": 1 },
+          "action": {
+            "stat": "confianza",
+            "op": "add",
+            "value": 1
+          },
           "next": "escena_1_7_ruta_b"
         }
       ]
     },
     "escena_1_7_ruta_a": {
       "type": "dialogue",
-      "background": { "src": "/backgrounds/bg_sala_abuela_noche.jpg", "transition": "fade", "duration": 1000 },
-      "bgm": { "src": "/music/bgm_diario_vivir.mp3", "action": "play" },
-      "sfx": { "src": "/sfx/sfx_television_subfondo.wav", "action": "play" },
+      "background": {
+        "src": "/backgrounds/bg_sala_abuela_noche.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "bgm": {
+        "src": "/music/bgm_diario_vivir.mp3",
+        "action": "play"
+      },
+      "sfx": {
+        "src": "/sfx/sfx_television_subfondo.wav",
+        "action": "play"
+      },
       "dialogos": [
         {
           "personaje": "narrador",
@@ -443,15 +557,29 @@
     },
     "escena_1_7_ruta_a_fin": {
       "type": "custom_message",
-      "background": { "src": "/backgrounds/bg_pantalla_negra.jpg", "transition": "fade", "duration": 1000 },
+      "background": {
+        "src": "/backgrounds/bg_pantalla_negra.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
       "text": "FIN DE LA RUTA DE LA NEGLIGENCIA",
       "next": "mainMenu"
     },
     "escena_1_7_ruta_b": {
       "type": "dialogue",
-      "background": { "src": "/backgrounds/bg_sala_abuela_dia.jpg", "transition": "fade", "duration": 1000 },
-      "bgm": { "src": "/music/bgm_nostalgia_abuela.mp3", "action": "play" },
-      "sfx": { "src": "/sfx/sfx_ambiente_manana.wav", "action": "play" },
+      "background": {
+        "src": "/backgrounds/bg_sala_abuela_dia.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "bgm": {
+        "src": "/music/bgm_nostalgia_abuela.mp3",
+        "action": "play"
+      },
+      "sfx": {
+        "src": "/sfx/sfx_ambiente_manana.wav",
+        "action": "play"
+      },
       "dialogos": [
         {
           "personaje": "narrador",
@@ -503,11 +631,11 @@
         },
         {
           "personaje": "narrador",
-          "texto": "Sentados en las mesas comunitarias, varios hombres y mujeres almuerzan en silencio. Visten uniformes técnicos de buceo, chalecos con las siglas del INAH y cargan mapas y carpetas herméticas de alta resistencia."
+          "texto": "Sentados en las mesas comunitarias, varios hombres y mujeres almuerzan en silencio. Visten uniformes, chalecos con las siglas del INAH y cargan mapas."
         },
         {
           "personaje": "amaranta",
-          "texto": "(Con determinación en la mirada) El equipo de arqueología subacuática... Es la misma gente del sendero. Están buscando algo masivo aquí en Tulum. Y mis visiones son la clave para descubrirlo."
+          "texto": "(Con determinación en la mirada) Son la misma gente del sendero. Están buscando algo masivo aquí en Tulum. Y mis pesadillas deben ser clave."
         }
       ],
       "next": "escena_1_8_campamento_contacto"

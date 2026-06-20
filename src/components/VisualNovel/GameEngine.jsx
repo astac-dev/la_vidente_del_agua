@@ -133,7 +133,35 @@ const GameEngine = ({ onNavigate }) => {
   }, [gameState.currentChapter]);
 
   // Hook del motor adaptado para recibir scriptData cargado dinámicamente
-  const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice } = useVisualNovelEngine(scriptData);
+  const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice, skipToNextChoice } = useVisualNovelEngine(scriptData);
+
+  /**
+   * Determina si un elemento específico de la interfaz debe estar resaltado
+   * basándose en la configuración de la línea actual del guion.
+   * Soporta cadenas simples, listas separadas por comas o arreglos.
+   * 
+   * @param {string} target - Identificador del componente de UI (ej. 'btn-fullscreen', 'glifo-agua').
+   * @returns {boolean} Verdadero si el componente debe ser resaltado.
+   */
+  const isHighlighted = (target) => {
+    if (!currentLine?.highlight) return false;
+    
+    if (Array.isArray(currentLine.highlight)) {
+      return currentLine.highlight.includes(target);
+    }
+    
+    if (typeof currentLine.highlight === 'string') {
+      const parts = currentLine.highlight.split(',').map(s => s.trim());
+      if (parts.includes(target)) return true;
+      if (parts.includes('hud-buttons')) {
+        const hudButtons = ['btn-fullscreen', 'btn-home', 'btn-log', 'btn-skip', 'btn-auto', 'btn-hide'];
+        if (hudButtons.includes(target)) return true;
+      }
+      return currentLine.highlight === target;
+    }
+    
+    return false;
+  };
 
   /**
    * Gestiona el inicio, cambio y detención de la música de fondo (BGM).
@@ -414,11 +442,19 @@ const GameEngine = ({ onNavigate }) => {
     if (isEndOfScene) {
       return;
     }
-    const baseDelay = 1500; 
-    const charsPerSecond = 20 * settings.autoPlaySpeed;
+
+    // Configuración paramétrica de velocidad según estándares de lectura (WPM a CPS)
+    const speedConfig = {
+      1: { cps: 20, base: 1500 }, // x1: Normal (~240 WPM)
+      2: { cps: 32, base: 1100 }, // x2: Rápido (~380 WPM)
+      3: { cps: 48, base: 800 },  // x3: Muy Rápido (~570 WPM)
+      4: { cps: 64, base: 500 }   // x4: Escaneo (~760 WPM)
+    };
+
+    const config = speedConfig[settings.autoPlaySpeed] || speedConfig[1];
     const textLength = currentLine?.texto?.length || 0;
-    const calculatedDelay = (textLength / charsPerSecond) * 1000;
-    const totalDelay = baseDelay + calculatedDelay;
+    const calculatedDelay = (textLength / config.cps) * 1000;
+    const totalDelay = config.base + calculatedDelay;
 
     const timer = setTimeout(() => {
       advance();
@@ -428,7 +464,7 @@ const GameEngine = ({ onNavigate }) => {
   }, [currentLine, isChoice, uiVisibility, settings.autoPlaySpeed, isEndOfScene, advance]);
 
   const handleToggleSkip = () => {
-    console.log("Modo SKIP (lógica pendiente)");
+    skipToNextChoice();
   };
 
   const handleToggleLog = () => {
@@ -512,7 +548,7 @@ const GameEngine = ({ onNavigate }) => {
                 <div className="flex items-start gap-1.5">
                   <button 
                     onClick={toggleFullscreen} 
-                    className={`${buttonBaseClasses} ${currentLine?.highlight === 'btn-fullscreen' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`} 
+                    className={`${buttonBaseClasses} ${isHighlighted('btn-fullscreen') ? 'vn-highlight-active' : ''}`} 
                     title={isFullscreen ? t('interface.fullscreenExit', 'Salir de pantalla completa') : t('interface.fullscreenEnter', 'Pantalla completa')}
                   >
                     <div className="pt-1">
@@ -525,7 +561,7 @@ const GameEngine = ({ onNavigate }) => {
                   <button 
                     onClick={handleHomeClick} 
                     disabled={isFullscreen} 
-                    className={`${buttonBaseClasses} ${isFullscreen ? 'opacity-25 pointer-events-none' : ''} ${currentLine?.highlight === 'btn-home' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`}
+                    className={`${buttonBaseClasses} ${isFullscreen ? 'opacity-25 pointer-events-none' : ''} ${isHighlighted('btn-home') ? 'vn-highlight-active' : ''}`}
                     title={t('interface.backToMenu', 'Volver al Menú')}
                   >
                     {!isFullscreen && <div className="absolute top-0 left-0 w-1 h-1 bg-amber-500" />}
@@ -535,7 +571,7 @@ const GameEngine = ({ onNavigate }) => {
                     </span>
                   </button>
                 </div>
-                <HUD />
+                {!isChoice && <HUD />}
               </div>
 
               <div className="absolute left-1/2 -translate-x-1/2 top-4 flex flex-col border-l-2 border-amber-500 pl-2 pr-4 py-0.5 bg-black/30 font-mono hidden sm:flex pointer-events-auto vn-site-badge">
@@ -546,7 +582,7 @@ const GameEngine = ({ onNavigate }) => {
               <div className="flex gap-1.5">
                 <button 
                   onClick={handleToggleLog} 
-                  className={`${buttonBaseClasses} ${currentLine?.highlight === 'btn-log' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`} 
+                  className={`${buttonBaseClasses} ${isHighlighted('btn-log') ? 'vn-highlight-active' : ''}`} 
                   title={t('interface.history', 'Historial')}
                 >
                   <div className="pt-1"><LogIcon /></div>
@@ -554,7 +590,7 @@ const GameEngine = ({ onNavigate }) => {
                 </button>
                 <button 
                   onClick={handleToggleSkip} 
-                  className={`${buttonBaseClasses} ${currentLine?.highlight === 'btn-skip' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`} 
+                  className={`${buttonBaseClasses} ${isHighlighted('btn-skip') ? 'vn-highlight-active' : ''}`} 
                   title={t('interface.skip', 'Saltar')}
                 >
                   <div className="pt-1"><SkipIcon /></div>
@@ -562,7 +598,7 @@ const GameEngine = ({ onNavigate }) => {
                 </button>
                 <button 
                   onClick={handleAutoClick} 
-                  className={`${buttonBaseClasses} ${settings.autoPlaySpeed > 0 ? 'border-amber-500 bg-amber-500/10 text-amber-400 hover:text-amber-300' : ''} ${currentLine?.highlight === 'btn-auto' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`} 
+                  className={`${buttonBaseClasses} ${settings.autoPlaySpeed > 0 ? 'border-amber-500 bg-amber-500/10 text-amber-400 hover:text-amber-300' : ''} ${isHighlighted('btn-auto') ? 'vn-highlight-active' : ''}`} 
                   title={t('interface.autoMode', 'Modo Automático')}
                 >
                   {settings.autoPlaySpeed > 0 && <div className="absolute top-0 right-0 w-1 h-1 bg-amber-500 animate-pulse" />}
@@ -574,7 +610,7 @@ const GameEngine = ({ onNavigate }) => {
                 </button>
                 <button 
                   onClick={toggleUiVisibility} 
-                  className={`${buttonBaseClasses} ${currentLine?.highlight === 'btn-hide' || currentLine?.highlight === 'hud-buttons' ? 'vn-highlight-active' : ''}`} 
+                  className={`${buttonBaseClasses} ${isHighlighted('btn-hide') ? 'vn-highlight-active' : ''}`} 
                   title={t('interface.hideUI', 'Ocultar Interfaz')}
                 >
                     <div className="pt-1">{uiVisibility ? <HideUIIcon /> : <ShowUIIcon />}</div>
@@ -591,7 +627,7 @@ const GameEngine = ({ onNavigate }) => {
                   key={translatedDialogue} 
                   character={currentLine.personaje}
                   text={displayedText}
-                  isHighlighted={currentLine?.highlight === 'dialogue-box'}
+                  isHighlighted={isHighlighted('dialogue-box')}
                 />
               )}
 
@@ -606,10 +642,10 @@ const GameEngine = ({ onNavigate }) => {
               {!isChoice && !isEndOfScene && (
                 <img
                   src={glifoAgua}
-                  className={`vn-glifo-indicator ${currentLine?.highlight === 'glifo-agua' ? 'vn-highlight-active' : ''}`}
+                  className={`vn-glifo-indicator ${isHighlighted('glifo-agua') ? 'vn-highlight-active' : ''}`}
                   alt="Continuar"
                   onClick={handleAdvanceClick}
-                  style={{ cursor: 'pointer', pointerEvents: 'auto', zIndex: 25 }}
+                  style={{ cursor: 'pointer', pointerEvents: 'auto', zIndex: 100 }}
                 />
               )}
             </>

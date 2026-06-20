@@ -1,5 +1,43 @@
 # Historial de Cambios
 
+## [0.3.23] - 2026-06-20
+
+### Añadido
+- **Soporte de Resaltados Múltiples en la Interfaz**:
+  - Implementación de la función `isHighlighted(target)` en `GameEngine.jsx` que permite evaluar si un elemento de UI debe estar activo en base al estado de la línea actual de diálogo.
+  - Compatibilidad de resaltados especificados como arreglos de cadenas (ej. `["btn-fullscreen", "glifo-agua"]`), listas de cadenas separadas por comas (ej. `"btn-fullscreen, glifo-agua"`) o cadenas simples, asegurando compatibilidad total con configuraciones previas (como `"hud-buttons"`).
+  - Configuración del primer diálogo del tutorial de Naia en `capitulo_0.json` para resaltar de forma simultánea el botón de pantalla completa (`btn-fullscreen`) y el glifo de agua (`glifo-agua`).
+
+### Cambiado
+- **Política de Verificación Visual (`reglas.log`)**:
+  - Se modificó la regla global para deshabilitar las simulaciones automatizadas mediante el Browser Agent, delegando la comprobación visual al usuario de manera manual.
+
+### Corregido
+- **Z-Index y Posicionamiento de Glifo de Agua**:
+  - Se corrigió un problema donde el glifo de agua (`glifo-agua`) cambiaba a `position: relative` al activarse el resaltado (debido al estilo genérico de `.vn-highlight-active`), lo que alteraba su flujo y lo hacía invisible.
+  - Se forzó `position: absolute !important` y se incrementó el `z-index` a `100` (y `110` cuando está activo) en `VisualNovelContainer.css` y `GameEngine.jsx` para garantizar que permanezca visible y al frente de la caja de diálogo.
+
+## [0.3.22] - 2026-06-18
+
+### Cambiado
+- **Ajustes de Velocidad de Reproducción Automática (Auto Mode)**:
+  - Optimización de las 4 velocidades (`x1`, `x2`, `x3`, `x4`) basándose en estándares de velocidad de lectura de novelas visuales (WPM a CPS).
+  - Configuración de la velocidad `x1` a 20 caracteres por segundo (CPS) con buffer base de 1500ms (lectura normal de ~240 WPM).
+  - Escalado dinámico de CPS y reducción proporcional del tiempo de espera mínimo (base buffer) para niveles superiores (`x2`: 32 CPS/1100ms, `x3`: 48 CPS/800ms, `x4`: 64 CPS/500ms) para garantizar transiciones naturales y fluidas.
+
+## [0.3.21] - 2026-06-18
+
+### Añadido
+- **Función "Saltar Diálogos" (SALT.DIAL)**:
+  - Implementación de la función `skipToNextChoice` en `useVisualNovelEngine.js` que recorre en memoria el grafo de escenas del capítulo actual hasta encontrar una escena de elección interactiva (`type === 'choice'`).
+  - Esto realiza una transición limpia directamente a la siguiente toma de decisiones, omitiendo visualizaciones redundantes y optimizando la interactividad del usuario.
+  - Soporte de parada controlada en transiciones inter-capítulo para posibilitar cargas asíncronas seguras de nuevos recursos JSON.
+  - Conexión del botón `SALT.DIAL` de la interfaz para activar esta navegación acelerada.
+
+### Corregido
+- **Ocultamiento del Marcador de Confianza y Preservación**:
+  - Se configuró el renderizado condicional del panel `<HUD />` en `GameEngine.jsx` para ocultarse durante los menús de elección (`isChoice === true`), evitando colisiones de visualización y mejorando la legibilidad.
+
 ## [0.3.20] - 2026-06-17
 
 ### Añadido

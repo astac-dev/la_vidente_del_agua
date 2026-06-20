@@ -296,7 +296,7 @@
             {
               "id": 7,
               "personaje": "Narrador",
-              "texto": "Hasta que llegaron los sueños. O mejor dicho, las ausencias."
+              "texto": "Hasta que llegaron los sueños. O mejor dicho, las visiones."
             },
             {
               "id": 8,
@@ -311,7 +311,7 @@
             {
               "id": 10,
               "personaje": "Narrador",
-              "texto": "Tras una gran cantidad de estudios médicos en el hospital para descartar problemas neurológicos y hormonales, el diagnóstico final fue tajante: \"Colapso nervioso por estrés severo\". ¿La receta? Tres meses de aislamiento fuera de la ciudad y reposo."
+              "texto": "Tras una gran cantidad de estudios médicos en el hospital para descartar problemas neurológicos y hormonales, el diagnóstico final fue tajante: \"Colapso nervioso por estrés severo\". ¿La receta? Tres meses de aislamiento fuera del estres de la ciudad y reposo."
             }
           ]
         },
@@ -356,7 +356,7 @@
             {
               "id": 3,
               "personaje": "Narrador",
-              "texto": "No eran turistas, ni policías comunes. Eran buzos de exploración cargando tanques dobles de heliox, especialistas transportando computadoras de alta resistencia para mapeo tridimensional y científicos con chalecos de campo del INAH analizando planos topográficos."
+              "texto": "No eran turistas, ni policías comunes. Eran buzos de exploración cargando tanques de gas, especialistas transportando computadoras de alta resistencia y científicos con analizando planos."
             },
             {
               "id": 4,
@@ -371,7 +371,7 @@
             {
               "id": 6,
               "personaje": "Amaranta",
-              "texto": "(Llevándose la mano a la frente con un gesto de dolor agudo) ¡Ah...! Maldita sea... ¿otra vez? Justo en el centro de la frente... Siento una punzada helada, como si me clavaran una aguja de hielo."
+              "texto": "(Llevándose la mano a la frente con un gesto de dolor agudo) ¡Ah...! ¿Otra vez? Justo en el centro de la frente... Siento una punzada helada, como si me clavaran una aguja de hielo."
             },
             {
               "id": 7,
@@ -805,12 +805,12 @@
             {
               "id": 13,
               "personaje": "Narrador",
-              "texto": "Sentados en las mesas comunitarias, varios hombres y mujeres almuerzan en silencio. Visten uniformes técnicos de buceo, chalecos con las siglas del INAH y cargan mapas y carpetas herméticas de alta resistencia."
+              "texto": "Sentados en las mesas comunitarias, varios hombres y mujeres almuerzan en silencio. Visten uniformes, chalecos con las siglas del INAH y cargan mapas."
             },
             {
               "id": 14,
               "personaje": "Amaranta",
-              "texto": "(Con determinación en la mirada) El equipo de arqueología subacuática... Es la misma gente del sendero. Están buscando algo masivo aquí en Tulum. Y mis visiones son la clave para descubrirlo."
+              "texto": "(Con determinación en la mirada) Son la misma gente del sendero. Están buscando algo masivo aquí en Tulum. Y mis pesadillas deben ser clave."
             }
           ]
         }

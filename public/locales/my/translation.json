@@ -269,10 +269,10 @@
             { "id": 4, "personaje": "Sistema", "texto": "[EFECTO VISUAL: Parpadeo de pantalla en rojo tenue / Desenfoque de cámara]\n[SFX: Sonido de respiración agitada y dolor de cabeza punzante]" },
             { "id": 5, "personaje": "Amaranta", "texto": "(Yéetel u yich sastal, u machma' jump'éel luuch ja' yéetel u k'abo'ob k'ilkab) Ka'aten... Ka'aten le k'aas uk'ajil. Siento que tengo los pulmones llenos de polvo... y la cabeza a punto de estallar." },
             { "id": 6, "personaje": "J-tsikbal", "texto": "Tu 16 u ja'abil, u kuxtal Amaranta ma'alob binik. U ch'upal ts'ak yéetel j-konol, le calificaciones ma' talamili'. Leti' u yáax xokbil paal, le amiga che'ejil." },
-            { "id": 7, "personaje": "J-tsikbal", "texto": "Tak úuchik u tal le wáayo'ob. O u ya'alale', le ausencias." },
+            { "id": 7, "personaje": "J-tsikbal", "texto": "Tak úuchik u tal le wayak'o'ob. O u ya'alale', le wáayo'ob." },
             { "id": 8, "personaje": "Amaranta", "texto": "(Yéetel ch'a'apajal, ku pulik u luuch plásticook te' yáanal t'aan) ¡Ma' in k'áat wenel! Cada vez que cierro los ojos, ese maldito vacío me traga. Siento el frío de la piedra, la oscuridad... y el miedo de alguien que no soy yo." },
             { "id": 9, "personaje": "J-tsikbal", "texto": "Le ma' wenel tu taasaj u bo'ol. Le xook bin t'il; u ka'anal tu sutaj u ki'il óolal tu wíinkilal gray, triste yéetel k'expajal u óolal tu ts'a'aj saajkil ti' u yáax yéetel tu t'oxaj u amigos." },
-            { "id": 10, "personaje": "J-tsikbal", "texto": "Úuchik u beetal ya'ab xak'al ts'akyaj ti' k'oja'anchajil utial u yila'al tuukul yéetel hormonas, le diagnóstico ts'o'ok: 'Colapso nervioso por estrés severo'. ¿Le receta? Oox p'éel u k'iinil ta'akal táan ti' le kaj yéetel je'elel." }
+            { "id": 10, "personaje": "J-tsikbal", "texto": "Úuchik u beetal ya'ab xak'al ts'akyaj ti' k'oja'anchajil utial u yila'al tuukul yéetel hormonas, le diagnóstico ts'o'ok: 'Colapso nervioso por estrés severo'. ¿Le receta? Oox p'éel u k'iinil ta'akal táan ti' u talamil le noj kaj yéetel je'elel." }
           ]
         },
         "escena_1_2": {
@@ -471,12 +471,12 @@
             {
               "id": 13,
               "personaje": "J-tsikbal",
-              "texto": "Kutalo'ob te' t'aanil mesail, ya'ab xi'ipalo'ob yéetel x-ch'úupalo'ob ku jaantajo'ob ti' ch'eneb. U ts'a'amaj u nook' buceo, chalecos yéetel ts'íibil INAH yéetel ku bisiko'ob máapas yéetel carpetas mu'uk'an."
+              "texto": "Kutalo'ob te' t'aanil mesail, ya'ab xi'ipalo'ob yéetel x-ch'úupalo'ob ku jaantajo'ob ti' ch'eneb. U ts'a'amaj u nook'o'ob, chalecos yéetel ts'íibil INAH yéetel ku bisiko'ob máapas."
             },
             {
               "id": 14,
               "personaje": "Amaranta",
-              "texto": "(Yéetel u yich tsolil) U j-kuchilo'ob arqueología subacuática... Leti'e' j-máako'ob te' bejo'. Ku kaxtiko'ob jump'éel nojoch ba'al way Tulum. Yéetel in wáayo'ob leti' u beelil utial in kaxtik."
+              "texto": "(Yéetel u yich tsolil) Leti'e' j-máako'ob te' bejo'. Ku kaxtiko'ob jump'éel nojoch ba'al way Tulum. Yéetel in k'aas wayak'o'ob leti' u beelil."
             }
           ]
         }
