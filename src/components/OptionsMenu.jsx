@@ -10,7 +10,7 @@ const OptionsMenu = ({ onBack }) => {
     const [tempFontSize, setTempFontSize] = useState(settings.tamanoLetra || 100);
 
     const handleSettingChange = (key, value) => {
-        updateSetting(key, parseInt(value, 10));
+        updateSetting(key, key === 'soloJuegoRapido' ? value : parseInt(value, 10));
     };
 
     const handleBackClick = () => {
@@ -77,6 +77,19 @@ const OptionsMenu = ({ onBack }) => {
                         onChange={(e) => setTempFontSize(parseInt(e.target.value, 10))}
                     />
                     <span className="slider-value">{tempFontSize}%</span>
+                </div>
+            </div>
+
+            <div className="option-item">
+                <label htmlFor="fast-mode">{t('interface.fastMode')}</label>
+                <div className="slider-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '10px' }}>
+                    <input
+                        type="checkbox"
+                        id="fast-mode"
+                        checked={!!settings.soloJuegoRapido}
+                        onChange={(e) => handleSettingChange('soloJuegoRapido', e.target.checked)}
+                        style={{ width: '24px', height: '24px', cursor: 'pointer' }}
+                    />
                 </div>
             </div>
 

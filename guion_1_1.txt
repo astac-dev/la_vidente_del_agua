@@ -1,0 +1,309 @@
+================================================================================
+          LA VIDENTE DEL AGUA: ARQUITECTURA INTEGRADA (V1.0 / V1.1)
+================================================================================
+
+[NOTA DE PROGRAMACIÓN: Si el usuario selecciona "MODO EXPOSICIÓN INAH" en el menú principal, saltar directamente a la ESCENA: CAPÍTULO_1_1_INICIO. Si selecciona "MODO HISTORIA PRINCIPAL", iniciar desde la ESCENA_1_1_CDMX.]
+
+
+================================================================================
+             PARTE 1: ANTES DEL CAPÍTULO 1.1 (LORE DEL DIRECTOR)
+================================================================================
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_1_CDMX
+--------------------------------------------------------------------------------
+
+INT. RECÁMARA DE AMARANTA (CDMX) - NOCHE
+
+[SONIDO: MÚSICA: bgm_trauma_silencio.mp3 (play) / SFX: sfx_reloj_tic_tac.wav (play)]
+
+Ciudad de México. 15 de diciembre de 2011.
+
+Para la mayoría de los estudiantes, diciembre es sinónimo de fiestas, descanso y el cierre de un ciclo escolar exitoso.[cite: 1] Para Amaranta, es el recordatorio de que su mente se está desmoronando.[cite: 1]
+
+[EFECTO VISUAL: Parpadeo de pantalla en rojo tenue / Desenfoque de cámara][cite: 1]
+[SFX: Sonido de respiración agitada y dolor de cabeza punzante][cite: 1]
+
+                                 AMARANTA
+                    Otra vez... Otra vez la misma sed
+                    maldita. Siento que tengo los pulmones
+                    llenos de polvo... y la cabeza a punto
+                    de estallar.[cite: 1]
+
+A sus 16 años, la vida de Amaranta solía ser predecible y brillante.[cite: 1] Hasta que llegaron los sueños. O mejor dicho, las visiones.[cite: 1] Un colapso nervioso por estrés severo la obligó a un aislamiento de tres meses fuera de la ciudad.[cite: 1] El remedio de sus padres: enviarla a Tulum, Quintana Roo, bajo el cuidado de su abuela.[cite: 1]
+
+[TRANSICIÓN A: ESCENA_1_2_TULUM]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_2_TULUM
+--------------------------------------------------------------------------------
+
+EXT. SENDERO EN LA SELVA - DÍA
+
+[SONIDO: MÚSICA: bgm_brisa_tropical.mp3 (play) / SFX: sfx_candelilla_cigarras.wav (play)][cite: 1]
+
+Los primeros tres días en el Caribe funcionaron como un bálsamo milagroso.[cite: 1] Por fin, Amaranta pudo conciliar el sueño de forma natural.[cite: 1] El aire puro de la selva parecía haber ahuyentado a los fantasmas de su cabeza.[cite: 1] 
+
+Al cuarto día, durante una caminata de regreso a casa por los senderos menos transitados de la localidad, la paz se rompió.[cite: 1] Amaranta se detiene en seco al escuchar un rugido mecánico inusual entre los árboles.
+
+                                 AMARANTA
+                    ¿Pero qué...? Este camino suele estar
+                    completamente desierto. 
+
+[TRANSICIÓN DIRECTA A: CAPÍTULO_1_1_INICIO]
+
+
+================================================================================
+      PARTE 2: CAPÍTULO 1.1 (VERSIÓN EXPOSICIÓN INAH - MÁX. 5 MINUTOS)
+================================================================================
+
+--------------------------------------------------------------------------------
+ESCENA: CAPÍTULO_1_1_INICIO
+--------------------------------------------------------------------------------
+
+EXT. SENDERO EN LA SELVA - CAMPAMENTO CIENTÍFICO INAH - DÍA
+
+[LOGIC CHECK: IF MODO_EXPOSICION == TRUE -> Mostrar pantalla negra con texto: "Tulum, 2011. Amaranta (16) sufre extrañas visiones. Al adentrarse en la selva, tropieza con un secreto protegido por la arqueología subacuática..."]
+
+[SONIDO: MÚSICA: bgm_misterio_cientifico.mp3 (play) / SFX: sfx_motor_diesel.wav (play)][cite: 1]
+
+Frente a ella, la quietud del pueblo se ha transformado en un despliegue logístico. Camionetas con logotipos oficiales del INAH, plantas de luz y buzos de exploración cargando tanques de gas.[cite: 1] En el centro, junto a la boca de un cenote, carpas resguardan monitores de alta tecnología.
+
+Amaranta observa escondida detrás de un gran arbusto, pero al asomarse demasiado, pisa una rama seca.[cite: 1]
+
+[SFX: sfx_rama_rompiéndose.wav]
+
+Un ARQUEÓLOGO JOVEN (25 años, con chaleco del INAH y una tableta digital) se gira de inmediato y la descubre.
+
+                                ARQUEÓLOGO
+                    ¡Oye! Cuidado ahí. El suelo de la selva
+                    cerca del cenote es piedra caliza frágil;
+                    un mal paso y podrías romper el borde... o
+                    caer al vacío.
+
+[INTERACCIÓN 1: DECISIÓN DE ACTITUD (MINUTO 1:00)]
+PREGUNTA: ¿Cómo reacciona Amaranta ante el arqueólogo?
+
+  [ Opción 1 ]: "Lo siento, me dio curiosidad... ¿Qué es todo este equipo?"
+               --> EFECTO: confianza = confianza + 1
+               --> IR A ESCENA: CAMPAMENTO_INTERACCION_MATEO
+  
+  [ Opción 2 ]: "Perdón, no quería estorbar. Ya me iba."
+               --> EFECTO: preservacion = preservacion + 1
+               --> IR A ESCENA: CAMPAMENTO_TIMIDA
+
+
+--------------------------------------------------------------------------------
+ESCENA: CAMPAMENTO_INTERACCION_MATEO
+--------------------------------------------------------------------------------
+
+                                ARQUEÓLOGO
+                    (Sonriendo, entusiasmado)
+                    No te preocupes. Es arqueología subacuática.
+                    Estamos mapeando un sitio intacto a más de
+                    40 metros de profundidad. Pásale, mira la
+                    pantalla.
+
+
+--------------------------------------------------------------------------------
+ESCENA: CAMPAMENTO_TIMIDA
+--------------------------------------------------------------------------------
+
+                                ARQUEÓLOGO
+                    ¡Espera, no te vayas! No es que estés estorbando,
+                    es por tu seguridad. Pero ya que estás aquí...
+                    ¿no te da curiosidad ver lo que descubrimos
+                    ahí abajo? Ven a ver este monitor.
+
+
+--------------------------------------------------------------------------------
+ESCENA: CAMPAMENTO_EXPLICACION_MECANICA
+--------------------------------------------------------------------------------
+
+INT. CARPA DEL INAH - CONTINUO
+
+El arqueólogo señala una pantalla táctil que muestra un renderizado 3D en malla de vectores azules de una cueva inundada.[cite: 1]
+
+                                ARQUEÓLOGO
+                    Hoyo Negro. Una biblioteca del tiempo oculta.[cite: 1]
+                    En arqueología subacuática, el CONTEXTO lo
+                    es todo. Si un buzo mueve un solo resto
+                    para tomarse una foto, destruye la evidencia
+                    científica para siempre. Conservar es registrar
+                    sin alterar. ¿Quieres intentar un escaneo?
+
+[INTERACCIÓN 2: MINI-JUEGO DE PRESERVACIÓN DIGITAL (MINUTO 2:00)]
+[EFECTO VISUAL: Aparece en pantalla una interfaz táctil superpuesta. El jugador debe usar su dedo para alinear tres puntos de calibración fotogramétrica sobre un fósil virtual.]
+
+  [ Opción 1 ]: [Calibrar con paciencia y precisión siguiendo los puntos]
+               --> EFECTO: preservacion = preservacion + 1
+               --> MENSAJE UI: "¡Escaneo perfecto! Contexto arqueológico intacto."
+               --> IR A ESCENA: CAMPAMENTO_DETONANTE
+  
+  [ Opción 2 ]: [Apresurar el escaneo presionando la pantalla repetidamente]
+               --> EFECTO: preservacion = preservacion + 0
+               --> MENSAJE UI: "Fallo de calibración. El escaneo rápido distorsionó los datos del sedimento."
+               --> IR A ESCENA: CAMPAMENTO_DETONANTE
+
+
+--------------------------------------------------------------------------------
+ESCENA: CAMPAMENTO_DETONANTE
+--------------------------------------------------------------------------------
+
+Al completarse el proceso en el monitor, los vectores 3D se renderizan revelando la forma exacta de un cráneo humano adolescente. Es idéntico al rostro de Naia.[cite: 1]
+
+[EFECTO VISUAL: Destello blanco súbito y violento en el centro de la pantalla][cite: 1]
+[SFX: Un latido sordo, masivo e interno: *DUM-DUM*][cite: 1]
+
+                                 AMARANTA
+                    (Llevándose las manos a la cabeza,
+                    sufriendo un dolor agudo)[cite: 1]
+                    ¡Ah...! ¿Otra vez? Siento una punzada
+                    helada... ¡Esa chica... esa chica era yo![cite: 1]
+
+                                ARQUEÓLOGO
+                    ¿Oye? ¿Te encuentras bien? ¡No toques el--!
+
+[INTERACCIÓN 3: EL IMPACTO MÍSTICO (MINUTO 3:00)]
+PREGUNTA: El dolor te nubla la vista. ¿Qué haces mientras pierdes el equilibrio?
+
+  [ Opción 1 ]: Sostenerse con fuerza del monitor digital arqueológico.
+               --> EFECTO: confianza = confianza + 1
+               --> IR A ESCENA: TRANSICION_GLITCH_AL_PASADO
+  
+  [ Opción 2 ]: Dejarse caer al suelo protegiendo tu cabeza.
+               --> EFECTO: preservacion = preservacion + 1
+               --> IR A ESCENA: TRANSICION_GLITCH_AL_PASADO
+
+
+--------------------------------------------------------------------------------
+ESCENA: TRANSICION_GLITCH_AL_PASADO
+--------------------------------------------------------------------------------
+
+[EFECTO VISUAL: La interfaz del juego sufre un glitch severo. El color azul del campamento se tiñe de un negro absoluto. Las barras de medidores parpadean.]
+[SFX: Sonido lejano de goteo de agua con eco profundo: *Ploc... Ploc...*][cite: 1]
+[BGM: Detener toda la música de golpe][cite: 1]
+
+El espacio y el tiempo colapsan. Amaranta ya no está en 2011. Su conciencia es succionada trece mil años hacia el pasado.[cite: 1]
+
+[TRANSICIÓN A: ESCENA_1_5_PLEISTOCENO]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_5_PLEISTOCENO
+--------------------------------------------------------------------------------
+
+INT. HOYO NEGRO (PLEISTOCENO) - OSCURO
+
+[SONIDO: MÚSICA: bgm_terror_ancestral.mp3 (play) / SFX: sfx_eco_caverna_seca.wav (play)][cite: 1]
+
+A través de los ojos de Naia. Ella sostiene una antorcha de resina en una fosa completamente seca, miles de años antes de ser inundada.[cite: 1] La sed raspa su garganta.[cite: 1]
+
+                                   NAIA
+                    Tengo tanta sed... Aquí abajo solo
+                    hay piedra.[cite: 1]
+
+[SFX: Un aleteo masivo y repentino: SFX_HORDA_MURCIELAGOS][cite: 1]
+[EFECTO VISUAL: Ráfaga de partículas negras cruzando la pantalla][cite: 1]
+
+Cientos de murciélagos impactan contra su rostro en un parpadeo de pánico.[cite: 1] Presa del terror, da unos pasos a ciegas justo al borde del abismo fatal.[cite: 1] El suelo firme desaparece. Naia cae al vacío.[cite: 1]
+
+[INTERACCIÓN 4: LA DECISIÓN DE CONSERVACIÓN (MINUTO 4:00)][cite: 1]
+PREGUNTA: Elige la reacción de supervivencia de Naia durante la caída libre.[cite: 1]
+
+  [ Opción 1 ]: "Proteger la cabeza y lanzar la antorcha lejos hacia una zona seca."
+               --> EFECTO: preservacion = preservacion + 1[cite: 1]
+               --> EXPLICACIÓN INAH: Al lanzar la antorcha lejos, el carbón no se mezcló con tus huesos fosilizados, permitiendo datar tu antigüedad con precisión exacta 13,000 años después.
+               --> IR A ESCENA: ESCENA_CAIDA_RUTA_A
+  
+  [ Opción 2 ]: "Extender los brazos para intentar aferrarse a las estalactitas de las paredes."
+               --> EFECTO: confianza = confianza + 1[cite: 1]
+               --> EXPLICACIÓN INAH: Tus brazos se rompieron y destruiste formaciones minerales milenarias, alterando el entorno geológico de la cueva permanentemente.
+               --> IR A ESCENA: ESCENA_CAIDA_RUTA_B
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_CAIDA_RUTA_A
+--------------------------------------------------------------------------------
+
+[SONIDO: SFX: sfx_caida_cuerpo_roca.wav (play)][cite: 1]
+[SFX: Crujido óseo: SFX_FRACTURA_PELVIS][cite: 1]
+
+El impacto en el fondo de la fosa seca fractura su cadera.[cite: 1] El silencio sepulcral vuelve a apoderarse de la cueva oscura.[cite: 1]
+
+[TRANSICIÓN A: CAPÍTULO_1_1_CIERRE_LOGICO]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_CAIDA_RUTA_B
+--------------------------------------------------------------------------------
+
+[SONIDO: SFX: sfx_arrastre_piel_aspera.wav (play)][cite: 1]
+[SFX: Múltiples fracturas consecutivas: SFX_FRACTURA_MULTIPLE][cite: 1]
+
+Sus extremidades se desgarran contra las estalagmitas afiladas antes de que su cuerpo quede inerte en el suelo de la cueva.[cite: 1]
+
+[TRANSICIÓN A: CAPÍTULO_1_1_CIERRE_LOGICO]
+
+
+--------------------------------------------------------------------------------
+ESCENA: CAPÍTULO_1_1_CIERRE_LOGICO
+--------------------------------------------------------------------------------
+
+[LOGIC CHECK: EVALUACIÓN DE RUTA (MINUTO 5:00)]
+
+IF MODO_EXPOSICION == TRUE -> {
+    PANTALLA NEGRA.
+    MUESTRA INTERFAZ DE RESULTADOS FINALES INAH:
+    "Tu nivel de PRESERVACIÓN del patrimonio subacuático fue: [preservacion]/3."
+    "Tu nivel de CONFIANZA con la investigación fue: [confianza]/3."
+    TEXTO PEDAGÓGICO: "Gracias por jugar el demo de exposición de La Vidente del Agua. Recuerda que los cenotes de México albergan los secretos de los primeros pobladores de América. ¡Ayúdanos a conservarlos intactos!"
+    [TRANSICIÓN A: MENÚ PRINCIPAL (FIN DEL DEMO EXPOSICIÓN)]
+} ELSE -> {
+    // Si es la versión del director, la historia fluye sin detenerse y despierta en el presente.
+    --> IR A ESCENA: ESCENA_1_6_DESPERTAR_DIRECTOR
+}
+
+
+================================================================================
+             PARTE 3: DESPUÉS DEL CAPÍTULO 1.1 (CONTINUACIÓN CONTINUA)
+================================================================================
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_6_DESPERTAR_DIRECTOR
+--------------------------------------------------------------------------------
+
+INT. RECÁMARA DE LA ABUELA (TULUM) - NOCHE
+
+[SONIDO: MÚSICA: bgm_despertar_trauma.mp3 (play) / SFX: sfx_respiracion_agitada_amaranta.wav (play)][cite: 1]
+
+                                 AMARANTA
+                    (Despierta de golpe en su cama, abriendo
+                    los ojos de par en par, tocándose la cadera)[cite: 1]
+                    ¡¡Ah ...!! ¡No, no, no![cite: 1] Juro que
+                    escuché mis propios huesos romperse...[cite: 1]
+                    ¿Por qué puedo sentir su dolor?[cite: 1]
+
+[EFECTO VISUAL: Temblores en la cámara][cite: 1]
+
+La transición de la caída al vacío en el campamento científico la ha devuelto bruscamente a la realidad física de su habitación en Tulum. El ardor en su garganta es real; la sed monstruosa persiste.[cite: 1] Temblando, toma una decisión con el frasco de pastillas sobre su mesa de noche para intentar apagar su cerebro por esa noche.[cite: 1]
+
+[TRANSICIÓN A: ESCENA_1_7_SALA_ABUELA]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_7_SALA_ABUELA
+--------------------------------------------------------------------------------
+
+INT. COCINA / SALA DE LA ABUELA - DÍA
+
+[SONIDO: MÚSICA: bgm_diario_vivir.mp3 (play) / SFX: sfx_remanso_cocina.wav (play)][cite: 1]
+
+A la mañana siguiente, el calor de Tulum parece intentar borrar las sombras. Amaranta oculta sus ojeras tras una sonrisa para no alarmar a su abuela.[cite: 1] Sabe que si le confiesa que soñó con una niña del Pleistoceno que murió en una cueva, la enviarán directo al psiquiátrico.[cite: 1]
+
+[SFX: Tono de llamada de celular de 2011: SFX_TELEFONO_RING][cite: 1]
+
+Su madre llama para avisar que ella y su padre llegarán mañana para pasar juntos el 24 de diciembre.[cite: 1] Tras colgar, el eco de lo vivido en el campamento del INAH resuena en su mente con más fuerza. El misterio está frente a ella.[cite: 1]
+
+[TRANSICIÓN A: ESCENA_1_7_DECISION_FINAL_CAPITULO]

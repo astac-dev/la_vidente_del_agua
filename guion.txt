@@ -1,0 +1,792 @@
+================================================================================
+                              LA VIDENTE DEL AGUA
+                         Guión Completo para Revisión
+================================================================================
+
+Fecha de Extracción: 20/6/2026
+Formato: Estilo Guión Cinematográfico (Adaptado para Novela Visual)
+
+
+================================================================================
+                        CAPÍTULO 0: TUTORIAL / INDUCCIÓN
+================================================================================
+
+--------------------------------------------------------------------------------
+ESCENA: GUIA_NAIA
+--------------------------------------------------------------------------------
+
+INT/EXT. HOYO NEGRO (TUTORIAL)
+
+[SONIDO: MÚSICA: pluck_loop_01.mp3 (play) / SFX: sfx_activacion_don.wav
+(play)]
+
+Naia aparece en pantalla sosteniendo una pequeña antorcha. Observa los
+bordes del marco con curiosidad y luego mira directamente al jugador.
+
+                                   NAIA
+                    ¡Hey, caminante! No temas. Sé que este
+                    territorio es extraño para ti, pero en
+                    mi clan yo era la encargada de abrir los
+                    senderos en la oscuridad. Déjame
+                    enseñarte las marcas de este mapa
+                    digital para que no te pierdas en el
+                    abismo.
+
+                                   NAIA
+                    Mira aquí abajo. Esto funciona como las
+                    huellas que dejamos en el lodo. Arriba
+                    verás el NOMBRE DEL PERSONAJE, para que
+                    sepas qué miembro de la tribu está
+                    hablando, y justo abajo aparecerá el
+                    TEXTO DEL DIÁLOGO con sus palabras.
+
+El símbolo de agua al final de la caja comienza a parpadear en cian.
+
+                                   NAIA
+                    ¿Ves este SÍMBOLO DE AGUA flotando al
+                    final? El agua pura siempre corre y
+                    busca su camino. Cuando termines de
+                    leer, tócalo; funcionará como una flecha
+                    que te hará avanzar al siguiente
+                    fragmento de la historia.
+
+Los botones de control del marco superior se iluminan uno a uno.
+
+                                   NAIA
+                    Ahora mira las herramientas de
+                    supervivencia en los bordes de tu visor.
+                    Si tocas PANTALLA COMPLETA, expandirás
+                    tu horizonte para que la sabana y la
+                    cueva te rodeen por completo, borrando
+                    las distracciones del exterior.
+
+                                   NAIA
+                    Si necesitas un descanso, el botón de
+                    MENÚ PRINCIPAL te llevará de vuelta a tu
+                    campamento base. Desde ahí puedes
+                    guardar tus avances en la nube, cambiar
+                    el volumen o ajustar el idioma de la
+                    expedición.
+
+                                   NAIA
+                    ¿Olvidaste un rastro atrás? El REGISTRO
+                    DE DIÁLOGOS te permite mirar tus propias
+                    pisadas. Ábrelo si necesitas revisar las
+                    palabras que ya se desvanecieron de la
+                    pantalla para entender mejor el
+                    misterio.
+
+                                   NAIA
+                    Si estás cruzando por un sendero que ya
+                    recorriste en una vida anterior y
+                    quieres avanzar rápido, usa SALTAR
+                    DIÁLOGOS. Tu vista correrá a toda
+                    velocidad hasta encontrar un nuevo
+                    dilema.
+
+                                   NAIA
+                    Si prefieres explorar con las manos
+                    libres, activa la REPRODUCCIÓN
+                    AUTOMÁTICA. Tú manejas el ritmo de la
+                    marcha en cuatro velocidades: "x1" es
+                    una caminata firme, "x2" un trote
+                    ligero, "x3" una carrera veloz y "x4" es
+                    tan rápido como una ráfaga de viento en
+                    la Era de Hielo.
+
+                                   NAIA
+                    Por último, si quieres apreciar el
+                    paisaje puro sin que nada te estorbe,
+                    presiona OCULTAR INTERFAZ. Toda la
+                    herramienta desaparecerá para que
+                    observes los secretos del fondo marino.
+                    Solo toca cualquier parte de la pantalla
+                    y las marcas volverán.
+
+                                   NAIA
+                    El mapa está trazado y las herramientas
+                    listas, explorador. El rastro de Hoyo
+                    Negro está fresco... ¿estás listo para
+                    adentrarte conmigo en la oscuridad?
+
+[TRANSICIÓN A: GUIA_NAIA_ELECCION]
+
+
+--------------------------------------------------------------------------------
+ESCENA: GUIA_NAIA_ELECCION
+--------------------------------------------------------------------------------
+
+PANTALLA NEGRA / FUNDIDO A NEGRO
+
+PREGUNTA / DECISIÓN: Casi se me olvida, habra menus como este que te pida
+tomar desiciones en el destino de la historia, crees poder aceptar esta
+responsabilidad.?
+
+OPCIONES DISPONIBLES:
+  [ Opción 1 ]: "SI"
+               --> IR A ESCENA: GUIA_NAIA_SI_MENSAJE
+  [ Opción 2 ]: "No"
+               --> IR A ESCENA: GUIA_NAIA_NO_MENSAJE
+
+
+--------------------------------------------------------------------------------
+ESCENA: GUIA_NAIA_SI_MENSAJE
+--------------------------------------------------------------------------------
+
+PANTALLA NEGRA / FUNDIDO A NEGRO
+
+[MENSAJE EN PANTALLA: "Entonces sigamos, tus manos guiaran esta historia,
+click para continuar"]
+
+[TRANSICIÓN A: CAPÍTULO 1 - ESCENA INTRO]
+
+
+--------------------------------------------------------------------------------
+ESCENA: GUIA_NAIA_NO_MENSAJE
+--------------------------------------------------------------------------------
+
+PANTALLA NEGRA / FUNDIDO A NEGRO
+
+[MENSAJE EN PANTALLA: "No te preocupes, vuelve cuando te sientas list@."]
+
+[TRANSICIÓN A: MENÚ PRINCIPAL (FIN DEL JUEGO)]
+
+
+================================================================================
+                      CAPÍTULO 1: LA SEQUÍA DE LOS SUEÑOS
+================================================================================
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_INTRO
+--------------------------------------------------------------------------------
+
+INT. RECÁMARA DE AMARANTA (CDMX) - NOCHE
+
+[SONIDO: MÚSICA: bgm_trauma_silencio.mp3 (play) / SFX:
+sfx_reloj_tic_tac.wav (play)]
+
+Ciudad de México. 15 de diciembre de 2011.
+
+Para la mayoría de los estudiantes, diciembre es sinónimo de fiestas,
+descanso y el cierre de un ciclo escolar exitoso.
+
+Para Amaranta, es el recordatorio de que su mente se está desmoronando.
+
+[EFECTO VISUAL: Parpadeo de pantalla en rojo tenue / Desenfoque de cámara]
+[SFX: Sonido de respiración agitada y dolor de cabeza punzante]
+
+                                   AMARANTA
+                              (Con la mirada perdida,
+                              sosteniendo un vaso de agua
+                              con manos temblorosas)
+                    Otra vez... Otra vez la misma sed
+                    maldita. Siento que tengo los pulmones
+                    llenos de polvo... y la cabeza a punto
+                    de estallar.
+
+A sus 16 años, la vida de Amaranta solía ser predecible y brillante. Hija
+de un médico y una gerente de ventas, las calificaciones nunca habían sido
+un problema. Era la alumna ejemplar, la amiga sonriente.
+
+Hasta que llegaron los sueños. O mejor dicho, las visiones.
+
+                                   AMARANTA
+                              (Frustrada, arroja el vaso de
+                              plástico sobre el escritorio)
+                    ¡No quiero dormir! Cada vez que cierro
+                    los ojos, ese maldito vacío me traga.
+                    Siento el frío de la piedra, la
+                    oscuridad... y el miedo de alguien que
+                    no soy yo.
+
+El insomnio crónico no tardó en cobrar factura. Su rendimiento académico
+impecable cayó en picada; el cansancio acumulado transformó su habitual
+calidez en una versión gris, triste y de cambios de humor repentinos que
+asustaron a sus padres y alejaron a sus amigos.
+
+Tras una gran cantidad de estudios médicos en el hospital para descartar
+problemas neurológicos y hormonales, el diagnóstico final fue tajante:
+"Colapso nervioso por estrés severo". ¿La receta? Tres meses de aislamiento
+fuera del estres de la ciudad y reposo.
+
+[TRANSICIÓN A: ESCENA_1_2]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_2
+--------------------------------------------------------------------------------
+
+EXT. FACHADA - CASA DE LA ABUELA
+
+[SONIDO: MÚSICA: bgm_brisa_tropical.mp3 (play) / SFX:
+sfx_candelilla_cigarras.wav (play)]
+
+El remedio de sus padres fue enviarla lejos del ruido de la capital.
+Destino: Tulum, Quintana Roo, bajo el cuidado de su abuela. Un respiro
+necesario mientras ellos continuaban con sus jornadas laborales en la gran
+ciudad.
+
+Los primeros tres días en el caribe funcionaron como un bálsamo milagroso.
+Por fin, Amaranta pudo conciliar el sueño de forma natural, sin la
+humillante necesidad de recurrir a las pastillas para dormir.
+
+El aire puro de la selva parecía haber ahuyentado a los fantasmas de su
+cabeza. Pero la calma en la superficie del suelo de Yucatán siempre es un
+espejismo.
+
+Al cuarto día, durante una caminata de regreso a casa por los senderos
+menos transitados de la localidad, la paz se rompió.
+
+[TRANSICIÓN A: ESCENA_1_3]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_3
+--------------------------------------------------------------------------------
+
+EXT. SENDERO EN LA SELVA - CAMPAMENTO CIENTÍFICO
+
+[SONIDO: MÚSICA: bgm_misterio_cientifico.mp3 (play) / SFX:
+sfx_motor_diesel.wav (play)]
+
+                                   AMARANTA
+                              (Escondiéndose ligeramente
+                              detrás de un arbusto,
+                              observando con los ojos de par
+                              en par)
+                    ¿Pero qué...? Este camino suele estar
+                    completamente desierto. ¿Qué hace toda
+                    esta gente aquí?
+
+Frente a ella, la quietud del pueblo se había transformado en un despliegue
+logístico incomprensible. Camionetas todoterreno con logotipos
+institucionales oficiales, plantas de luz rugiendo en la maleza y personal
+técnico moviéndose con urgencia.
+
+No eran turistas, ni policías comunes. Eran buzos de exploración cargando
+tanques de gas, especialistas transportando computadoras de alta
+resistencia y científicos con analizando planos.
+
+                                   AMARANTA
+                              (Murmurando para sí misma)
+                    Llevan trajes de neopreno... y esas
+                    cajas amarillas parecen equipos de
+                    rescate o de laboratorio... ¿Qué habrán
+                    encontrado ahí abajo? ¿Una cueva nueva?
+
+[EFECTO VISUAL: Destello blanco súbito en el centro de la pantalla] [SFX:
+Un latido sordo e interno: *DUM-DUM*]
+
+                                   AMARANTA
+                              (Llevándose la mano a la
+                              frente con un gesto de dolor
+                              agudo)
+                    ¡Ah...! ¿Otra vez? Justo en el centro de
+                    la frente... Siento una punzada helada,
+                    como si me clavaran una aguja de hielo.
+
+La presión en su cabeza fue tan intensa que la obligó a retroceder y tomar
+el camino largo a casa. A medida que se alejaba del campamento científico,
+el dolor comenzó a ceder, dejándole únicamente una extraña sensación de
+urgencia y una profunda sed.
+
+[TRANSICIÓN A: ESCENA_1_4]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_4
+--------------------------------------------------------------------------------
+
+INT. RECÁMARA DE LA ABUELA - NOCHE
+
+[SONIDO: MÚSICA: bgm_preludio_sueno.mp3 (play) / SFX: sfx_viento_selva.wav
+(play)]
+
+La cena con su abuela transcurrió con normalidad. Las risas y las historias
+locales lograron disipar el misterio de esos hombres y el dolor de cabeza
+de Amaranta. Sin embargo, al subir a su habitación, la noche adquirió un
+peso distinto.
+
+Tras tomar una ducha, se dispuso a leer un rato para despejar la mente.
+Pero al apagar la lámpara, sus ojos se posaron inevitablemente sobre la
+mesa de noche.
+
+[EFECTO VISUAL: Enfoque de cámara hacia el frasco de medicamentos]
+
+                                   AMARANTA
+                              (Mirando fijamente el frasco
+                              de pastillas para dormir)
+                    No las he tocado desde que llegué... He
+                    dormido bien. Pero... ¿por qué siento
+                    este escalofrío? Siento que esta
+                    noche... Esta noche va a ser diferente.
+                    Si no me tomo la pastilla, el vacío me
+                    va a atrapar otra vez.
+
+A pesar de la fuerte intuición que recorrió su espina dorsal, el orgullo y
+el deseo de mantenerse limpia ganaron la batalla. Apartó la mirada, dio un
+leve suspiro y se acomodó entre las sábanas, cerrando los ojos.
+
+Pasaron dos horas. El sueño la arrastró suavemente hacia un estado profundo
+de inconsciencia.
+
+Hasta que el calor desapareció. El aire acondicionado de la habitación fue
+sustituido por una corriente helada y húmeda. El olor a selva se transformó
+en el aroma a piedra caliza rancia y confinamiento milenario.
+
+[EFECTO VISUAL: La pantalla se oscurece por completo de forma lenta] [BGM:
+Detener BGM por completo] [SFX: Sonido lejano de goteo de agua con eco
+profundo: *Ploc... Ploc...*]
+
+El viaje en el tiempo había comenzado.
+
+[TRANSICIÓN A: ESCENA_1_5]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_5
+--------------------------------------------------------------------------------
+
+INT. HOYO NEGRO (PLEISTOCENO) - OSCURO
+
+[SONIDO: MÚSICA: bgm_terror_ancestral.mp3 (play) / SFX:
+sfx_eco_caverna_seca.wav (play)]
+
+Amaranta ya no está en su cama. Su conciencia ha sido arrastrada trece mil
+años al pasado.
+
+A través de los ojos de un cuerpo que no le pertenece, sostiene una
+antorcha de resina con la mano derecha. Las llamas bailan con
+desesperación, devoradas por una negrura tan densa que ninguna luz parece
+capaz de perforarla.
+
+                                   NAIA
+                              (Respiración entrecortada,
+                              tacto seco en la garganta)
+                    Tengo tanta sed... La tierra afuera está
+                    muriendo y aquí abajo... Aquí abajo solo
+                    hay piedra.
+
+Frente a ella se abre solo oscuridad. Es el Hoyo Negro primigenio, mucho
+antes de que el fin de la era de hielo lo inundara. Sigue caminando en su
+trayecto, buscando algún rastro de agua.
+
+[SFX: Un aleteo masivo, agudo y repentino: SFX_HORDA_MURCIELAGOS] [EFECTO
+VISUAL: Ráfaga de partículas negras cruzando la pantalla]
+
+El calor de la antorcha altera el descanso de una colonia de murciélagos
+oculta en el techo de la bóveda. Cientos de garras y alas ciegas impactan
+contra el rostro de la joven en un parpadeo de pánico.
+
+                                   NAIA
+                    ¡Ah! ¡Déjenme! ¡No veo nada!
+
+La horda de quirópteros nubla su vista por completo. Presa del terror, la
+chica suelta la antorcha, gira sobre su propio eje y da unos pasos a
+ciegas. Llegando a un paso fatal justo al borde del abismo.
+
+El suelo firme desaparece. La gravedad la reclama.
+
+[TRANSICIÓN A: ESCENA_1_5_ELECCION]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_5_ELECCION
+--------------------------------------------------------------------------------
+
+PANTALLA NEGRA / FUNDIDO A NEGRO
+
+PREGUNTA / DECISIÓN: Elige la reacción de supervivencia de Naia.
+
+OPCIONES DISPONIBLES:
+  [ Opción 1 ]: "Proteger la cabeza y encoger el cuerpo en posición fetal." (Efecto: preservacion = preservacion + 1)
+               --> IR A ESCENA: ESCENA_1_5_RUTA_A
+  [ Opción 2 ]: "Extender los brazos para intentar aferrarse a las paredes rugosas." (Efecto: confianza = confianza + 1)
+               --> IR A ESCENA: ESCENA_1_5_RUTA_B
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_5_RUTA_A
+--------------------------------------------------------------------------------
+
+PANTALLA NEGRA / FUNDIDO A NEGRO
+
+[SONIDO: SFX: sfx_caida_cuerpo_roca.wav (play)]
+
+El instinto de conservación la obliga a encogerse en el aire. Su cuerpo
+rueda y rebota violentamente contra los salientes del túnel calizo. El
+dolor es un destello blanco en su mente.
+
+[SFX: Crujido óseo limpio y agudo: SFX_FRACTURA_PELVIS]
+
+                                   NAIA
+                              (Un grito ahogado que se corta
+                              instantáneamente por el
+                              impacto)
+                    ¡Gah...!
+
+El golpe final en el fondo de la fosa seca fractura su cadera de manera
+limpia. El impacto resuena en el frío eco del lugar, seguido de un silencio
+sepulcral que vuelve a apoderarse de la cueva oscura.
+
+[TRANSICIÓN A: ESCENA_1_6]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_5_RUTA_B
+--------------------------------------------------------------------------------
+
+PANTALLA NEGRA / FUNDIDO A NEGRO
+
+[SONIDO: SFX: sfx_arrastre_piel_aspera.wav (play)]
+
+En un acto desesperado, extiende las extremidades buscando un soporte. Sus
+manos y piernas se desgarran contra la superficie áspera y afilada de la
+cueva, frenando el descenso solo unas milésimas de segundo antes de la
+caída libre.
+
+[SFX: Múltiples fracturas consecutivas y quejido sordo:
+SFX_FRACTURA_MULTIPLE]
+
+                                   NAIA
+                              (Un gemido largo, un quejido
+                              que se apaga lentamente)
+                    Uh... uuh...
+
+Los brazos extendidos absorben el impacto de forma destructiva, quebrando
+múltiples huesos antes de que su cuerpo quede inerte en el suelo. Es el
+último quejido de la adolescente antes de que el silencio absoluto lo
+devore todo.
+
+[TRANSICIÓN A: ESCENA_1_6]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_6
+--------------------------------------------------------------------------------
+
+INT. RECÁMARA DE LA ABUELA - NOCHE
+
+[SONIDO: MÚSICA: bgm_despertar_trauma.mp3 (play) / SFX:
+sfx_respiracion_agitada_amaranta.wav (play)]
+
+                                   AMARANTA
+                              (Despierta de golpe, abriendo
+                              los ojos de par en par,
+                              llevándose las manos al
+                              cuerpo)
+                    ¡¡Ah ...!! ¡No, no, no!
+
+[EFECTO VISUAL: Vibración de pantalla / Temblores en la cámara]
+
+                                   AMARANTA
+                              (Tocándose la cadera y los
+                              brazos con desesperación)
+                    ¿Estoy armada? ¿Estoy rota? Juro que
+                    escuché mis propios huesos romperse...
+                    Sentí el frío de la piedra en mi
+                    espalda... ¡Siento los brazos
+                    congelados!
+
+Amaranta se levanta de la cama tropezando con sus propias sábanas. El ardor
+en su garganta es real, una sed monstruosa que la hace sentir como si
+hubiera caminado días enteros bajo el sol del desierto.
+
+Camina a tropezones hacia la cocina. El agua fría del refrigerador apenas
+logra calmar la quemazón interna. Al regresar a su recámara, la luz de la
+luna plateada revela el frasco sobre la mesa de noche.
+
+                                   AMARANTA
+                              (Sosteniendo el frasco de
+                              pastillas con dedos
+                              temblorosos)
+                    Esto no fue una pesadilla normal... No
+                    fui yo quien cayó. Era otra persona. Una
+                    chica... una chica de mi edad con una
+                    antorcha. ¿Por qué puedo sentir su
+                    dolor? ¿Por qué se sintió tan real?
+
+Con el pulso acelerado y la certeza de que no podrá volver a conciliar el
+sueño por el miedo a regresar a esa fosa, destapa el frasco. Saca una
+pastilla. Sabiendo que ya pasó de la medianoche, la parte exactamente a la
+mitad con las uñas.
+
+                                   AMARANTA
+                    Si me la tomo completa, no voy a
+                    despertar mañana... Solo necesito apagar
+                    mi cerebro. Solo un poco.
+
+[SFX: Sonido de tragar agua] [EFECTO VISUAL: Fundido a negro lento]
+
+La media dosis hace efecto tras una larga hora de angustia. Amaranta cae en
+un letargo artificial, libre de visiones, pero desprovisto de un descanso
+real.
+
+[TRANSICIÓN A: ESCENA_1_7]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_7
+--------------------------------------------------------------------------------
+
+INT. COCINA DE LA ABUELA - DÍA
+
+[SONIDO: MÚSICA: bgm_diario_vivir.mp3 (play) / SFX: sfx_remanso_cocina.wav
+(play)]
+
+A la mañana siguiente, el calor de Tulum parece borrar las sombras de la
+madrugada. Amaranta entra a la cocina arrastrando los pies, ocultando las
+ojeras detrás de una sonrisa forzada para no alarmar a su abuela.
+
+                                   AMARANTA
+                              (Pensando para sí misma
+                              mientras observa a su abuela
+                              cocinar)
+                    Si le digo lo que soñé... va a pensar
+                    que estoy completamente demente.
+                    "Abuela, soñé con una niña que murió
+                    hace miles de años en una cueva sin
+                    agua". Sí, claro. Directito al hospital
+                    psiquiátrico.
+
+[SFX: Tono de llamada de celular de 2011: SFX_TELEFONO_RING]
+
+                                   AMARANTA
+                              (Saca el teléfono del
+                              bolsillo)
+                    ¿Mamá?
+
+                                   MADRE
+                              (Voz a través del auricular,
+                              con tono apurado pero
+                              cariñoso)
+                    ¡Hola, mi amor! Solo llamaba para
+                    avisarte que tu papá y yo ya logramos
+                    coordinar los días libres. Salimos para
+                    allá mañana mismo. ¡Vamos a pasar este
+                    24 de diciembre juntas en casa de la
+                    abuela!
+
+                                   AMARANTA
+                              (Tratando de sonar
+                              entusiasmada)
+                    ¿En serio? Qué bueno, mamá... Sí, las
+                    espero. Aquí las cosas están... muy
+                    tranquilas.
+
+[TRANSICIÓN A: ESCENA_1_7_ELECCION]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_7_ELECCION
+--------------------------------------------------------------------------------
+
+PREGUNTA / DECISIÓN: ¿Qué camino decidirá tomar Amaranta ante las sospechas
+de su entorno?
+
+OPCIONES DISPONIBLES:
+  [ Opción 1 ]: "Ignorar los misterios y concentrarse en su recuperación familiar." (Efecto: preservacion = preservacion + 0)
+               --> IR A ESCENA: ESCENA_1_7_RUTA_A
+  [ Opción 2 ]: "Investigar a fondo qué está sucediendo en los cenotes." (Efecto: confianza = confianza + 1)
+               --> IR A ESCENA: ESCENA_1_7_RUTA_B
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_7_RUTA_A
+--------------------------------------------------------------------------------
+
+INT. SALA DE LA ABUELA - NOCHE
+
+[SONIDO: MÚSICA: bgm_diario_vivir.mp3 (play) / SFX:
+sfx_television_subfondo.wav (play)]
+
+20 de diciembre. 10:30 PM. Las luces de la televisión parpadean en la sala
+mientras el aroma de la cena de la abuela intenta ahuyentar el frío de la
+noche.
+
+                                   AMARANTA
+                              (Pensativa, mirando la
+                              pantalla, sin prestar
+                              atención)
+                    Esas camionetas de los científicos...
+                    Ese extraño uniforme... sus instrumentos
+                    raros...
+
+[SFX: Golpes firmes a la puerta: SFX_TOCAR_PUERTA]
+
+                                   ABUELA
+                              (Desde la cocina)
+                    ¡Ami, mi niña! ¿Podrías abrir por favor?
+                    Deben ser tus padres, el camión de la
+                    capital venía retrasado.
+
+[EFECTO VISUAL: Transición rápida a primer plano de puerta abriéndose]
+
+                                   MADRE
+                              (Abrazando a Amaranta con
+                              fuerza)
+                    ¡Mírate, qué delgada estás! ¿Te
+                    encuentras bien, mi amor? Te hemos
+                    extrañado tanto...
+
+                                   AMARANTA
+                              (Escondiendo el rostro en su
+                              hombro)
+                    Yo también, mamá. Siento que no los he
+                    visto en siglos.
+
+Detrás de ellas, su padre entra cargando las pesadas maletas familiares,
+saludando a Amaranta con el alivio de quien recupera su tesoro más grande
+tras una larga ausencia.
+
+La cena transcurre entre risas, anécdotas vergonzosas de la infancia de su
+madre y recuerdos que logran, por unas horas, devolverle el color al
+semblante gris de Amaranta.
+
+                                   PADRE
+                              (Mirándola fijamente, bajando
+                              el tono de voz)
+                    Dime, Ami... ¿cómo va el descanso? ¿Has
+                    seguido al pie de la letra el
+                    tratamiento y tus pastillas?
+
+                                   AMARANTA
+                              (Bajando la mirada, jugando
+                              con los cubiertos)
+                    Sí, papá. Solo ayer tuve un... episodio
+                    extraño. Pero tomé media dosis y logré
+                    controlarlo.
+
+Al subir a su habitación, Amaranta observa el horizonte oscuro de la selva
+a través de la ventana. Una parte de ella grita por investigar qué oculta
+el INAH en esos cenotes; la otra, cansada y asustada, prefiere la
+comodidad.
+
+                                   AMARANTA
+                              (Cerrando las cortinas,
+                              suspirando)
+                    No soy una espía de película. Solo soy
+                    una estudiante de prepa con suficientes
+                    problemas. Es mejor dejarlo pasar.
+
+Los días se transforman en semanas. El espíritu navideño y las rutinas de
+ejercicio matutino con su madre logran mitigar el insomnio. Para el 7 de
+enero de 2012, sus padres regresan a la Ciudad de México, dejándola bajo la
+promesa de seguir medicándose.
+
+16 de marzo de 2012. Los tres meses de aislamiento concluyen y Amaranta
+regresa a la capital. Su rendimiento académico vuelve a la normalidad. Es
+feliz, o al menos lo cree, mientras entierra el misterio de Naia en el
+olvido.
+
+[EFECTO VISUAL: Pantalla se tiñe de un filtro gris melancólico] [SFX:
+Sonido de frasco de pastillas agitándose]
+
+La rutina ha vuelto, pero ahora hay un precio: Amaranta depende por
+completo de dosis de ansiolíticos para poder dormir. Ha olvidado el sueño,
+pero ha cambiado su don por un silencio artificial.
+
+[TRANSICIÓN A: ESCENA_1_7_RUTA_A_FIN]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_7_RUTA_A_FIN
+--------------------------------------------------------------------------------
+
+PANTALLA NEGRA / FUNDIDO A NEGRO
+
+[MENSAJE EN PANTALLA: "FIN DE LA RUTA DE LA NEGLIGENCIA"]
+
+[TRANSICIÓN A: MENÚ PRINCIPAL (FIN DEL JUEGO)]
+
+
+--------------------------------------------------------------------------------
+ESCENA: ESCENA_1_7_RUTA_B
+--------------------------------------------------------------------------------
+
+INT. SALA DE LA ABUELA - DÍA
+
+[SONIDO: MÚSICA: bgm_nostalgia_abuela.mp3 (play) / SFX:
+sfx_ambiente_manana.wav (play)]
+
+Los días posteriores a la llegada de sus padres transcurren en una calma
+tensa, pero la curiosidad de Amaranta se mantiene intacta. La sospecha de
+que algo grande ocurre en la selva no la deja en paz.
+
+30 de diciembre. 07:45 AM. Al bajar a la sala para desayunar antes de su
+salida familiar, encuentra a su abuela inmóvil frente al viejo estante de
+madera, contemplando con ojos vidriosos una antigua fotografía.
+
+                                   AMARANTA
+                              (Acercándose con suavidad)
+                    ¿Abuela? ¿Qué miras con tanta atención?
+
+                                   ABUELA
+                              (Sobresaltada, llevándose la
+                              mano al pecho)
+                    ¡Ay, mi niña! No te escuché venir...
+                    Déjame tomar aire, que me diste un buen
+                    susto.
+
+                                   AMARANTA
+                    Perdón, no quería asustarte. Es solo
+                    que... te ves muy triste. ¿Quién es el
+                    hombre de la foto?
+
+                                   ABUELA
+                              (Sonriendo con nostalgia,
+                              invitándola a sentarse)
+                    Es tu abuelo. Un hombre maravilloso.
+                    Pocos recuerdan que fue uno de los
+                    biólogos marinos más respetados de todo
+                    Tulum, especializado en los misterios de
+                    los cenotes.
+
+                                   ABUELA
+                    Decía que el agua subterránea no era
+                    solo pozos de agua, sino bibliotecas del
+                    tiempo ocultas bajo nuestros pies.
+                    Tristemente, falleció en una excursión
+                    en el mar Caribe... Una tormenta
+                    imprevista hundió su barco y se llevó a
+                    toda la tripulación al fondo.
+
+                                   AMARANTA
+                              (Tomando las manos arrugadas
+                              de su abuela)
+                    No te pongas triste, abuela. Yo no lo
+                    conocí, pero mamá siempre me habla de
+                    él. Dice que era un explorador
+                    intrépido, el hombre más feliz del mundo
+                    y que jamás se deprimía si algo salía
+                    mal. Él querría que fueras muy feliz.
+
+Las palabras de Amaranta consuelan el alma de la anciana, pero en el
+interior de la joven, una chispa se ha encendido. Su linaje está amarrado
+al agua profunda.
+
+[EFECTO VISUAL: Transición de escenario a BG_PUEBLO_TULUM_DIA] [BGM: Cambia
+a BGM_MISTERIO_CIENTIFICO]
+
+Más tarde ese mismo día, durante un paseo por los puestos locales de Tulum,
+el misterio choca de frente contra la realidad.
+
+                                   AMARANTA
+                              (Observando discretamente los
+                              locales de comida)
+                    ¡Ahí están otra vez...!
+
+Sentados en las mesas comunitarias, varios hombres y mujeres almuerzan en
+silencio. Visten uniformes, chalecos con las siglas del INAH y cargan
+mapas.
+
+                                   AMARANTA
+                              (Con determinación en la
+                              mirada)
+                    Son la misma gente del sendero. Están
+                    buscando algo masivo aquí en Tulum. Y
+                    mis pesadillas deben ser clave.
+
+[TRANSICIÓN A: CAPÍTULO 2 - ESCENA 1_8 CAMPAMENTO CONTACTO]
+
+

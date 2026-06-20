@@ -13,6 +13,7 @@ import HUD from './HUD';
 import FullscreenEnterIcon from '../icons/FullscreenEnterIcon';
 import FullscreenExitIcon from '../icons/FullscreenExitIcon';
 import glifoAgua from '../../assets/arte/glifoaguafluyendo.png';
+import qrCodeImage from '../../assets/qr_placeholder.png';
 import '../VisualNovelContainer.css';
 import DialogueLogModal from './DialogueLogModal';
 
@@ -477,8 +478,16 @@ const GameEngine = ({ onNavigate }) => {
 
   if (!scriptData || !currentScene) {
     return (
-      <div className="ark-view-wrapper w-full h-screen bg-neutral-950 flex items-center justify-center">
-        <div className="text-amber-500 font-mono text-sm tracking-wider animate-pulse">
+      <div className="ark-view-wrapper w-full h-screen bg-neutral-950 flex flex-col items-center justify-center relative">
+        <button 
+          onClick={() => onNavigate('mainMenu')} 
+          className="absolute top-4 left-4 z-50 flex items-center gap-2 px-4 py-2 bg-neutral-900 border border-neutral-700 rounded text-neutral-300 hover:text-white hover:border-amber-500 transition-colors pointer-events-auto shadow-lg"
+          title={t('interface.backToMenu', 'Volver al Menú')}
+        >
+          <div className="w-5 h-5"><HomeIcon /></div>
+          <span className="font-mono text-xs font-bold tracking-wider uppercase">{t('interface.homeLabel', 'HOME')}</span>
+        </button>
+        <div className="text-amber-500 font-mono text-sm tracking-wider animate-pulse mt-12">
           Sincronizando bitácora de campo...
         </div>
       </div>
@@ -693,6 +702,14 @@ const GameEngine = ({ onNavigate }) => {
                 <p className="text-base md:text-lg leading-relaxed tracking-wide">
                   {t(`historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.texto`, currentScene.text)}
                 </p>
+                {currentScene.showQR && (
+                  <div className="mt-8 flex flex-col items-center justify-center">
+                    <div className="w-48 h-48 bg-white p-2 rounded-lg mb-4 flex items-center justify-center shadow-[0_0_15px_rgba(251,191,36,0.3)] border border-amber-500/30">
+                      <img src={qrCodeImage} alt="QR Code" className="w-full h-full object-contain" onError={(e) => e.target.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.inah.gob.mx/'} />
+                    </div>
+                    <p className="text-sm text-amber-400 font-mono font-bold tracking-wider">{t('interface.scanQr', '¡Escanea para jugar la versión completa!')}</p>
+                  </div>
+                )}
               </div>
             </div>
           )}

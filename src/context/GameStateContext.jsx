@@ -14,6 +14,7 @@ const defaultSettings = {
   tamanoLetra: 100, // Representa el 100% del tamaño base
   autoPlaySpeed: 0, // 0: off, 1-4: speeds
   unlockedNodes: ['cap_0'],
+  soloJuegoRapido: false,
   lastUpdated: 0,
 };
 
@@ -22,6 +23,7 @@ const initialGameState = {
   currentChapter: 'capitulo_0',
   currentSceneId: 'guia_naia',
   dialogueIndex: 0,
+  isModoExposicion: false,
   stats: {
     preservacion: 0,
     confianza: 0,
@@ -116,6 +118,7 @@ export const GameStateProvider = ({ children }) => {
               volumenEfectos: data.volumenEfectos,
               tamanoLetra: data.tamanoLetra,
               autoPlaySpeed: data.autoPlaySpeed,
+              soloJuegoRapido: data.soloJuegoRapido || false,
               unlockedNodes: data.unlockedNodes || ['cap_0'],
               lastUpdated: data.lastUpdated || 0,
             };
@@ -364,8 +367,8 @@ export const GameStateProvider = ({ children }) => {
     return false;
   };
 
-  const resetGameState = () => {
-    setGameState(initialGameState);
+  const resetGameState = (overrides = {}) => {
+    setGameState({ ...initialGameState, ...overrides });
   };
 
   // --- Valor del contexto ---

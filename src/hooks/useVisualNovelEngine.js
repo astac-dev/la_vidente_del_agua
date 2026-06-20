@@ -1,5 +1,5 @@
 // src/hooks/useVisualNovelEngine.js
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { useGameState } from '../context/GameStateContext';
 
 /**
@@ -43,6 +43,15 @@ export const useVisualNovelEngine = (scriptData) => {
 
   const isChoice = currentScene?.type === 'choice';
   const isEndOfScene = !isChoice && gameState.dialogueIndex >= (currentScene?.dialogos?.length || 0);
+
+  useEffect(() => {
+    if (currentScene?.type === 'logic_check') {
+      const propertyValue = gameState[currentScene.property];
+      const nextTarget = propertyValue ? currentScene.ifTrue : currentScene.ifFalse;
+      const { sceneId, chapterId } = routeTransition(nextTarget);
+      goToScene(sceneId, chapterId);
+    }
+  }, [currentScene, gameState, goToScene]);
 
   const advance = () => {
     if (isChoice) return; // Las elecciones requieren interacción explícita del usuario

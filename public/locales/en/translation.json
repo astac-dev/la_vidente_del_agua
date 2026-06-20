@@ -2,6 +2,7 @@
   "menu": {
     "continueGame": "Continue Game",
     "newGame": "New Game",
+    "fastGame": "Fast Game",
     "loadGame": "Load Game",
     "extras": "Extras",
     "artGallery": "Art Gallery",
@@ -36,6 +37,8 @@
     "Dialogoautomaticos": "Automatic Dialogue",
     "saltardialogo": "Skip Dialogue",
     "tamanoLetra": "Font Size",
+    "fastMode": "Enable Fast Mode",
+    "scanQr": "Scan to play the full version!",
     "musicVolume": "Music Volume",
     "effectsVolume": "Effects Volume",
     "hideUI": "Hide interface",

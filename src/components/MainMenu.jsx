@@ -108,7 +108,7 @@ const MainMenu = ({ onNavigate, onExit }) => {
    * @param {string} targetView - Nombre de la vista destino.
    * @param {number} fadeDuration - Duración del desvanecimiento en milisegundos.
    */
-  const navigateWithFade = (targetView, fadeDuration) => {
+  const navigateWithFade = (targetView, fadeDuration, overrides = null) => {
     if (audioRef.current) {
       fadeAudio(audioRef.current, 0, fadeDuration, () => {
         if (audioRef.current) {
@@ -118,7 +118,7 @@ const MainMenu = ({ onNavigate, onExit }) => {
       });
     }
     if (targetView === 'visualNovel') {
-      resetGameState();
+      resetGameState(overrides || { isModoExposicion: false });
     }
     onNavigate(targetView);
   };
@@ -140,12 +140,29 @@ const MainMenu = ({ onNavigate, onExit }) => {
 
   return (
     <div className="main-menu">
-      <MenuButton onClick={() => navigateWithFade('continueMenu', 500)}>{t('menu.continueGame')}</MenuButton>
-      <MenuButton onClick={() => navigateWithFade('visualNovel', 1500)}>{t('menu.newGame')}</MenuButton>
-      <MenuButton onClick={() => navigateWithFade('continueMenu', 500)}>{t('menu.loadGame')}</MenuButton>
-      <MenuButton onClick={() => navigateWithFade('extrasMenu', 500)}>{t('menu.extras')}</MenuButton>
+      {!settings.soloJuegoRapido && (
+        <MenuButton onClick={() => navigateWithFade('continueMenu', 500)}>{t('menu.continueGame')}</MenuButton>
+      )}
+      
+      {!settings.soloJuegoRapido && (
+        <MenuButton onClick={() => navigateWithFade('visualNovel', 1500, { isModoExposicion: false })}>{t('menu.newGame')}</MenuButton>
+      )}
+
+      <MenuButton onClick={() => navigateWithFade('visualNovel', 1500, { isModoExposicion: true, currentChapter: 'capitulo_1_1', currentSceneId: 'escena_1_1_inicio' })}>{t('menu.fastGame', 'Nueva partida rápida')}</MenuButton>
+
+      {!settings.soloJuegoRapido && (
+        <>
+          <MenuButton onClick={() => navigateWithFade('continueMenu', 500)}>{t('menu.loadGame')}</MenuButton>
+          <MenuButton onClick={() => navigateWithFade('extrasMenu', 500)}>{t('menu.extras')}</MenuButton>
+        </>
+      )}
+      
       <MenuButton onClick={() => navigateWithFade('optionsMenu', 500)}>{t('menu.options')}</MenuButton>
-      <MenuButton onClick={() => navigateWithFade('credits', 1500)}>{t('menu.credits')}</MenuButton>
+      
+      {!settings.soloJuegoRapido && (
+        <MenuButton onClick={() => navigateWithFade('credits', 1500)}>{t('menu.credits')}</MenuButton>
+      )}
+      
       <MenuButton onClick={handleExit}>{t('menu.exit')}</MenuButton>
     </div>
   );
