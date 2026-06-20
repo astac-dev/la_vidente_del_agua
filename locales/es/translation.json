@@ -2,6 +2,7 @@
   "menu": {
     "continueGame": "Continuar partida",
     "newGame": "Nueva partida",
+    "fastGame": "Nueva partida rápida",
     "loadGame": "Cargar partida",
     "extras": "Extras",
     "artGallery": "Galería de Arte",
@@ -36,6 +37,8 @@
     "Dialogoautomaticos": "Diálogo automático",
     "saltardialogo": "Saltar diálogo",
     "tamanoLetra": "Tamaño de letra",
+    "fastMode": "Activar juego rápido",
+    "scanQr": "¡Escanea para jugar la versión completa!",
     "musicVolume": "Volumen de Música",
     "effectsVolume": "Volumen de Efectos",
     "hideUI": "Ocultar interfaz",
