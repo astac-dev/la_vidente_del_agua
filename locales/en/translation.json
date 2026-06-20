@@ -269,10 +269,10 @@
             { "id": 4, "personaje": "System", "texto": "[VISUAL EFFECT: Faint red screen flicker / Camera blur]\n[SFX: Sound of heavy breathing and throbbing headache]" },
             { "id": 5, "personaje": "Amaranta", "texto": "(With a lost gaze, holding a glass of water with trembling hands) Again... Again the same cursed thirst. I feel like my lungs are full of dust... and my head is about to explode." },
             { "id": 6, "personaje": "Narrator", "texto": "At 16 years old, Amaranta's life used to be predictable and bright. Daughter of a doctor and a sales manager, grades had never been a problem. She was the model student, the smiling friend." },
-            { "id": 7, "personaje": "Narrator", "texto": "Until the dreams arrived. Or rather, the absences." },
+            { "id": 7, "personaje": "Narrator", "texto": "Until the dreams arrived. Or rather, the visions." },
             { "id": 8, "personaje": "Amaranta", "texto": "(Frustrada, arroja el vaso de plástico sobre el escritorio) I don't want to sleep! Every time I close my eyes, that cursed void swallows me. I feel the coldness of the stone, the darkness... and the fear of someone who is not me." },
             { "id": 9, "personaje": "Narrator", "texto": "Chronic insomnia did not take long to take its toll. Her flawless academic performance plummeted; accumulated fatigue transformed her usual warmth into a grey, sad version with sudden mood swings that frightened her parents and distanced her friends." },
-            { "id": 10, "personaje": "Narrator", "texto": "After a vast number of medical studies in the hospital to rule out neurological and hormonal issues, the final diagnosis was clear: 'Nervous breakdown due to severe stress.' The prescription? Three months of isolation outside the city and rest." }
+            { "id": 10, "personaje": "Narrator", "texto": "After a vast number of medical studies in the hospital to rule out neurological and hormonal issues, the final diagnosis was clear: 'Nervous breakdown due to severe stress.' The prescription? Three months of isolation away from the stress of the city and rest." }
           ]
         },
         "escena_1_2": {
@@ -470,13 +470,13 @@
             },
             {
               "id": 13,
-              "personaje": "Narrator",
-              "texto": "Sitting at communal tables, several men and women eat lunch in silence. They wear technical diving uniforms, vests with the acronym INAH, and carry maps and heavy-duty waterproof folders."
+              "personaje": "Narrador",
+              "texto": "Sitting at communal tables, several men and women eat lunch in silence. They wear uniforms, vests with the acronym INAH, and carry maps."
             },
             {
               "id": 14,
               "personaje": "Amaranta",
-              "texto": "(With determination in her eyes) The underwater archaeology team... It's the same people from the trail. They are looking for something massive here in Tulum. And my visions are the key to discovering it."
+              "texto": "(With determination in her eyes) They are the same people from the trail. They are looking for something massive here in Tulum. And my nightmares must be key."
             }
           ]
         }
