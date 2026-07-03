@@ -1,7 +1,48 @@
 # Historial de Cambios
 
-## [0.3.23] - 2026-06-20
+## [0.3.26] - 2026-07-02
 
+### Añadido
+- **Efecto de Flash Blanco (Seguro para epilepsia)**:
+  - Se eliminó el efecto de vibración ("wiggle") problemático y se reemplazó por un suave destello blanco (`white_flash`) de baja intensidad, configurado por debajo de la interfaz de usuario pero sobre los personajes. Integrado en `GameEngine.jsx` y `capitulo_1_1.json`.
+- **Integración del Arqueólogo en Capítulo 1.1**:
+  - Inyección del sprite del Arqueólogo (`Arqueologo_1_INAH.png`) en toda la secuencia interactiva del campamento a partir de la línea de su descubrimiento, persistiendo a lo largo de las elecciones y diálogos subsecuentes en `capitulo_1_1.json`.
+
+### Cambiado
+- **Ajustes de Proporción y Posición de Sprites**:
+  - Se modificó `CharacterLayer.jsx` para acercar a los personajes hacia el centro de la pantalla (ejes fijados en `25%` y `75%` del ancho).
+  - Escalamiento biológico condicional por ID: Adolescentes (Amaranta/Naia, ~14 años) restringidos al `72%` de altura; Adultos (Arqueólogo, ~30 años) ajustados al `92%`, logrando una proporción realista manteniendo el anclaje base (`bottom-0`).
+
+### Corregido
+- **Crash de Estado en Motor de Juego**:
+  - Se solucionó un `ReferenceError` crítico en `GameEngine.jsx` asociado a `dialogueIndex` no definido en el ámbito local, enrutándolo correctamente hacia el `gameState?.dialogueIndex`.
+
+## [0.3.25] - 2026-07-01
+
+### Añadido
+- **Sistema de Foco de Personajes (Estilo Arknights)**:
+  - Implementada una lógica visual dinámica en `CharacterLayer.jsx` y `GameEngine.jsx` que rastrea al hablante activo (`currentSpeaker`).
+  - Los sprites de personajes que no están hablando (o cuando el narrador habla) ahora se atenúan suavemente (brillo al 50%, opacidad al 90% y escala reducida al 98%) para enfatizar visualmente al personaje que tiene la palabra (iluminado al 100%). Las transiciones de luces y sombras se animan de forma fluida (300ms).
+- **Integración de Amaranta en Capítulo 1.1**:
+  - Se configuró la aparición persistente del sprite de Amaranta (`Amaranta_frente_dudas_sf.png`) en el lado izquierdo de la pantalla a través de las 9 escenas que componen la sección del campamento INAH (`escena_1_1_campamento` hasta `campamento_detonante`), inyectando el array `sprites` a nivel de escena en `capitulo_1_1.json` para que persista durante los menús de elección y flujos de diálogo.
+
+## [0.3.24] - 2026-07-01
+### Añadido
+- **Efecto de Glitch Cyberpunk para Fondos**:
+  - Implementación de un efecto CSS avanzado (`.vn-bg-glitch`) con separación de colores RGB (aberración cromática) y cortes horizontales erráticos.
+  - El efecto está optimizado para accesibilidad (anti-epilepsia), utilizando frecuencias lentas (3s y 4s), colores tenues (`rgba(255,0,150,0.15)`) y el modo de fusión `overlay` para evitar destellos severos.
+  - Integración nativa en `BackgroundLayer.jsx` soportando la propiedad `"effect": "glitch"` configurada desde el guion JSON.
+- **Narrativa del Salto Temporal (Capítulo 1)**:
+  - Configurada la escena `transicion_glitch_al_pasado` para utilizar el fondo del campamento pero con el efecto visual de glitch activo, transmitiendo la disociación espacio-tiempo.
+  - Agregada la escena intermedia `transicion_a_oscuridad` que crea un fundido a negro suave de 1 segundo para mejorar el salto cinematográfico hacia el pasado.
+  - Actualizado el fondo del Pleistoceno a `/backgrounds/escena_1_5_pleistoceno.png`.
+
+### Cambiado
+- **Refactorización del Motor de Transición de Fondos (`BackgroundLayer.jsx`)**:
+  - Se rediseñó el sistema de renderizado del fondo para utilizar dos capas superpuestas (anterior y actual) con transición CSS real de `opacity`. Esto reemplaza la antigua dependencia de la animación directa de `backgroundImage`, solucionando el problema del "parpadeo instantáneo" al transicionar entre escenas.
+  - Uso de variables de CSS (`--bg-url`) para permitir que pseudo-elementos hereden dinámicamente imágenes en línea, posibilitando efectos avanzados sin corromper el diseño general por colisiones de clases utilitarias de Tailwind.
+
+## [0.3.23] - 2026-06-20
 ### Añadido
 - **Soporte de Resaltados Múltiples en la Interfaz**:
   - Implementación de la función `isHighlighted(target)` en `GameEngine.jsx` que permite evaluar si un elemento de UI debe estar activo en base al estado de la línea actual de diálogo.
@@ -9,6 +50,8 @@
   - Configuración del primer diálogo del tutorial de Naia en `capitulo_0.json` para resaltar de forma simultánea el botón de pantalla completa (`btn-fullscreen`) y el glifo de agua (`glifo-agua`).
 
 ### Cambiado
+- **Convención de Transiciones de Fondo**:
+  - Establecido como regla del proyecto que todo cambio de fondo en la novela visual debe usar una transición suave con fundido de 1 segundo (`transition: "fade", duration: 1000`). Se registraron estos lineamientos en `reglas.log` y `gemenimem.log`.
 - **Política de Verificación Visual (`reglas.log`)**:
   - Se modificó la regla global para deshabilitar las simulaciones automatizadas mediante el Browser Agent, delegando la comprobación visual al usuario de manera manual.
 

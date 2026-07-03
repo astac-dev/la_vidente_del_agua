@@ -528,24 +528,28 @@ const GameEngine = ({ onNavigate }) => {
           )}
           <BackgroundLayer background={currentScene.background} />
           <CharacterLayer 
+            currentSpeaker={currentLine?.personaje}
             sprites={
               currentLine?.character_sprite 
                 ? [{
-                    id: currentLine.personaje && currentLine.personaje !== 'sistema' && currentLine.personaje !== 'narrador' ? currentLine.personaje : 'naia',
+                    id: currentLine.personaje && currentLine.personaje !== 'sistema' && currentLine.personaje !== 'narrador' ? currentLine.personaje : 'amaranta',
                     src: currentLine.character_sprite.startsWith('/') 
                       ? currentLine.character_sprite 
                       : `/${currentLine.character_sprite}`,
-                    position: currentLine.position || 'center',
+                    position: currentLine.position || 'left',
                     expression: currentLine.expression,
                     entry_animation: currentLine.entry_animation,
-                    isTalking: !isTyping && !!currentLine.wiggle_effect,
-                    vibrationIntensity: currentLine.wiggle_effect || 'normal',
                     flameActive: gameState.currentChapter === 'capitulo_0' || currentLine.flame_active || false
                   }]
                 : (currentLine?.sprites || currentScene.sprites)
             } 
           />
           <div className="scene-overlay" />
+
+          {/* Efectos visuales en pantalla basados en el diálogo actual */}
+          {currentLine?.screen_effect === 'white_flash' && (
+            <div key={`effect-flash-${gameState?.dialogueIndex}`} className="effect-flash-white" />
+          )}
           
           {/* Overlay de transición de fundido a negro (fade out/in) */}
           <div className={`absolute inset-0 bg-black z-[300] transition-opacity duration-500 ${isFading ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} />

@@ -461,50 +461,6 @@
     z-index: 110 !important;
 }
 
-/* --- Efecto de Vibración Paramétrico (Wiggle Effect / Talk Jitter) --- */
-@keyframes talk-wiggle-soft {
-    0%, 100% {
-        transform: translateY(0) scaleY(1);
-    }
-    50% {
-        transform: translateY(-1.5px) scaleY(1.005);
-    }
-}
-
-@keyframes talk-wiggle-normal {
-    0%, 100% {
-        transform: translateY(0) scaleY(1);
-    }
-    50% {
-        transform: translateY(-3px) scaleY(1.01);
-    }
-}
-
-@keyframes talk-wiggle-intense {
-    0%, 100% {
-        transform: translateY(0) scaleY(1);
-    }
-    50% {
-        transform: translateY(-5px) scaleY(1.02);
-    }
-}
-
-.character-sprite {
-    transition: transform 0.2s ease-out;
-}
-
-.character-sprite.is-talking--soft {
-    animation: talk-wiggle-soft 0.15s infinite ease-in-out;
-}
-
-.character-sprite.is-talking--normal {
-    animation: talk-wiggle-normal 0.12s infinite ease-in-out;
-}
-
-.character-sprite.is-talking--intense {
-    animation: talk-wiggle-intense 0.09s infinite ease-in-out;
-}
-
 /* Brillo dinámico y parpadeante de la antorcha para Naia */
 .naia-torch-glow {
     position: absolute;
@@ -586,4 +542,72 @@
     to {
         opacity: 1;
     }
+}
+
+/* --- Efecto Glitch Cyberpunk Digital para Fondos (Suavizado Anti-Epilepsia) --- */
+.vn-bg-glitch {
+  overflow: hidden;
+  filter: contrast(105%) saturate(90%);
+}
+
+.vn-bg-glitch::before,
+.vn-bg-glitch::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: var(--bg-url);
+  background-size: cover;
+  background-position: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.vn-bg-glitch::before {
+  animation: vn-glitch-anim-1 3s infinite linear alternate-reverse;
+  background-color: rgba(255, 0, 150, 0.15);
+  background-blend-mode: overlay;
+  left: -2px;
+}
+
+.vn-bg-glitch::after {
+  animation: vn-glitch-anim-2 4s infinite linear alternate-reverse;
+  background-color: rgba(0, 255, 255, 0.15);
+  background-blend-mode: overlay;
+  left: 2px;
+}
+
+@keyframes vn-glitch-anim-1 {
+  0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
+  5% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
+  10% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  50% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  55% { clip-path: inset(80% 0 5% 0); transform: translate(-2px, -1px); }
+  60% { clip-path: inset(10% 0 70% 0); transform: translate(2px, -1px); }
+  65% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+}
+
+@keyframes vn-glitch-anim-2 {
+  0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); }
+  5% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  45% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  50% { clip-path: inset(50% 0 30% 0); transform: translate(2px, 1px); }
+  55% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, -1px); }
+  60% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+}
+
+/* --- Efecto Flash Blanco (Suave para evitar fotoepilepsia) --- */
+@keyframes flash-white-soft {
+    0% { background-color: rgba(255, 255, 255, 0); }
+    15% { background-color: rgba(255, 255, 255, 0.6); }
+    100% { background-color: rgba(255, 255, 255, 0); }
+}
+
+.effect-flash-white {
+    position: absolute;
+    inset: 0;
+    z-index: 40; /* Por debajo del UI de usuario (50) y por encima de los personajes (10) */
+    pointer-events: none;
+    animation: flash-white-soft 1.5s ease-out forwards;
 }

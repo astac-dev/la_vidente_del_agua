@@ -42,7 +42,7 @@
     "escena_1_2_tulum": {
       "type": "dialogue",
       "background": {
-        "src": "/backgrounds/bg_sendero_selva_campamento.jpg",
+        "src": "/backgrounds/bg_sendero_selva_campamento.png",
         "transition": "fade",
         "duration": 1000
       },
@@ -83,16 +83,23 @@
         "transition": "fade",
         "duration": 1000
       },
-      "text": "Tulum, 2011. Amaranta (16) sufre extrañas visiones. Al adentrarse en la selva, tropieza con un secreto protegido por la arqueología subacuática...",
+      "text": "Tulum, 2011. Amaranta (16 años) sufre extrañas visiones. Al adentrarse en la selva, tropieza con un secreto protegido por la arqueología subacuática...",
       "next": "escena_1_1_campamento"
     },
     "escena_1_1_campamento": {
       "type": "dialogue",
       "background": {
-        "src": "/backgrounds/bg_sendero_selva_campamento.jpg",
-        "transition": "fade",
-        "duration": 1000
+        "src": "/backgrounds/bg_sendero_selva_campamento.png",
+        "transition": "none",
+        "duration": 0
       },
+      "sprites": [
+        {
+          "id": "amaranta",
+          "src": "/sprites/Amaranta_frente_dudas_sf.png",
+          "position": "left"
+        }
+      ],
       "bgm": {
         "src": "/music/bgm_misterio_cientifico.mp3",
         "action": "play"
@@ -104,7 +111,11 @@
       "dialogos": [
         {
           "personaje": "narrador",
-          "texto": "Frente a ella, la quietud del pueblo se ha transformado en un despliegue logístico. Camionetas con logotipos oficiales del INAH, plantas de luz y buzos de exploración cargando tanques de gas. En el centro, junto a la boca de un cenote, carpas resguardan monitores de alta tecnología."
+          "texto": "Frente a ella, la quietud del pueblo se ha transformado en un despliegue logístico. Camionetas con logotipos oficiales del INAH, plantas de luz y buzos de exploración cargando tanques de gas. En el centro, junto a la boca de un cenote, carpas resguardan monitores de alta tecnología.",
+          "highlight": "btn-fullscreen",
+          "visual_effects": {
+            "focus_blur": true
+          }
         },
         {
           "personaje": "narrador",
@@ -116,17 +127,41 @@
         },
         {
           "personaje": "narrador",
-          "texto": "Un ARQUEÓLOGO JOVEN (25 años, con chaleco del INAH y una tableta digital) se gira de inmediato y la descubre."
+          "texto": "Un ARQUEÓLOGO JOVEN (30 años, con chaleco del INAH y una tableta digital) se gira de inmediato y la descubre."
         },
         {
           "personaje": "arqueologo",
-          "texto": "¡Oye! Cuidado ahí. El suelo de la selva cerca del cenote es piedra caliza frágil; un mal paso y podrías romper el borde... o caer al vacío."
+          "texto": "¡Oye! Cuidado ahí. El suelo de la selva cerca del cenote es piedra caliza frágil; un mal paso y podrías romper el borde... o caer al vacío.",
+          "sprites": [
+            {
+              "id": "amaranta",
+              "src": "/sprites/Amaranta_frente_dudas_sf.png",
+              "position": "left"
+            },
+            {
+              "id": "arqueologo",
+              "src": "/sprites/Arqueologo_1_INAH.png",
+              "position": "right"
+            }
+          ]
         }
       ],
       "next": "campamento_eleccion_actitud"
     },
     "campamento_eleccion_actitud": {
       "type": "choice",
+      "sprites": [
+        {
+          "id": "amaranta",
+          "src": "/sprites/Amaranta_frente_dudas_sf.png",
+          "position": "left"
+        },
+        {
+          "id": "arqueologo",
+          "src": "/sprites/Arqueologo_1_INAH.png",
+          "position": "right"
+        }
+      ],
       "pregunta": "¿Cómo reacciona Amaranta ante el arqueólogo?",
       "opciones": [
         {
@@ -151,6 +186,18 @@
     },
     "campamento_interaccion_mateo": {
       "type": "dialogue",
+      "sprites": [
+        {
+          "id": "amaranta",
+          "src": "/sprites/Amaranta_frente_dudas_sf.png",
+          "position": "left"
+        },
+        {
+          "id": "arqueologo",
+          "src": "/sprites/Arqueologo_1_INAH.png",
+          "position": "right"
+        }
+      ],
       "dialogos": [
         {
           "personaje": "arqueologo",
@@ -161,6 +208,18 @@
     },
     "campamento_timida": {
       "type": "dialogue",
+      "sprites": [
+        {
+          "id": "amaranta",
+          "src": "/sprites/Amaranta_frente_dudas_sf.png",
+          "position": "left"
+        },
+        {
+          "id": "arqueologo",
+          "src": "/sprites/Arqueologo_1_INAH.png",
+          "position": "right"
+        }
+      ],
       "dialogos": [
         {
           "personaje": "arqueologo",
@@ -172,10 +231,22 @@
     "campamento_explicacion_mecanica": {
       "type": "dialogue",
       "background": {
-        "src": "/backgrounds/bg_sendero_selva_campamento.jpg",
+        "src": "/backgrounds/bg_sendero_selva_campamento.png",
         "transition": "none",
         "duration": 0
       },
+      "sprites": [
+        {
+          "id": "amaranta",
+          "src": "/sprites/Amaranta_frente_dudas_sf.png",
+          "position": "left"
+        },
+        {
+          "id": "arqueologo",
+          "src": "/sprites/Arqueologo_1_INAH.png",
+          "position": "right"
+        }
+      ],
       "dialogos": [
         {
           "personaje": "narrador",
@@ -190,6 +261,18 @@
     },
     "campamento_minijuego_preservacion": {
       "type": "choice",
+      "sprites": [
+        {
+          "id": "amaranta",
+          "src": "/sprites/Amaranta_frente_dudas_sf.png",
+          "position": "left"
+        },
+        {
+          "id": "arqueologo",
+          "src": "/sprites/Arqueologo_1_INAH.png",
+          "position": "right"
+        }
+      ],
       "pregunta": "[MINI-JUEGO DE PRESERVACIÓN DIGITAL]\nAlinea los tres puntos de calibración fotogramétrica sobre el fósil virtual.",
       "opciones": [
         {
@@ -214,16 +297,52 @@
     },
     "campamento_minijuego_exito": {
       "type": "custom_message",
+      "sprites": [
+        {
+          "id": "amaranta",
+          "src": "/sprites/Amaranta_frente_dudas_sf.png",
+          "position": "left"
+        },
+        {
+          "id": "arqueologo",
+          "src": "/sprites/Arqueologo_1_INAH.png",
+          "position": "right"
+        }
+      ],
       "text": "¡Escaneo perfecto! Contexto arqueológico intacto.",
       "next": "campamento_detonante"
     },
     "campamento_minijuego_fallo": {
       "type": "custom_message",
+      "sprites": [
+        {
+          "id": "amaranta",
+          "src": "/sprites/Amaranta_frente_dudas_sf.png",
+          "position": "left"
+        },
+        {
+          "id": "arqueologo",
+          "src": "/sprites/Arqueologo_1_INAH.png",
+          "position": "right"
+        }
+      ],
       "text": "Fallo de calibración. El escaneo rápido distorsionó los datos del sedimento.",
       "next": "campamento_detonante"
     },
     "campamento_detonante": {
       "type": "dialogue",
+      "sprites": [
+        {
+          "id": "amaranta",
+          "src": "/sprites/Amaranta_frente_dudas_sf.png",
+          "position": "left"
+        },
+        {
+          "id": "arqueologo",
+          "src": "/sprites/Arqueologo_1_INAH.png",
+          "position": "right"
+        }
+      ],
       "dialogos": [
         {
           "personaje": "narrador",
@@ -231,7 +350,8 @@
         },
         {
           "personaje": "sistema",
-          "texto": "[EFECTO VISUAL: Destello blanco súbito y violento en el centro de la pantalla]\n[SFX: Un latido sordo, masivo e interno: *DUM-DUM*]"
+          "texto": "[EFECTO VISUAL: Destello blanco súbito y violento en el centro de la pantalla]\n[SFX: Un latido sordo, masivo e interno: *DUM-DUM*]",
+          "screen_effect": "white_flash"
         },
         {
           "personaje": "amaranta",
@@ -239,7 +359,19 @@
         },
         {
           "personaje": "arqueologo",
-          "texto": "¿Oye? ¿Te encuentras bien? ¡No toques el--!"
+          "texto": "¿Oye? ¿Te encuentras bien? ¡No toques el--!",
+          "sprites": [
+            {
+              "id": "amaranta",
+              "src": "/sprites/Amaranta_frente_dudas_sf.png",
+              "position": "left"
+            },
+            {
+              "id": "arqueologo",
+              "src": "/sprites/Arqueologo_1_INAH.png",
+              "position": "right"
+            }
+          ]
         }
       ],
       "next": "campamento_eleccion_impacto"
@@ -271,9 +403,10 @@
     "transicion_glitch_al_pasado": {
       "type": "dialogue",
       "background": {
-        "src": "/backgrounds/bg_pantalla_negra.jpg",
-        "transition": "fade",
-        "duration": 500
+        "src": "/backgrounds/bg_sendero_selva_campamento.png",
+        "transition": "none",
+        "duration": 0,
+        "effect": "glitch"
       },
       "bgm": {
         "src": "",
@@ -293,12 +426,27 @@
           "texto": "El espacio y el tiempo colapsan. Amaranta ya no está en 2011. Su conciencia es succionada trece mil años hacia el pasado."
         }
       ],
+      "next": "transicion_a_oscuridad"
+    },
+    "transicion_a_oscuridad": {
+      "type": "dialogue",
+      "background": {
+        "src": "/backgrounds/bg_pantalla_negra.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "dialogos": [
+        {
+          "personaje": "narrador",
+          "texto": "Una oscuridad inmensa la rodea por un instante antes de volver a abrir los ojos..."
+        }
+      ],
       "next": "escena_1_5_pleistoceno"
     },
     "escena_1_5_pleistoceno": {
       "type": "dialogue",
       "background": {
-        "src": "/backgrounds/bg_hoyo_negro_pleistoceno_oscuro.jpg",
+        "src": "/backgrounds/escena_1_5_pleistoceno.png",
         "transition": "fade",
         "duration": 1000
       },
