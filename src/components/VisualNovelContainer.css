@@ -611,3 +611,5 @@
     pointer-events: none;
     animation: flash-white-soft 1.5s ease-out forwards;
 }
+.hud-panel-collapsed { min-width: 0 !important; }
+

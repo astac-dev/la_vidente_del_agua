@@ -10,6 +10,8 @@ import DialogueBox from './DialogueBox';
 import ChoiceMenu from './ChoiceMenu';
 import OrientationBlocker from './OrientationBlocker'; 
 import HUD from './HUD';
+import BatSwarmEffect from './BatSwarmEffect';
+import RadarMinigame from './RadarMinigame';
 import FullscreenEnterIcon from '../icons/FullscreenEnterIcon';
 import FullscreenExitIcon from '../icons/FullscreenExitIcon';
 import glifoAgua from '../../assets/arte/glifoaguafluyendo.png';
@@ -88,7 +90,7 @@ const fadeAudio = (audio, targetVolume, duration, callback) => {
  */
 const GameEngine = ({ onNavigate }) => {
   const { t, i18n } = useTranslation();
-  const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState, saves, saveGameToSlot, isFading, addToHistory } = useGameState();
+  const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState, saves, saveGameToSlot, isFading, addToHistory, goToScene } = useGameState();
   const [showSaveModal, setShowSaveModal] = useState(false);
   const [showLogModal, setShowLogModal] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(!!getFullscreenElement());
@@ -235,7 +237,7 @@ const GameEngine = ({ onNavigate }) => {
       }
 
       const audio = new Audio(src);
-      audio.loop = false;
+      audio.loop = sfx.loop || false;
       audio.volume = settings.volumenEfectos / 100;
 
       audio.addEventListener('error', (e) => {
@@ -250,8 +252,41 @@ const GameEngine = ({ onNavigate }) => {
       }
 
       sfxAudioRef.current = audio;
+    } else if (sfx && sfx.action === 'stop') {
+      if (sfxAudioRef.current) {
+        sfxAudioRef.current.pause();
+        sfxAudioRef.current.src = '';
+        sfxAudioRef.current = null;
+      }
     }
   }, [currentScene]);
+
+  /**
+   * Gestiona la ejecución puntual de efectos de sonido (SFX) a nivel de línea de diálogo.
+   */
+  useEffect(() => {
+    if (!currentLine || !currentLine.sfx) return;
+
+    const sfx = currentLine.sfx;
+    if (sfx.action === 'play') {
+      const src = getAssetUrl(sfx.src);
+      
+      const audio = new Audio(src);
+      audio.loop = sfx.loop || false;
+      audio.volume = settings.volumenEfectos / 100;
+
+      audio.addEventListener('error', (e) => {
+        console.warn(`No se pudo cargar el archivo SFX de línea: ${src}`, e);
+      });
+
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.warn(`Reproducción de SFX de línea bloqueada o interrumpida: ${src}`, err);
+        });
+      }
+    }
+  }, [currentLine]);
 
   /**
    * Sincroniza dinámicamente los cambios de volumen de música.
@@ -550,6 +585,9 @@ const GameEngine = ({ onNavigate }) => {
           {currentLine?.screen_effect === 'white_flash' && (
             <div key={`effect-flash-${gameState?.dialogueIndex}`} className="effect-flash-white" />
           )}
+          {currentLine?.screen_effect === 'bat_swarm' && (
+            <BatSwarmEffect key={`effect-bats-${gameState?.dialogueIndex}`} />
+          )}
           
           {/* Overlay de transición de fundido a negro (fade out/in) */}
           <div className={`absolute inset-0 bg-black z-[300] transition-opacity duration-500 ${isFading ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} />
@@ -672,6 +710,17 @@ const GameEngine = ({ onNavigate }) => {
             />
           )}
 
+          {currentScene.type === 'minigame' && currentScene.minigame === 'radar_sonar' && (
+            <RadarMinigame
+              onSuccess={() => {
+                if (currentScene.onSuccess) goToScene(currentScene.onSuccess);
+              }}
+              onFailure={() => {
+                if (currentScene.onFailure) goToScene(currentScene.onFailure);
+              }}
+            />
+          )}
+
           {currentScene.type === 'custom_message' && (
             <div 
               className="absolute inset-0 z-[210] flex items-center justify-center bg-black pointer-events-auto cursor-pointer animate-[fadeIn_1s_ease-out_forwards]"
@@ -703,7 +752,7 @@ const GameEngine = ({ onNavigate }) => {
               }}
             >
               <div className="text-center px-8 text-neutral-200 font-sans max-w-xl">
-                <p className="text-base md:text-lg leading-relaxed tracking-wide">
+                <p className="leading-relaxed tracking-wide" style={{ fontSize: `calc(1.125rem * var(--ui-scale-multiplier, 1))` }}>
                   {t(`historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.texto`, currentScene.text)}
                 </p>
                 {currentScene.showQR && (
@@ -711,7 +760,7 @@ const GameEngine = ({ onNavigate }) => {
                     <div className="w-48 h-48 bg-white p-2 rounded-lg mb-4 flex items-center justify-center shadow-[0_0_15px_rgba(251,191,36,0.3)] border border-amber-500/30">
                       <img src={qrCodeImage} alt="QR Code" className="w-full h-full object-contain" onError={(e) => e.target.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.inah.gob.mx/'} />
                     </div>
-                    <p className="text-sm text-amber-400 font-mono font-bold tracking-wider">{t('interface.scanQr', '¡Escanea para jugar la versión completa!')}</p>
+                    <p className="text-amber-400 font-mono font-bold tracking-wider" style={{ fontSize: `calc(0.875rem * var(--ui-scale-multiplier, 1))` }}>{t('interface.scanQr', '¡Escanea para jugar la versión completa!')}</p>
                   </div>
                 )}
               </div>

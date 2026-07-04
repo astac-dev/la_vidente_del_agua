@@ -1,5 +1,22 @@
 # Historial de Cambios
 
+## [0.3.27] - 2026-07-04
+
+### Añadido
+- **Minijuego "Motion Tracker"**:
+  - Se rediseñó el componente `RadarMinigame.jsx` para adoptar la estética y mecánica de un radar de movimiento. Incluye una visualización de cono de 90° desde el vértice inferior (vía `clip-path`), ondas expansivas animadas y un sistema de validación rítmica basado en el radio de la onda.
+- **Soporte de SFX por Diálogo**:
+  - Se mejoró `GameEngine.jsx` para soportar la ejecución nativa de efectos de sonido a nivel de línea específica (`currentLine.sfx`), en lugar de limitar el audio al inicio de la escena.
+  - Implementación del SFX de rama rota (`bone-breaking.wav`) en la línea de descubrimiento de Amaranta en `capitulo_1_1.json`.
+
+### Cambiado
+- **HUD Retráctil**:
+  - El componente de estadísticas en pantalla (`HUD.jsx`) ahora es una pestaña compacta y dinámica. Por defecto se colapsa mostrando los valores abreviados ("C" y "P"), con la capacidad de expandirse para mostrar nombres completos mediante un botón lateral, evitando obstruir la escena. Se agregó la clase `.hud-panel-collapsed` para manejar transiciones de CSS limpias en `VisualNovelContainer.css`.
+
+### Corregido
+- **Escala de Texto en Pantallas Negras**:
+  - Se corrigió un error visual en el componente `custom_message` (en `GameEngine.jsx`) donde la tipografía y el llamado a la acción del código QR no respondían a la configuración global de tamaño de texto del jugador. Ahora emplean estilos dinámicos que heredan de `--ui-scale-multiplier`.
+
 ## [0.3.26] - 2026-07-02
 
 ### Añadido

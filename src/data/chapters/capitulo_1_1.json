@@ -83,6 +83,12 @@
         "transition": "fade",
         "duration": 1000
       },
+      "bgm": {
+        "src": "/bgm/Signal Trace.mp3",
+        "action": "play",
+        "transition": "fade",
+        "duration": 1000
+      },
       "text": "Tulum, 2011. Amaranta (16 años) sufre extrañas visiones. Al adentrarse en la selva, tropieza con un secreto protegido por la arqueología subacuática...",
       "next": "escena_1_1_campamento"
     },
@@ -100,10 +106,6 @@
           "position": "left"
         }
       ],
-      "bgm": {
-        "src": "/music/bgm_misterio_cientifico.mp3",
-        "action": "play"
-      },
       "sfx": {
         "src": "/sfx/sfx_motor_diesel.wav",
         "action": "play"
@@ -123,7 +125,11 @@
         },
         {
           "personaje": "sistema",
-          "texto": "[SFX: sfx_rama_rompiéndose.wav]"
+          "texto": "[SFX: sfx_rama_rompiéndose.wav]",
+          "sfx": {
+            "src": "/vfx/136460__debsound__bone-breaking.wav",
+            "action": "play"
+          }
         },
         {
           "personaje": "narrador",
@@ -260,40 +266,10 @@
       "next": "campamento_minijuego_preservacion"
     },
     "campamento_minijuego_preservacion": {
-      "type": "choice",
-      "sprites": [
-        {
-          "id": "amaranta",
-          "src": "/sprites/Amaranta_frente_dudas_sf.png",
-          "position": "left"
-        },
-        {
-          "id": "arqueologo",
-          "src": "/sprites/Arqueologo_1_INAH.png",
-          "position": "right"
-        }
-      ],
-      "pregunta": "[MINI-JUEGO DE PRESERVACIÓN DIGITAL]\nAlinea los tres puntos de calibración fotogramétrica sobre el fósil virtual.",
-      "opciones": [
-        {
-          "texto": "[Calibrar con paciencia y precisión siguiendo los puntos]",
-          "action": {
-            "stat": "preservacion",
-            "op": "add",
-            "value": 1
-          },
-          "next": "campamento_minijuego_exito"
-        },
-        {
-          "texto": "[Apresurar el escaneo presionando la pantalla repetidamente]",
-          "action": {
-            "stat": "preservacion",
-            "op": "add",
-            "value": 0
-          },
-          "next": "campamento_minijuego_fallo"
-        }
-      ]
+      "type": "minigame",
+      "minigame": "radar_sonar",
+      "onSuccess": "campamento_minijuego_exito",
+      "onFailure": "campamento_minijuego_fallo"
     },
     "campamento_minijuego_exito": {
       "type": "custom_message",
@@ -313,7 +289,7 @@
       "next": "campamento_detonante"
     },
     "campamento_minijuego_fallo": {
-      "type": "custom_message",
+      "type": "dialogue",
       "sprites": [
         {
           "id": "amaranta",
@@ -326,8 +302,13 @@
           "position": "right"
         }
       ],
-      "text": "Fallo de calibración. El escaneo rápido distorsionó los datos del sedimento.",
-      "next": "campamento_detonante"
+      "dialogos": [
+        {
+          "personaje": "arqueologo",
+          "texto": "¡Fallo de calibración! El radar perdió los puntos de anclaje. Inténtalo de nuevo con precisión y no hagas clics al azar."
+        }
+      ],
+      "next": "campamento_minijuego_preservacion"
     },
     "campamento_detonante": {
       "type": "dialogue",
@@ -347,7 +328,36 @@
         {
           "personaje": "narrador",
           "texto": "Al completarse el proceso en el monitor, los vectores 3D se renderizan revelando la forma exacta de la cueva, y en ella, los restos oseos de una persona."
+        }
+      ],
+      "next": "campamento_detonante_flash"
+    },
+    "campamento_detonante_flash": {
+      "type": "dialogue",
+      "bgm": {
+        "src": "",
+        "action": "stop",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "sfx": {
+        "src": "/vfx/54489__drgasp__heartbeat.mp3",
+        "action": "play",
+        "fade": 200
+      },
+      "sprites": [
+        {
+          "id": "amaranta",
+          "src": "/sprites/Amaranta_frente_dudas_sf.png",
+          "position": "left"
         },
+        {
+          "id": "arqueologo",
+          "src": "/sprites/Arqueologo_1_INAH.png",
+          "position": "right"
+        }
+      ],
+      "dialogos": [
         {
           "personaje": "sistema",
           "texto": "[EFECTO VISUAL: Destello blanco súbito y violento en el centro de la pantalla]\n[SFX: Un latido sordo, masivo e interno: *DUM-DUM*]",
@@ -410,7 +420,9 @@
       },
       "bgm": {
         "src": "",
-        "action": "stop"
+        "action": "stop",
+        "transition": "fade",
+        "duration": 1000
       },
       "sfx": {
         "src": "/sfx/sfx_eco_caverna_seca.wav",
@@ -451,9 +463,18 @@
         "duration": 1000
       },
       "bgm": {
-        "src": "/music/bgm_terror_ancestral.mp3",
-        "action": "play"
+        "src": "/bgm/Ancient Cave Terror.mp3",
+        "action": "play",
+        "transition": "fade",
+        "duration": 1000
       },
+      "sprites": [
+        {
+          "id": "naia",
+          "src": "/sprites/Naia_preocupada.png",
+          "position": "center"
+        }
+      ],
       "dialogos": [
         {
           "personaje": "narrador",
@@ -462,20 +483,57 @@
         {
           "personaje": "naia",
           "texto": "Tengo tanta sed... Aquí abajo solo hay piedra."
-        },
+        }
+      ],
+      "next": "escena_1_5_pleistoceno_murcielagos"
+    },
+    "escena_1_5_pleistoceno_murcielagos": {
+      "type": "dialogue",
+      "sfx": {
+        "src": "/vfx/483397__abacagi__bat-swarm-sfx.mp3",
+        "action": "play",
+        "loop": true
+      },
+      "sprites": [
+        {
+          "id": "naia",
+          "src": "/sprites/Naia_panico.png",
+          "position": "center"
+        }
+      ],
+      "dialogos": [
         {
           "personaje": "sistema",
-          "texto": "[SFX: Un aleteo masivo y repentino: SFX_HORDA_MURCIELAGOS]\n[EFECTO VISUAL: Ráfaga de partículas negras cruzando la pantalla]"
-        },
+          "texto": "[SFX: Un aleteo masivo y repentino: SFX_HORDA_MURCIELAGOS]\n[EFECTO VISUAL: Ráfaga de partículas negras cruzando la pantalla]",
+          "screen_effect": "bat_swarm"
+        }
+      ],
+      "next": "escena_1_5_pleistoceno_caida"
+    },
+    "escena_1_5_pleistoceno_caida": {
+      "type": "dialogue",
+      "sprites": [
+        {
+          "id": "naia",
+          "src": "/sprites/Naia_panico.png",
+          "position": "center"
+        }
+      ],
+      "dialogos": [
         {
           "personaje": "narrador",
-          "texto": "Cientos de murciélagos impactan contra su rostro en un parpadeo de pánico. Presa del terror, da unos pasos a ciegas justo al borde del abismo fatal. El suelo firme desaparece. Naia cae al vacío."
+          "texto": "Cientos de murciélagos impactan contra su rostro en un parpadeo de pánico. Presa del terror, da unos pasos a ciegas justo al borde del abismo fatal. El suelo firme desaparece. Naia cae al vacío.",
+          "screen_effect": "bat_swarm"
         }
       ],
       "next": "escena_caida_eleccion"
     },
     "escena_caida_eleccion": {
       "type": "choice",
+      "sfx": {
+        "src": "",
+        "action": "stop"
+      },
       "pregunta": "Elige la reacción de supervivencia de Naia durante la caída libre.",
       "opciones": [
         {
@@ -511,17 +569,24 @@
         "duration": 500
       },
       "sfx": {
-        "src": "/sfx/sfx_caida_cuerpo_roca.wav",
+        "src": "/vfx/470587__silverillusionist__heavy-impact.wav",
         "action": "play"
       },
+      "sprites": [
+        {
+          "id": "naia",
+          "src": "/sprites/Naia_callendo.png",
+          "position": "center"
+        }
+      ],
       "dialogos": [
         {
-          "personaje": "sistema",
-          "texto": "[SFX: Crujido óseo: SFX_FRACTURA_PELVIS]"
+          "personaje": "naia",
+          "texto": "..."
         },
         {
           "personaje": "narrador",
-          "texto": "El impacto en el fondo de la fosa seca fractura su cadera. El silencio sepulcral vuelve a apoderarse de la cueva oscura."
+          "texto": "[SFX: Crujido óseo: SFX_FRACTURA_PELVIS], El impacto en el fondo de la fosa seca fractura su cadera. El silencio sepulcral vuelve a apoderarse de la cueva oscura."
         }
       ],
       "next": "escena_1_1_cierre_logico"
@@ -539,9 +604,16 @@
         "duration": 500
       },
       "sfx": {
-        "src": "/sfx/sfx_arrastre_piel_aspera.wav",
+        "src": "/vfx/470587__silverillusionist__heavy-impact.wav",
         "action": "play"
       },
+      "sprites": [
+        {
+          "id": "naia",
+          "src": "/sprites/Naia_callendo_frente.png",
+          "position": "center"
+        }
+      ],
       "dialogos": [
         {
           "personaje": "sistema",
@@ -564,6 +636,12 @@
       "type": "custom_message",
       "background": {
         "src": "/backgrounds/bg_pantalla_negra.jpg",
+        "transition": "fade",
+        "duration": 1000
+      },
+      "bgm": {
+        "src": "",
+        "action": "stop",
         "transition": "fade",
         "duration": 1000
       },

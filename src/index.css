@@ -109,3 +109,24 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+@keyframes bat-fade-move {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(100px, -50px) scale(1.5) rotate(20deg);
+  }
+}
+
+.bat-flutter-animation {
+  animation: bat-fade-move 1s ease-in-out infinite alternate;
+}
