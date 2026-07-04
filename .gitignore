@@ -42,7 +42,7 @@ dist-ssr
 .env
 
 # mk file
-*.mk
+.mk
 
 # Zip files
-*.zip 
+.zip 
