@@ -139,6 +139,15 @@ export const useVisualNovelEngine = (scriptData) => {
     }
   };
 
+  const cancelChoice = () => {
+    if (!isChoice) return;
+    const history = gameState.dialogueHistory || [];
+    if (history.length > 0) {
+      const lastDialogue = history[history.length - 1];
+      goToScene(lastDialogue.sceneId, lastDialogue.chapter, lastDialogue.dialogueIndex);
+    }
+  };
+
   return {
     currentScene,
     currentLine,
@@ -147,5 +156,6 @@ export const useVisualNovelEngine = (scriptData) => {
     advance,
     makeChoice,
     skipToNextChoice,
+    cancelChoice,
   };
 };

@@ -7,6 +7,12 @@ export const useTypewriter = (text, speed = 40) => {
 
   useEffect(() => {
     if (text) {
+      if (speed === 0) {
+        setDisplayedText(text);
+        setIsTyping(false);
+        return;
+      }
+
       let i = 0;
       setDisplayedText(''); // Limpiar al recibir nuevo texto
       setIsTyping(true);

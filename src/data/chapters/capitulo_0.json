@@ -166,7 +166,7 @@
         "transition": "fade",
         "duration": 1000
       },
-      "pregunta": "Casi se me olvida, habra menus como este que te pida tomar desiciones en el destino de la historia, crees poder aceptar esta responsabilidad.? ",
+      "pregunta": "Casi se me olvida, habra menus como este que te pida tomar desiciones en el destino de la historia, crees poder aceptar esta responsabilidad.?, si quieres regresar antes de este menu de elección, presiona la X de este menu de eleccion. ",
       "opciones": [
         {
           "texto": "SI",

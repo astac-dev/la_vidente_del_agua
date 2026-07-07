@@ -35,9 +35,9 @@ const App = () => {
       // Dimensiones base de tu ilustración original
       const imageWidth = 1024;
       const imageHeight = 768;
-      const torchX = 400;
+      const torchX = 415;
       const torchY = 418;
-      const baseTorchSize = 80; 
+      const baseTorchSize = 80;
 
       const imageRatio = imageWidth / imageHeight;
       const torchXRelative = torchX / imageWidth;
@@ -56,7 +56,7 @@ const App = () => {
         renderedWidth = viewportWidth;
         renderedHeight = viewportWidth / imageRatio;
         offsetX = 0;
-        offsetY = (viewportHeight - renderedHeight) / 2; 
+        offsetY = (viewportHeight - renderedHeight) / 2;
       } else {
         // El monitor es más alto/estrecho: la imagen cubre todo el alto y se autoajusta a los lados
         renderedHeight = viewportHeight;
@@ -77,10 +77,10 @@ const App = () => {
       });
     };
 
-    updateTorchPosition(); 
-    window.addEventListener('resize', updateTorchPosition); 
+    updateTorchPosition();
+    window.addEventListener('resize', updateTorchPosition);
 
-    return () => window.removeEventListener('resize', updateTorchPosition); 
+    return () => window.removeEventListener('resize', updateTorchPosition);
   }, []);
 
   useEffect(() => {
@@ -159,8 +159,8 @@ const App = () => {
         <div className="torch-flicker" style={torchStyle}></div>
       </div>
       {/* CORRECCIÓN: Quitamos cualquier restricción horizontal previa de clases nativas */}
-      <div 
-        className={`menu-container w-full min-h-screen relative overflow-y-auto flex flex-col ${animationClass}`} 
+      <div
+        className={`menu-container w-full min-h-screen relative overflow-y-auto flex flex-col ${animationClass}`}
         onAnimationEnd={handleAnimationEnd}
         style={{ '--ui-scale-multiplier': `${(settings.tamanoLetra || 100) / 100}` }}
       >

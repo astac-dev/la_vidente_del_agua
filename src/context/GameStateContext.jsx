@@ -12,7 +12,7 @@ const defaultSettings = {
   volumenMusica: 80,
   volumenEfectos: 100,
   tamanoLetra: 100, // Representa el 100% del tamaño base
-  autoPlaySpeed: 0, // 0: off, 1-4: speeds
+  textSpeed: 1, // 1: maquina, 2: 2 pal/seg, 3: 5 pal/seg, 4: instant
   unlockedNodes: ['cap_0'],
   soloJuegoRapido: false,
   lastUpdated: 0,
@@ -117,7 +117,7 @@ export const GameStateProvider = ({ children }) => {
               volumenMusica: data.volumenMusica,
               volumenEfectos: data.volumenEfectos,
               tamanoLetra: data.tamanoLetra,
-              autoPlaySpeed: data.autoPlaySpeed,
+              textSpeed: data.textSpeed || 1,
               soloJuegoRapido: data.soloJuegoRapido || false,
               unlockedNodes: data.unlockedNodes || ['cap_0'],
               lastUpdated: data.lastUpdated || 0,

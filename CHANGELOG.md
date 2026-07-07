@@ -1,5 +1,12 @@
 # Historial de Cambios
 
+## [0.3.28] - 2026-07-06
+
+### Cambiado
+- **Velocidad de Texto en lugar de Modo Automático**:
+  - Se removió la función de avance automático (Auto-Play). Ahora, independientemente de la velocidad de aparición, se debe presionar el botón para continuar con la novela visual.
+  - El botón de velocidad de la interfaz (`TXT.SPD`) ahora controla directamente la velocidad de aparición del texto con 4 ritmos: x1 (efecto máquina de escribir), x2 (2 palabras/segundo), x3 (5 palabras/segundo) y x4 (texto de golpe, instantáneo).
+
 ## [0.3.27] - 2026-07-04
 
 ### Añadido

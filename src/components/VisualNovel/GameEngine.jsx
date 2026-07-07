@@ -136,7 +136,7 @@ const GameEngine = ({ onNavigate }) => {
   }, [gameState.currentChapter]);
 
   // Hook del motor adaptado para recibir scriptData cargado dinámicamente
-  const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice, skipToNextChoice } = useVisualNovelEngine(scriptData);
+  const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice, skipToNextChoice, cancelChoice } = useVisualNovelEngine(scriptData);
 
   /**
    * Determina si un elemento específico de la interfaz debe estar resaltado
@@ -465,39 +465,13 @@ const GameEngine = ({ onNavigate }) => {
   };
 
   const handleAutoClick = () => {
-    const speeds = [0, 1, 2, 3, 4];
-    const currentSpeedIndex = speeds.indexOf(settings.autoPlaySpeed || 0);
+    const speeds = [1, 2, 3, 4];
+    const currentSpeedIndex = speeds.indexOf(settings.textSpeed || 1);
     const nextSpeed = speeds[(currentSpeedIndex + 1) % speeds.length];
-    updateSetting('autoPlaySpeed', nextSpeed);
+    updateSetting('textSpeed', nextSpeed);
   };
 
-  useEffect(() => {
-    if (isChoice || !uiVisibility || !settings.autoPlaySpeed || settings.autoPlaySpeed === 0) {
-      return;
-    }
-    if (isEndOfScene) {
-      return;
-    }
 
-    // Configuración paramétrica de velocidad según estándares de lectura (WPM a CPS)
-    const speedConfig = {
-      1: { cps: 20, base: 1500 }, // x1: Normal (~240 WPM)
-      2: { cps: 32, base: 1100 }, // x2: Rápido (~380 WPM)
-      3: { cps: 48, base: 800 },  // x3: Muy Rápido (~570 WPM)
-      4: { cps: 64, base: 500 }   // x4: Escaneo (~760 WPM)
-    };
-
-    const config = speedConfig[settings.autoPlaySpeed] || speedConfig[1];
-    const textLength = currentLine?.texto?.length || 0;
-    const calculatedDelay = (textLength / config.cps) * 1000;
-    const totalDelay = config.base + calculatedDelay;
-
-    const timer = setTimeout(() => {
-      advance();
-    }, totalDelay);
-
-    return () => clearTimeout(timer);
-  }, [currentLine, isChoice, uiVisibility, settings.autoPlaySpeed, isEndOfScene, advance]);
 
   const handleToggleSkip = () => {
     skipToNextChoice();
@@ -509,7 +483,15 @@ const GameEngine = ({ onNavigate }) => {
 
   const dialogueKey = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.dialogos.${gameState?.dialogueIndex}.texto`;
   const translatedDialogue = t(dialogueKey, currentLine?.texto);
-  const { displayedText, isTyping } = useTypewriter(translatedDialogue, 40);
+  
+  const speedMapping = {
+    1: 40,  // x1: Efecto maquina de escribir (40ms por letra)
+    2: 100, // x2: 2 palabras/seg (aprox 100ms por letra)
+    3: 40,  // x3: 5 palabras/seg (aprox 40ms por letra)
+    4: 0    // x4: De golpe
+  };
+  const textSpeedValue = speedMapping[settings.textSpeed || 1];
+  const { displayedText, isTyping } = useTypewriter(translatedDialogue, textSpeedValue);
 
   if (!scriptData || !currentScene) {
     return (
@@ -606,7 +588,7 @@ const GameEngine = ({ onNavigate }) => {
                       {isFullscreen ? <FullscreenExitIcon /> : <FullscreenEnterIcon />}
                     </div>
                     <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">
-                      {t('interface.fullscreenLabel', 'SYS.FS')}
+                      {t('interface.fullscreenLabel', 'PANTALLA COMPLETA')}
                     </span>
                   </button>
                   <button 
@@ -618,7 +600,7 @@ const GameEngine = ({ onNavigate }) => {
                     {!isFullscreen && <div className="absolute top-0 left-0 w-1 h-1 bg-amber-500" />}
                     <div className="pt-1"><HomeIcon /></div>
                     <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">
-                      {t('interface.homeLabel', 'HOME')}
+                      {t('interface.homeLabel', 'INICIO')}
                     </span>
                   </button>
                 </div>
@@ -637,7 +619,7 @@ const GameEngine = ({ onNavigate }) => {
                   title={t('interface.history', 'Historial')}
                 >
                   <div className="pt-1"><LogIcon /></div>
-                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.recLogLabel', 'REC.LOG')}</span>
+                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.recLogLabel', 'HISTORIAL')}</span>
                 </button>
                 <button 
                   onClick={handleToggleSkip} 
@@ -645,19 +627,18 @@ const GameEngine = ({ onNavigate }) => {
                   title={t('interface.skip', 'Saltar')}
                 >
                   <div className="pt-1"><SkipIcon /></div>
-                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.narrSkpLabel', 'NARR.SKP')}</span>
+                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.narrSkpLabel', 'SALTAR')}</span>
                 </button>
                 <button 
                   onClick={handleAutoClick} 
-                  className={`${buttonBaseClasses} ${settings.autoPlaySpeed > 0 ? 'border-amber-500 bg-amber-500/10 text-amber-400 hover:text-amber-300' : ''} ${isHighlighted('btn-auto') ? 'vn-highlight-active' : ''}`} 
-                  title={t('interface.autoMode', 'Modo Automático')}
+                  className={`${buttonBaseClasses} ${isHighlighted('btn-auto') ? 'vn-highlight-active' : ''}`} 
+                  title={t('interface.textSpeedMode', 'Velocidad de Texto')}
                 >
-                  {settings.autoPlaySpeed > 0 && <div className="absolute top-0 right-0 w-1 h-1 bg-amber-500 animate-pulse" />}
                   <div className="pt-1 flex items-center justify-center gap-0.5">
                     <AutoIcon />
-                    {settings.autoPlaySpeed > 0 && (<span className="text-[9px] font-mono font-bold leading-none">X{settings.autoPlaySpeed}</span>)}
+                    <span className="hud-button-speed-indicator leading-none">X{settings.textSpeed || 1}</span>
                   </div>
-                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.playAtLabel', 'PLAY.AT')}</span>
+                  <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.textSpeedLabel', 'VELOCIDAD')}</span>
                 </button>
                 <button 
                   onClick={toggleUiVisibility} 
@@ -665,7 +646,7 @@ const GameEngine = ({ onNavigate }) => {
                   title={t('interface.hideUI', 'Ocultar Interfaz')}
                 >
                     <div className="pt-1">{uiVisibility ? <HideUIIcon /> : <ShowUIIcon />}</div>
-                    <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.hideUIButton', 'UI.HIDE')}</span>
+                    <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.hideUIButton', 'OCULTAR')}</span>
                 </button>
               </div>
             </div>
@@ -687,6 +668,7 @@ const GameEngine = ({ onNavigate }) => {
                   question={translatedQuestion}
                   options={translatedOptions}
                   onChoice={makeChoice}
+                  onCancel={cancelChoice}
                 />
               )}
 
@@ -752,7 +734,7 @@ const GameEngine = ({ onNavigate }) => {
               }}
             >
               <div className="text-center px-8 text-neutral-200 font-sans max-w-xl">
-                <p className="leading-relaxed tracking-wide" style={{ fontSize: `calc(1.125rem * var(--ui-scale-multiplier, 1))` }}>
+                <p className="leading-relaxed tracking-wide vn-dialogue-text">
                   {t(`historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.texto`, currentScene.text)}
                 </p>
                 {currentScene.showQR && (

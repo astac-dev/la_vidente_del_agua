@@ -231,51 +231,62 @@
 
 /* --- HUD and control buttons scaling and responsiveness --- */
 .hud-button-custom {
-    width: calc(4.5rem * var(--ui-scale-multiplier, 1)) !important;
-    height: calc(3.75rem * var(--ui-scale-multiplier, 1)) !important;
-    padding-top: calc(0.35rem * var(--ui-scale-multiplier, 1)) !important;
+    min-width: calc(4.5rem * var(--ui-scale-multiplier, 1)) !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: calc(3.75rem * var(--ui-scale-multiplier, 1)) !important;
+    padding: calc(0.5rem * var(--ui-scale-multiplier, 1)) calc(0.75rem * var(--ui-scale-multiplier, 1)) !important;
 }
 
 .hud-button-label-custom {
-    font-size: calc(9.5px * var(--ui-scale-multiplier, 1)) !important;
-    margin-top: calc(3px * var(--ui-scale-multiplier, 1)) !important;
+    font-size: calc(clamp(14px, 2.0cqw, 28px) * var(--ui-scale-multiplier, 1)) !important;
+    margin-top: calc(4px * var(--ui-scale-multiplier, 1)) !important;
+    text-align: center;
 }
 
 .hud-button-custom svg {
-    width: calc(1.5rem * var(--ui-scale-multiplier, 1)) !important;
-    height: calc(1.5rem * var(--ui-scale-multiplier, 1)) !important;
+    width: calc(2rem * var(--ui-scale-multiplier, 1)) !important;
+    height: calc(2rem * var(--ui-scale-multiplier, 1)) !important;
+}
+
+.hud-button-speed-indicator {
+    font-size: calc(clamp(12px, 1.8cqw, 24px) * var(--ui-scale-multiplier, 1)) !important;
+    font-weight: bold;
+    font-family: monospace;
 }
 
 /* Responsive scaling for buttons and labels */
 @media (max-width: 768px) {
     .hud-button-custom {
-        width: calc(3.6rem * var(--ui-scale-multiplier, 1)) !important;
-        height: calc(3.0rem * var(--ui-scale-multiplier, 1)) !important;
+        min-width: calc(3.6rem * var(--ui-scale-multiplier, 1)) !important;
+        min-height: calc(3.5rem * var(--ui-scale-multiplier, 1)) !important;
+        padding: calc(0.4rem * var(--ui-scale-multiplier, 1)) calc(0.5rem * var(--ui-scale-multiplier, 1)) !important;
     }
 
     .hud-button-label-custom {
-        font-size: calc(8px * var(--ui-scale-multiplier, 1)) !important;
+        font-size: calc(clamp(11px, 1.6cqw, 20px) * var(--ui-scale-multiplier, 1)) !important;
     }
 
     .hud-button-custom svg {
-        width: calc(1.2rem * var(--ui-scale-multiplier, 1)) !important;
-        height: calc(1.2rem * var(--ui-scale-multiplier, 1)) !important;
+        width: calc(1.5rem * var(--ui-scale-multiplier, 1)) !important;
+        height: calc(1.5rem * var(--ui-scale-multiplier, 1)) !important;
     }
 }
 
 @media (max-height: 500px) and (orientation: landscape) {
     .hud-button-custom {
-        width: calc(3.6rem * var(--ui-scale-multiplier, 1)) !important;
-        height: calc(3.0rem * var(--ui-scale-multiplier, 1)) !important;
+        min-width: calc(3.6rem * var(--ui-scale-multiplier, 1)) !important;
+        min-height: calc(3.5rem * var(--ui-scale-multiplier, 1)) !important;
+        padding: calc(0.4rem * var(--ui-scale-multiplier, 1)) calc(0.5rem * var(--ui-scale-multiplier, 1)) !important;
     }
 
     .hud-button-label-custom {
-        font-size: calc(8px * var(--ui-scale-multiplier, 1)) !important;
+        font-size: calc(clamp(11px, 1.6cqw, 20px) * var(--ui-scale-multiplier, 1)) !important;
     }
 
     .hud-button-custom svg {
-        width: calc(1.2rem * var(--ui-scale-multiplier, 1)) !important;
-        height: calc(1.2rem * var(--ui-scale-multiplier, 1)) !important;
+        width: calc(1.5rem * var(--ui-scale-multiplier, 1)) !important;
+        height: calc(1.5rem * var(--ui-scale-multiplier, 1)) !important;
     }
 }
 
@@ -323,10 +334,11 @@
 }
 
 .vn-choice-question {
-    font-size: calc(clamp(13px, 1.8cqw, 24px) * var(--ui-scale-multiplier, 1));
+    font-size: calc(clamp(14px, 2.0cqw, 28px) * var(--ui-scale-multiplier, 1));
     margin-bottom: calc(1.5rem * var(--ui-scale-multiplier, 1));
     transition: font-size 0.15s ease-in-out;
-    color: #e5e5e5 !important; /* Asegura contraste y legibilidad sobre fondo oscuro, anulando overrides globales */
+    color: #e5e5e5 !important;
+    /* Asegura contraste y legibilidad sobre fondo oscuro, anulando overrides globales */
 }
 
 .vn-choices-list {
@@ -335,7 +347,7 @@
 }
 
 .vn-choice-button {
-    font-size: calc(clamp(13px, 1.8cqw, 24px) * var(--ui-scale-multiplier, 1));
+    font-size: calc(clamp(14px, 2.0cqw, 28px) * var(--ui-scale-multiplier, 1));
     padding: calc(0.75rem * var(--ui-scale-multiplier, 1)) calc(1.5rem * var(--ui-scale-multiplier, 1));
     border-radius: calc(4px * var(--ui-scale-multiplier, 1));
     min-height: calc(48px * var(--ui-scale-multiplier, 1));
@@ -464,9 +476,9 @@
 /* Brillo dinámico y parpadeante de la antorcha para Naia */
 .naia-torch-glow {
     position: absolute;
-    left: 81.165%;
+    left: 79.165%;
     /* Coordenada X (1254 / 1545) */
-    top: 16.458%;
+    top: 12.458%;
     /* Coordenada Y (329 / 1999) */
     width: 25%;
     /* Diámetro elástico proporcional al ancho del sprite */
@@ -490,6 +502,7 @@
         border-radius: 51% 49% 50% 50% / 49% 50% 51% 50%;
         box-shadow: 0 0 12px 3px rgba(255, 255, 230, 0.8), 0 0 30px 10px rgba(255, 123, 0, 0.6), 0 0 70px 25px rgba(255, 60, 0, 0.3);
     }
+
     18% {
         transform: translate(-50%, -50%) scale(1.05) rotate(2deg);
         opacity: 0.94;
@@ -497,6 +510,7 @@
         border-radius: 48% 52% 49% 51% / 52% 47% 53% 48%;
         box-shadow: 0 0 18px 6px rgba(255, 255, 230, 0.9), 0 0 40px 18px rgba(255, 123, 0, 0.7), 0 0 90px 35px rgba(255, 60, 0, 0.4);
     }
+
     43% {
         transform: translate(-50%, -50%) scale(0.93) rotate(-0.5deg);
         opacity: 0.77;
@@ -504,6 +518,7 @@
         border-radius: 53% 47% 52% 48% / 47% 53% 49% 51%;
         box-shadow: 0 0 10px 2px rgba(255, 255, 230, 0.7), 0 0 25px 8px rgba(255, 123, 0, 0.5), 0 0 65px 20px rgba(255, 60, 0, 0.25);
     }
+
     71% {
         transform: translate(-50%, -50%) scale(1.08) rotate(1.5deg);
         opacity: 0.98;
@@ -511,6 +526,7 @@
         border-radius: 49% 51% 53% 47% / 51% 48% 52% 49%;
         box-shadow: 0 0 20px 8px rgba(255, 255, 230, 0.95), 0 0 45px 22px rgba(255, 123, 0, 0.85), 0 0 110px 45px rgba(255, 60, 0, 0.45);
     }
+
     85% {
         transform: translate(-50%, -50%) scale(1.01) rotate(-1deg);
         opacity: 0.88;
@@ -518,6 +534,7 @@
         border-radius: 52% 48% 48% 52% / 50% 52% 48% 50%;
         box-shadow: 0 0 15px 4px rgba(255, 255, 230, 0.85), 0 0 35px 12px rgba(255, 123, 0, 0.65), 0 0 80px 30px rgba(255, 60, 0, 0.35);
     }
+
     100% {
         transform: translate(-50%, -50%) scale(0.95) rotate(-1.5deg);
         opacity: 0.82;
@@ -546,70 +563,142 @@
 
 /* --- Efecto Glitch Cyberpunk Digital para Fondos (Suavizado Anti-Epilepsia) --- */
 .vn-bg-glitch {
-  overflow: hidden;
-  filter: contrast(105%) saturate(90%);
+    overflow: hidden;
+    filter: contrast(105%) saturate(90%);
 }
 
 .vn-bg-glitch::before,
 .vn-bg-glitch::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: var(--bg-url);
-  background-size: cover;
-  background-position: center;
-  z-index: 2;
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--bg-url);
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .vn-bg-glitch::before {
-  animation: vn-glitch-anim-1 3s infinite linear alternate-reverse;
-  background-color: rgba(255, 0, 150, 0.15);
-  background-blend-mode: overlay;
-  left: -2px;
+    animation: vn-glitch-anim-1 3s infinite linear alternate-reverse;
+    background-color: rgba(255, 0, 150, 0.15);
+    background-blend-mode: overlay;
+    left: -2px;
 }
 
 .vn-bg-glitch::after {
-  animation: vn-glitch-anim-2 4s infinite linear alternate-reverse;
-  background-color: rgba(0, 255, 255, 0.15);
-  background-blend-mode: overlay;
-  left: 2px;
+    animation: vn-glitch-anim-2 4s infinite linear alternate-reverse;
+    background-color: rgba(0, 255, 255, 0.15);
+    background-blend-mode: overlay;
+    left: 2px;
 }
 
 @keyframes vn-glitch-anim-1 {
-  0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
-  5% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
-  10% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
-  50% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
-  55% { clip-path: inset(80% 0 5% 0); transform: translate(-2px, -1px); }
-  60% { clip-path: inset(10% 0 70% 0); transform: translate(2px, -1px); }
-  65% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
-  100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+    0% {
+        clip-path: inset(20% 0 80% 0);
+        transform: translate(-2px, 1px);
+    }
+
+    5% {
+        clip-path: inset(60% 0 10% 0);
+        transform: translate(2px, -1px);
+    }
+
+    10% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0, 0);
+    }
+
+    50% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0, 0);
+    }
+
+    55% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(-2px, -1px);
+    }
+
+    60% {
+        clip-path: inset(10% 0 70% 0);
+        transform: translate(2px, -1px);
+    }
+
+    65% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0, 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0, 0);
+    }
 }
 
 @keyframes vn-glitch-anim-2 {
-  0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); }
-  5% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
-  45% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
-  50% { clip-path: inset(50% 0 30% 0); transform: translate(2px, 1px); }
-  55% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, -1px); }
-  60% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
-  100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+    0% {
+        clip-path: inset(10% 0 60% 0);
+        transform: translate(2px, -1px);
+    }
+
+    5% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0, 0);
+    }
+
+    45% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0, 0);
+    }
+
+    50% {
+        clip-path: inset(50% 0 30% 0);
+        transform: translate(2px, 1px);
+    }
+
+    55% {
+        clip-path: inset(20% 0 50% 0);
+        transform: translate(-2px, -1px);
+    }
+
+    60% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0, 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+        transform: translate(0, 0);
+    }
 }
 
 /* --- Efecto Flash Blanco (Suave para evitar fotoepilepsia) --- */
 @keyframes flash-white-soft {
-    0% { background-color: rgba(255, 255, 255, 0); }
-    15% { background-color: rgba(255, 255, 255, 0.6); }
-    100% { background-color: rgba(255, 255, 255, 0); }
+    0% {
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    15% {
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    100% {
+        background-color: rgba(255, 255, 255, 0);
+    }
 }
 
 .effect-flash-white {
     position: absolute;
     inset: 0;
-    z-index: 40; /* Por debajo del UI de usuario (50) y por encima de los personajes (10) */
+    z-index: 40;
+    /* Por debajo del UI de usuario (50) y por encima de los personajes (10) */
     pointer-events: none;
     animation: flash-white-soft 1.5s ease-out forwards;
 }
-.hud-panel-collapsed { min-width: 0 !important; }
 
+.hud-panel-collapsed {
+    min-width: 0 !important;
+}

@@ -46,7 +46,7 @@
     "showUI": "Click anywhere to show interface",
     "fullscreenEnter": "Fullscreen",
     "fullscreenExit": "Exit fullscreen",
-    "fullscreenLabel": "SYS.FS",
+    "fullscreenLabel": "FULLSCREEN",
     "homeLabel": "HOME",
     "saveSlotTitle": "SAVE GAME",
     "saveSlotPrompt": "Select a save slot to record your progress before exiting:",
@@ -54,11 +54,11 @@
     "emptySlot": "Empty Slot",
     "cancel": "CANCEL",
     "saveSlot": "Slot",
-    "recLogLabel": "REC.LOG",
+    "recLogLabel": "HISTORY",
     "logTitle": "Field Log // Dialogue History",
     "closeBtn": "Close",
     "noLog": "No records in the log yet.",
-    "narrSkpLabel": "NARR.SKP",
+    "narrSkpLabel": "SKIP",
     "playAtLabel": "PLAY.AT",
     "orientationBlockerTitle": "PORTRAIT MODE NOT SUPPORTED",
     "orientationBlockerBody": "To enjoy the full experience of La vidente del agua, please rotate your device to landscape position.",
@@ -155,7 +155,7 @@
         },
         "guia_naia_eleccion": {
           "elecciones": {
-            "pregunta": "Almost forgot, there will be menus like this that ask you to make decisions in the destiny of the story, do you think you can accept this responsibility?",
+            "pregunta": "Almost forgot, there will be menus like this that ask you to make decisions in the destiny of the story, do you think you can accept this responsibility? If you want to return before this choice menu, press the X on this choice menu.",
             "opciones": [
               {
                 "texto": "YES"

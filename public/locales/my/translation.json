@@ -46,7 +46,7 @@
     "showUI": "P'iit' e'esajil",
     "fullscreenEnter": "Chuunpak",
     "fullscreenExit": "Jóok'ol chuunpak",
-    "fullscreenLabel": "SYS.CP",
+    "fullscreenLabel": "CHUUNPAK",
     "homeLabel": "YÁAX",
     "saveSlotTitle": "LI'ISAJ BÁAXAL",
     "saveSlotPrompt": "Yéey jump'éel kuchil utial a li'isik a báaxal:",
@@ -54,11 +54,11 @@
     "emptySlot": "Minaan báaxal",
     "cancel": "P'AT BEEL",
     "saveSlot": "Kuchil",
-    "recLogLabel": "K'A'AJ.TS",
+    "recLogLabel": "TSIKBAL",
     "logTitle": "U k'a'ajsajil tsikbalo'ob // Ts'íibilil tsikbal",
     "closeBtn": "Suut",
     "noLog": "Minaan tsikbalo'ob ti' le k'a'ajsajil.",
-    "narrSkpLabel": "P'AT.TS",
+    "narrSkpLabel": "P'AT",
     "playAtLabel": "BÁAX.UT",
     "orientationBlockerTitle": "MA' SOPORTADO TSELIL",
     "orientationBlockerBody": "Utial a báaxal ma'alob, je'el u béeytale' sut a nu'ukulil ti' u tselil.",
@@ -155,7 +155,7 @@
         },
         "guia_naia_eleccion": {
           "elecciones": {
-            "pregunta": "Tubten ba'ax, yaan u yéeybilo'ob j-báaxal bey lela' utial a k'exik u beelil le tsikbal, ¿je'el a páajtal a machik le beela'?",
+            "pregunta": "Tubten ba'ax, yaan u yéeybilo'ob j-báaxal bey lela' utial a k'exik u beelil le tsikbal, ¿je'el a páajtal a machik le beela'? Wa a k'áat suut táanil ti' le yéeybila', p'iit' le X ti' le yéeybila'.",
             "opciones": [
               {
                 "texto": "SI"
