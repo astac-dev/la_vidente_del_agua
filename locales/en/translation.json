@@ -37,7 +37,7 @@
     "Dialogoautomaticos": "Automatic Dialogue",
     "saltardialogo": "Skip Dialogue",
     "tamanoLetra": "Font Size",
-    "fastMode": "Enable Fast Mode",
+    "fullMode": "Enable Full Game",
     "scanQr": "Scan to play the full version!",
     "musicVolume": "Music Volume",
     "effectsVolume": "Effects Volume",
@@ -46,7 +46,7 @@
     "showUI": "Click anywhere to show interface",
     "fullscreenEnter": "Fullscreen",
     "fullscreenExit": "Exit fullscreen",
-    "fullscreenLabel": "SYS.FS",
+    "fullscreenLabel": "FULLSCREEN",
     "homeLabel": "HOME",
     "saveSlotTitle": "SAVE GAME",
     "saveSlotPrompt": "Select a save slot to record your progress before exiting:",
@@ -54,11 +54,11 @@
     "emptySlot": "Empty Slot",
     "cancel": "CANCEL",
     "saveSlot": "Slot",
-    "recLogLabel": "REC.LOG",
+    "recLogLabel": "HISTORY",
     "logTitle": "Field Log // Dialogue History",
     "closeBtn": "Close",
     "noLog": "No records in the log yet.",
-    "narrSkpLabel": "NARR.SKP",
+    "narrSkpLabel": "SKIP",
     "playAtLabel": "PLAY.AT",
     "orientationBlockerTitle": "PORTRAIT MODE NOT SUPPORTED",
     "orientationBlockerBody": "To enjoy the full experience of La vidente del agua, please rotate your device to landscape position.",
@@ -155,7 +155,7 @@
         },
         "guia_naia_eleccion": {
           "elecciones": {
-            "pregunta": "Almost forgot, there will be menus like this that ask you to make decisions in the destiny of the story, do you think you can accept this responsibility?",
+            "pregunta": "Almost forgot, there will be menus like this that ask you to make decisions in the destiny of the story, do you think you can accept this responsibility? If you want to return before this choice menu, press the X on this choice menu.",
             "opciones": [
               {
                 "texto": "YES"
@@ -266,16 +266,56 @@
         "escena_intro": {
           "titulo_escena": "The Price of Insomnia",
           "dialogos": [
-            { "id": 1, "personaje": "Narrator", "texto": "Mexico City. December 15, 2011." },
-            { "id": 2, "personaje": "Narrator", "texto": "For most students, December is synonymous with parties, rest, and the successful end of a school term." },
-            { "id": 3, "personaje": "Narrator", "texto": "For Amaranta, it is a reminder that her mind is falling apart." },
-            { "id": 4, "personaje": "System", "texto": "[VISUAL EFFECT: Faint red screen flicker / Camera blur]\n[SFX: Sound of heavy breathing and throbbing headache]" },
-            { "id": 5, "personaje": "Amaranta", "texto": "(With a lost gaze, holding a glass of water with trembling hands) Again... Again the same cursed thirst. I feel like my lungs are full of dust... and my head is about to explode." },
-            { "id": 6, "personaje": "Narrator", "texto": "At 16 years old, Amaranta's life used to be predictable and bright. Daughter of a doctor and a sales manager, grades had never been a problem. She was the model student, the smiling friend." },
-            { "id": 7, "personaje": "Narrator", "texto": "Until the dreams arrived. Or rather, the visions." },
-            { "id": 8, "personaje": "Amaranta", "texto": "(Frustrada, arroja el vaso de plástico sobre el escritorio) I don't want to sleep! Every time I close my eyes, that cursed void swallows me. I feel the coldness of the stone, the darkness... and the fear of someone who is not me." },
-            { "id": 9, "personaje": "Narrator", "texto": "Chronic insomnia did not take long to take its toll. Her flawless academic performance plummeted; accumulated fatigue transformed her usual warmth into a grey, sad version with sudden mood swings that frightened her parents and distanced her friends." },
-            { "id": 10, "personaje": "Narrator", "texto": "After a vast number of medical studies in the hospital to rule out neurological and hormonal issues, the final diagnosis was clear: 'Nervous breakdown due to severe stress.' The prescription? Three months of isolation away from the stress of the city and rest." }
+            {
+              "id": 1,
+              "personaje": "Narrator",
+              "texto": "Mexico City. December 15, 2011."
+            },
+            {
+              "id": 2,
+              "personaje": "Narrator",
+              "texto": "For most students, December is synonymous with parties, rest, and the successful end of a school term."
+            },
+            {
+              "id": 3,
+              "personaje": "Narrator",
+              "texto": "For Amaranta, it is a reminder that her mind is falling apart."
+            },
+            {
+              "id": 4,
+              "personaje": "System",
+              "texto": "[VISUAL EFFECT: Faint red screen flicker / Camera blur]\n[SFX: Sound of heavy breathing and throbbing headache]"
+            },
+            {
+              "id": 5,
+              "personaje": "Amaranta",
+              "texto": "(With a lost gaze, holding a glass of water with trembling hands) Again... Again the same cursed thirst. I feel like my lungs are full of dust... and my head is about to explode."
+            },
+            {
+              "id": 6,
+              "personaje": "Narrator",
+              "texto": "At 16 years old, Amaranta's life used to be predictable and bright. Daughter of a doctor and a sales manager, grades had never been a problem. She was the model student, the smiling friend."
+            },
+            {
+              "id": 7,
+              "personaje": "Narrator",
+              "texto": "Until the dreams arrived. Or rather, the visions."
+            },
+            {
+              "id": 8,
+              "personaje": "Amaranta",
+              "texto": "(Frustrada, arroja el vaso de plástico sobre el escritorio) I don't want to sleep! Every time I close my eyes, that cursed void swallows me. I feel the coldness of the stone, the darkness... and the fear of someone who is not me."
+            },
+            {
+              "id": 9,
+              "personaje": "Narrator",
+              "texto": "Chronic insomnia did not take long to take its toll. Her flawless academic performance plummeted; accumulated fatigue transformed her usual warmth into a grey, sad version with sudden mood swings that frightened her parents and distanced her friends."
+            },
+            {
+              "id": 10,
+              "personaje": "Narrator",
+              "texto": "After a vast number of medical studies in the hospital to rule out neurological and hormonal issues, the final diagnosis was clear: 'Nervous breakdown due to severe stress.' The prescription? Three months of isolation away from the stress of the city and rest."
+            }
           ]
         },
         "escena_1_2": {
@@ -482,6 +522,242 @@
               "texto": "(With determination in her eyes) They are the same people from the trail. They are looking for something massive here in Tulum. And my nightmares must be key."
             }
           ]
+        }
+      }
+    },
+    "capitulo_1_1": {
+      "escenas": {
+        "escena_1_1_cdmx": {
+          "dialogos": {
+            "0": {
+              "texto": "Mexico City. December 15, 2011."
+            },
+            "1": {
+              "texto": "December should mean holidays and rest. For Amaranta, it's a reminder that her mind is collapsing."
+            },
+            "2": {
+              "texto": "Again... The same damned thirst again. I feel like my lungs are full of dust... and my head is about to explode."
+            },
+            "3": {
+              "texto": "A severe stress-induced nervous breakdown forced her into a three-month isolation outside the city. Her parents' remedy: sending her to rest in Tulum, Quintana Roo, under her grandmother's care."
+            }
+          }
+        },
+        "escena_1_2_tulum": {
+          "dialogos": {
+            "0": {
+              "texto": "The first three days in the Caribbean brought peace. Finally, the visions seemed to disappear."
+            },
+            "1": {
+              "texto": "On the fourth day, an unusual mechanical roar suddenly breaks the calm of the jungle."
+            },
+            "2": {
+              "texto": "But what...? This path is usually completely deserted."
+            }
+          }
+        },
+        "escena_1_1_exposicion_texto": {
+          "texto": "Tulum, 2011. Amaranta (16) suffers from strange visions. Venturing into the jungle, she stumbles upon a secret protected by underwater archaeology..."
+        },
+        "escena_1_1_campamento": {
+          "dialogos": {
+            "0": {
+              "texto": "In front of her, the jungle has transformed into a logistical deployment by INAH: official trucks, exploration divers, and tents sheltering high-tech monitors."
+            },
+            "1": {
+              "texto": "Amaranta watches hidden behind a bush, but taking a false step, she steps on a dry branch."
+            },
+            "2": {
+              "texto": "A young archaeologist wearing an INAH vest immediately turns around upon hearing her."
+            },
+            "3": {
+              "texto": "Hey! Careful there. The ground near the cenote is fragile limestone; one wrong step and you could break the edge... or fall into the void."
+            }
+          }
+        },
+        "campamento_eleccion_actitud": {
+          "pregunta": "How does Amaranta react to the archaeologist?",
+          "elecciones": {
+            "opciones": {
+              "0": {
+                "texto": "I'm sorry, I was curious... What is all this equipment?"
+              },
+              "1": {
+                "texto": "Sorry, I didn't mean to intrude. I was just leaving."
+              }
+            }
+          }
+        },
+        "campamento_interaccion_mateo": {
+          "dialogos": {
+            "0": {
+              "texto": "(Smiling) Don't worry. It's underwater archaeology. We are mapping an intact site over 40 meters deep. Come, I'll show you."
+            }
+          }
+        },
+        "campamento_timida": {
+          "dialogos": {
+            "0": {
+              "texto": "Wait, don't go! It's for your safety, not because you're intruding. But since you're here... are you curious to see what we discovered? Take a look at the monitor."
+            }
+          }
+        },
+        "campamento_explicacion_mecanica": {
+          "dialogos": {
+            "0": {
+              "texto": "The archaeologist points to a touch screen showing the 3D rendering of a flooded cave in green vectors."
+            },
+            "1": {
+              "texto": "Hoyo Negro. A library of time. Here CONTEXT is everything. If a single remain is moved, scientific evidence can be destroyed forever. To conserve is to record without altering. Would you like to try a scan?"
+            }
+          }
+        },
+        "campamento_minijuego_exito": {
+          "texto": "Perfect scan! Archaeological context intact."
+        },
+        "campamento_minijuego_fallo": {
+          "dialogos": {
+            "0": {
+              "texto": "Calibration failure! The radar lost the anchor points. Try again with precision."
+            }
+          }
+        },
+        "campamento_detonante": {
+          "dialogos": {
+            "0": {
+              "texto": "As the data processes, the map reveals the exact shape of the cave... and inside, the skeletal remains of a person."
+            }
+          }
+        },
+        "campamento_detonante_flash": {
+          "dialogos": {
+            "0": {
+              "texto": "(Suffering acute pain) Ah...! Again? I feel an icy pang... Those bones... is it her?!"
+            },
+            "1": {
+              "texto": "Hey? Are you okay? Don't touch the--!"
+            }
+          }
+        },
+        "campamento_eleccion_impacto": {
+          "pregunta": "Pain clouds your vision. What do you do as you lose your balance?",
+          "elecciones": {
+            "opciones": {
+              "0": {
+                "texto": "Hold tightly onto the archaeological digital monitor."
+              },
+              "1": {
+                "texto": "Let yourself fall to the ground protecting your head."
+              }
+            }
+          }
+        },
+        "transicion_glitch_al_pasado": {
+          "dialogos": {
+            "0": {
+              "texto": "Space collapses. Amaranta's consciousness is sucked thirteen thousand years into the past."
+            }
+          }
+        },
+        "transicion_a_oscuridad": {
+          "dialogos": {
+            "0": {
+              "texto": "A dense darkness surrounds her before she opens her eyes again..."
+            }
+          }
+        },
+        "escena_1_5_pleistoceno": {
+          "dialogos": {
+            "0": {
+              "texto": "I'm so thirsty... Down here there is only stone."
+            }
+          }
+        },
+        "escena_1_5_pleistoceno_murcielagos": {
+          "dialogos": {
+            "0": {
+              "texto": "Ah! Get away! Get away!"
+            }
+          }
+        },
+        "escena_1_5_pleistoceno_caida": {
+          "dialogos": {
+            "0": {
+              "texto": "Hundreds of bats impact against her. In a panic, she takes blind steps and falls into the void."
+            }
+          }
+        },
+        "escena_caida_eleccion": {
+          "pregunta": "Choose Naia's survival reaction during the free fall.",
+          "elecciones": {
+            "opciones": {
+              "0": {
+                "texto": "Protect the head and throw the torch away towards a dry area."
+              },
+              "1": {
+                "texto": "Extend arms to try to cling to the stalactites on the walls."
+              }
+            }
+          }
+        },
+        "escena_caida_ruta_a": {
+          "texto": "By throwing the torch away, the carbon did not mix with your fossilized bones, allowing your antiquity to be accurately dated 13,000 years later."
+        },
+        "escena_caida_ruta_a_desc": {
+          "dialogos": {
+            "0": {
+              "texto": "..."
+            },
+            "1": {
+              "texto": "The impact at the bottom of the pit fractures her hip. Silence takes over the cave again."
+            }
+          }
+        },
+        "escena_caida_ruta_b": {
+          "texto": "Your arms broke and you destroyed ancient mineral formations, altering the geological environment of the cave."
+        },
+        "escena_caida_ruta_b_desc": {
+          "dialogos": {
+            "0": {
+              "texto": "Her limbs impact against the rocks before her body lies inert on the ground."
+            }
+          }
+        },
+        "escena_1_1_resultados_expo": {
+          "texto": "Thank you for playing this chapter of The Water Seer. Remember that the cenotes of Mexico harbor the secrets of the first settlers of America. Help us keep them intact! To enable *Full Game* mode, go to options and select story mode."
+        },
+        "escena_1_6_despertar_director": {
+          "dialogos": {
+            "0": {
+              "texto": "(Wakes up suddenly, touching her hip) Ah...!! No, no, no! I swear I heard my own bones breaking... Why can I feel her pain?"
+            },
+            "1": {
+              "texto": "Back in her room in Tulum, the pain and monstrous thirst persist. With trembling hands, she looks at the pill bottle on the nightstand."
+            }
+          }
+        },
+        "escena_1_7_sala_abuela": {
+          "dialogos": {
+            "0": {
+              "texto": "The next morning, Amaranta hides her exhaustion behind a smile so as not to alarm her grandmother. She knows revealing her visions would make her seem crazy."
+            },
+            "1": {
+              "texto": "Her mother calls: they will arrive tomorrow to spend Christmas. However, the echo of the INAH camp resonates strongly in her mind."
+            }
+          }
+        },
+        "escena_1_7_decision_final_capitulo": {
+          "pregunta": "What path will Amaranta decide to take given the suspicions of her environment?",
+          "elecciones": {
+            "opciones": {
+              "0": {
+                "texto": "Ignore the mysteries and focus on her family recovery."
+              },
+              "1": {
+                "texto": "Investigate fully what is happening in the cenotes."
+              }
+            }
+          }
         }
       }
     }
