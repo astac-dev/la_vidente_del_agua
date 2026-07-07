@@ -14,7 +14,7 @@ const defaultSettings = {
   tamanoLetra: 100, // Representa el 100% del tamaño base
   textSpeed: 1, // 1: maquina, 2: 2 pal/seg, 3: 5 pal/seg, 4: instant
   unlockedNodes: ['cap_0'],
-  soloJuegoRapido: false,
+  juegoCompleto: false,
   lastUpdated: 0,
 };
 
@@ -118,7 +118,7 @@ export const GameStateProvider = ({ children }) => {
               volumenEfectos: data.volumenEfectos,
               tamanoLetra: data.tamanoLetra,
               textSpeed: data.textSpeed || 1,
-              soloJuegoRapido: data.soloJuegoRapido || false,
+              juegoCompleto: data.juegoCompleto || false,
               unlockedNodes: data.unlockedNodes || ['cap_0'],
               lastUpdated: data.lastUpdated || 0,
             };
@@ -344,6 +344,14 @@ export const GameStateProvider = ({ children }) => {
     });
   };
 
+  const deleteSaveSlot = (slotIndex) => {
+    setSaves(prevSaves => {
+      const newSaves = [...prevSaves];
+      newSaves[slotIndex] = null;
+      return newSaves;
+    });
+  };
+
   const loadGameFromSlot = (slotIndex) => {
     const save = saves[slotIndex];
     if (save && save.gameState) {
@@ -389,6 +397,7 @@ export const GameStateProvider = ({ children }) => {
     saves,
     saveGameToSlot,
     loadGameFromSlot,
+    deleteSaveSlot,
     resetGameState,
     isFading,
     unlockedNodes: settings.unlockedNodes || ['cap_0'],

@@ -1,5 +1,23 @@
 # Historial de Cambios
 
+## [0.3.30] - 2026-07-07
+
+### Añadido / Cambiado
+- **Traducción y Sincronización de Diálogos**:
+  - Traducción e inyección completa del `capitulo_1_1` al Inglés (en) y Maya Yucateco (my) en `translation.json`.
+  - Mapeo preciso de llaves dinámicas (`historia.capitulo_1_1.escenas...`) procesadas por el `GameEngine`.
+  - Soporte de cambio de idioma automático en pantallas informativas (`custom_message`), diálogos y elecciones (`choice`).
+  - Sincronización estructurada ante eliminación o modificación de nodos de guion.
+
+## [0.3.29] - 2026-07-07
+
+### Añadido / Cambiado
+- **Refactorización del Menú Principal**:
+  - Inversión de la visibilidad de opciones del menú principal. Por defecto solo se muestra "Nueva partida", "Opciones" y "Salir".
+  - Al activar el modo "Juego completo" desde el menú Opciones, se habilitan las demás opciones (Continuar, Extras, Créditos).
+  - El botón "Nueva partida" ahora inicia la partida rápida (`capitulo_1_1` en modo exposición). Se ha dejado un botón oculto de "Nueva partida (Completa)" disponible al habilitar "Juego completo".
+  - Se agregó soporte para eliminar los slots de guardado con confirmación modal visual en el `ContinueMenu.jsx`.
+
 ## [0.3.28] - 2026-07-06
 
 ### Cambiado

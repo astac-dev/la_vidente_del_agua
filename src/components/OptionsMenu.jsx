@@ -10,7 +10,7 @@ const OptionsMenu = ({ onBack }) => {
     const [tempFontSize, setTempFontSize] = useState(settings.tamanoLetra || 100);
 
     const handleSettingChange = (key, value) => {
-        updateSetting(key, key === 'soloJuegoRapido' ? value : parseInt(value, 10));
+        updateSetting(key, key === 'juegoCompleto' ? value : parseInt(value, 10));
     };
 
     const handleBackClick = () => {
@@ -81,13 +81,13 @@ const OptionsMenu = ({ onBack }) => {
             </div>
 
             <div className="option-item">
-                <label htmlFor="fast-mode">{t('interface.fastMode')}</label>
+                <label htmlFor="full-mode">{t('interface.fullMode', 'Activar juego completo')}</label>
                 <div className="slider-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '10px' }}>
                     <input
                         type="checkbox"
-                        id="fast-mode"
-                        checked={!!settings.soloJuegoRapido}
-                        onChange={(e) => handleSettingChange('soloJuegoRapido', e.target.checked)}
+                        id="full-mode"
+                        checked={!!settings.juegoCompleto}
+                        onChange={(e) => handleSettingChange('juegoCompleto', e.target.checked)}
                         style={{ width: '24px', height: '24px', cursor: 'pointer' }}
                     />
                 </div>

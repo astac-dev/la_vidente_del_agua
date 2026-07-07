@@ -98,3 +98,64 @@
         font-size: calc(1rem * var(--ui-scale-multiplier, 1));
     }
 }
+
+.slot-header-left {
+    display: flex;
+    align-items: baseline;
+    gap: calc(0.5rem * var(--ui-scale-multiplier, 1));
+}
+
+.delete-slot-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    padding: calc(0.3rem * var(--ui-scale-multiplier, 1));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.delete-slot-btn:hover {
+    background: rgba(255, 77, 77, 0.2);
+    color: #ff1a1a;
+    transform: scale(1.1);
+}
+
+.delete-icon {
+    width: calc(1.5rem * var(--ui-scale-multiplier, 1));
+    height: calc(1.5rem * var(--ui-scale-multiplier, 1));
+}
+
+.delete-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.delete-modal {
+    background: rgba(10, 15, 30, 0.95);
+    border: 1px solid var(--accent-color);
+    border-radius: 12px;
+    padding: calc(2rem * var(--ui-scale-multiplier, 1));
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(58, 123, 213, 0.3);
+    max-width: calc(500px * var(--ui-scale-multiplier, 1));
+    margin: 0;
+}
+
+.delete-modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: calc(2rem * var(--ui-scale-multiplier, 1));
+    margin-top: calc(2rem * var(--ui-scale-multiplier, 1));
+}

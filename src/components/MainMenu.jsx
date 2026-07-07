@@ -140,18 +140,17 @@ const MainMenu = ({ onNavigate, onExit }) => {
 
   return (
     <div className="main-menu">
-      {!settings.soloJuegoRapido && (
+      {settings.juegoCompleto && (
         <MenuButton onClick={() => navigateWithFade('continueMenu', 500)}>{t('menu.continueGame')}</MenuButton>
       )}
-      
-      {!settings.soloJuegoRapido && (
-        <MenuButton onClick={() => navigateWithFade('visualNovel', 1500, { isModoExposicion: false })}>{t('menu.newGame')}</MenuButton>
-      )}
 
-      <MenuButton onClick={() => navigateWithFade('visualNovel', 1500, { isModoExposicion: true, currentChapter: 'capitulo_1_1', currentSceneId: 'escena_1_1_inicio' })}>{t('menu.fastGame', 'Nueva partida rápida')}</MenuButton>
+      {/* Nueva partida ahora inicia la partida rápida */}
+      <MenuButton onClick={() => navigateWithFade('visualNovel', 1500, { isModoExposicion: true, currentChapter: 'capitulo_1_1', currentSceneId: 'escena_1_1_inicio' })}>{t('menu.newGame')}</MenuButton>
 
-      {!settings.soloJuegoRapido && (
+      {settings.juegoCompleto && (
         <>
+          {/* Opcionalmente dejar una vía al juego desde cero si está en juego completo */}
+          <MenuButton onClick={() => navigateWithFade('visualNovel', 1500, { isModoExposicion: false })}>{t('menu.fullGame', 'Nueva partida (Modo historia)')}</MenuButton>
           <MenuButton onClick={() => navigateWithFade('continueMenu', 500)}>{t('menu.loadGame')}</MenuButton>
           <MenuButton onClick={() => navigateWithFade('extrasMenu', 500)}>{t('menu.extras')}</MenuButton>
         </>
@@ -159,7 +158,7 @@ const MainMenu = ({ onNavigate, onExit }) => {
       
       <MenuButton onClick={() => navigateWithFade('optionsMenu', 500)}>{t('menu.options')}</MenuButton>
       
-      {!settings.soloJuegoRapido && (
+      {settings.juegoCompleto && (
         <MenuButton onClick={() => navigateWithFade('credits', 1500)}>{t('menu.credits')}</MenuButton>
       )}
       

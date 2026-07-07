@@ -266,16 +266,56 @@
         "escena_intro": {
           "titulo_escena": "U bo'olil le ma' wenel",
           "dialogos": [
-            { "id": 1, "personaje": "J-tsikbal", "texto": "Ciudad de México. 15 ti' diciembre ti' 2011." },
-            { "id": 2, "personaje": "J-tsikbal", "texto": "Utial ya'ab xokbil paalalo'ob, diciembre u k'iinil ki'imak óolal, je'elel yéetel u ts'o'okol jump'éel ma'alob xook." },
-            { "id": 3, "personaje": "J-tsikbal", "texto": "Utial Amaranta, u k'a'ajsajil u tuukul ku xu'ulul." },
-            { "id": 4, "personaje": "Sistema", "texto": "[EFECTO VISUAL: Parpadeo de pantalla en rojo tenue / Desenfoque de cámara]\n[SFX: Sonido de respiración agitada y dolor de cabeza punzante]" },
-            { "id": 5, "personaje": "Amaranta", "texto": "(Yéetel u yich sastal, u machma' jump'éel luuch ja' yéetel u k'abo'ob k'ilkab) Ka'aten... Ka'aten le k'aas uk'ajil. Siento que tengo los pulmones llenos de polvo... y la cabeza a punto de estallar." },
-            { "id": 6, "personaje": "J-tsikbal", "texto": "Tu 16 u ja'abil, u kuxtal Amaranta ma'alob binik. U ch'upal ts'ak yéetel j-konol, le calificaciones ma' talamili'. Leti' u yáax xokbil paal, le amiga che'ejil." },
-            { "id": 7, "personaje": "J-tsikbal", "texto": "Tak úuchik u tal le wayak'o'ob. O u ya'alale', le wáayo'ob." },
-            { "id": 8, "personaje": "Amaranta", "texto": "(Yéetel ch'a'apajal, ku pulik u luuch plásticook te' yáanal t'aan) ¡Ma' in k'áat wenel! Cada vez que cierro los ojos, ese maldito vacío me traga. Siento el frío de la piedra, la oscuridad... y el miedo de alguien que no soy yo." },
-            { "id": 9, "personaje": "J-tsikbal", "texto": "Le ma' wenel tu taasaj u bo'ol. Le xook bin t'il; u ka'anal tu sutaj u ki'il óolal tu wíinkilal gray, triste yéetel k'expajal u óolal tu ts'a'aj saajkil ti' u yáax yéetel tu t'oxaj u amigos." },
-            { "id": 10, "personaje": "J-tsikbal", "texto": "Úuchik u beetal ya'ab xak'al ts'akyaj ti' k'oja'anchajil utial u yila'al tuukul yéetel hormonas, le diagnóstico ts'o'ok: 'Colapso nervioso por estrés severo'. ¿Le receta? Oox p'éel u k'iinil ta'akal táan ti' u talamil le noj kaj yéetel je'elel." }
+            {
+              "id": 1,
+              "personaje": "J-tsikbal",
+              "texto": "Ciudad de México. 15 ti' diciembre ti' 2011."
+            },
+            {
+              "id": 2,
+              "personaje": "J-tsikbal",
+              "texto": "Utial ya'ab xokbil paalalo'ob, diciembre u k'iinil ki'imak óolal, je'elel yéetel u ts'o'okol jump'éel ma'alob xook."
+            },
+            {
+              "id": 3,
+              "personaje": "J-tsikbal",
+              "texto": "Utial Amaranta, u k'a'ajsajil u tuukul ku xu'ulul."
+            },
+            {
+              "id": 4,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: Parpadeo de pantalla en rojo tenue / Desenfoque de cámara]\n[SFX: Sonido de respiración agitada y dolor de cabeza punzante]"
+            },
+            {
+              "id": 5,
+              "personaje": "Amaranta",
+              "texto": "(Yéetel u yich sastal, u machma' jump'éel luuch ja' yéetel u k'abo'ob k'ilkab) Ka'aten... Ka'aten le k'aas uk'ajil. Siento que tengo los pulmones llenos de polvo... y la cabeza a punto de estallar."
+            },
+            {
+              "id": 6,
+              "personaje": "J-tsikbal",
+              "texto": "Tu 16 u ja'abil, u kuxtal Amaranta ma'alob binik. U ch'upal ts'ak yéetel j-konol, le calificaciones ma' talamili'. Leti' u yáax xokbil paal, le amiga che'ejil."
+            },
+            {
+              "id": 7,
+              "personaje": "J-tsikbal",
+              "texto": "Tak úuchik u tal le wayak'o'ob. O u ya'alale', le wáayo'ob."
+            },
+            {
+              "id": 8,
+              "personaje": "Amaranta",
+              "texto": "(Yéetel ch'a'apajal, ku pulik u luuch plásticook te' yáanal t'aan) ¡Ma' in k'áat wenel! Cada vez que cierro los ojos, ese maldito vacío me traga. Siento el frío de la piedra, la oscuridad... y el miedo de alguien que no soy yo."
+            },
+            {
+              "id": 9,
+              "personaje": "J-tsikbal",
+              "texto": "Le ma' wenel tu taasaj u bo'ol. Le xook bin t'il; u ka'anal tu sutaj u ki'il óolal tu wíinkilal gray, triste yéetel k'expajal u óolal tu ts'a'aj saajkil ti' u yáax yéetel tu t'oxaj u amigos."
+            },
+            {
+              "id": 10,
+              "personaje": "J-tsikbal",
+              "texto": "Úuchik u beetal ya'ab xak'al ts'akyaj ti' k'oja'anchajil utial u yila'al tuukul yéetel hormonas, le diagnóstico ts'o'ok: 'Colapso nervioso por estrés severo'. ¿Le receta? Oox p'éel u k'iinil ta'akal táan ti' u talamil le noj kaj yéetel je'elel."
+            }
           ]
         },
         "escena_1_2": {
@@ -482,6 +522,242 @@
               "texto": "(Yéetel u yich tsolil) Leti'e' j-máako'ob te' bejo'. Ku kaxtiko'ob jump'éel nojoch ba'al way Tulum. Yéetel in k'aas wayak'o'ob leti' u beelil."
             }
           ]
+        }
+      }
+    },
+    "capitulo_1_1": {
+      "escenas": {
+        "escena_1_1_cdmx": {
+          "dialogos": {
+            "0": {
+              "texto": "Ciudad de México. 15 ti' diciembre ti' 2011."
+            },
+            "1": {
+              "texto": "Diciembre u k'iinil ki'imak óolal. Utial Amaranta, u k'a'ajsajil u tuukul ku xu'ulul."
+            },
+            "2": {
+              "texto": "Ka'aten... Ka'aten le k'aas uk'ajil. Siento que tengo los pulmones llenos de polvo... y la cabeza a punto de estallar."
+            },
+            "3": {
+              "texto": "Colapso nervioso por estrés severo tu ts'a'aj saajkil. U ts'ak u taata'ob: t'aan Tulum, Quintana Roo, yéetel u chich."
+            }
+          }
+        },
+        "escena_1_2_tulum": {
+          "dialogos": {
+            "0": {
+              "texto": "Le yáax oxp'éel k'iino'ob te Caribe tu taasaj je'elel. Tu ts'o'okbal, le wayak'o'ob tu sa'atal."
+            },
+            "1": {
+              "texto": "Tu kamp'éel k'iin, junp'éel awat mecánico ku k'axik u je'elel le k'áaxo'."
+            },
+            "2": {
+              "texto": "¿Bix a beel...? Le beja' ma' j-máak."
+            }
+          }
+        },
+        "escena_1_1_exposicion_texto": {
+          "texto": "Tulum, 2011. Amaranta (16 u ja'abil) ku yilik wáayo'ob. Tu bin te k'áaxo', ku kaxan junp'éel ba'al ta'akbil tumen u k'áaxil ja'..."
+        },
+        "escena_1_1_campamento": {
+          "dialogos": {
+            "0": {
+              "texto": "Tu táan, le k'áaxo' tu sutaj junp'éel meyajil INAH: kiis buuts', j-ichkíilo'ob yéetel kúuchilo'ob yéetel monitores."
+            },
+            "1": {
+              "texto": "Amaranta ku yilik ta'akbil paach junp'éel che', ba'ale' tu péek, ku pech'ik junp'éel tikin k'ab."
+            },
+            "2": {
+              "texto": "Junp'éel j-xak'al ts'ib INAH ku sutik tu séebal ka tu yu'ubaj."
+            },
+            "3": {
+              "texto": "¡Jeel! Kanáantaba. Le lu'um naats' le ts'ono'oto' ma' chich; wáa ka péek ma'alob, je'el a k'askúuntik u jo'ole'... wa lúubul."
+            }
+          }
+        },
+        "campamento_eleccion_actitud": {
+          "pregunta": "¿Bix u núuk Amaranta ti' le j-xak'al?",
+          "elecciones": {
+            "opciones": {
+              "0": {
+                "texto": "Siento, in k'áat in wila'... ¿Ba'ax le nu'ukulilo'oba'?"
+              },
+              "1": {
+                "texto": "Perdón, ma' in k'áat k'askúuntik. Táan in bin."
+              }
+            }
+          }
+        },
+        "campamento_interaccion_mateo": {
+          "dialogos": {
+            "0": {
+              "texto": "(Che'ej) Ma' a tuklik. Arqueología subacuática. Táan k-xak'altik junp'éel kúuchil ti' 40 metros. Ko'oten, in wila'."
+            }
+          }
+        },
+        "campamento_timida": {
+          "dialogos": {
+            "0": {
+              "texto": "¡Je'elel, ma' a bin! Utial a kanáanil, ma' tumen ka k'askúuntik. Ba'ale' tumen way yanech... ¿a k'áat a wila' ba'ax k-kaxan? Ila' le monitoro'."
+            }
+          }
+        },
+        "campamento_explicacion_mecanica": {
+          "dialogos": {
+            "0": {
+              "texto": "Le j-xak'al ku ye'esik junp'éel pantalla táctil ku ye'esik le áaktun tupik ja' yéetel vectores verde."
+            },
+            "1": {
+              "texto": "Hoyo Negro. Junp'éel biblioteca ti' k'iin. Waye' le CONTEXTO u tuláakal. Wáa ku péek junp'éel ba'al, je'el u k'askúuntik le evidencia. Conservar u k'áat u ya'al registrar x-ma' k'expajal. ¿A k'áat a probartik junp'éel escaneo?"
+            }
+          }
+        },
+        "campamento_minijuego_exito": {
+          "texto": "¡Ma'alob escaneo! Contexto arqueológico intacto."
+        },
+        "campamento_minijuego_fallo": {
+          "dialogos": {
+            "0": {
+              "texto": "¡Fallo de calibración! Le radaro' tu sa'ataj u puntos. Beete ka'aten yéetel cuidado."
+            }
+          }
+        },
+        "campamento_detonante": {
+          "dialogos": {
+            "0": {
+              "texto": "Tu ts'o'okol le datoso', le mapa ku ye'esik u formayil le áaktun... yéetel tu yáam, u bako'ob junp'éel máak."
+            }
+          }
+        },
+        "campamento_detonante_flash": {
+          "dialogos": {
+            "0": {
+              "texto": "(Yajil) ¡Ah...! ¿Ka'aten? Kin wu'uyik junp'éel yaj... ¡Le bako'oba'... leti'?!"
+            },
+            "1": {
+              "texto": "¿Jeel? ¿Ma'alob a wóol? ¡Ma' a machik le--!"
+            }
+          }
+        },
+        "campamento_eleccion_impacto": {
+          "pregunta": "Le yajil ku yichkíiltik a wich. ¿Ba'ax ka beetik táan a lúubul?",
+          "elecciones": {
+            "opciones": {
+              "0": {
+                "texto": "Machtaba yéetel chich ti' le monitor digital."
+              },
+              "1": {
+                "texto": "Lúubul te lu'um kanáantik a jo'ol."
+              }
+            }
+          }
+        },
+        "transicion_glitch_al_pasado": {
+          "dialogos": {
+            "0": {
+              "texto": "Le k'áaxo' ku lúubul. U tuukul Amaranta ku chu'upul oxlajun miil ja'abo'ob paachil."
+            }
+          }
+        },
+        "transicion_a_oscuridad": {
+          "dialogos": {
+            "0": {
+              "texto": "Junp'éel éek'joch'e'en ku táakpajal táanil ti' u je'ik u yich..."
+            }
+          }
+        },
+        "escena_1_5_pleistoceno": {
+          "dialogos": {
+            "0": {
+              "texto": "Tengo tanta sed... Waye' yáanal chéen yaan tuunich."
+            }
+          }
+        },
+        "escena_1_5_pleistoceno_murcielagos": {
+          "dialogos": {
+            "0": {
+              "texto": "¡Ah! ¡Páatene'ex! ¡Páatene'ex!"
+            }
+          }
+        },
+        "escena_1_5_pleistoceno_caida": {
+          "dialogos": {
+            "0": {
+              "texto": "Cientos ts'o'ots' impactan contra leti'. Yéetel saajkil, ku xíimbal x-ma' yilaj yéetel ku lúubul."
+            }
+          }
+        },
+        "escena_caida_eleccion": {
+          "pregunta": "Elige bix u lúubul Naia.",
+          "elecciones": {
+            "opciones": {
+              "0": {
+                "texto": "Kanáantik u jo'ol yéetel ku pulik le k'áak' náats' tikin lu'um."
+              },
+              "1": {
+                "texto": "Tselik u k'abo'ob utial u machik u tuunichil le paako'obo'."
+              }
+            }
+          }
+        },
+        "escena_caida_ruta_a": {
+          "texto": "Ti' u pulik le k'áak', le carbón ma' tu xa'ak'altaj yéetel a bako'ob, tu ts'áaj u páajtalil u yila'al a ja'abil 13,000 ja'abo'ob ts'o'okole'."
+        },
+        "escena_caida_ruta_a_desc": {
+          "dialogos": {
+            "0": {
+              "texto": "..."
+            },
+            "1": {
+              "texto": "U lúubul tu noj ch'e'en ku k'askúuntik u cadera. Le silencio ku ka'a sutik te áaktuno'."
+            }
+          }
+        },
+        "escena_caida_ruta_b": {
+          "texto": "A k'abo'ob tu k'askúuntaj yéetel tu k'askúuntaj formaciones minerales milenarias, alterando el entorno geológico de la cueva."
+        },
+        "escena_caida_ruta_b_desc": {
+          "dialogos": {
+            "0": {
+              "texto": "U wíinkilal ku k'askúuntik yéetel le tuunicho'ob táanil ti' u p'áatal kimen te lu'umo'."
+            }
+          }
+        },
+        "escena_1_1_resultados_expo": {
+          "texto": "Yuum bo'otik a báaxlik le capítulo ti' La Vidente del Agua. K'a'ajsike' le ts'ono'oto'ob México tu ta'akaj u tuukul le yáax máako'ob América. ¡Áantajo'on utial kanáantik! Utial habilitar *Juego completo*, xeen opciones yéetel selecciona modo historia."
+        },
+        "escena_1_6_despertar_director": {
+          "dialogos": {
+            "0": {
+              "texto": "(Ku je'ik u yich, ku machik u cadera) ¡¡Ah...!! ¡Ma', ma', ma'! Kin wa'alik tin wu'uyaj u k'askúuntal in bako'ob... ¿Ba'axten kin wu'uyik u yajil?"
+            },
+            "1": {
+              "texto": "Tu ts'o'okbal tu yotoch Tulum, le yajil yéetel uk'ajil ma' tu xu'ulul. Yéetel k'abo'ob k'ilkab, ku yilik le ts'ak tu mesa."
+            }
+          }
+        },
+        "escena_1_7_sala_abuela": {
+          "dialogos": {
+            "0": {
+              "texto": "Sáamal, Amaranta ku ta'akik u ka'analil yéetel junp'éel che'ej utial ma' u beetik u chich saajkil. U yojel wáa ku ya'alik u wayak'o'ob je'el u yilik k'uja'an."
+            },
+            "1": {
+              "texto": "U na' ku t'aan: ku k'uchul sáamal utial Navidad. Ba'ale', u k'a'ajsajil le campamento INAH ku t'aan tu tuukul."
+            }
+          }
+        },
+        "escena_1_7_decision_final_capitulo": {
+          "pregunta": "¿Ba'ax beel ku ch'a'ik Amaranta yéetel u tuukul u láak'o'ob?",
+          "elecciones": {
+            "opciones": {
+              "0": {
+                "texto": "Ma' u yu'ubik le ba'alo'ob ma' j-ila'al yéetel ku ts'áaik u tuukul tu wíinkilal."
+              },
+              "1": {
+                "texto": "Xak'altik ba'ax ku yúuchul te ts'ono'oto'obo'."
+              }
+            }
+          }
         }
       }
     }
