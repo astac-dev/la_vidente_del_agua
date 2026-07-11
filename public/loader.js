@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Música del menú principal', url: './bgm/theme_main_menu.mp3' },
         { name: 'Ilustración del menú', url: './assets/ui/fondo_menu_principal.jpg' },
         { name: 'Ilustración de créditos', url: './arte/Ame_2016_arnauld_fig3.jpg' },
-        { name: 'Obra Máscara de la Tierra', url: './arte/Mascara de la Tierra.jpg' },
+        { name: 'Obra Máscara de la Tierra', url: './arte/mascara_de_la_tierra.jpg' },
         { name: 'Miniatura Capítulo 0', url: './assets/thumbnails/node_cap0.png' },
         { name: 'Miniatura Capítulo 1', url: './assets/thumbnails/node_cap1.png' },
         { name: 'Miniatura Ruta Alterna', url: './assets/thumbnails/node_ruta_a.png' },

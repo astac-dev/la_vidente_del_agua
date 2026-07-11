@@ -84,7 +84,7 @@
         "duration": 1000
       },
       "bgm": {
-        "src": "/bgm/Signal Trace.mp3",
+        "src": "/bgm/signal_trace.mp3",
         "action": "play",
         "transition": "fade",
         "duration": 1000
@@ -463,7 +463,7 @@
         "duration": 1000
       },
       "bgm": {
-        "src": "/bgm/Ancient Cave Terror.mp3",
+        "src": "/bgm/ancient_cave_terror.mp3",
         "action": "play",
         "transition": "fade",
         "duration": 1000

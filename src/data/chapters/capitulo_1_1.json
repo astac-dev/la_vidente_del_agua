@@ -80,7 +80,7 @@
                 "duration": 1000
             },
             "bgm": {
-                "src": "/bgm/Signal Trace.mp3",
+                "src": "/bgm/signal_trace.mp3",
                 "action": "play",
                 "transition": "fade",
                 "duration": 1000
@@ -103,14 +103,10 @@
                 }
             ],
             "bgm": {
-                "src": "/bgm/Signal Trace.mp3",
+                "src": "/bgm/signal_trace.mp3",
                 "action": "play",
                 "transition": "fade",
                 "duration": 1000
-            },
-            "sfx": {
-                "src": "/vfx/354103__bini_trns__few-small-branches-snapping-close-up-high-frequencyh6.wav",
-                "action": "play"
             },
             "dialogos": [
                 {
@@ -123,7 +119,11 @@
                 },
                 {
                     "personaje": "narrador",
-                    "texto": "Amaranta observa oculta tras un arbusto, pero al dar un paso en falso, pisa una rama seca."
+                    "texto": "Amaranta observa oculta tras un arbusto, pero al dar un paso en falso, pisa una rama seca.",
+                    "sfx": {
+                        "src": "/vfx/354103__bini_trns__few-small-branches-snapping-close-up-high-frequencyh6.wav",
+                        "action": "play"
+                    }
                 },
                 {
                     "personaje": "narrador",
@@ -448,7 +448,7 @@
                 "duration": 1000
             },
             "bgm": {
-                "src": "/bgm/Ancient Cave Terror.mp3",
+                "src": "/bgm/ancient_cave_terror.mp3",
                 "action": "play",
                 "transition": "fade",
                 "duration": 1000

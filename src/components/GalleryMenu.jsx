@@ -1,6 +1,7 @@
 /* src/components/GalleryMenu.jsx */
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useGameState } from '../context/GameStateContext';
 import galleryData from '../data/galleryData.json';
 import './GalleryMenu.css';
 
@@ -12,6 +13,9 @@ import './GalleryMenu.css';
  */
 const GalleryMenu = ({ onBack }) => {
   const { t, i18n } = useTranslation();
+  const { settings } = useGameState();
+  const unlockedNodes = settings.unlockedNodes || ['cap_0'];
+  
   const [currentPage, setCurrentPage] = useState(1);
   const [activeItem, setActiveItem] = useState(null);
 
@@ -77,20 +81,31 @@ const GalleryMenu = ({ onBack }) => {
       <main className="gallery-body">
         <div className="gallery-grid">
           {currentItems.map((item) => {
-            const itemTitle = item.title[langKey] || item.title['es'] || '';
+            const isUnlocked = item.unlockCondition === 'always' || unlockedNodes.includes(item.unlockCondition);
+            
+            const itemTitle = isUnlocked ? (item.titleKey ? t(item.titleKey) : (item.title[langKey] || item.title['es'] || '')) : (t('gallery.lockedTitle') || '???');
+            
             return (
               <div 
                 key={item.id} 
-                className="gallery-card"
-                onClick={() => setActiveItem(item)}
+                className={`gallery-card ${!isUnlocked ? 'locked' : ''}`}
+                onClick={() => isUnlocked && setActiveItem(item)}
               >
                 <div className="gallery-card-thumb-container">
-                  <img 
-                    src={getFullImageUrl(item.filename)} 
-                    alt={itemTitle} 
-                    className="gallery-card-thumb"
-                    loading="lazy"
-                  />
+                  {isUnlocked ? (
+                    <img 
+                      src={getFullImageUrl(item.filename)} 
+                      alt={itemTitle} 
+                      className="gallery-card-thumb"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="gallery-card-locked-placeholder">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                    </div>
+                  )}
                 </div>
                 <div className="gallery-card-info">
                   <h2 className="gallery-card-title">{itemTitle}</h2>
@@ -165,14 +180,16 @@ const GalleryMenu = ({ onBack }) => {
 
             {/* Panel de Datos / Título y Pie de Foto */}
             <div className="gallery-lightbox-info">
-              <h2 className="gallery-lightbox-title">
-                {activeItem.title[langKey] || activeItem.title['es']}
-              </h2>
-              <div className="gallery-lightbox-scroll">
-                <p className="gallery-lightbox-caption">
-                  {activeItem.caption[langKey] || activeItem.caption['es']}
-                </p>
-              </div>
+            {/* Título y subtítulo */}
+            <h2 className="gallery-lightbox-title">
+              {activeItem.titleKey ? t(activeItem.titleKey) : (activeItem.title[langKey] || activeItem.title['es'] || '')}
+            </h2>
+            
+            <div className="gallery-lightbox-caption">
+              <p>
+                {activeItem.descKey ? t(activeItem.descKey) : (activeItem.caption[langKey] || activeItem.caption['es'] || '')}
+              </p>
+            </div>
             </div>
           </div>
         </div>

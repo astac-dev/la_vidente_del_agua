@@ -1,0 +1,44 @@
+[
+  {
+    "id": "bgm_menu",
+    "filename": "bgm/theme_main_menu.mp3",
+    "titleKey": "music.theme_main_menu.title",
+    "descKey": "music.theme_main_menu.desc",
+    "unlockCondition": "always"
+  },
+  {
+    "id": "bgm_tutorial",
+    "filename": "bgm/pluck_loop_01.mp3",
+    "titleKey": "music.pluck_loop.title",
+    "descKey": "music.pluck_loop.desc",
+    "unlockCondition": "always"
+  },
+  {
+    "id": "bgm_signal",
+    "filename": "bgm/signal_trace.mp3",
+    "titleKey": "music.signal_trace.title",
+    "descKey": "music.signal_trace.desc",
+    "unlockCondition": "cap_1_intro"
+  },
+  {
+    "id": "bgm_cave",
+    "filename": "bgm/ancient_cave_terror.mp3",
+    "titleKey": "music.ancient_cave_terror.title",
+    "descKey": "music.ancient_cave_terror.desc",
+    "unlockCondition": "cap_1_intro"
+  },
+  {
+    "id": "bgm_glitch",
+    "filename": "bgm/temporal_glitch_panic.mp3",
+    "titleKey": "music.temporal_glitch_panic.title",
+    "descKey": "music.temporal_glitch_panic.desc",
+    "unlockCondition": "cap_1_intro"
+  },
+  {
+    "id": "bgm_descent",
+    "filename": "bgm/the_primal_descent.mp3",
+    "titleKey": "music.the_primal_descent.title",
+    "descKey": "music.the_primal_descent.desc",
+    "unlockCondition": "cap_1_intro"
+  }
+]

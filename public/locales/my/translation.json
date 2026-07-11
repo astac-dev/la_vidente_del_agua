@@ -21,7 +21,8 @@
       "cap_1_intro": "Ts'íits' 1: U je'elel Tulum",
       "ruta_a_negligencia": "U ts'ook xéot': Ma' jaaj ch'enebil",
       "ruta_b_investigacion": "Noj bej: U k'ubul yáanal ja'"
-    }
+    },
+    "musicRoom": "U Kúuchil K'aay"
   },
   "interface": {
     "signInWithGoogle": "Li'isaj t'aan ti' muuyal",
@@ -813,6 +814,84 @@
     "prev": "Yáax",
     "next": "U láak'",
     "closeLightbox": "K'al e'esajil",
-    "closeGallery": "K'al wejch'il"
+    "closeGallery": "K'al wejch'il",
+    "mascara": {
+      "title": "U K'óobil Lu'um",
+      "desc": "Úuchben k'óob yéetel u chíikulal ja' kaxanta'ab tu lu'umil Uaxactun."
+    },
+    "arnauld": {
+      "title": "U P'aatil Arnauld",
+      "desc": "U ts'íibil le paan lu'um beeta'ab tu ja'abil 2016."
+    },
+    "escaneo": {
+      "title": "U Yoochel Ch'e'en 3D",
+      "desc": "U noj oochel le but'án ch'e'eno'ob ti' Quintana Roo."
+    },
+    "habitacion": {
+      "title": "U Najil CDMX",
+      "desc": "U kúuchil Amaranta, chuup yéetel x-ma' wéenel yéetel bo'oy."
+    },
+    "cdmx": {
+      "title": "Ciudad de México",
+      "desc": "U yáak'abil le noj kaajo', jach k'a'am u jum yéetel jach chéen tu juunal."
+    },
+    "secundaria": {
+      "title": "Xookil",
+      "desc": "Tukulo'ob ma' jach k'a'ana'antak ti' le k'iino'ob xooko'."
+    },
+    "playa": {
+      "title": "U Ja'il Tulum",
+      "desc": "U jéets'elil le Caribe táanil ti' a wéemel yáanal ja'."
+    },
+    "casa_abuela": {
+      "title": "U Najil Chich",
+      "desc": "U yotoch láak'tsil tu kaajil Tulum ku nupik Amaranta yéetel u paach."
+    },
+    "campamento": {
+      "title": "U Kúuchil INAH",
+      "desc": "Kúuchil xak'al meyaj tu jáal le ch'e'eno'."
+    },
+    "pleistoceno": {
+      "title": "Pleistoceno",
+      "desc": "U yich le k'iinil yéeya'; juntúul yóok'ol kaab tu'ux kaja'an noj ba'alche'ob."
+    },
+    "radar": {
+      "title": "U Nenil Baak",
+      "desc": "Nen ku kaxantik ba'alo'ob k'askantak yáanal ja'."
+    },
+    "lockedTitle": "???",
+    "lockedDesc": "Báaxalnaj ti'al a je'ik le oochela'."
+  },
+  "music": {
+    "theme_main_menu": {
+      "title": "Yáax K'aay",
+      "desc": "Le k'aay ku k'amikech tu yáax chun le tsikbalo'."
+    },
+    "pluck_loop": {
+      "title": "U tsol Naia",
+      "desc": "Jum ku táakpajal yéetel le tsol t'aano'ob ti' le tutorialo'."
+    },
+    "signal_trace": {
+      "title": "Kaxan T'aan",
+      "desc": "Sajkilil tu k'áaxil u yáanal."
+    },
+    "ancient_cave_terror": {
+      "title": "Úuchben Sajkil",
+      "desc": "Jum ku taal tu taamil le ch'e'eno'."
+    },
+    "temporal_glitch_panic": {
+      "title": "K'astal K'iin",
+      "desc": "Sajkilil le kéen k'a'axak le k'iino'."
+    },
+    "the_primal_descent": {
+      "title": "Yáax Éemel",
+      "desc": "U yéemel ichil u maas úuchben ba'alo'ob wíinik."
+    },
+    "nowPlaying": "Táan u k'aay:",
+    "stop": "Wa'al",
+    "lockedTitle": "???",
+    "lockedDesc": "Báaxalnaj ti'al a je'ik le k'aaya'.",
+    "subtitle": "U k'aayil báaxal",
+    "closeRoom": "K'a'al"
   }
 }

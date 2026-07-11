@@ -47,8 +47,7 @@ let success = false;
 try {
   console.log('Intentando comprimir usando "tar"...');
   // -a autodetecta compresión zip por la extensión .zip
-  // Hacemos cd a dist y comprimimos con * para evitar el prefijo ./ que da problemas en itch.io
-  execSync(`tar -a -c -f "../${zipName}" *`, { cwd: path.join(__dirname, 'dist'), stdio: 'ignore' });
+  execSync(`tar -a -c -f "${zipName}" -C dist .`, { stdio: 'ignore' });
   if (fs.existsSync(zipPath)) {
     console.log('✅ Archivo ZIP creado exitosamente usando "tar".');
     success = true;
@@ -75,7 +74,7 @@ if (!success && process.platform === 'win32') {
 if (!success && process.platform !== 'win32') {
   try {
     console.log('Intentando comprimir usando "zip"...');
-    execSync(`zip -r "../${zipName}" *`, { cwd: path.join(__dirname, 'dist'), stdio: 'ignore' });
+    execSync(`cd dist && zip -r "../${zipName}" ./*`, { stdio: 'ignore' });
     if (fs.existsSync(zipPath)) {
       console.log('✅ Archivo ZIP creado exitosamente usando "zip".');
       success = true;

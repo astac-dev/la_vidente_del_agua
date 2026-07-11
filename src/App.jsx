@@ -8,6 +8,7 @@ import OptionsMenu from './components/OptionsMenu';
 import GameEngine from './components/VisualNovel/GameEngine';
 import CreditsScreen from './components/CreditsScreen';
 import GalleryMenu from './components/GalleryMenu';
+import MusicRoomMenu from './components/MusicRoomMenu';
 import OrientationBlocker from './components/VisualNovel/OrientationBlocker';
 import ClickToContinue from './components/ClickToContinue';
 import ExitScreen from './components/ExitScreen';
@@ -93,7 +94,7 @@ const App = () => {
   const handleNavigate = (view) => {
     if (view !== currentView && animationClass !== 'fade-out' && animationClass !== 'fade-out-cinematic') {
       nextViewRef.current = view;
-      if (view === 'visualNovel' || currentView === 'visualNovel' || view === 'storyMap' || currentView === 'storyMap' || view === 'credits' || currentView === 'credits' || view === 'artGallery' || currentView === 'artGallery') {
+      if (view === 'visualNovel' || currentView === 'visualNovel' || view === 'storyMap' || currentView === 'storyMap' || view === 'credits' || currentView === 'credits' || view === 'artGallery' || currentView === 'artGallery' || view === 'musicRoom' || currentView === 'musicRoom') {
         setAnimationClass('fade-out-cinematic');
       } else {
         setAnimationClass('fade-out');
@@ -104,7 +105,7 @@ const App = () => {
   const handleAnimationEnd = () => {
     if (animationClass === 'fade-out' || animationClass === 'fade-out-cinematic') {
       setCurrentView(nextViewRef.current);
-      if (nextViewRef.current === 'visualNovel' || currentView === 'visualNovel' || nextViewRef.current === 'storyMap' || currentView === 'storyMap' || nextViewRef.current === 'credits' || currentView === 'credits' || nextViewRef.current === 'artGallery' || currentView === 'artGallery') {
+      if (nextViewRef.current === 'visualNovel' || currentView === 'visualNovel' || nextViewRef.current === 'storyMap' || currentView === 'storyMap' || nextViewRef.current === 'credits' || currentView === 'credits' || nextViewRef.current === 'artGallery' || currentView === 'artGallery' || nextViewRef.current === 'musicRoom' || currentView === 'musicRoom') {
         setAnimationClass('fade-in-cinematic');
       } else {
         setAnimationClass('fade-in');
@@ -128,6 +129,8 @@ const App = () => {
         return <CreditsScreen onBack={() => handleNavigate('mainMenu')} />;
       case 'artGallery':
         return <GalleryMenu onBack={() => handleNavigate('extrasMenu')} />;
+      case 'musicRoom':
+        return <MusicRoomMenu onBack={() => handleNavigate('extrasMenu')} />;
       case 'mainMenu':
       default:
         return <MainMenu onNavigate={handleNavigate} onExit={() => setIsExited(true)} />;
@@ -142,7 +145,7 @@ const App = () => {
     return <ExitScreen />;
   }
 
-  if (currentView === 'visualNovel' || currentView === 'storyMap' || currentView === 'credits' || currentView === 'artGallery') {
+  if (currentView === 'visualNovel' || currentView === 'storyMap' || currentView === 'credits' || currentView === 'artGallery' || currentView === 'musicRoom') {
     return (
       <>
         <div className={animationClass} onAnimationEnd={handleAnimationEnd}>

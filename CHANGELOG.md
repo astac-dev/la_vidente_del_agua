@@ -1,5 +1,26 @@
 # Historial de Cambios
 
+## [0.3.31] - 2026-07-11
+
+### Corregido
+- **Compatibilidad de Nombres de Archivos para Itch.io**:
+  - Se corrigió el problema de URLs truncadas (`404 Not Found`) en los recursos web de la plataforma itch.io debido a espacios y caracteres con tilde en los nombres de archivo.
+  - Renombrados de forma masiva los fondos (`public/backgrounds`), pistas musicales (`public/bgm`) y recursos de arte (`public/arte`) usando notación `snake_case` y sin tildes.
+  - Actualización de todas las referencias de recursos a lo largo de los guiones JSON (`capitulo_1_1.json`, etc.) y componentes de React (`loader.js`, `galleryData.json`).
+- **Lógica de Empaquetado**:
+  - Restauración del flujo original del script `package-itch.cjs` para delegar correctamente a `tar` la compresión mediante un directorio contextual (`-C dist .`), garantizando la jerarquía plana que demanda itch.io para la raíz de la novela (`index.html`).
+
+### Añadido
+- **Sala de Música (Music Room)**:
+  - Creación del nuevo componente interactivo `MusicRoomMenu.jsx` a pantalla completa, accesible desde el menú de Extras.
+  - Implementación de un reproductor de audio con sincronización reactiva al volumen global del usuario.
+  - Generación de `bgmData.json` para definir las pistas musicales y vincularlas a sus nodos narrativos (ej. `signal_trace.mp3` vinculada a `cap_1_intro`).
+- **Sistema de Desbloqueo de Contenidos (Extras)**:
+  - Implementada lógica de progresión que oculta o deshabilita elementos de la Galería de Arte y Sala de Música si el usuario no ha alcanzado los nodos de la historia requeridos (`gameState.unlockedNodes`).
+  - Los elementos bloqueados muestran el candado "???" y no permiten la apertura del Lightbox o la reproducción musical.
+- **Sincronización Precisa de SFX**:
+  - En `capitulo_1_1.json`, se migró el efecto de sonido de la rama crujiendo desde el nivel global del nodo al arreglo interno de `dialogos`. Esto asegura que el `bone-breaking.wav` se reproduzca en el momento exacto en que la línea narrativa se dibuja en pantalla, logrando una sincronización audiovisual inmersiva.
+
 ## [0.3.30] - 2026-07-07
 
 ### Añadido / Cambiado
