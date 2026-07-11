@@ -21,7 +21,8 @@
       "cap_1_intro": "Capítulo 1: El Respiro de Tulum",
       "ruta_a_negligencia": "Final Alterno: Silencio Artificial",
       "ruta_b_investigacion": "Ruta Principal: El Legado Subacuático"
-    }
+    },
+    "musicRoom": "Sala de Música"
   },
   "interface": {
     "signInWithGoogle": "Guardar en la Nube",
@@ -871,6 +872,84 @@
     "prev": "Anterior",
     "next": "Siguiente",
     "closeLightbox": "Cerrar visor",
-    "closeGallery": "Cerrar galería"
+    "closeGallery": "Cerrar galería",
+    "mascara": {
+      "title": "Máscara de la Tierra",
+      "desc": "Máscara preclásica con signos de agua descubierta en Uaxactun."
+    },
+    "arnauld": {
+      "title": "Excavaciones Arnauld",
+      "desc": "Registro arqueológico de los niveles de excavación de 2016."
+    },
+    "escaneo": {
+      "title": "Escaneo 3D de la Cueva",
+      "desc": "Modelo tridimensional de los cenotes inundados de Quintana Roo."
+    },
+    "habitacion": {
+      "title": "Habitación CDMX",
+      "desc": "El cuarto de Amaranta, lleno de insomnio y sombras en la capital."
+    },
+    "cdmx": {
+      "title": "Ciudad de México",
+      "desc": "Panorama nocturno de la gran ciudad, tan ruidosa como aislante."
+    },
+    "secundaria": {
+      "title": "Secundaria Diurna",
+      "desc": "Recuerdos borrosos de los días de escuela y el acoso."
+    },
+    "playa": {
+      "title": "Playa de Tulum",
+      "desc": "La tranquilidad superficial del Caribe antes de sumergirse."
+    },
+    "casa_abuela": {
+      "title": "Casa de la Abuela",
+      "desc": "Refugio familiar en Tulum que conecta a Amaranta con su pasado."
+    },
+    "campamento": {
+      "title": "Campamento INAH",
+      "desc": "Instalaciones científicas a la orilla del cenote."
+    },
+    "pleistoceno": {
+      "title": "El Pleistoceno",
+      "desc": "Visión de la Era de Hielo; un mundo habitado por megafauna."
+    },
+    "radar": {
+      "title": "Radar de Fósiles",
+      "desc": "Pantalla de telemetría buscando anomalías bajo el agua."
+    },
+    "lockedTitle": "???",
+    "lockedDesc": "Sigue avanzando en la historia para desbloquear esta obra."
+  },
+  "music": {
+    "theme_main_menu": {
+      "title": "Tema Principal",
+      "desc": "La misteriosa melodía que te recibe en la antesala de la historia."
+    },
+    "pluck_loop": {
+      "title": "Guía de Naia",
+      "desc": "Un eco rítmico que acompaña los consejos de supervivencia en el tutorial."
+    },
+    "signal_trace": {
+      "title": "Rastreo de Señal",
+      "desc": "Tensión sutil durante la exploración en la selva."
+    },
+    "ancient_cave_terror": {
+      "title": "Terror Ancestral",
+      "desc": "Ecos aterradores de las profundidades de la cueva."
+    },
+    "temporal_glitch_panic": {
+      "title": "Falla Temporal",
+      "desc": "Pánico desorientador cuando el tiempo se fractura."
+    },
+    "the_primal_descent": {
+      "title": "Descenso Primordial",
+      "desc": "La inmersión hacia los secretos más antiguos de la humanidad."
+    },
+    "nowPlaying": "Reproduciendo:",
+    "stop": "Detener",
+    "lockedTitle": "???",
+    "lockedDesc": "Sigue jugando para desbloquear esta melodía.",
+    "subtitle": "Banda Sonora Original",
+    "closeRoom": "Cerrar Sala"
   }
 }

@@ -21,7 +21,8 @@
       "cap_1_intro": "Chapter 1: Tulum's Respite",
       "ruta_a_negligencia": "Alternate Ending: Artificial Silence",
       "ruta_b_investigacion": "Main Path: The Underwater Legacy"
-    }
+    },
+    "musicRoom": "Music Room"
   },
   "interface": {
     "signInWithGoogle": "Save to Cloud",
@@ -813,6 +814,84 @@
     "prev": "Previous",
     "next": "Next",
     "closeLightbox": "Close viewer",
-    "closeGallery": "Close gallery"
+    "closeGallery": "Close gallery",
+    "mascara": {
+      "title": "Mask of the Earth",
+      "desc": "Preclassic mask with water signs discovered in Uaxactun."
+    },
+    "arnauld": {
+      "title": "Arnauld Excavations",
+      "desc": "Archaeological record of the 2016 excavation levels."
+    },
+    "escaneo": {
+      "title": "3D Cave Scan",
+      "desc": "Three-dimensional model of the flooded cenotes of Quintana Roo."
+    },
+    "habitacion": {
+      "title": "CDMX Room",
+      "desc": "Amaranta's room, full of insomnia and shadows in the capital."
+    },
+    "cdmx": {
+      "title": "Mexico City",
+      "desc": "Night panorama of the great city, as noisy as it is isolating."
+    },
+    "secundaria": {
+      "title": "Middle School",
+      "desc": "Blurry memories of school days and bullying."
+    },
+    "playa": {
+      "title": "Tulum Beach",
+      "desc": "The superficial tranquility of the Caribbean before diving in."
+    },
+    "casa_abuela": {
+      "title": "Grandmother's House",
+      "desc": "Family refuge in Tulum that connects Amaranta with her past."
+    },
+    "campamento": {
+      "title": "INAH Camp",
+      "desc": "Scientific facilities at the edge of the cenote."
+    },
+    "pleistoceno": {
+      "title": "The Pleistocene",
+      "desc": "Vision of the Ice Age; a world inhabited by megafauna."
+    },
+    "radar": {
+      "title": "Fossil Radar",
+      "desc": "Telemetry screen searching for anomalies underwater."
+    },
+    "lockedTitle": "???",
+    "lockedDesc": "Keep progressing in the story to unlock this artwork."
+  },
+  "music": {
+    "theme_main_menu": {
+      "title": "Main Theme",
+      "desc": "The mysterious melody that welcomes you to the story."
+    },
+    "pluck_loop": {
+      "title": "Naia's Guide",
+      "desc": "A rhythmic echo that accompanies survival tips in the tutorial."
+    },
+    "signal_trace": {
+      "title": "Signal Trace",
+      "desc": "Subtle tension during the jungle exploration."
+    },
+    "ancient_cave_terror": {
+      "title": "Ancient Terror",
+      "desc": "Terrifying echoes from the depths of the cave."
+    },
+    "temporal_glitch_panic": {
+      "title": "Temporal Glitch",
+      "desc": "Disorienting panic when time fractures."
+    },
+    "the_primal_descent": {
+      "title": "Primal Descent",
+      "desc": "The dive into humanity's oldest secrets."
+    },
+    "nowPlaying": "Now Playing:",
+    "stop": "Stop",
+    "lockedTitle": "???",
+    "lockedDesc": "Keep playing to unlock this melody.",
+    "subtitle": "Original Soundtrack",
+    "closeRoom": "Close Room"
   }
 }
