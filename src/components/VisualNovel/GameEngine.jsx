@@ -485,10 +485,10 @@ const GameEngine = ({ onNavigate }) => {
   const translatedDialogue = t(dialogueKey, currentLine?.texto);
   
   const speedMapping = {
-    1: 40,  // x1: Efecto maquina de escribir (40ms por letra)
-    2: 100, // x2: 2 palabras/seg (aprox 100ms por letra)
-    3: 40,  // x3: 5 palabras/seg (aprox 40ms por letra)
-    4: 0    // x4: De golpe
+    1: 40,  // x1: Velocidad base (40ms por letra)
+    2: 20,  // x2: Doble de x1 (20ms por letra)
+    3: 10,  // x3: Doble de x2 (10ms por letra)
+    4: 0    // x4: De golpe (instantáneo)
   };
   const textSpeedValue = speedMapping[settings.textSpeed || 1];
   const { displayedText, isTyping } = useTypewriter(translatedDialogue, textSpeedValue);

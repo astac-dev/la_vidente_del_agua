@@ -12,7 +12,7 @@ import { useGameState } from '../context/GameStateContext';
  */
 const routeTransition = (nextTarget) => {
   if (nextTarget && nextTarget.startsWith('capitulo_')) {
-    const match = nextTarget.match(/^capitulo_(\d+)_(.+)$/);
+    const match = nextTarget.match(/^capitulo_([\d_]+)_(.+)$/);
     if (match) {
       const chapterNum = match[1];
       const sceneName = match[2] === 'intro' ? 'escena_intro' : match[2];

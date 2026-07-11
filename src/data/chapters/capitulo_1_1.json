@@ -102,8 +102,14 @@
                     "position": "left"
                 }
             ],
+            "bgm": {
+                "src": "/bgm/Signal Trace.mp3",
+                "action": "play",
+                "transition": "fade",
+                "duration": 1000
+            },
             "sfx": {
-                "src": "/sfx/sfx_motor_diesel.wav",
+                "src": "/vfx/354103__bini_trns__few-small-branches-snapping-close-up-high-frequencyh6.wav",
                 "action": "play"
             },
             "dialogos": [

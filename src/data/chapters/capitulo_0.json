@@ -186,7 +186,7 @@
         "duration": 1000
       },
       "text": "Entonces sigamos, tus manos guiaran esta historia, click para continuar",
-      "next": "capitulo_1_intro"
+      "next": "capitulo_1_1_escena_1_1_cdmx"
     },
     "guia_naia_no_mensaje": {
       "type": "custom_message",
