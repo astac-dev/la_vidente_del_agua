@@ -47,7 +47,7 @@ const BackgroundLayer = React.memo(({ background }) => {
     return () => {
       isCancelled = true;
     };
-  }, [background, currentUrl]);
+  }, [background]);
 
   const duration = background?.transition === 'none' ? 0 : (background?.duration || 1000);
   const effectClass = background?.effect === 'glitch' ? 'vn-bg-glitch' : '';

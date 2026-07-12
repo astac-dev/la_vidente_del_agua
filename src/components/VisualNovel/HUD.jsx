@@ -8,6 +8,7 @@ const HUD = () => {
   // Evita errores si el estado de las estadísticas aún no se ha inicializado
   const confianza = gameState?.stats?.confianza ?? 0;
   const preservacion = gameState?.stats?.preservacion ?? 0;
+  const estres = gameState?.stats?.estres ?? 0;
 
   return (
     <div className="flex flex-row items-stretch pointer-events-auto h-auto">
@@ -34,6 +35,14 @@ const HUD = () => {
             {isExpanded ? 'PRESERVACIÓN //' : 'P'}
           </span>
           <span className="text-emerald-400 font-bold">{preservacion}</span>
+        </div>
+
+        {/* Métrica de Estrés */}
+        <div className="flex justify-between items-center gap-2">
+          <span className="text-neutral-500 font-bold">
+            {isExpanded ? 'ESTRÉS //' : 'E'}
+          </span>
+          <span className="text-red-500 font-bold">{estres}</span>
         </div>
       </div>
       

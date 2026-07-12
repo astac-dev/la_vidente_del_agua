@@ -12,12 +12,16 @@ import OrientationBlocker from './OrientationBlocker';
 import HUD from './HUD';
 import BatSwarmEffect from './BatSwarmEffect';
 import RadarMinigame from './RadarMinigame';
+import NaiaSurvivalMinigame from '../NaiaSurvivalMinigame';
 import FullscreenEnterIcon from '../icons/FullscreenEnterIcon';
 import FullscreenExitIcon from '../icons/FullscreenExitIcon';
 import glifoAgua from '../../assets/arte/glifoaguafluyendo.png';
 import qrCodeImage from '../../assets/qr_placeholder.png';
 import '../VisualNovelContainer.css';
 import DialogueLogModal from './DialogueLogModal';
+import InventoryModal from './InventoryModal';
+import MultiChoiceMenu from './MultiChoiceMenu';
+import DiarioModal from './DiarioModal';
 
 const LogIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 5.2a1 1 0 0 0-1.4-1.4L19 5.2V4a1 1 0 0 0-2 0v1.2L15.6 3.8a1 1 0 0 0-1.4 1.4L15.6 6H8.4l1.4-1.4a1 1 0 0 0-1.4-1.4L7 5.2V4a1 1 0 0 0-2 0v1.2L3.6 3.8a1 1 0 0 0-1.4 1.4L3.6 6H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-.6l1.4-1.4zM19 19H5V8h14v11z"></path></svg>;
 const HideUIIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zm0 10c-2.48 0-4.5-2.02-4.5-4.5S9.52 5.5 12 5.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5zm0-7C10.62 7.5 9.5 8.62 9.5 10s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5S13.38 7.5 12 7.5z"></path></svg>;
@@ -25,6 +29,7 @@ const ShowUIIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M
 const HomeIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"></path></svg>;
 const AutoIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"></path></svg>;
 const SkipIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"></path></svg>;
+const InventoryIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"></path></svg>;
 
 const getFullscreenElement = () => {
   return document.fullscreenElement || 
@@ -93,6 +98,7 @@ const GameEngine = ({ onNavigate }) => {
   const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState, saves, saveGameToSlot, isFading, addToHistory, goToScene } = useGameState();
   const [showSaveModal, setShowSaveModal] = useState(false);
   const [showLogModal, setShowLogModal] = useState(false);
+  const [showInventoryModal, setShowInventoryModal] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(!!getFullscreenElement());
   const [fullscreenError, setFullscreenError] = useState('');
   const [scriptData, setScriptData] = useState(null);
@@ -136,7 +142,8 @@ const GameEngine = ({ onNavigate }) => {
   }, [gameState.currentChapter]);
 
   // Hook del motor adaptado para recibir scriptData cargado dinámicamente
-  const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice, skipToNextChoice, cancelChoice } = useVisualNovelEngine(scriptData);
+  const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice, makeMultiChoice, skipToNextChoice, cancelChoice } = useVisualNovelEngine(scriptData);
+  const isMultiChoice = currentScene?.type === 'multi_choice';
 
   /**
    * Determina si un elemento específico de la interfaz debe estar resaltado
@@ -543,7 +550,7 @@ const GameEngine = ({ onNavigate }) => {
               {fullscreenError}
             </div>
           )}
-          <BackgroundLayer background={currentScene.background} />
+          <BackgroundLayer background={currentLine?.background || currentScene?.background} />
           <CharacterLayer 
             currentSpeaker={currentLine?.personaje}
             sprites={
@@ -556,9 +563,9 @@ const GameEngine = ({ onNavigate }) => {
                     position: currentLine.position || 'left',
                     expression: currentLine.expression,
                     entry_animation: currentLine.entry_animation,
-                    flameActive: gameState.currentChapter === 'capitulo_0' || currentLine.flame_active || false
+                    flameActive: gameState?.currentChapter === 'capitulo_0' || currentLine?.flame_active || false
                   }]
-                : (currentLine?.sprites || currentScene.sprites)
+                : (currentLine?.sprites || currentScene?.sprites)
             } 
           />
           <div className="scene-overlay" />
@@ -648,13 +655,32 @@ const GameEngine = ({ onNavigate }) => {
                     <div className="pt-1">{uiVisibility ? <HideUIIcon /> : <ShowUIIcon />}</div>
                     <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.hideUIButton', 'OCULTAR')}</span>
                 </button>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setShowInventoryModal(true); }} 
+                  className={`${buttonBaseClasses} ${isHighlighted('btn-inventory') ? 'vn-highlight-active' : ''}`} 
+                  title={t('interface.inventoryTitle', 'Inventario')}
+                >
+                    <div className="pt-1"><InventoryIcon /></div>
+                    <span className="hud-button-label-custom font-mono tracking-tight uppercase opacity-60">{t('interface.inventoryTitle', 'INVENTARIO')}</span>
+                </button>
               </div>
             </div>
           )}
 
           {uiVisibility && (
             <>
-              {!isChoice && currentLine && (
+              {showInventoryModal && (
+                <InventoryModal 
+                  onClose={() => setShowInventoryModal(false)} 
+                  currentBackground={currentScene?.background?.src}
+                />
+              )}
+
+              {currentScene?.type === 'diario_modal' && (
+                <DiarioModal onClose={advance} />
+              )}
+
+              {!isChoice && !isMultiChoice && currentScene?.type !== 'diario_modal' && currentLine && (
                 <DialogueBox
                   key={translatedDialogue} 
                   character={currentLine.personaje}
@@ -672,7 +698,16 @@ const GameEngine = ({ onNavigate }) => {
                 />
               )}
 
-              {!isChoice && !isEndOfScene && (
+              {isMultiChoice && (
+                <MultiChoiceMenu
+                  question={translatedQuestion}
+                  options={translatedOptions}
+                  onChoice={makeMultiChoice}
+                  onCancel={cancelChoice}
+                />
+              )}
+
+              {!isChoice && !isMultiChoice && !isEndOfScene && (
                 <img
                   src={glifoAgua}
                   className={`vn-glifo-indicator ${isHighlighted('glifo-agua') ? 'vn-highlight-active' : ''}`}
@@ -699,6 +734,18 @@ const GameEngine = ({ onNavigate }) => {
               }}
               onFailure={() => {
                 if (currentScene.onFailure) goToScene(currentScene.onFailure);
+              }}
+            />
+          )}
+
+          {currentScene.type === 'minigame' && currentScene.minigame === 'NaiaSurvivalMinigame' && (
+            <NaiaSurvivalMinigame
+              onComplete={(result) => {
+                if (result.success && currentScene.onSuccess) {
+                  goToScene(currentScene.onSuccess);
+                } else if (!result.success && currentScene.onFailure) {
+                  goToScene(currentScene.onFailure);
+                }
               }}
             />
           )}
@@ -745,6 +792,18 @@ const GameEngine = ({ onNavigate }) => {
                     <p className="text-amber-400 font-mono font-bold tracking-wider" style={{ fontSize: `calc(0.875rem * var(--ui-scale-multiplier, 1))` }}>{t('interface.scanQr', '¡Escanea para jugar la versión completa!')}</p>
                   </div>
                 )}
+              </div>
+            </div>
+          )}
+
+          {currentScene.type === 'end_screen' && (
+            <div 
+              className="absolute inset-0 z-[40] flex items-center justify-center bg-black pointer-events-auto animate-[fadeIn_2s_ease-out_forwards]"
+            >
+              <div className="text-center px-8 text-neutral-200 font-sans max-w-xl">
+                <p className="leading-relaxed tracking-wide vn-dialogue-text text-amber-500 font-bold opacity-80 whitespace-pre-line" style={{ fontSize: `calc(1.5rem * var(--ui-scale-multiplier, 1))` }}>
+                  {t(`historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.texto`, currentScene.text || "Continuará...")}
+                </p>
               </div>
             </div>
           )}

@@ -3,7 +3,7 @@ const path = require('path');
 
 const filesToValidate = [
   { name: 'capitulo_0.json', path: 'src/data/chapters/capitulo_0.json' },
-  { name: 'capitulo_1.json', path: 'src/data/chapters/capitulo_1.json' },
+  { name: 'capitulo_1_1.json', path: 'src/data/chapters/capitulo_1_1.json' },
   { name: 'es/translation.json', path: 'public/locales/es/translation.json' },
   { name: 'en/translation.json', path: 'public/locales/en/translation.json' },
   { name: 'my/translation.json', path: 'public/locales/my/translation.json' }

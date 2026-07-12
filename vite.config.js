@@ -8,5 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(), // <- Activa el compilador aquí
   ],
-  base: '/la_vidente_del_agua/', // Mantiene tu ruta base de gh-pages
+  base: './', // Ruta relativa obligatoria para Itch.io
 });

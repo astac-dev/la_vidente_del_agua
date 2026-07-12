@@ -30,7 +30,7 @@ const routeTransition = (nextTarget) => {
  * @param {object} scriptData - Los datos del capítulo actual cargados dinámicamente.
  */
 export const useVisualNovelEngine = (scriptData) => {
-  const { gameState, advanceDialogue, goToScene, updateStat } = useGameState();
+  const { gameState, advanceDialogue, goToScene, updateStat, updateInventory } = useGameState();
 
   const currentScene = useMemo(() => {
     return scriptData?.escenas?.[gameState.currentSceneId];
@@ -58,15 +58,15 @@ export const useVisualNovelEngine = (scriptData) => {
 
     const dialogueLength = currentScene?.dialogos?.length || 0;
 
-    // Se realiza la transición si no quedan más líneas en la escena actual
-    if (isEndOfScene || gameState.dialogueIndex >= dialogueLength - 1) {
-      if (currentScene.next) {
-        const { sceneId, chapterId } = routeTransition(currentScene.next);
-        goToScene(sceneId, chapterId);
-      } else {
-        console.log("Fin de la rama de la historia.");
-        if (!isEndOfScene) {
-          advanceDialogue();
+    if (gameState.dialogueIndex >= dialogueLength - 1) {
+      if (currentScene?.next) {
+        if (currentScene.next === 'mainMenu') {
+          goToScene('mainMenu', null);
+        } else if (currentScene.next === 'PREVIOUS_SCENE') {
+          goToScene(gameState.previousSceneId, gameState.previousChapterId, gameState.previousDialogueIndex || 0);
+        } else {
+          const { sceneId, chapterId } = routeTransition(currentScene.next);
+          goToScene(sceneId, chapterId);
         }
       }
     } else {
@@ -75,11 +75,36 @@ export const useVisualNovelEngine = (scriptData) => {
   };
 
   const makeChoice = (choice) => {
-    if (!isChoice) return;
+    if (!isChoice && currentScene?.type !== 'multi_choice') return;
     if (choice.action) {
-      updateStat(choice.action.stat, choice.action.op, choice.action.value);
+      if (choice.action.type === 'addItem') {
+        updateInventory('add', choice.action.item);
+      } else if (choice.action.type === 'useItem' || choice.action.type === 'removeItem') {
+        updateInventory('remove', choice.action.item);
+      } else {
+        updateStat(choice.action.stat, choice.action.op, choice.action.value);
+      }
     }
     const { sceneId, chapterId } = routeTransition(choice.next);
+    goToScene(sceneId, chapterId);
+  };
+
+  const makeMultiChoice = (choicesArray) => {
+    if (currentScene?.type !== 'multi_choice') return;
+    
+    choicesArray.forEach(choice => {
+      if (choice.action) {
+        if (choice.action.type === 'addItem') {
+          updateInventory('add', choice.action.item);
+        } else if (choice.action.type === 'useItem' || choice.action.type === 'removeItem') {
+          updateInventory('remove', choice.action.item);
+        } else {
+          updateStat(choice.action.stat, choice.action.op, choice.action.value);
+        }
+      }
+    });
+
+    const { sceneId, chapterId } = routeTransition(currentScene.next);
     goToScene(sceneId, chapterId);
   };
 
@@ -155,6 +180,7 @@ export const useVisualNovelEngine = (scriptData) => {
     isEndOfScene,
     advance,
     makeChoice,
+    makeMultiChoice,
     skipToNextChoice,
     cancelChoice,
   };

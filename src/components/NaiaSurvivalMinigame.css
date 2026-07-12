@@ -1,0 +1,250 @@
+/* NaiaSurvivalMinigame.css */
+.naia-qte-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Oscurecimiento y filtro de desenfoque solicitado */
+  background: rgba(10, 5, 5, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+  font-family: 'Courier New', Courier, monospace; /* O la fuente de tu VN */
+}
+
+/* =========================================
+   Partículas: Murciélagos
+   ========================================= */
+.qte-bats-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.qte-bat {
+  position: absolute;
+  width: 45px;
+  height: auto;
+  opacity: 0;
+  animation: fly linear infinite;
+  filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.8));
+}
+
+@keyframes fly {
+  0% { 
+    transform: translate(110%, 110%) scale(0.5) rotate(-20deg); 
+    opacity: 0; 
+  }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { 
+    transform: translate(-20%, -20%) scale(1.8) rotate(15deg); 
+    opacity: 0; 
+  }
+}
+
+/* Tiempos y retrasos aleatorios para simular horda */
+.bat-0 { top: 15%; left: 80%; animation-duration: 2.5s; animation-delay: 0s; }
+.bat-1 { top: 40%; left: 90%; animation-duration: 2.2s; animation-delay: 0.5s; }
+.bat-2 { top: 75%; left: 85%; animation-duration: 3.1s; animation-delay: 0.2s; }
+.bat-3 { top: 25%; left: 60%; animation-duration: 2.8s; animation-delay: 0.8s; }
+.bat-4 { top: 85%; left: 45%; animation-duration: 2.4s; animation-delay: 0.3s; }
+.bat-5 { top: 55%; left: 70%; animation-duration: 2.9s; animation-delay: 1.1s; }
+.bat-6 { top: 10%; left: 50%; animation-duration: 2.6s; animation-delay: 0.7s; }
+.bat-7 { top: 80%; left: 20%; animation-duration: 2.3s; animation-delay: 0.4s; }
+.bat-8 { top: 35%; left: 30%; animation-duration: 3.0s; animation-delay: 0.9s; }
+.bat-9 { top: 65%; left: 80%; animation-duration: 2.7s; animation-delay: 1.3s; }
+.bat-10{ top: 5%; left: 75%; animation-duration: 2.1s; animation-delay: 0.6s; }
+.bat-11{ top: 90%; left: 60%; animation-duration: 3.2s; animation-delay: 0.1s; }
+
+
+/* =========================================
+   Flama de la antorcha temblando (Pánico)
+   ========================================= */
+.qte-flame-container {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.qte-flame {
+  width: 50px;
+  height: 80px;
+  background: radial-gradient(ellipse at bottom, #ffea00 0%, #ff6600 40%, transparent 70%);
+  border-radius: 50% 50% 20% 20%;
+  animation: flicker 0.08s infinite alternate, panic-shake 0.3s infinite ease-in-out;
+  filter: blur(2px) drop-shadow(0 0 15px #ff5500);
+}
+
+@keyframes flicker {
+  0% { transform: scale(1) skewX(-2deg); opacity: 0.8; }
+  100% { transform: scale(1.1) skewX(2deg); opacity: 1; }
+}
+
+@keyframes panic-shake {
+  0% { margin-left: 0; }
+  25% { margin-left: -5px; }
+  50% { margin-left: 0; }
+  75% { margin-left: 5px; }
+  100% { margin-left: 0; }
+}
+
+
+/* =========================================
+   Interfaz del QTE (Botones y Anillos)
+   ========================================= */
+.qte-ui {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 10px rgba(0,0,0,1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.qte-prompt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.qte-title {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  color: #ff3333;
+  animation: pulse-text 1s infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes pulse-text {
+  0% { transform: scale(1) translateX(-50%); opacity: 0.9; }
+  100% { transform: scale(1.05) translateX(-48%); opacity: 1; text-shadow: 0 0 20px #ff0000; }
+}
+
+.qte-target {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 4px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.1s;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2) inset;
+  pointer-events: auto;
+}
+
+.qte-target:active {
+  transform: scale(0.9) translate(-50%, -50%) !important;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.qte-key {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.qte-instruction {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* Anillo elástico que se encoge */
+.qte-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 250px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 4px solid #ffaa00;
+  animation-name: shrink-ring;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  pointer-events: none;
+  box-shadow: 0 0 15px #ffaa00 inset, 0 0 15px #ffaa00;
+}
+
+@keyframes shrink-ring {
+  0% { 
+    width: 250px; 
+    height: 250px; 
+    border-color: #ffaa00;
+    box-shadow: 0 0 15px #ffaa00 inset, 0 0 15px #ffaa00;
+  }
+  80% {
+    border-color: #ff3300;
+    box-shadow: 0 0 15px #ff3300 inset, 0 0 15px #ff3300;
+  }
+  100% { 
+    width: 90px; 
+    height: 90px; 
+    border-color: #ff0000;
+    box-shadow: 0 0 20px #ff0000 inset, 0 0 20px #ff0000;
+  }
+}
+
+/* Resultados */
+.qte-result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qte-result {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.qte-result.success { 
+  color: #00ffaa; 
+  text-shadow: 0 0 20px #00ffaa, 0 5px 0 #008855;
+}
+.qte-result.failure { 
+  color: #ff3300; 
+  text-shadow: 0 0 20px #ff3300, 0 5px 0 #991100;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.3) rotate(-5deg); opacity: 0; }
+  50% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}

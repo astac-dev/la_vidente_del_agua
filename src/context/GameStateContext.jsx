@@ -27,6 +27,7 @@ const initialGameState = {
   stats: {
     preservacion: 0,
     confianza: 0,
+    estres: 0,
   },
   inventory: [],
   dialogueHistory: [],
@@ -271,7 +272,7 @@ export const GameStateProvider = ({ children }) => {
         
         // Auto-unlock logic
         unlockNode('cap_0');
-        if (targetChapter === 'capitulo_1') {
+        if (targetChapter === 'capitulo_1_1') {
           unlockNode('cap_1_intro');
         }
         if (sceneId === 'escena_1_7_ruta_a' || sceneId === 'escena_1_7_ruta_a_fin') {
@@ -282,6 +283,9 @@ export const GameStateProvider = ({ children }) => {
         
         return {
           ...prev,
+          previousSceneId: prev.currentSceneId,
+          previousChapterId: prev.currentChapter,
+          previousDialogueIndex: prev.dialogueIndex,
           currentChapter: targetChapter,
           currentSceneId: sceneId,
           dialogueIndex: dialogueIndex,
@@ -330,6 +334,61 @@ export const GameStateProvider = ({ children }) => {
     });
   };
 
+  const updateInventory = (operation, itemPayload) => {
+    setGameState(prev => {
+      const inventory = prev.inventory ? [...prev.inventory] : [];
+      
+      if (operation === 'add') {
+        const existingItemIndex = inventory.findIndex(i => i.id === itemPayload.id);
+        if (existingItemIndex >= 0) {
+          const item = { ...inventory[existingItemIndex] };
+          if (item.count !== -1) {
+            item.count = (item.count || 0) + (itemPayload.count || 1);
+          }
+          inventory[existingItemIndex] = item;
+        } else {
+          inventory.push({
+             ...itemPayload, 
+             count: itemPayload.count !== undefined ? itemPayload.count : 1,
+             maxDurability: itemPayload.maxDurability || itemPayload.count || 1
+          });
+        }
+      } else if (operation === 'use' || operation === 'remove') {
+        const existingItemIndex = inventory.findIndex(i => i.id === itemPayload.id);
+        if (existingItemIndex >= 0) {
+          const item = { ...inventory[existingItemIndex] };
+          if (item.count !== -1) {
+            item.count -= (itemPayload.count || 1);
+            if (item.count <= 0) {
+              item.count = 0;
+              if (!item.keepAtZero) {
+                inventory.splice(existingItemIndex, 1);
+              } else {
+                inventory[existingItemIndex] = item;
+              }
+            } else {
+              inventory[existingItemIndex] = item;
+            }
+          }
+        }
+      }
+      
+      return {
+        ...prev,
+        inventory
+      };
+    });
+  };
+
+  const unlockBackground = (bgSrc) => {
+    if (!bgSrc) return;
+    setGameState(prev => {
+      const bgs = prev.unlockedBackgrounds || [];
+      if (bgs.includes(bgSrc)) return prev;
+      return { ...prev, unlockedBackgrounds: [...bgs, bgSrc] };
+    });
+  };
+
   const saveGameToSlot = (slotIndex) => {
     setSaves(prevSaves => {
       const newSaves = [...prevSaves];
@@ -361,7 +420,7 @@ export const GameStateProvider = ({ children }) => {
       const targetChapter = save.gameState.currentChapter;
       const sceneId = save.gameState.currentSceneId;
       unlockNode('cap_0');
-      if (targetChapter === 'capitulo_1') {
+      if (targetChapter === 'capitulo_1_1') {
         unlockNode('cap_1_intro');
       }
       if (sceneId === 'escena_1_7_ruta_a' || sceneId === 'escena_1_7_ruta_a_fin') {
@@ -392,6 +451,8 @@ export const GameStateProvider = ({ children }) => {
     advanceDialogue,
     addToHistory,
     updateStat,
+    updateInventory,
+    unlockBackground,
     uiVisibility,
     toggleUiVisibility,
     saves,

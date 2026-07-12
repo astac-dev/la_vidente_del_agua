@@ -1,0 +1,982 @@
+{
+  "menu": {
+    "continueGame": "Continuar partida",
+    "newGame": "Nueva partida",
+    "fastGame": "Nueva partida rápida",
+    "loadGame": "Cargar partida",
+    "extras": "Extras",
+    "artGallery": "Galería de Arte",
+    "sceneSelector": "Selector de Escenas",
+    "bioculturalGlossary": "Glosario Biocultural",
+    "options": "Opciones",
+    "credits": "Créditos",
+    "exit": "Salir",
+    "back": "Volver",
+    "language": "Idioma",
+    "storyMap": "Mapa de Rutas",
+    "storyMapTitle": "Mapa de Rutas de la Memoria",
+    "nodeLocked": "Nodo Bloqueado",
+    "storyMapNodes": {
+      "cap_0": "Capítulo 0: El Despertar del Mapa",
+      "cap_1_intro": "Capítulo 1: El Respiro de Tulum",
+      "ruta_a_negligencia": "Final Alterno: Silencio Artificial",
+      "ruta_b_investigacion": "Ruta Principal: El Legado Subacuático"
+    },
+    "musicRoom": "Sala de Música"
+  },
+  "interface": {
+    "signInWithGoogle": "Guardar en la Nube",
+    "signOut": "Desconectar",
+    "greeting": "Hola, {{name}}",
+    "userProfilePicture": "Foto de perfil del usuario",
+    "exitMessageTitle": "Gracias por jugar.",
+    "clickToContinue": "Haz clic para continuar",
+    "rotateDevicePrompt": "Por favor, gira tu dispositivo a una posición horizontal para continuar.",
+    "toggleFullscreen": "Activar/desactivar pantalla completa",
+    "backToMenu": "Volver al menú principal",
+    "Dialogoautomaticos": "Diálogo automático",
+    "saltardialogo": "Saltar diálogo",
+    "tamanoLetra": "Tamaño de letra",
+    "fastMode": "Activar juego rápido",
+    "scanQr": "¡Escanea para jugar la versión completa!",
+    "musicVolume": "Volumen de Música",
+    "effectsVolume": "Volumen de Efectos",
+    "hideUI": "Ocultar interfaz",
+    "hideUIButton": "OCULTAR",
+    "showUI": "Haga clic en cualquier parte para mostrar la interfaz",
+    "fullscreenEnter": "Pantalla completa",
+    "fullscreenExit": "Salir de pantalla completa",
+    "fullscreenLabel": "PANTALLA COMPLETA",
+    "homeLabel": "INICIO",
+    "saveSlotTitle": "GUARDAR PARTIDA",
+    "saveSlotPrompt": "Selecciona una ranura de guardado para registrar tu progreso antes de salir:",
+    "exitWithoutSaving": "SALIR SIN GUARDAR",
+    "emptySlot": "Espacio Vacío",
+    "cancel": "CANCELAR",
+    "saveSlot": "Ranura",
+    "recLogLabel": "HISTORIAL",
+    "logTitle": "Bitácora de Campo // Historial de Diálogos",
+    "closeBtn": "Cerrar",
+    "noLog": "No hay registros en la bitácora todavía.",
+    "narrSkpLabel": "SALTAR",
+    "playAtLabel": "REPR.AUTO",
+    "orientationBlockerTitle": "MODO VERTICAL NO SOPORTADO",
+    "orientationBlockerBody": "Para disfrutar de la experiencia completa de La vidente del agua, por favor rota tu dispositivo a posición horizontal.",
+    "history": "Historial",
+    "skip": "Saltar",
+    "autoMode": "Modo Automático",
+    "previewText": "Texto"
+  },
+  "personajes": {
+    "narrador": "Narrador",
+    "protagonista": "Investigador",
+    "sofia": "Dra. Sofía (INAH)",
+    "pescador": "Don Mateo",
+    "amaranta": "Amaranta",
+    "naia": "Naia",
+    "mama": "Mamá",
+    "sistema": "Sistema",
+    "abuela": "Abuela",
+    "papa": "Papá"
+  },
+  "historia": {
+    "capitulo_0": {
+      "titulo": "Capítulo 0: Una guía muy necesaria",
+      "escenas": {
+        "guia_naia": {
+          "titulo_escena": "Capítulo 0: Una guía muy necesaria",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Sistema",
+              "texto": "Naia aparece en pantalla sosteniendo una pequeña antorcha. Observa los bordes del marco con curiosidad y luego mira directamente al jugador."
+            },
+            {
+              "id": 2,
+              "personaje": "Naia",
+              "texto": "¡Hey, caminante! No temas. Sé que este territorio es extraño para ti, pero en mi clan yo era la encargada de abrir los senderos en la oscuridad. Déjame enseñarte las marcas de este mapa digital para que no te pierdas en el abismo."
+            },
+            {
+              "id": 3,
+              "personaje": "Naia",
+              "texto": "Mira aquí abajo. Esto funciona como las huellas que dejamos en el lodo. Arriba verás el NOMBRE DEL PERSONAJE, para que sepas qué miembro de la tribu está hablando, y justo abajo aparecerá el TEXTO DEL DIÁLOGO con sus palabras."
+            },
+            {
+              "id": 4,
+              "personaje": "Sistema",
+              "texto": "El símbolo de agua al final de la caja comienza a parpadear en cian."
+            },
+            {
+              "id": 5,
+              "personaje": "Naia",
+              "texto": "¿Ves este SÍMBOLO DE AGUA flotando al final? El agua pura siempre corre y busca su camino. Cuando termines de leer, tócalo; funcionará como una flecha que te hará avanzar al siguiente fragmento de la historia."
+            },
+            {
+              "id": 6,
+              "personaje": "Sistema",
+              "texto": "Los botones de control del marco superior se iluminan uno a uno."
+            },
+            {
+              "id": 7,
+              "personaje": "Naia",
+              "texto": "Ahora mira las herramientas de supervivencia en los bordes de tu visor. Si tocas PANTALLA COMPLETA, expandirás tu horizonte para que la sabana y la cueva te rodeen por completo, borrando las distracciones del exterior."
+            },
+            {
+              "id": 8,
+              "personaje": "Naia",
+              "texto": "Si necesitas un descanso, el botón de MENÚ PRINCIPAL te llevará de vuelta a tu campamento base. Desde ahí puedes guardar tus avances en la nube, cambiar el volumen o ajustar el idioma de la expedición."
+            },
+            {
+              "id": 9,
+              "personaje": "Naia",
+              "texto": "¿Olvidaste un rastro atrás? El REGISTRO DE DIÁLOGOS te permite mirar tus propias pisadas. Ábrelo si necesitas revisar las palabras que ya se desvanecieron de la pantalla para entender mejor el misterio."
+            },
+            {
+              "id": 10,
+              "personaje": "Naia",
+              "texto": "Si estás cruzando por un sendero que ya recorriste en una vida anterior y quieres avanzar rápido, usa SALTAR DIÁLOGOS. Tu vista correrá a toda velocidad hasta encontrar un nuevo dilema."
+            },
+            {
+              "id": 11,
+              "personaje": "Naia",
+              "texto": "Si prefieres explorar con las manos libres, activa la REPRODUCCIÓN AUTOMÁTICA. Tú manejas el ritmo de la marcha en cuatro velocidades: \"x1\" es una caminata firme, \"x2\" un trote ligero, \"x3\" una carrera veloz y \"x4\" es tan rápido como una ráfaga de viento en la Era de Hielo."
+            },
+            {
+              "id": 12,
+              "personaje": "Naia",
+              "texto": "Por último, si quieres apreciar el paisaje puro sin que nada te estorbe, presiona OCULTAR INTERFAZ. Toda la herramienta desaparecerá para que observes los secretos del fondo marino. Solo toca cualquier parte de la pantalla y las marcas volverán."
+            },
+            {
+              "id": 13,
+              "personaje": "Naia",
+              "texto": "El mapa está trazado y las herramientas listas, explorador. El rastro de Hoyo Negro está fresco... ¿estás listo para adentrarte conmigo en la oscuridad?"
+            }
+          ]
+        },
+        "guia_naia_eleccion": {
+          "elecciones": {
+            "pregunta": "Casi se me olvida, habra menus como este que te pida tomar desiciones en el destino de la historia, crees poder aceptar esta responsabilidad.?, si quieres regresar antes de este menu de elección, presiona la X de este menu de eleccion. ",
+            "opciones": [
+              {
+                "texto": "SI"
+              },
+              {
+                "texto": "No"
+              }
+            ]
+          }
+        },
+        "guia_naia_si_mensaje": {
+          "texto": "Entonces sigamos, tus manos guiaran esta historia, click para continuar"
+        },
+        "guia_naia_no_mensaje": {
+          "texto": "No te preocupes, vuelve cuando te sientas list@."
+        }
+      }
+    },
+    "capitulo_1": {
+      "titulo": "Capítulo 1: Ecos en el Espejo de Agua (Parte 1)",
+      "escenas": {
+        "guia_naia": {
+          "titulo_escena": "Capítulo 0: Una guía muy necesaria",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Sistema",
+              "texto": "Naia aparece en pantalla sosteniendo una pequeña antorcha. Observa los bordes del marco con curiosidad y luego mira directamente al jugador."
+            },
+            {
+              "id": 2,
+              "personaje": "Naia",
+              "texto": "¡Hey, caminante! No temas. Sé que este territorio es extraño para ti, pero en mi clan yo era la encargada de abrir los senderos en la oscuridad. Déjame enseñarte las marcas de este mapa digital para que no te pierdas en el abismo."
+            },
+            {
+              "id": 3,
+              "personaje": "Naia",
+              "texto": "Mira aquí abajo. Esto funciona como las huellas que dejamos en el lodo. Arriba verás el NOMBRE DEL PERSONAJE, para que sepas qué miembro de la tribu está hablando, y justo abajo aparecerá el TEXTO DEL DIÁLOGO con sus palabras."
+            },
+            {
+              "id": 4,
+              "personaje": "Sistema",
+              "texto": "El símbolo de agua al final de la caja comienza a parpadear en cian."
+            },
+            {
+              "id": 5,
+              "personaje": "Naia",
+              "texto": "¿Ves este SÍMBOLO DE AGUA flotando al final? El agua pura siempre corre y busca su camino. Cuando termines de leer, tócalo; funcionará como una flecha que te hará avanzar al siguiente fragmento de la historia."
+            },
+            {
+              "id": 6,
+              "personaje": "Sistema",
+              "texto": "Los botones de control del marco superior se iluminan uno a uno."
+            },
+            {
+              "id": 7,
+              "personaje": "Naia",
+              "texto": "Ahora mira las herramientas de supervivencia en los bordes de tu visor. Si tocas PANTALLA COMPLETA, expandirás tu horizonte para que la sabana y la cueva te rodeen por completo, borrando las distracciones del exterior."
+            },
+            {
+              "id": 8,
+              "personaje": "Naia",
+              "texto": "Si necesitas un descanso, el botón de MENÚ PRINCIPAL te llevará de vuelta a tu campamento base. Desde ahí puedes guardar tus avances en la nube, cambiar el volumen o ajustar el idioma de la expedición."
+            },
+            {
+              "id": 9,
+              "personaje": "Naia",
+              "texto": "¿Olvidaste un rastro atrás? El REGISTRO DE DIÁLOGOS te permite mirar tus propias pisadas. Ábrelo si necesitas revisar las palabras que ya se desvanecieron de la pantalla para entender mejor el misterio."
+            },
+            {
+              "id": 10,
+              "personaje": "Naia",
+              "texto": "Si estás cruzando por un sendero que ya recorriste en una vida anterior y quieres avanzar rápido, usa SALTAR DIÁLOGOS. Tu vista correrá a toda velocidad hasta encontrar un nuevo dilema."
+            },
+            {
+              "id": 11,
+              "personaje": "Naia",
+              "texto": "Si prefieres explorar con las manos libres, activa la REPRODUCCIÓN AUTOMÁTICA. Tú manejas el ritmo de la marcha en cuatro velocidades: \"x1\" es una caminata firme, \"x2\" un trote ligero, \"x3\" una carrera veloz y \"x4\" es tan rápido como una ráfaga de viento en la Era de Hielo."
+            },
+            {
+              "id": 12,
+              "personaje": "Naia",
+              "texto": "Por último, si quieres apreciar el paisaje puro sin que nada te estorbe, presiona OCULTAR INTERFAZ. Toda la herramienta desaparecerá para que observes los secretos del fondo marino. Solo toca cualquier parte de la pantalla y las marcas volverán."
+            },
+            {
+              "id": 13,
+              "personaje": "Naia",
+              "texto": "El mapa está trazado y las herramientas listas, explorador. El rastro de Hoyo Negro está fresco... ¿estás listo para adentrarte conmigo en la oscuridad?"
+            }
+          ]
+        },
+        "guia_naia_eleccion": {
+          "elecciones": {
+            "pregunta": "Cierto, casi se me olvida, habra senderos que debes elegir tu mism@ para poder determinar el destino de los personajes, a continuación elige una opción y ve lo que sucede.",
+            "opciones": [
+              {
+                "texto": "SI"
+              },
+              {
+                "texto": "No"
+              }
+            ]
+          }
+        },
+        "guia_naia_no": {
+          "texto": "No hay problema cuando te sientas list@, empezamos nuestra historia, click en cualquier parte para continuar"
+        },
+        "escena_intro": {
+          "titulo_escena": "El Precio del Insomnio",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "Ciudad de México. 15 de diciembre de 2011."
+            },
+            {
+              "id": 2,
+              "personaje": "Narrador",
+              "texto": "Para la mayoría de los estudiantes, diciembre es sinónimo de fiestas, descanso y el cierre de un ciclo escolar exitoso."
+            },
+            {
+              "id": 3,
+              "personaje": "Narrador",
+              "texto": "Para Amaranta, es el recordatorio de que su mente se está desmoronando."
+            },
+            {
+              "id": 4,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: Parpadeo de pantalla en rojo tenue / Desenfoque de cámara]\n[SFX: Sonido de respiración agitada y dolor de cabeza punzante]"
+            },
+            {
+              "id": 5,
+              "personaje": "Amaranta",
+              "texto": "(Con la mirada perdida, sosteniendo un vaso de agua con manos temblorosas) Otra vez... Otra vez la misma sed maldita. Siento que tengo los pulmones llenos de polvo... y la cabeza a punto de estallar."
+            },
+            {
+              "id": 6,
+              "personaje": "Narrador",
+              "texto": "A sus 16 años, la vida de Amaranta solía ser predecible y brillante. Hija de un médico y una gerente de ventas, las calificaciones nunca habían sido un problema. Era la alumna ejemplar, la amiga sonriente."
+            },
+            {
+              "id": 7,
+              "personaje": "Narrador",
+              "texto": "Hasta que llegaron los sueños. O mejor dicho, las visiones."
+            },
+            {
+              "id": 8,
+              "personaje": "Amaranta",
+              "texto": "(Frustrada, arroja el vaso de plástico sobre el escritorio) ¡No quiero dormir! Cada vez que cierro los ojos, ese maldito vacío me traga. Siento el frío de la piedra, la oscuridad... y el miedo de alguien que no soy yo."
+            },
+            {
+              "id": 9,
+              "personaje": "Narrador",
+              "texto": "El insomnio crónico no tardó en cobrar factura. El rendimiento académico impecable cayó en picada; el cansancio acumulado transformó su habitual calidez en una versión gris, triste y de cambios de humor repentinos que asustaron a sus padres y alejaron a sus amigos."
+            },
+            {
+              "id": 10,
+              "personaje": "Narrador",
+              "texto": "Tras una gran cantidad de estudios médicos en el hospital para descartar problemas neurológicos y hormonales, el diagnóstico final fue tajante: \"Colapso nervioso por estrés severo\". ¿La receta? Tres meses de aislamiento fuera del estres de la ciudad y reposo."
+            }
+          ]
+        },
+        "escena_1_2": {
+          "titulo_escena": "El Respiro de Tulum",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "El remedio de sus padres fue enviarla lejos del ruido de la capital. Destino: Tulum, Quintana Roo, bajo el cuidado de su abuela. Un respiro necesario mientras ellos continuaban con sus jornadas laborales en la gran ciudad."
+            },
+            {
+              "id": 2,
+              "personaje": "Narrador",
+              "texto": "Los primeros tres días en el Caribe funcionaron como un bálsamo milagroso. Por fin, Amaranta pudo conciliar el sueño de forma natural, sin la humillante necesidad de recurrir a las pastillas para dormir."
+            },
+            {
+              "id": 3,
+              "personaje": "Narrador",
+              "texto": "El aire puro de la selva parecía haber ahuyentado a los fantasmas de su cabeza. Pero la calma en la superficie del suelo de Yucatán siempre es un espejismo."
+            },
+            {
+              "id": 4,
+              "personaje": "Narrador",
+              "texto": "Al cuarto día, durante una caminata de regreso a casa por los senderos menos transitados de la localidad, la paz se rompió."
+            }
+          ]
+        },
+        "escena_1_3": {
+          "titulo_escena": "Los Guardianes del Abismo",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Amaranta",
+              "texto": "(Escondiéndose ligeramente detrás de un arbusto, observando con los ojos de par en par) ¿Pero qué...? Este camino suele estar completamente desierto. ¿Qué hace toda esta gente aquí?"
+            },
+            {
+              "id": 2,
+              "personaje": "Narrador",
+              "texto": "Frente a ella, la quietud del pueblo se había transformado en un despliegue logístico incomprensible. Camionetas todoterreno con logotipos institucionales oficiales, plantas de luz rugiendo en la maleza y personal técnico moviéndose con urgencia."
+            },
+            {
+              "id": 3,
+              "personaje": "Narrador",
+              "texto": "No eran turistas, ni policías comunes. Eran buzos de exploración cargando tanques de gas, especialistas transportando computadoras de alta resistencia y científicos con analizando planos."
+            },
+            {
+              "id": 4,
+              "personaje": "Amaranta",
+              "texto": "(Murmurando para sí misma) Llevan trajes de neopreno... y esas cajas amarillas parecen equipos de rescate o de laboratorio... ¿Qué habrán encontrado ahí abajo? ¿Una cueva nueva?"
+            },
+            {
+              "id": 5,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: Destello blanco súbito en el centro de la pantalla]\n[SFX: Un latido sordo e interno: *DUM-DUM*]"
+            },
+            {
+              "id": 6,
+              "personaje": "Amaranta",
+              "texto": "(Llevándose la mano a la frente con un gesto de dolor agudo) ¡Ah...! ¿Otra vez? Justo en el centro de la frente... Siento una punzada helada, como si me clavaran una aguja de hielo."
+            },
+            {
+              "id": 7,
+              "personaje": "Narrador",
+              "texto": "La presión en su cabeza fue tan intensa que la obligó a retroceder y tomar el camino largo a casa. A medida que se alejaba del campamento científico, el dolor comenzó a ceder, dejándole únicamente una extraña sensación de urgencia y una profunda sed."
+            }
+          ]
+        },
+        "escena_1_4": {
+          "titulo_escena": "La Advertencia del Frasco",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "La cena con su abuela transcurrió con normalidad. Las risas y las historias locales lograron disipar el misterio de esos hombres y el dolor de cabeza de Amaranta. Sin embargo, al subir a su habitación, la noche adquirió un peso distinto."
+            },
+            {
+              "id": 2,
+              "personaje": "Narrador",
+              "texto": "Tras tomar una ducha, se dispuso a leer un rato para despejar la mente. Pero al apagar la lámpara, sus ojos se posaron inevitablemente sobre la mesa de noche."
+            },
+            {
+              "id": 3,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: Enfoque de cámara hacia el frasco de medicamentos]"
+            },
+            {
+              "id": 4,
+              "personaje": "Amaranta",
+              "texto": "(Mirando fijamente el frasco de pastillas para dormir) No las he tocado desde que llegué... He dormido bien. Pero... ¿por qué siento este escalofrío? Siento que esta noche... Esta noche va a ser diferente. Si no me tomo la pastilla, el vacío me va a atrapar otra vez."
+            },
+            {
+              "id": 5,
+              "personaje": "Narrador",
+              "texto": "A pesar de la fuerte intuición que recorrió su espina dorsal, el orgullo y el deseo de mantenerse limpia ganaron la batalla. Apartó la mirada, dio un leve suspiro y se acomodó entre las sábanas, cerrando los ojos."
+            },
+            {
+              "id": 6,
+              "personaje": "Narrador",
+              "texto": "Pasaron dos horas. El sueño la arrastró suavemente hacia un estado profundo de inconsciencia."
+            },
+            {
+              "id": 7,
+              "personaje": "Narrador",
+              "texto": "Hasta que el calor desapareció. El aire acondicionado de la habitación fue sustituido por una corriente helada y húmeda. El olor a selva se transformó en el aroma a piedra caliza rancia y confinamiento milenario."
+            },
+            {
+              "id": 8,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: La pantalla se oscurece por completo de forma lenta]\n[BGM: Detener BGM por completo]\n[SFX: Sonido lejano de goteo de agua con eco profundo: *Ploc... Ploc...*]"
+            },
+            {
+              "id": 9,
+              "personaje": "Narrador",
+              "texto": "El viaje en el tiempo había comenzado."
+            }
+          ]
+        },
+        "escena_1_5": {
+          "titulo_escena": "La Trampa Natural (El Sueño de Naia)",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "Amaranta ya no está en su cama. Su conciencia ha sido arrastrada trece mil años al pasado."
+            },
+            {
+              "id": 2,
+              "personaje": "Narrador",
+              "texto": "A través de los ojos de un cuerpo que no le pertenece, sostiene una antorcha de resina con la mano derecha. Las llamas bailan con desesperación, devoradas por una negrura tan densa que ninguna luz parece capaz de perforarla."
+            },
+            {
+              "id": 3,
+              "personaje": "Naia",
+              "texto": "(Respiración entrecortada, tacto seco en la garganta) Tengo tanta sed... La tierra afuera está muriendo y aquí abajo... Aquí abajo solo hay piedra."
+            },
+            {
+              "id": 4,
+              "personaje": "Narrador",
+              "texto": "Frente a ella se abre solo oscuridad. Es el Hoyo Negro primigenio, mucho antes de que el fin de la era de hielo lo inundara. Sigue caminando en su trayecto, buscando algún rastro de agua."
+            },
+            {
+              "id": 5,
+              "personaje": "Sistema",
+              "texto": "[SFX: Un aleteo masivo, agudo y repentino: SFX_HORDA_MURCIELAGOS]\n[EFECTO VISUAL: Ráfaga de partículas negras cruzando la pantalla]"
+            },
+            {
+              "id": 6,
+              "personaje": "Narrador",
+              "texto": "El calor de la antorcha altera el descanso de una colonia de murciélagos oculta en el techo de la bóveda. Cientos de garras y alas ciegas impactan contra el rostro de la joven en un parpadeo de pánico."
+            },
+            {
+              "id": 7,
+              "personaje": "Naia",
+              "texto": "¡Ah! ¡Déjenme! ¡No veo nada!"
+            },
+            {
+              "id": 8,
+              "personaje": "Narrador",
+              "texto": "La horda de quirópteros nubla su vista por completo. Presa del terror, la chica suelta la antorcha, gira sobre su propio eje y da unos pasos a ciegas. Llegando a un paso fatal justo al borde del abismo."
+            },
+            {
+              "id": 9,
+              "personaje": "Narrador",
+              "texto": "El suelo firme desaparece. La gravedad la reclama."
+            }
+          ],
+          "elecciones": {
+            "pregunta": "Elige la reacción de supervivencia de Naia.",
+            "opciones": [
+              {
+                "id": "opcion_fetal",
+                "texto": "Proteger la cabeza y encoger el cuerpo en posición fetal."
+              },
+              {
+                "id": "opcion_aferrarse",
+                "texto": "Extender los brazos para intentar aferrarse a las paredes rugosas."
+              }
+            ]
+          }
+        },
+        "escena_1_5_ruta_a": {
+          "titulo_escena": "Caída Fetal",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "El instinto de conservación la obliga a encogerse en el aire. Su cuerpo rueda y rebota violentamente contra los salientes del túnel calizo. El dolor es un destello blanco en su mente."
+            },
+            {
+              "id": 2,
+              "personaje": "Sistema",
+              "texto": "[SFX: Crujido óseo limpio y agudo: SFX_FRACTURA_PELVIS]"
+            },
+            {
+              "id": 3,
+              "personaje": "Naia",
+              "texto": "(Un grito ahogado que se corta instantáneamente por el impacto) ¡Gah...!"
+            },
+            {
+              "id": 4,
+              "personaje": "Narrador",
+              "texto": "El golpe final en el fondo de la fosa seca fractura su cadera de manera limpia. El impacto resuena en el frío eco del lugar, seguido de un silencio sepulcral que vuelve a apoderarse de la cueva oscura."
+            }
+          ]
+        },
+        "escena_1_5_ruta_b": {
+          "titulo_escena": "Caída Brazos Extendidos",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "En un acto desesperado, extiende las extremidades buscando un soporte. Sus manos y piernas se desgarran contra la superficie áspera y afilada de la cueva, frenando el descenso solo unas milésimas de segundo antes de la caída libre."
+            },
+            {
+              "id": 2,
+              "personaje": "Sistema",
+              "texto": "[SFX: Múltiples fracturas consecutivas y quejido sordo: SFX_FRACTURA_MULTIPLE]"
+            },
+            {
+              "id": 3,
+              "personaje": "Naia",
+              "texto": "(Un gemido largo, un quejido que se apaga lentamente) Uh... uuh..."
+            },
+            {
+              "id": 4,
+              "personaje": "Narrador",
+              "texto": "Los brazos extendidos absorben el impacto de forma destructiva, quebrando múltiples huesos antes de que su cuerpo quede inerte en el suelo. Es el último quejido de la adolescente antes de que el silencio absoluto lo devore todo."
+            }
+          ]
+        },
+        "escena_1_6": {
+          "titulo_escena": "El Retorno al Presente",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Amaranta",
+              "texto": "(Despierta de golpe, abriendo los ojos de par en par, llevándose las manos al cuerpo) ¡¡Ah...!! ¡No, no, no!"
+            },
+            {
+              "id": 2,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: Vibración de pantalla / Temblores en la cámara]"
+            },
+            {
+              "id": 3,
+              "personaje": "Amaranta",
+              "texto": "(Tocándose la cadera y los brazos con desesperación) ¿Estoy a salvo? ¿Estoy rota? Juro que escuché mis propios huesos romperse... Sentí el frío de la piedra en mi espalda... ¡Siento los brazos congelados!"
+            },
+            {
+              "id": 4,
+              "personaje": "Narrador",
+              "texto": "Amaranta se levanta de la cama tropezando con sus propias sábanas. El ardor en su garganta es real, una sed monstruosa que la hace sentir como si hubiera caminado días enteros bajo el sol del desierto."
+            },
+            {
+              "id": 5,
+              "personaje": "Narrador",
+              "texto": "Camina a tropezones hacia la cocina. El agua fría del refrigerador apenas logra calmar la quemazón interna. Al regresar a su recámara, la luz de la luna plateada revela el frasco sobre la mesa de noche."
+            },
+            {
+              "id": 6,
+              "personaje": "Amaranta",
+              "texto": "(Sosteniendo el frasco de pastillas con dedos temblorosos) Esto no fue una pesadilla normal... No fui yo quien cayó. Era otra persona. Una chica... una chica de mi edad con una antorcha. ¿Por qué puedo sentir su dolor? ¿Por qué se sintió tan real?"
+            },
+            {
+              "id": 7,
+              "personaje": "Narrador",
+              "texto": "Con el pulso acelerado y la certeza de que no podrá volver a conciliar el sueño por el miedo a regresar a esa fosa, destapa el frasco. Saca una pastilla. Sabiendo que ya pasó de la medianoche, la parte exactamente a la mitad con las uñas."
+            },
+            {
+              "id": 8,
+              "personaje": "Amaranta",
+              "texto": "Si me la tomo completa, no voy a despertar mañana... Solo necesito apagar mi cerebro. Solo un poco."
+            },
+            {
+              "id": 9,
+              "personaje": "Sistema",
+              "texto": "[SFX: Sonido de tragar agua]\n[EFECTO VISUAL: Fundido a negro lento]"
+            },
+            {
+              "id": 10,
+              "personaje": "Narrador",
+              "texto": "La media dosis hace efecto tras una larga hora de angustia. Amaranta cae en un letargo artificial, libre de visiones, pero desprovisto de un descanso real."
+            }
+          ]
+        },
+        "escena_1_7": {
+          "titulo_escena": "La Mañana del 24",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "A la mañana siguiente, el calor de Tulum parece borrar las sombras de la madrugada. Amaranta entra a la cocina arrastrando los pies, ocultando las ojeras detrás de una sonrisa forzada para no alarmar a su abuela."
+            },
+            {
+              "id": 2,
+              "personaje": "Amaranta",
+              "texto": "(Pensando para sí misma mientras observa a su abuela cocinar) Si le digo lo que soñé... va a pensar que estoy completamente demente. \"Abuela, soñé con una niña que murió hace miles de años en una cueva sin agua\". Sí, claro. Directito al hospital psiquiátrico."
+            },
+            {
+              "id": 3,
+              "personaje": "Sistema",
+              "texto": "[SFX: Tono de llamada de celular de 2011: SFX_TELEFONO_RING]"
+            },
+            {
+              "id": 4,
+              "personaje": "Amaranta",
+              "texto": "(Saca el teléfono del bolsillo) ¿Mamá?"
+            },
+            {
+              "id": 5,
+              "personaje": "Mamá",
+              "texto": "(Voz a través del auricular, con tono apurado pero cariñoso) ¡Hola, mi amor! Solo llamaba para avisarte que tu papá y yo ya logramos coordinar los días libres. Salimos para allá mañana mismo. ¡Vamos a pasar este 24 de diciembre juntas en casa de la abuela!"
+            },
+            {
+              "id": 6,
+              "personaje": "Amaranta",
+              "texto": "(Tratando de sonar entusiasmada) ¿En serio? Qué bueno, mamá... Sí, las espero. Aquí las cosas están... muy tranquilas."
+            }
+          ]
+        },
+        "escena_1_7_eleccion": {
+          "elecciones": {
+            "pregunta": "¿Qué camino decidirá tomar Amaranta ante las sospechas de su entorno?",
+            "opciones": [
+              {
+                "texto": "Ignorar los misterios y concentrarse en su recuperación familiar."
+              },
+              {
+                "texto": "Investigar a fondo qué está sucediendo en los cenotes."
+              }
+            ]
+          }
+        },
+        "escena_1_7_ruta_a": {
+          "titulo_escena": "Ruta de la Negligencia",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "20 de diciembre. 10:30 PM. Las luces de la televisión parpadean en la sala mientras el aroma de la cena de la abuela intenta ahuyentar el frío de la noche."
+            },
+            {
+              "id": 2,
+              "personaje": "Amaranta",
+              "texto": "(Pensativa, mirando la pantalla, sin prestar atención) Esas camionetas de los científicos... Ese extraño uniforme... sus instrumentos raros..."
+            },
+            {
+              "id": 3,
+              "personaje": "Sistema",
+              "texto": "[SFX: Golpes firmes a la puerta: SFX_TOCAR_PUERTA]"
+            },
+            {
+              "id": 4,
+              "personaje": "Abuela",
+              "texto": "(Desde la cocina) ¡Ami, mi niña! ¿Podrías abrir por favor? Deben ser tus padres, el camión de la capital venía retrasado."
+            },
+            {
+              "id": 5,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: Transición rápida a primer plano de puerta abriéndose]"
+            },
+            {
+              "id": 6,
+              "personaje": "Mamá",
+              "texto": "(Abrazando a Amaranta con fuerza) ¡Mírate, qué delgada estás! ¿Te encuentras bien, mi amor? Te hemos extrañado tanto..."
+            },
+            {
+              "id": 7,
+              "personaje": "Amaranta",
+              "texto": "(Escondiendo el rostro en su hombro) Yo también, mamá. Siento que no los he visto en siglos."
+            },
+            {
+              "id": 8,
+              "personaje": "Narrador",
+              "texto": "Detrás de ellas, su padre entra cargando las pesadas maletas familiares, saludando a Amaranta con el alivio de quien recupera su tesoro más grande tras una larga ausencia."
+            },
+            {
+              "id": 9,
+              "personaje": "Narrador",
+              "texto": "La cena transcurre entre risas, anécdotas vergonzosas de la infancia de su madre y recuerdos que logran, por unas horas, devolverle el color al semblante gris de Amaranta."
+            },
+            {
+              "id": 10,
+              "personaje": "Papá",
+              "texto": "(Mirándola fijamente, bajando el tono de voz) Dime, Ami... ¿cómo va el descanso? ¿Has seguido al pie de la letra el tratamiento y tus pastillas?"
+            },
+            {
+              "id": 11,
+              "personaje": "Amaranta",
+              "texto": "(Bajando la mirada, jugando con los cubiertos) Sí, papá. Solo ayer tuve un... episodio extraño. Pero tomé media dosis y logré controlarlo."
+            },
+            {
+              "id": 12,
+              "personaje": "Narrador",
+              "texto": "Al subir a su habitación, Amaranta observa el horizonte oscuro de la selva a través de la ventana. Una parte de ella grita por investigar qué oculta el INAH en esos cenotes; la otra, cansada y asustada, prefiere la comodidad."
+            },
+            {
+              "id": 13,
+              "personaje": "Amaranta",
+              "texto": "(Cerrando las cortinas, suspirando) No soy una espía de película. Solo soy una estudiante de prepa con suficientes problemas. Es mejor dejarlo pasar."
+            },
+            {
+              "id": 14,
+              "personaje": "Narrador",
+              "texto": "Los días se transforman en semanas. El espíritu navideño y las rutinas de ejercicio matutino con su madre logran mitigar el insomnio. Para el 7 de enero de 2012, sus padres regresan a la Ciudad de México, dejándola bajo la promesa de seguir medicándose."
+            },
+            {
+              "id": 15,
+              "personaje": "Narrador",
+              "texto": "16 de marzo de 2012. Los tres meses de aislamiento concluyen y Amaranta regresa a la capital. Su rendimiento académico vuelve a la normalidad. Es feliz, o al menos lo cree, mientras entierra el misterio de Naia en el olvido."
+            },
+            {
+              "id": 16,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: Pantalla se tiñe de un filtro gris melancólico]\n[SFX: Sonido de frasco de pastillas agitándose]"
+            },
+            {
+              "id": 17,
+              "personaje": "Narrador",
+              "texto": "La rutina ha vuelto, pero ahora hay un precio: Amaranta depende por completo de dosis de ansiolíticos para poder dormir. Ha olvidado el sueño, pero ha cambiado su don por un silencio artificial."
+            }
+          ]
+        },
+        "escena_1_7_ruta_a_fin": {
+          "texto": "FIN DE LA RUTA DE LA NEGLIGENCIA"
+        },
+        "escena_1_7_ruta_b": {
+          "titulo_escena": "Ruta de la Investigación",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "Los días posteriores a la llegada de sus padres transcurren en una calma tensa, pero la curiosidad de Amaranta se mantiene intacta. La sospecha de que algo grande ocurre en la selva no la deja en paz."
+            },
+            {
+              "id": 2,
+              "personaje": "Narrador",
+              "texto": "30 de diciembre. 07:45 AM. Al bajar a la sala para desayunar antes de su salida familiar, encuentra a su abuela inmóvil frente al viejo estante de madera, contemplando con ojos vidriosos una antigua fotografía."
+            },
+            {
+              "id": 3,
+              "personaje": "Amaranta",
+              "texto": "(Acercándose con suavidad) ¿Abuela? ¿Qué miras con tanta atención?"
+            },
+            {
+              "id": 4,
+              "personaje": "Abuela",
+              "texto": "(Sobresaltada, llevándose la mano al pecho) ¡Ay, mi niña! No te escuché venir... Déjame tomar aire, que me diste un buen susto."
+            },
+            {
+              "id": 5,
+              "personaje": "Amaranta",
+              "texto": "Perdón, no quería asustarte. Es solo que... te ves muy triste. ¿Quién es el hombre de la foto?"
+            },
+            {
+              "id": 6,
+              "personaje": "Abuela",
+              "texto": "(Sonriendo con nostalgia, invitándola a sentarse) Es tu abuelo. Un hombre maravilloso. Pocos recuerdan que fue uno de los biólogos marinos más respetados de todo Tulum, especializado en los misterios de los cenotes."
+            },
+            {
+              "id": 7,
+              "personaje": "Abuela",
+              "texto": "Decía que el agua subterránea no era solo pozos de agua, sino bibliotecas del tiempo ocultas bajo nuestros pies. Tristemente, falleció en una excursión en el mar Caribe... Una tormenta imprevista hundió su barco y se llevó a toda la tripulación al fondo."
+            },
+            {
+              "id": 8,
+              "personaje": "Amaranta",
+              "texto": "(Tomando las manos arrugadas de su abuela) No te pongas triste, abuela. Yo no lo conocí, pero mamá siempre me habla de él. Dice que era un explorador intrépido, el hombre más feliz del mundo y que jamás se deprimía si algo salía mal. Él querría que fueras muy feliz."
+            },
+            {
+              "id": 9,
+              "personaje": "Narrador",
+              "texto": "Las palabras de Amaranta consuelan el alma de la anciana, pero en el interior de la joven, una chispa se ha encendido. Su linaje está amarrado al agua profunda."
+            },
+            {
+              "id": 10,
+              "personaje": "Sistema",
+              "texto": "[EFECTO VISUAL: Transición de escenario a BG_PUEBLO_TULUM_DIA]\n[BGM: Cambia a BGM_MISTERIO_CIENTIFICO]"
+            },
+            {
+              "id": 11,
+              "personaje": "Narrador",
+              "texto": "Más tarde ese mismo día, durante un paseo por los puestos locales de Tulum, el misterio choca de frente contra la realidad."
+            },
+            {
+              "id": 12,
+              "personaje": "Amaranta",
+              "texto": "(Observando discretamente los locales de comida) ¡Ahí están otra vez...!"
+            },
+            {
+              "id": 13,
+              "personaje": "Narrador",
+              "texto": "Sentados en las mesas comunitarias, varios hombres y mujeres almuerzan en silencio. Visten uniformes, chalecos con las siglas del INAH y cargan mapas."
+            },
+            {
+              "id": 14,
+              "personaje": "Amaranta",
+              "texto": "(Con determinación en la mirada) Son la misma gente del sendero. Están buscando algo masivo aquí en Tulum. Y mis pesadillas deben ser clave."
+            }
+          ]
+        },
+        "escena_1_5_exito": {
+          "titulo_escena": "¡Esquiva!",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "Logra esquivar la horda, pero el borde se desmorona bajo sus pies y cae hacia la oscuridad, preparándose para el impacto."
+            }
+          ]
+        }
+      }
+    }
+  },
+  "credits": {
+    "title": "La Vidente del Agua",
+    "subtitle": "Una Aventura Narrativa en el Pleistoceno",
+    "developmentTeam": "Equipo de Desarrollo",
+    "generalCredits": "Créditos Generales",
+    "closeCredits": "Cerrar créditos",
+    "backToMenu": "Volver al menú principal",
+    "roles": {
+      "directionScript": "Dirección y Guion",
+      "softwareEngineering": "Ingeniería de Software",
+      "interfaceDesign": "Diseño de Interfaz",
+      "artIllustrations": "Ilustraciones y Concept Art",
+      "musicBgm": "Música y BGM",
+      "scientificAdvisory": "Asesoría Científica",
+      "specialThanks": "Agradecimientos Especiales",
+      "producedBy": "Producido por",
+      "technicalDirection": "Dirección Técnica y Programación Principal",
+      "screenplayNarrative": "Guion y Diseño Narrativo",
+      "coArtLeadEnvUI": "Co-Liderazgo de Arte, Fondos e Interfaz de Usuario",
+      "coArtLeadChar": "Co-Liderazgo de Arte e Ilustración de Personajes",
+      "audioMusic": "Diseño de Audio y Composición Musical"
+    },
+    "names": {
+      "amarantaRuiz": "Amaranta Ruiz",
+      "alexGomez": "Alex Gomez",
+      "antigravity": "Antigravity AI",
+      "googleAntigravity": "Google Antigravity Team",
+      "tulumArtists": "Buzos y Científicos de Tulum",
+      "hoyoNegroPaintings": "Pinturas Rupestres Hoyo Negro",
+      "ambientMusic": "Naia Pleistocene Ambient",
+      "soundscapes": "Don Mateo Soundscape",
+      "inahInstitution": "Instituto Nacional de Antropología e Historia (INAH)",
+      "hoyoNegroCollab": "Colaboradores del Proyecto Hoyo Negro",
+      "quintanaRooCavediving": "Comunidad de Espeleobuceo de Quintana Roo",
+      "inahDivers": "Buzos de Rescate Subacuático del INAH",
+      "inahGameStudio": "INAH Game Studio 2026",
+      "manuelAzuara": "Manuel Alejandro Azuara V.",
+      "yamileSanchez": "Yamile Sánchez Castro",
+      "fernandaRojas": "María Fernanda Rojas Aquino",
+      "yaquelinMartinez": "Yaquelin Martínez Aldana",
+      "carlosMartinez": "Carlos Gael Martínez Jaimes"
+    }
+  },
+  "gallery": {
+    "title": "Galería de Arte",
+    "subtitle": "Ilustraciones y Hallazgos del Pleistoceno",
+    "page": "Página",
+    "of": "de",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "closeLightbox": "Cerrar visor",
+    "closeGallery": "Cerrar galería",
+    "mascara": {
+      "title": "Máscara de la Tierra",
+      "desc": "Máscara preclásica con signos de agua descubierta en Uaxactun."
+    },
+    "arnauld": {
+      "title": "Excavaciones Arnauld",
+      "desc": "Registro arqueológico de los niveles de excavación de 2016."
+    },
+    "escaneo": {
+      "title": "Escaneo 3D de la Cueva",
+      "desc": "Modelo tridimensional de los cenotes inundados de Quintana Roo."
+    },
+    "habitacion": {
+      "title": "Habitación CDMX",
+      "desc": "El cuarto de Amaranta, lleno de insomnio y sombras en la capital."
+    },
+    "cdmx": {
+      "title": "Ciudad de México",
+      "desc": "Panorama nocturno de la gran ciudad, tan ruidosa como aislante."
+    },
+    "secundaria": {
+      "title": "Secundaria Diurna",
+      "desc": "Recuerdos borrosos de los días de escuela y el acoso."
+    },
+    "playa": {
+      "title": "Playa de Tulum",
+      "desc": "La tranquilidad superficial del Caribe antes de sumergirse."
+    },
+    "casa_abuela": {
+      "title": "Casa de la Abuela",
+      "desc": "Refugio familiar en Tulum que conecta a Amaranta con su pasado."
+    },
+    "campamento": {
+      "title": "Campamento INAH",
+      "desc": "Instalaciones científicas a la orilla del cenote."
+    },
+    "pleistoceno": {
+      "title": "El Pleistoceno",
+      "desc": "Visión de la Era de Hielo; un mundo habitado por megafauna."
+    },
+    "radar": {
+      "title": "Radar de Fósiles",
+      "desc": "Pantalla de telemetría buscando anomalías bajo el agua."
+    },
+    "lockedTitle": "???",
+    "lockedDesc": "Sigue avanzando en la historia para desbloquear esta obra."
+  },
+  "music": {
+    "theme_main_menu": {
+      "title": "Tema Principal",
+      "desc": "La misteriosa melodía que te recibe en la antesala de la historia."
+    },
+    "pluck_loop": {
+      "title": "Guía de Naia",
+      "desc": "Un eco rítmico que acompaña los consejos de supervivencia en el tutorial."
+    },
+    "signal_trace": {
+      "title": "Rastreo de Señal",
+      "desc": "Tensión sutil durante la exploración en la selva."
+    },
+    "ancient_cave_terror": {
+      "title": "Terror Ancestral",
+      "desc": "Ecos aterradores de las profundidades de la cueva."
+    },
+    "temporal_glitch_panic": {
+      "title": "Falla Temporal",
+      "desc": "Pánico desorientador cuando el tiempo se fractura."
+    },
+    "the_primal_descent": {
+      "title": "Descenso Primordial",
+      "desc": "La inmersión hacia los secretos más antiguos de la humanidad."
+    },
+    "nowPlaying": "Reproduciendo:",
+    "stop": "Detener",
+    "lockedTitle": "???",
+    "lockedDesc": "Sigue jugando para desbloquear esta melodía.",
+    "subtitle": "Banda Sonora Original",
+    "closeRoom": "Cerrar Sala"
+  },
+  "minigame": {
+    "defend": "¡DEFIÉNDETE!",
+    "sequence": "Secuencia: ",
+    "dodged": "¡ESQUIVASTE!",
+    "caught": "¡TE ALCANZARON!"
+  },
+  "historia": {
+    "capitulo_1_1": {
+      "escenas": {
+        "escena_1_7_ruta_a": {
+          "texto": "Has decidido priorizar la tranquilidad de tu familia.\nSin embargo, los ecos del pasado aún aguardan bajo la selva.\n\nContinuará..."
+        },
+        "escena_1_7_ruta_b": {
+          "texto": "Has decidido enfrentar tus miedos y descubrir la verdad.\nEl cenote aguarda tus respuestas.\n\nContinuará..."
+        }
+      }
+    }
+  }
+}

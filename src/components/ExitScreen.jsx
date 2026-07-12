@@ -12,8 +12,7 @@ const ExitScreen = () => {
       style={{ '--ui-scale-multiplier': `${(settings.tamanoLetra || 100) / 100}` }}
     >
       <div className="exit-screen-content">
-        <h1>{t('exitMessageTitle')}</h1>
-        <p>{t('exitMessageBody')}</p>
+        <h1>{t('interface.exitMessageTitle')}</h1>
       </div>
     </div>
   );

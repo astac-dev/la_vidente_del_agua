@@ -29,8 +29,7 @@
     "signOut": "Desconectar",
     "greeting": "Hola, {{name}}",
     "userProfilePicture": "Foto de perfil del usuario",
-    "exitMessageTitle": "¡Gracias por jugar!",
-    "exitMessageBody": "Ahora puedes cerrar esta pestaña de forma segura.",
+    "exitMessageTitle": "Gracias por jugar.",
     "clickToContinue": "Haz clic para continuar",
     "rotateDevicePrompt": "Por favor, gira tu dispositivo a una posición horizontal para continuar.",
     "toggleFullscreen": "Activar/desactivar pantalla completa",
@@ -817,6 +816,16 @@
               "texto": "(Con determinación en la mirada) Son la misma gente del sendero. Están buscando algo masivo aquí en Tulum. Y mis pesadillas deben ser clave."
             }
           ]
+        },
+        "escena_1_5_exito": {
+          "titulo_escena": "¡Esquiva!",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "Logra esquivar la horda, pero el borde se desmorona bajo sus pies y cae hacia la oscuridad, preparándose para el impacto."
+            }
+          ]
         }
       }
     }
@@ -951,5 +960,23 @@
     "lockedDesc": "Sigue jugando para desbloquear esta melodía.",
     "subtitle": "Banda Sonora Original",
     "closeRoom": "Cerrar Sala"
+  },
+  "minigame": {
+    "defend": "¡DEFIÉNDETE!",
+    "sequence": "Secuencia: ",
+    "dodged": "¡ESQUIVASTE!",
+    "caught": "¡TE ALCANZARON!"
+  },
+  "historia": {
+    "capitulo_1_1": {
+      "escenas": {
+        "escena_1_7_ruta_a": {
+          "texto": "Has decidido priorizar la tranquilidad de tu familia.\nSin embargo, los ecos del pasado aún aguardan bajo la selva.\n\nContinuará..."
+        },
+        "escena_1_7_ruta_b": {
+          "texto": "Has decidido enfrentar tus miedos y descubrir la verdad.\nEl cenote aguarda tus respuestas.\n\nContinuará..."
+        }
+      }
+    }
   }
 }

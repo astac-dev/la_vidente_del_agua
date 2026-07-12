@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node generate-manifest.cjs && vite",
+    "build": "node generate-manifest.cjs && vite build",
     "validate": "node validate-script.cjs",
-    "build:itch": "vite build --base=./",
+    "build:itch": "node generate-manifest.cjs && vite build --base=./",
     "package:itch": "node package-itch.cjs",
     "lint": "eslint .",
     "preview": "vite preview",
