@@ -29,8 +29,7 @@
     "signOut": "Disconnect",
     "greeting": "Hello, {{name}}",
     "userProfilePicture": "User profile picture",
-    "exitMessageTitle": "Thanks for playing!",
-    "exitMessageBody": "You can now safely close this tab.",
+    "exitMessageTitle": "Thank you for playing.",
     "clickToContinue": "Click to continue",
     "rotateDevicePrompt": "Please rotate your device horizontally to continue.",
     "toggleFullscreen": "Toggle fullscreen",
@@ -523,6 +522,16 @@
               "texto": "(With determination in her eyes) They are the same people from the trail. They are looking for something massive here in Tulum. And my nightmares must be key."
             }
           ]
+        },
+        "escena_1_5_exito": {
+          "titulo_escena": "Dodge!",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrator",
+              "texto": "She manages to dodge the horde, but the edge crumbles under her feet and she falls into the darkness, bracing for impact."
+            }
+          ]
         }
       }
     },
@@ -759,6 +768,16 @@
               }
             }
           }
+        },
+        "escena_1_5_exito": {
+          "titulo_escena": "Dodge!",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrator",
+              "texto": "She manages to dodge the horde, but the edge crumbles under her feet and she falls into the darkness, bracing for impact."
+            }
+          ]
         }
       }
     }
@@ -893,5 +912,23 @@
     "lockedDesc": "Keep playing to unlock this melody.",
     "subtitle": "Original Soundtrack",
     "closeRoom": "Close Room"
+  },
+  "minigame": {
+    "defend": "DEFEND YOURSELF!",
+    "sequence": "Sequence: ",
+    "dodged": "DODGED!",
+    "caught": "CAUGHT!"
+  },
+  "historia": {
+    "capitulo_1_1": {
+      "escenas": {
+        "escena_1_7_ruta_a": {
+          "texto": "You have decided to prioritize your family's peace of mind.\nHowever, the echoes of the past still await beneath the jungle.\n\nTo be continued..."
+        },
+        "escena_1_7_ruta_b": {
+          "texto": "You have decided to face your fears and discover the truth.\nThe cenote awaits your answers.\n\nTo be continued..."
+        }
+      }
+    }
   }
 }

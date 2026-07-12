@@ -29,8 +29,7 @@
     "signOut": "T'ox t'aan",
     "greeting": "Ki'imak óolal, {{name}}",
     "userProfilePicture": "U yoochel j-báaxal",
-    "exitMessageTitle": "¡Nib óolal ti' teech úuchik a báaxal!",
-    "exitMessageBody": "Bejla'e' je'el u páajtal a k'aliko' le u joolil k'áat chi'a'.",
+    "exitMessageTitle": "Nib óolal ti' teech úuchik a báaxal.",
     "clickToContinue": "P'iit' xook utial a k'áaxal",
     "rotateDevicePrompt": "Je'el u béeytale', sut a nu'ukulil ti' u tselil utial a t'óoch'k'al.",
     "toggleFullscreen": "T'u'ul/k'al le chuunpak",
@@ -523,6 +522,16 @@
               "texto": "(Yéetel u yich tsolil) Leti'e' j-máako'ob te' bejo'. Ku kaxtiko'ob jump'éel nojoch ba'al way Tulum. Yéetel in k'aas wayak'o'ob leti' u beelil."
             }
           ]
+        },
+        "escena_1_5_exito": {
+          "titulo_escena": "¡Esquiva!",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "Logra esquivar la horda, pero el borde se desmorona bajo sus pies y cae hacia la oscuridad, preparándose para el impacto."
+            }
+          ]
         }
       }
     },
@@ -759,6 +768,16 @@
               }
             }
           }
+        },
+        "escena_1_5_exito": {
+          "titulo_escena": "¡Esquiva!",
+          "dialogos": [
+            {
+              "id": 1,
+              "personaje": "Narrador",
+              "texto": "Logra esquivar la horda, pero el borde se desmorona bajo sus pies y cae hacia la oscuridad, preparándose para el impacto."
+            }
+          ]
         }
       }
     }
@@ -893,5 +912,23 @@
     "lockedDesc": "Báaxalnaj ti'al a je'ik le k'aaya'.",
     "subtitle": "U k'aayil báaxal",
     "closeRoom": "K'a'al"
+  },
+  "minigame": {
+    "defend": "¡DEFIÉNDETE!",
+    "sequence": "Secuencia: ",
+    "dodged": "¡ESQUIVASTE!",
+    "caught": "¡TE ALCANZARON!"
+  },
+  "historia": {
+    "capitulo_1_1": {
+      "escenas": {
+        "escena_1_7_ruta_a": {
+          "texto": "Ta tukultaj yáax ilik u ki'imak óolal a láak'tsilo'ob.\nBa'ale' u juum úuchben k'iino'obe' láayli' pa'atech yáanal k'áaxe'.\n\nBíin ts'o'okok..."
+        },
+        "escena_1_7_ruta_b": {
+          "texto": "Ta ch'a'tuklaj a aktáantik a sajkil yéetel a kaxantik u jaajil.\nLe ts'ono'oto' tu pa'atik a núukilo'ob.\n\nBíin ts'o'okok..."
+        }
+      }
+    }
   }
 }

@@ -1,0 +1,190 @@
+{
+  "generatedAt": "2026-07-12T18:16:27.651Z",
+  "totalAssets": 46,
+  "assets": [
+    {
+      "name": "Logotipo principal",
+      "url": "./logo.jpg"
+    },
+    {
+      "name": "Ilustración del menú",
+      "url": "./assets/ui/fondo_menu_principal.jpg"
+    },
+    {
+      "name": "bg_cdmx.png",
+      "url": "./backgrounds/bg_cdmx.png"
+    },
+    {
+      "name": "bg_sendero_selva_campamento.png",
+      "url": "./backgrounds/bg_sendero_selva_campamento.png"
+    },
+    {
+      "name": "casa_abuela_tulum.png",
+      "url": "./backgrounds/casa_abuela_tulum.png"
+    },
+    {
+      "name": "escena_1_5_pleistoceno.png",
+      "url": "./backgrounds/escena_1_5_pleistoceno.png"
+    },
+    {
+      "name": "habitacion_cdmx.png",
+      "url": "./backgrounds/habitacion_cdmx.png"
+    },
+    {
+      "name": "playa_tulum.png",
+      "url": "./backgrounds/playa_tulum.png"
+    },
+    {
+      "name": "radar_fossil.png",
+      "url": "./backgrounds/radar_fossil.png"
+    },
+    {
+      "name": "secundaria_cdmx.png",
+      "url": "./backgrounds/secundaria_cdmx.png"
+    },
+    {
+      "name": "ancient_cave_terror.mp3",
+      "url": "./bgm/ancient_cave_terror.mp3"
+    },
+    {
+      "name": "core_protocol.mp3",
+      "url": "./bgm/core_protocol.mp3"
+    },
+    {
+      "name": "pluck_loop_01.mp3",
+      "url": "./bgm/pluck_loop_01.mp3"
+    },
+    {
+      "name": "signal_trace.mp3",
+      "url": "./bgm/signal_trace.mp3"
+    },
+    {
+      "name": "temporal_glitch_panic.mp3",
+      "url": "./bgm/temporal_glitch_panic.mp3"
+    },
+    {
+      "name": "theme_main_menu.mp3",
+      "url": "./bgm/theme_main_menu.mp3"
+    },
+    {
+      "name": "the_primal_descent.mp3",
+      "url": "./bgm/the_primal_descent.mp3"
+    },
+    {
+      "name": "Amaranta_frente_dudas_sf.png",
+      "url": "./sprites/Amaranta_frente_dudas_sf.png"
+    },
+    {
+      "name": "amaranta_ppijama.png",
+      "url": "./sprites/amaranta_ppijama.png"
+    },
+    {
+      "name": "Arqueologo_1_INAH.png",
+      "url": "./sprites/Arqueologo_1_INAH.png"
+    },
+    {
+      "name": "Diario.png",
+      "url": "./sprites/Diario.png"
+    },
+    {
+      "name": "murcielago.png",
+      "url": "./sprites/murcielago.png"
+    },
+    {
+      "name": "Naia_callendo.png",
+      "url": "./sprites/Naia_callendo.png"
+    },
+    {
+      "name": "Naia_callendo_frente.png",
+      "url": "./sprites/Naia_callendo_frente.png"
+    },
+    {
+      "name": "Naia_frente_Normal_.png",
+      "url": "./sprites/Naia_frente_Normal_.png"
+    },
+    {
+      "name": "Naia_panico.png",
+      "url": "./sprites/Naia_panico.png"
+    },
+    {
+      "name": "Naia_PerfilIzq_Asombro_.png",
+      "url": "./sprites/Naia_PerfilIzq_Asombro_.png"
+    },
+    {
+      "name": "Naia_preocupada.png",
+      "url": "./sprites/Naia_preocupada.png"
+    },
+    {
+      "name": "Naia_preocupada_sin_antorcha.png",
+      "url": "./sprites/Naia_preocupada_sin_antorcha.png"
+    },
+    {
+      "name": "Pastillas.png",
+      "url": "./sprites/Pastillas.png"
+    },
+    {
+      "name": "Telefono_Celular.png",
+      "url": "./sprites/Telefono_Celular.png"
+    },
+    {
+      "name": "Ame_2016_arnauld_fig3.jpg",
+      "url": "./arte/Ame_2016_arnauld_fig3.jpg"
+    },
+    {
+      "name": "escaneo_3d_de_la_cueva.png",
+      "url": "./arte/escaneo_3d_de_la_cueva.png"
+    },
+    {
+      "name": "mascara_de_la_tierra.jpg",
+      "url": "./arte/mascara_de_la_tierra.jpg"
+    },
+    {
+      "name": "node_cap0.png",
+      "url": "./assets/thumbnails/node_cap0.png"
+    },
+    {
+      "name": "node_cap1.png",
+      "url": "./assets/thumbnails/node_cap1.png"
+    },
+    {
+      "name": "node_ruta_a.png",
+      "url": "./assets/thumbnails/node_ruta_a.png"
+    },
+    {
+      "name": "node_ruta_b.png",
+      "url": "./assets/thumbnails/node_ruta_b.png"
+    },
+    {
+      "name": "136460__debsound__bone-breaking.wav",
+      "url": "./vfx/136460__debsound__bone-breaking.wav"
+    },
+    {
+      "name": "354103__bini_trns__few-small-branches-snapping-close-up-high-frequencyh6.wav",
+      "url": "./vfx/354103__bini_trns__few-small-branches-snapping-close-up-high-frequencyh6.wav"
+    },
+    {
+      "name": "470587__silverillusionist__heavy-impact.wav",
+      "url": "./vfx/470587__silverillusionist__heavy-impact.wav"
+    },
+    {
+      "name": "483397__abacagi__bat-swarm-sfx.mp3",
+      "url": "./vfx/483397__abacagi__bat-swarm-sfx.mp3"
+    },
+    {
+      "name": "54489__drgasp__heartbeat.mp3",
+      "url": "./vfx/54489__drgasp__heartbeat.mp3"
+    },
+    {
+      "name": "844097__perspektywa_tn__heavy_breathing_female.wav",
+      "url": "./vfx/844097__perspektywa_tn__heavy_breathing_female.wav"
+    },
+    {
+      "name": "KaushanScript-Regular.ttf",
+      "url": "./fonts/KaushanScript-Regular.ttf"
+    },
+    {
+      "name": "KaushanScript-Regular.woff2",
+      "url": "./fonts/KaushanScript-Regular.woff2"
+    }
+  ]
+}

@@ -6,20 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameContainer = document.getElementById('root'); // Apuntamos al div raíz de React
 
     // --- Lista de Recursos Reales a Precargar ---
-    const assetsToLoad = [
-        { name: 'Logotipo principal', url: './logo.jpg' },
-        { name: 'Tipografía Kaushan Script', url: './fonts/KaushanScript-Regular.woff2' },
-        { name: 'Música del menú principal', url: './bgm/theme_main_menu.mp3' },
-        { name: 'Ilustración del menú', url: './assets/ui/fondo_menu_principal.jpg' },
-        { name: 'Ilustración de créditos', url: './arte/Ame_2016_arnauld_fig3.jpg' },
-        { name: 'Obra Máscara de la Tierra', url: './arte/mascara_de_la_tierra.jpg' },
-        { name: 'Miniatura Capítulo 0', url: './assets/thumbnails/node_cap0.png' },
-        { name: 'Miniatura Capítulo 1', url: './assets/thumbnails/node_cap1.png' },
-        { name: 'Miniatura Ruta Alterna', url: './assets/thumbnails/node_ruta_a.png' },
-        { name: 'Miniatura Ruta Principal', url: './assets/thumbnails/node_ruta_b.png' }
-    ];
-
-    const totalAssets = assetsToLoad.length;
+    let assetsToLoad = [];
+    let totalAssets = 0;
     let assetsLoaded = 0;
 
     // Función para descargar un recurso y reportar progreso real de bytes
@@ -84,6 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicia el proceso de carga real de forma secuencial
     async function startLoading() {
+        try {
+            loadingStatus.textContent = 'Analizando recursos...';
+            // Cargar el manifest generado dinámicamente
+            const response = await fetch('./manifest.json');
+            if (response.ok) {
+                const manifest = await response.json();
+                assetsToLoad = manifest.assets || [];
+                totalAssets = assetsToLoad.length;
+            } else {
+                console.warn('No se encontró manifest.json, procediendo con la carga básica.');
+            }
+        } catch (e) {
+            console.error('Error al cargar manifest.json', e);
+        }
+
         for (let i = 0; i < totalAssets; i++) {
             await loadAssetWithProgress(assetsToLoad[i], i);
         }
