@@ -1,5 +1,18 @@
 # Historial de Cambios
 
+## [0.3.32] - 2026-08-02
+
+### Corregido
+- **Fallas de Traducción en Maya Yucateco e Inglés**:
+  - Se corrigió un error estructural (bloque `historia` duplicado al final del archivo) en los archivos `es/translation.json`, `en/translation.json` y `my/translation.json` que provocaba que la carga del idioma Maya Yucateco o Inglés borrara todas las traducciones de los capítulos principales debido al comportamiento de parseo del JSON, provocando que la novela cayera forzosamente al idioma español.
+  - El juego ya arranca de forma nativa e inmersiva en Maya Yucateco para el texto expositivo de la nueva partida y en las transiciones temporales.
+- **Nodos de Decisión**:
+  - En `GameEngine.jsx`, se flexibilizó la búsqueda de traducciones para nodos de decisión (choices) introduciendo llaves de respaldo (fallbacks) que buscan directamente desde el objeto de la escena (ej. `escenas.escena_1.pregunta`), en vez de requerir forzosamente el anidamiento estricto en `.elecciones.`, alineándolo con la estructura de la traducción maya.
+- **Traducción de Nombres de Personajes**:
+  - En `DialogueBox.jsx`, se aseguró que las claves identificadoras de los personajes se conviertan a minúsculas (`.toLowerCase()`) antes de buscarse en `i18next`. Esto previene que la capitalización variable del guion evite encontrar la traducción oficial del diccionario (ej. mostrando "J-tsikbal" en maya).
+- **Inventario Localizado**:
+  - En `InventoryModal.jsx`, se vinculó el nombre (`name`) y descripción (`desc`) de los ítems con el sistema de `i18next` usando llaves unificadas (`items.ID.name`), permitiendo internacionalizar completamente el sistema de inventario de recursos.
+
 ## [0.3.31] - 2026-07-11
 
 ### Corregido

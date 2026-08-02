@@ -3,7 +3,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 const DialogueBox = React.memo(({ character, text, isHighlighted }) => {
   const { t } = useTranslation();
-  const characterName = t(`personajes.${character}`, character);
+  const characterKey = character ? character.toLowerCase() : '';
+  const characterName = characterKey ? t(`personajes.${characterKey}`, character) : '';
 
   if (!text) return null;
 

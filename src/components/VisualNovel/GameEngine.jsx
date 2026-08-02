@@ -95,7 +95,7 @@ const fadeAudio = (audio, targetVolume, duration, callback) => {
  */
 const GameEngine = ({ onNavigate }) => {
   const { t, i18n } = useTranslation();
-  const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState, saves, saveGameToSlot, isFading, addToHistory, goToScene } = useGameState();
+  const { uiVisibility, settings, updateSetting, toggleUiVisibility, gameState, saves, saveGameToSlot, isFading, addToHistory, goToScene, setActiveVisuals } = useGameState();
   const [showSaveModal, setShowSaveModal] = useState(false);
   const [showLogModal, setShowLogModal] = useState(false);
   const [showInventoryModal, setShowInventoryModal] = useState(false);
@@ -145,6 +145,45 @@ const GameEngine = ({ onNavigate }) => {
   const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice, makeMultiChoice, skipToNextChoice, cancelChoice } = useVisualNovelEngine(scriptData);
   const isMultiChoice = currentScene?.type === 'multi_choice';
 
+  // Sincronizar el estado visual y auditivo activo en el GameState para persistencia
+  const activeBg = currentLine?.background || currentScene?.background;
+  const activeSceneBgm = currentScene?.bgm;
+  const activeSceneSfx = currentScene?.sfx;
+
+  useEffect(() => {
+    let bgUpdate = undefined;
+    let bgmUpdate = undefined;
+    let sfxUpdate = undefined;
+    let shouldUpdate = false;
+
+    if (activeBg) {
+      bgUpdate = activeBg;
+      shouldUpdate = true;
+    }
+
+    if (activeSceneBgm) {
+      bgmUpdate = activeSceneBgm.action === 'stop' ? null : activeSceneBgm;
+      shouldUpdate = true;
+    }
+
+    if (activeSceneSfx) {
+      if (activeSceneSfx.action === 'stop') {
+        sfxUpdate = null;
+        shouldUpdate = true;
+      } else if (activeSceneSfx.loop) {
+        sfxUpdate = activeSceneSfx;
+        shouldUpdate = true;
+      } else {
+        sfxUpdate = null; // No persistir SFX que no sean de loop
+        shouldUpdate = true;
+      }
+    }
+
+    if (shouldUpdate) {
+      setActiveVisuals(bgUpdate, bgmUpdate, sfxUpdate);
+    }
+  }, [activeBg, activeSceneBgm, activeSceneSfx, setActiveVisuals]);
+
   /**
    * Determina si un elemento específico de la interfaz debe estar resaltado
    * basándose en la configuración de la línea actual del guion.
@@ -178,10 +217,10 @@ const GameEngine = ({ onNavigate }) => {
    * Se dispara ante cambios en la escena actual; si la escena define la misma
    * pista que la anterior, se da continuidad a la reproducción sin interrupción.
    */
-  useEffect(() => {
-    if (!currentScene) return;
+  const resolvedBgm = currentScene?.bgm || gameState?.activeBgm;
 
-    const bgm = currentScene.bgm;
+  useEffect(() => {
+    const bgm = resolvedBgm;
     if (bgm && bgm.action === 'play') {
       const src = getAssetUrl(bgm.src);
       if (currentBgmSrcRef.current !== src) {
@@ -224,17 +263,17 @@ const GameEngine = ({ onNavigate }) => {
       }
       currentBgmSrcRef.current = null;
     }
-  }, [currentScene]);
+  }, [resolvedBgm, settings.volumenMusica]);
 
   /**
    * Gestiona la ejecución puntual de efectos de sonido (SFX).
    * Reproduce el sonido de una sola vez sin loops y detiene cualquier
    * efecto anterior activo para prevenir ruidos encimados.
    */
-  useEffect(() => {
-    if (!currentScene) return;
+  const resolvedSfx = currentScene?.sfx || gameState?.activeSfx;
 
-    const sfx = currentScene.sfx;
+  useEffect(() => {
+    const sfx = resolvedSfx;
     if (sfx && sfx.action === 'play') {
       const src = getAssetUrl(sfx.src);
       
@@ -266,7 +305,7 @@ const GameEngine = ({ onNavigate }) => {
         sfxAudioRef.current = null;
       }
     }
-  }, [currentScene]);
+  }, [resolvedSfx, settings.volumenEfectos]);
 
   /**
    * Gestiona la ejecución puntual de efectos de sonido (SFX) a nivel de línea de diálogo.
@@ -520,15 +559,17 @@ const GameEngine = ({ onNavigate }) => {
 
   const buttonBaseClasses = "hud-button-custom relative flex flex-col items-center justify-center transition-all duration-150 bg-black/40 border border-neutral-800 hover:bg-neutral-900/80 hover:border-amber-400 text-neutral-400 hover:text-white disabled:opacity-20 disabled:cursor-not-allowed pointer-events-auto";
 
-  const questionKey = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.elecciones.pregunta`;
-  const translatedQuestion = t(questionKey, currentScene?.pregunta);
+  const questionKeyObj = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.elecciones.pregunta`;
+  const questionKeyDirect = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.pregunta`;
+  const translatedQuestion = t([questionKeyObj, questionKeyDirect], currentScene?.pregunta);
 
   const translatedOptions = currentScene?.opciones
     ? currentScene.opciones.map((option, index) => {
-        const optionKey = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.elecciones.opciones.${index}.texto`;
+        const optionKeyObj = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.elecciones.opciones.${index}.texto`;
+        const optionKeyDirect = `historia.${gameState?.currentChapter}.escenas.${gameState?.currentSceneId}.opciones.${index}.texto`;
         return {
           ...option,
-          texto: t(optionKey, option.texto),
+          texto: t([optionKeyObj, optionKeyDirect], option.texto),
         };
       })
     : [];
@@ -550,7 +591,7 @@ const GameEngine = ({ onNavigate }) => {
               {fullscreenError}
             </div>
           )}
-          <BackgroundLayer background={currentLine?.background || currentScene?.background} />
+          <BackgroundLayer background={currentLine?.background || currentScene?.background || gameState?.activeBackground} />
           <CharacterLayer 
             currentSpeaker={currentLine?.personaje}
             sprites={

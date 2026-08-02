@@ -31,6 +31,9 @@ const initialGameState = {
   },
   inventory: [],
   dialogueHistory: [],
+  activeBackground: null,
+  activeBgm: null,
+  activeSfx: null,
 };
 
 /**
@@ -434,6 +437,51 @@ export const GameStateProvider = ({ children }) => {
     return false;
   };
 
+  const setActiveVisuals = useCallback((background, bgm, sfx) => {
+    setGameState(prev => {
+      let updated = false;
+      const next = { ...prev };
+      
+      if (background !== undefined) {
+        if (background === null) {
+          if (prev.activeBackground !== null) {
+            next.activeBackground = null;
+            updated = true;
+          }
+        } else if (!prev.activeBackground || prev.activeBackground.src !== background.src || prev.activeBackground.effect !== background.effect) {
+          next.activeBackground = background;
+          updated = true;
+        }
+      }
+
+      if (bgm !== undefined) {
+        if (bgm === null) {
+          if (prev.activeBgm !== null) {
+            next.activeBgm = null;
+            updated = true;
+          }
+        } else if (!prev.activeBgm || prev.activeBgm.src !== bgm.src || prev.activeBgm.action !== bgm.action) {
+          next.activeBgm = bgm;
+          updated = true;
+        }
+      }
+
+      if (sfx !== undefined) {
+        if (sfx === null) {
+          if (prev.activeSfx !== null) {
+            next.activeSfx = null;
+            updated = true;
+          }
+        } else if (!prev.activeSfx || prev.activeSfx.src !== sfx.src || prev.activeSfx.action !== sfx.action) {
+          next.activeSfx = sfx;
+          updated = true;
+        }
+      }
+
+      return updated ? next : prev;
+    });
+  }, []);
+
   const resetGameState = (overrides = {}) => {
     setGameState({ ...initialGameState, ...overrides });
   };
@@ -460,6 +508,7 @@ export const GameStateProvider = ({ children }) => {
     loadGameFromSlot,
     deleteSaveSlot,
     resetGameState,
+    setActiveVisuals,
     isFading,
     unlockedNodes: settings.unlockedNodes || ['cap_0'],
     unlockNode,

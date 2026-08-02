@@ -78,11 +78,11 @@ const InventoryModal = ({ onClose, currentBackground }) => {
                     ?
                   </div>
                 )}
-                <h4 className={`font-bold text-center text-sm mb-1 ${item.count === 0 ? 'text-neutral-500' : 'text-amber-200'}`}>{item.name}</h4>
+                <h4 className={`font-bold text-center text-sm mb-1 ${item.count === 0 ? 'text-neutral-500' : 'text-amber-200'}`}>{t(`items.${item.id}.name`, item.name)}</h4>
                 <p 
                   className="text-neutral-400 text-center mb-4 leading-tight flex-grow text-[1em]"
                 >
-                  {item.desc}
+                  {t(`items.${item.id}.desc`, item.desc)}
                 </p>
                 <button
                   onClick={() => handleUseItem(item)}
