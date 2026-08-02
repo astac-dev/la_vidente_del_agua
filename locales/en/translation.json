@@ -918,17 +918,5 @@
     "sequence": "Sequence: ",
     "dodged": "DODGED!",
     "caught": "CAUGHT!"
-  },
-  "historia": {
-    "capitulo_1_1": {
-      "escenas": {
-        "escena_1_7_ruta_a": {
-          "texto": "You have decided to prioritize your family's peace of mind.\nHowever, the echoes of the past still await beneath the jungle.\n\nTo be continued..."
-        },
-        "escena_1_7_ruta_b": {
-          "texto": "You have decided to face your fears and discover the truth.\nThe cenote awaits your answers.\n\nTo be continued..."
-        }
-      }
-    }
   }
 }

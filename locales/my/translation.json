@@ -918,17 +918,5 @@
     "sequence": "Secuencia: ",
     "dodged": "¡ESQUIVASTE!",
     "caught": "¡TE ALCANZARON!"
-  },
-  "historia": {
-    "capitulo_1_1": {
-      "escenas": {
-        "escena_1_7_ruta_a": {
-          "texto": "Ta tukultaj yáax ilik u ki'imak óolal a láak'tsilo'ob.\nBa'ale' u juum úuchben k'iino'obe' láayli' pa'atech yáanal k'áaxe'.\n\nBíin ts'o'okok..."
-        },
-        "escena_1_7_ruta_b": {
-          "texto": "Ta ch'a'tuklaj a aktáantik a sajkil yéetel a kaxantik u jaajil.\nLe ts'ono'oto' tu pa'atik a núukilo'ob.\n\nBíin ts'o'okok..."
-        }
-      }
-    }
   }
 }

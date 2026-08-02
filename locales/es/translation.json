@@ -966,17 +966,5 @@
     "sequence": "Secuencia: ",
     "dodged": "¡ESQUIVASTE!",
     "caught": "¡TE ALCANZARON!"
-  },
-  "historia": {
-    "capitulo_1_1": {
-      "escenas": {
-        "escena_1_7_ruta_a": {
-          "texto": "Has decidido priorizar la tranquilidad de tu familia.\nSin embargo, los ecos del pasado aún aguardan bajo la selva.\n\nContinuará..."
-        },
-        "escena_1_7_ruta_b": {
-          "texto": "Has decidido enfrentar tus miedos y descubrir la verdad.\nEl cenote aguarda tus respuestas.\n\nContinuará..."
-        }
-      }
-    }
   }
 }
