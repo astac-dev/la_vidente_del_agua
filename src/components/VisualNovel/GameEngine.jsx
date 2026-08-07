@@ -597,7 +597,13 @@ const GameEngine = ({ onNavigate }) => {
             sprites={
               currentLine?.character_sprite 
                 ? [{
-                    id: currentLine.personaje && currentLine.personaje !== 'sistema' && currentLine.personaje !== 'narrador' ? currentLine.personaje : 'amaranta',
+                    id: (currentLine.personaje && currentLine.personaje !== 'sistema' && currentLine.personaje !== 'narrador') 
+                        ? currentLine.personaje 
+                        : (currentLine.character_sprite && currentLine.character_sprite.toLowerCase().includes('naia') 
+                           ? 'naia' 
+                           : (currentLine.character_sprite && currentLine.character_sprite.toLowerCase().includes('arqueologo')
+                              ? 'arqueologo'
+                              : 'amaranta')),
                     src: currentLine.character_sprite.startsWith('/') 
                       ? currentLine.character_sprite 
                       : `/${currentLine.character_sprite}`,

@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const RadarMinigame = ({ onSuccess, onFailure }) => {
-  const [waveRadius, setWaveRadius] = useState(0);
+  const waveRadiusRef = useRef(0);
+  const waveElRef = useRef(null);
+  const ghostWaveElRef = useRef(null);
   const [currentTargetIndex, setCurrentTargetIndex] = useState(0);
   const [failures, setFailures] = useState(0);
   const [isFadingIn, setIsFadingIn] = useState(true);
@@ -20,13 +22,13 @@ const RadarMinigame = ({ onSuccess, onFailure }) => {
     const newTargets = [];
     for (let i = 0; i < 3; i++) {
       // Ángulo entre -40 y 40 grados (0 es vertical hacia arriba)
-      const angle = (Math.random() * 80) - 40; 
+      const angle = (Math.random() * 80) - 40;
       // Distancia entre 20% y 85% del radio máximo
-      const distance = Math.random() * 65 + 20; 
+      const distance = Math.random() * 65 + 20;
       newTargets.push({ angle, distance });
     }
     setTargets(newTargets);
-    
+
     // Fade in
     const timer = setTimeout(() => setIsFadingIn(false), 1000);
     return () => clearTimeout(timer);
@@ -35,20 +37,32 @@ const RadarMinigame = ({ onSuccess, onFailure }) => {
   // Animación de la onda de eco
   useEffect(() => {
     let lastTime = performance.now();
-    
+
     const animate = (time) => {
       if (isEnding) return;
       const deltaTime = (time - lastTime) / 1000;
       lastTime = time;
-      
-      setWaveRadius((prev) => {
-        let nextRadius = prev + WAVE_SPEED * deltaTime;
-        if (nextRadius > 100) nextRadius = 0; // Reiniciar onda
-        return nextRadius;
-      });
+
+      let nextRadius = waveRadiusRef.current + WAVE_SPEED * deltaTime;
+      if (nextRadius > 100) nextRadius = 0; // Reiniciar onda
+      waveRadiusRef.current = nextRadius;
+
+      if (waveElRef.current) {
+        waveElRef.current.style.width = `${nextRadius}%`;
+        waveElRef.current.style.height = `${nextRadius}%`;
+        waveElRef.current.style.opacity = 1 - (nextRadius / 100);
+      }
+
+      if (ghostWaveElRef.current) {
+        const ghostRadius = Math.max(0, nextRadius - 5);
+        ghostWaveElRef.current.style.width = `${ghostRadius}%`;
+        ghostWaveElRef.current.style.height = `${ghostRadius}%`;
+        ghostWaveElRef.current.style.opacity = Math.max(0, 1 - (nextRadius / 100) - 0.2);
+      }
+
       requestRef.current = requestAnimationFrame(animate);
     };
-    
+
     requestRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(requestRef.current);
   }, [isEnding]);
@@ -67,27 +81,29 @@ const RadarMinigame = ({ onSuccess, onFailure }) => {
     const rect = containerRef.current.getBoundingClientRect();
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
+
     const clickX = e.clientX - rect.left - centerX;
     const clickY = e.clientY - rect.top - centerY;
-    
+
     const target = targets[currentTargetIndex];
     if (!target) return;
 
     // Calcular posición real del objetivo en el canvas
-    const maxRadius = rect.width / 2; 
+    const maxRadius = rect.width / 2;
     const targetRadiusPx = (target.distance / 100) * maxRadius;
     const targetAngleRad = target.angle * (Math.PI / 180);
     const targetX = targetRadiusPx * Math.sin(targetAngleRad);
     const targetY = -targetRadiusPx * Math.cos(targetAngleRad);
 
     const distToTarget = Math.sqrt(Math.pow(clickX - targetX, 2) + Math.pow(clickY - targetY, 2));
-    
-    // Diferencia entre la onda actual y la distancia del objetivo
-    const distanceDiff = Math.abs(waveRadius - target.distance);
 
-    // Hitbox generosa de 60px
-    if (distToTarget < 60) {
+    // Diferencia entre la onda actual y la distancia del objetivo
+    const distanceDiff = Math.abs(waveRadiusRef.current - target.distance);
+
+    // Hitbox responsiva (25% del radio del radar, min 40px)
+    const hitboxSize = Math.max(40, maxRadius * 0.25);
+
+    if (distToTarget < hitboxSize) {
       if (distanceDiff <= TOLERANCE) {
         // ÉXITO
         const nextIndex = currentTargetIndex + 1;
@@ -118,17 +134,16 @@ const RadarMinigame = ({ onSuccess, onFailure }) => {
   const opacityFossil = currentTargetIndex * 0.33 + (isEnding && currentTargetIndex >= 3 ? 0.01 : 0);
 
   return (
-    <div 
-      className={`absolute inset-0 z-[250] bg-black transition-opacity duration-1000 flex items-center justify-center font-mono overflow-hidden ${
-        (isFadingIn || isEnding) ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
-      }`}
+    <div
+      className={`absolute inset-0 z-[250] bg-black transition-opacity duration-1000 flex items-center justify-center font-mono overflow-hidden ${(isFadingIn || isEnding) ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
+        }`}
     >
-      <div 
+      <div
         className={`absolute inset-0 bg-red-600/30 transition-opacity duration-100 z-10 pointer-events-none ${flashError ? 'opacity-100' : 'opacity-0'}`}
       />
-      
+
       {/* Fondo Oculto del Fósil */}
-      <img 
+      <img
         src={`${import.meta.env.BASE_URL}backgrounds/radar_fossil.png`}
         alt="Fossil Vector"
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out mix-blend-screen"
@@ -136,9 +151,9 @@ const RadarMinigame = ({ onSuccess, onFailure }) => {
       />
 
       {/* UI Principal del Motion Tracker */}
-      <div 
+      <div
         ref={containerRef}
-        className="relative w-[100vh] h-[100vh] max-w-[120vw] max-h-[120vw] rounded-full cursor-crosshair translate-y-[25%]"
+        className="relative flex-shrink-0 h-[100%] aspect-square rounded-full cursor-crosshair translate-y-[25%]"
         style={{
           clipPath: 'polygon(50% 50%, 0 0, 100% 0)',
           background: 'rgba(10, 40, 10, 0.4)',
@@ -159,32 +174,26 @@ const RadarMinigame = ({ onSuccess, onFailure }) => {
         <div className="absolute top-1/2 left-1/2 w-1/4 h-1/4 border border-dashed border-green-500/30 rounded-full -translate-x-1/2 -translate-y-1/2" />
 
         {/* Onda de Eco Expansiva */}
-        <div 
+        <div
+          ref={waveElRef}
           className="absolute top-1/2 left-1/2 rounded-full border-[3px] border-green-400 -translate-x-1/2 -translate-y-1/2 pointer-events-none mix-blend-screen shadow-[0_0_20px_rgba(34,197,94,0.6)]"
-          style={{
-            width: `${waveRadius}%`,
-            height: `${waveRadius}%`,
-            opacity: 1 - (waveRadius / 100), // Se desvanece al acercarse al borde
-          }}
+          style={{ width: '0%', height: '0%', opacity: 1 }}
         />
-        
+
         {/* Onda secundaria (fantasma) para efecto visual */}
-        <div 
+        <div
+          ref={ghostWaveElRef}
           className="absolute top-1/2 left-1/2 rounded-full border border-green-500/50 -translate-x-1/2 -translate-y-1/2 pointer-events-none mix-blend-screen"
-          style={{
-            width: `${waveRadius - 5 > 0 ? waveRadius - 5 : 0}%`,
-            height: `${waveRadius - 5 > 0 ? waveRadius - 5 : 0}%`,
-            opacity: Math.max(0, 1 - (waveRadius / 100) - 0.2),
-          }}
+          style={{ width: '0%', height: '0%', opacity: 0 }}
         />
 
         {/* Objetivos */}
         {targets.map((target, index) => {
           if (index > currentTargetIndex) return null;
-          
+
           const isActive = index === currentTargetIndex;
           const isCalibrated = index < currentTargetIndex;
-          
+
           // Posición relativa al centro (50%, 50%)
           // Distance está en % del maxRadius. maxRadius es el 50% del container.
           // Entonces 100 de distance = 50% de left/top.
@@ -236,7 +245,7 @@ const RadarMinigame = ({ onSuccess, onFailure }) => {
           <span className="opacity-60 text-sm">ERRORS</span>
         </div>
       </div>
-      
+
       {/* HUD Instrucciones */}
       <div className="absolute top-12 w-full text-center pointer-events-none text-green-400/90 tracking-[0.2em] font-bold text-lg">
         MOTION TRACKER

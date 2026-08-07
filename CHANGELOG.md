@@ -1,5 +1,13 @@
 # Historial de Cambios
 
+## [0.3.33] - 2026-08-07
+
+### Corregido
+- **Minijuego de Radar (Onda Expansiva)**:
+  - Se reescribió el motor de animación de la onda expansiva en `RadarMinigame.jsx` para usar referencias directas al DOM (`useRef`) en lugar del estado de React (`useState`). Esto evita re-renderizados excesivos a 60 FPS, garantizando que la onda se vea y mueva con fluidez en dispositivos móviles y de bajos recursos sin descartar frames.
+- **Centrado de Sprite (Naia)**:
+  - En `GameEngine.jsx`, se solucionó un problema de desmontaje de sprites y salto visual que ocurría cuando el diálogo alternaba entre el narrador ("sistema") y el personaje. Ahora el motor infiere correctamente el ID del personaje basándose en la ruta del sprite (ej. `Naia_frente_Normal_.png`), manteniendo a Naia siempre centrada durante la escena del tutorial en el Capítulo 0 sin causar destellos de re-carga (flicker).
+
 ## [0.3.32] - 2026-08-02
 
 ### Corregido
