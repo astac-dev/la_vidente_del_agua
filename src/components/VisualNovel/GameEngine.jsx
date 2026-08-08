@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useVisualNovelEngine } from '../../hooks/useVisualNovelEngine';
+import { useAudioController } from '../../hooks/useAudioController';
 import { useGameState } from '../../context/GameStateContext';
 import { useTypewriter } from '../../hooks/useTypewriter';
 import BackgroundLayer from './BackgroundLayer';
@@ -22,6 +23,7 @@ import DialogueLogModal from './DialogueLogModal';
 import InventoryModal from './InventoryModal';
 import MultiChoiceMenu from './MultiChoiceMenu';
 import DiarioModal from './DiarioModal';
+import SaveModal from './SaveModal';
 
 const LogIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 5.2a1 1 0 0 0-1.4-1.4L19 5.2V4a1 1 0 0 0-2 0v1.2L15.6 3.8a1 1 0 0 0-1.4 1.4L15.6 6H8.4l1.4-1.4a1 1 0 0 0-1.4-1.4L7 5.2V4a1 1 0 0 0-2 0v1.2L3.6 3.8a1 1 0 0 0-1.4 1.4L3.6 6H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-.6l1.4-1.4zM19 19H5V8h14v11z"></path></svg>;
 const HideUIIcon = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5zm0 10c-2.48 0-4.5-2.02-4.5-4.5S9.52 5.5 12 5.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5zm0-7C10.62 7.5 9.5 8.62 9.5 10s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5S13.38 7.5 12 7.5z"></path></svg>;
@@ -36,56 +38,6 @@ const getFullscreenElement = () => {
          document.webkitFullscreenElement || 
          document.mozFullScreenElement || 
          document.msFullscreenElement;
-};
-
-/**
- * Realiza una transición suave (fade) del volumen de un elemento de audio.
- * Se implementa para evitar cortes de sonido secos que degraden la estética premium.
- * 
- * @param {HTMLAudioElement} audio - Elemento de audio a controlar.
- * @param {number} targetVolume - Volumen objetivo (entre 0.0 y 1.0).
- * @param {number} duration - Duración de la transición en milisegundos.
- * @param {function} [callback] - Función a ejecutar al completarse la transición.
- */
-const fadeAudio = (audio, targetVolume, duration, callback) => {
-  if (!audio) {
-    if (callback) callback();
-    return;
-  }
-
-  const startVolume = audio.volume;
-  const diff = targetVolume - startVolume;
-  if (diff === 0) {
-    if (callback) callback();
-    return;
-  }
-
-  const stepTime = 50;
-  const steps = duration / stepTime;
-  const stepChange = diff / steps;
-  let currentStep = 0;
-
-  if (audio.fadeInterval) {
-    clearInterval(audio.fadeInterval);
-  }
-
-  audio.fadeInterval = setInterval(() => {
-    currentStep++;
-    let newVolume = startVolume + (stepChange * currentStep);
-
-    if (diff > 0 && newVolume > targetVolume) newVolume = targetVolume;
-    if (diff < 0 && newVolume < targetVolume) newVolume = targetVolume;
-    if (newVolume < 0) newVolume = 0;
-    if (newVolume > 1) newVolume = 1;
-
-    audio.volume = newVolume;
-
-    if (currentStep >= steps || newVolume === targetVolume) {
-      clearInterval(audio.fadeInterval);
-      audio.fadeInterval = null;
-      if (callback) callback();
-    }
-  }, stepTime);
 };
 
 /**
@@ -104,29 +56,12 @@ const GameEngine = ({ onNavigate }) => {
   const [scriptData, setScriptData] = useState(null);
   const containerRef = useRef(null);
 
-  /**
-   * Referencias persistentes para la gestión nativa de los canales de audio BGM y SFX.
-   * Se declaran con useRef para mantener vivas las instancias del reproductor HTML5
-   * y controlarlas de forma directa evitando re-creaciones en cada render.
-   */
-  const bgmAudioRef = useRef(null);
-  const sfxAudioRef = useRef(null);
-  const currentBgmSrcRef = useRef(null);
+  // Hook del motor adaptado para recibir scriptData cargado dinámicamente
+  // Lo instanciamos aquí para que useAudioController pueda depender de sus valores.
+  const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice, makeMultiChoice, skipToNextChoice, cancelChoice } = useVisualNovelEngine(scriptData);
+  const isMultiChoice = currentScene?.type === 'multi_choice';
 
-  /**
-   * Normaliza y resuelve las rutas del directorio público (/public) del juego.
-   * Modula la ruta base con import.meta.env.BASE_URL para garantizar consistencia
-   * en los despliegues de producción (GitHub Pages) y portabilidad (itch.io).
-   * 
-   * @param {string} src - Ruta original del recurso en el proyecto.
-   * @returns {string} Ruta de recurso final del entorno.
-   */
-  const getAssetUrl = (src) => {
-    if (!src) return '';
-    return src.startsWith('/') 
-      ? `${import.meta.env.BASE_URL}${src.slice(1)}` 
-      : src;
-  };
+  const { stopBgmAndFade } = useAudioController(currentScene, currentLine, gameState, settings);
 
   // Carga dinámica asíncrona del capítulo actual de la novela visual
   useEffect(() => {
@@ -140,10 +75,6 @@ const GameEngine = ({ onNavigate }) => {
     };
     loadChapterData();
   }, [gameState.currentChapter]);
-
-  // Hook del motor adaptado para recibir scriptData cargado dinámicamente
-  const { currentScene, currentLine, isChoice, isEndOfScene, advance, makeChoice, makeMultiChoice, skipToNextChoice, cancelChoice } = useVisualNovelEngine(scriptData);
-  const isMultiChoice = currentScene?.type === 'multi_choice';
 
   // Sincronizar el estado visual y auditivo activo en el GameState para persistencia
   const activeBg = currentLine?.background || currentScene?.background;
@@ -212,168 +143,6 @@ const GameEngine = ({ onNavigate }) => {
     return false;
   };
 
-  /**
-   * Gestiona el inicio, cambio y detención de la música de fondo (BGM).
-   * Se dispara ante cambios en la escena actual; si la escena define la misma
-   * pista que la anterior, se da continuidad a la reproducción sin interrupción.
-   */
-  const resolvedBgm = currentScene?.bgm || gameState?.activeBgm;
-
-  useEffect(() => {
-    const bgm = resolvedBgm;
-    if (bgm && bgm.action === 'play') {
-      const src = getAssetUrl(bgm.src);
-      if (currentBgmSrcRef.current !== src) {
-        if (bgmAudioRef.current) {
-          const prevAudio = bgmAudioRef.current;
-          fadeAudio(prevAudio, 0, 1000, () => {
-            prevAudio.pause();
-            prevAudio.src = '';
-          });
-        }
-
-        const audio = new Audio(src);
-        audio.loop = true;
-        audio.volume = 0; // Iniciar en 0 para el fade-in
-        
-        audio.addEventListener('error', (e) => {
-          console.warn(`No se pudo cargar el archivo BGM: ${src}`, e);
-        });
-
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.then(() => {
-            fadeAudio(audio, settings.volumenMusica / 100, 1000);
-          }).catch(err => {
-            console.warn(`Reproducción de BGM bloqueada o interrumpida: ${src}`, err);
-          });
-        }
-
-        bgmAudioRef.current = audio;
-        currentBgmSrcRef.current = src;
-      }
-    } else if (bgm && bgm.action === 'stop') {
-      if (bgmAudioRef.current) {
-        const audio = bgmAudioRef.current;
-        fadeAudio(audio, 0, 1000, () => {
-          audio.pause();
-          audio.src = '';
-        });
-        bgmAudioRef.current = null;
-      }
-      currentBgmSrcRef.current = null;
-    }
-  }, [resolvedBgm, settings.volumenMusica]);
-
-  /**
-   * Gestiona la ejecución puntual de efectos de sonido (SFX).
-   * Reproduce el sonido de una sola vez sin loops y detiene cualquier
-   * efecto anterior activo para prevenir ruidos encimados.
-   */
-  const resolvedSfx = currentScene?.sfx || gameState?.activeSfx;
-
-  useEffect(() => {
-    const sfx = resolvedSfx;
-    if (sfx && sfx.action === 'play') {
-      const src = getAssetUrl(sfx.src);
-      
-      if (sfxAudioRef.current) {
-        sfxAudioRef.current.pause();
-        sfxAudioRef.current.src = '';
-      }
-
-      const audio = new Audio(src);
-      audio.loop = sfx.loop || false;
-      audio.volume = settings.volumenEfectos / 100;
-
-      audio.addEventListener('error', (e) => {
-        console.warn(`No se pudo cargar el archivo SFX: ${src}`, e);
-      });
-
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(err => {
-          console.warn(`Reproducción de SFX bloqueada o interrumpida: ${src}`, err);
-        });
-      }
-
-      sfxAudioRef.current = audio;
-    } else if (sfx && sfx.action === 'stop') {
-      if (sfxAudioRef.current) {
-        sfxAudioRef.current.pause();
-        sfxAudioRef.current.src = '';
-        sfxAudioRef.current = null;
-      }
-    }
-  }, [resolvedSfx, settings.volumenEfectos]);
-
-  /**
-   * Gestiona la ejecución puntual de efectos de sonido (SFX) a nivel de línea de diálogo.
-   */
-  useEffect(() => {
-    if (!currentLine || !currentLine.sfx) return;
-
-    const sfx = currentLine.sfx;
-    if (sfx.action === 'play') {
-      const src = getAssetUrl(sfx.src);
-      
-      const audio = new Audio(src);
-      audio.loop = sfx.loop || false;
-      audio.volume = settings.volumenEfectos / 100;
-
-      audio.addEventListener('error', (e) => {
-        console.warn(`No se pudo cargar el archivo SFX de línea: ${src}`, e);
-      });
-
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(err => {
-          console.warn(`Reproducción de SFX de línea bloqueada o interrumpida: ${src}`, err);
-        });
-      }
-    }
-  }, [currentLine]);
-
-  /**
-   * Sincroniza dinámicamente los cambios de volumen de música.
-   * Esto permite ajustar la música de fondo en tiempo real desde el menú de opciones.
-   */
-  useEffect(() => {
-    if (bgmAudioRef.current) {
-      bgmAudioRef.current.volume = settings.volumenMusica / 100;
-    }
-  }, [settings.volumenMusica]);
-
-  /**
-   * Sincroniza dinámicamente los cambios de volumen de efectos de sonido.
-   * Esto permite ajustar los efectos de sonido en tiempo real desde el menú de opciones.
-   */
-  useEffect(() => {
-    if (sfxAudioRef.current) {
-      sfxAudioRef.current.volume = settings.volumenEfectos / 100;
-    }
-  }, [settings.volumenEfectos]);
-
-  /**
-   * Limpia y libera los recursos de audio ocupados al desmontar el motor de juego.
-   * Esto previene fugas de audio de fondo y previene problemas al regresar al menú principal.
-   */
-  useEffect(() => {
-    return () => {
-      if (bgmAudioRef.current) {
-        if (bgmAudioRef.current.fadeInterval) {
-          clearInterval(bgmAudioRef.current.fadeInterval);
-        }
-        bgmAudioRef.current.pause();
-        bgmAudioRef.current.src = '';
-      }
-      if (sfxAudioRef.current) {
-        sfxAudioRef.current.pause();
-        sfxAudioRef.current.src = '';
-      }
-    };
-  }, []);
-
   // Registrar cada diálogo visto en el historial
   useEffect(() => {
     if (!currentLine || isChoice) return;
@@ -396,28 +165,12 @@ const GameEngine = ({ onNavigate }) => {
   const handleSaveAndExit = (slotIndex) => {
     saveGameToSlot(slotIndex);
     setShowSaveModal(false);
-    if (bgmAudioRef.current) {
-      fadeAudio(bgmAudioRef.current, 0, 1500, () => {
-        if (bgmAudioRef.current) {
-          bgmAudioRef.current.pause();
-          bgmAudioRef.current.src = '';
-        }
-      });
-    }
-    onNavigate('mainMenu');
+    stopBgmAndFade(1500, () => onNavigate('mainMenu'));
   };
 
   const handleExitWithoutSaving = () => {
     setShowSaveModal(false);
-    if (bgmAudioRef.current) {
-      fadeAudio(bgmAudioRef.current, 0, 1500, () => {
-        if (bgmAudioRef.current) {
-          bgmAudioRef.current.pause();
-          bgmAudioRef.current.src = '';
-        }
-      });
-    }
-    onNavigate('mainMenu');
+    stopBgmAndFade(1500, () => onNavigate('mainMenu'));
   };
 
   useEffect(() => {
@@ -855,70 +608,12 @@ const GameEngine = ({ onNavigate }) => {
             </div>
           )}
 
-          {showSaveModal && (
-            <div className="absolute inset-0 bg-black/85 flex items-center justify-center z-[200] pointer-events-auto select-none">
-              <div className="bg-neutral-900/95 border border-amber-500/30 p-6 rounded-lg shadow-2xl max-w-md w-full mx-4 font-mono text-left vn-save-modal">
-                <h3 className="text-lg font-bold text-amber-400 mb-2 border-b border-amber-500/20 pb-2 flex justify-between items-center vn-save-modal-title">
-                  <span>{t('interface.saveSlotTitle', 'GUARDAR PARTIDA')}</span>
-                  <span className="text-[9px] font-normal text-neutral-500 tracking-wider vn-save-modal-subtitle">SYS.SAV // SLOT_SELECT</span>
-                </h3>
-                <p className="text-xs text-neutral-400 mb-4 leading-relaxed vn-save-modal-prompt">
-                  {t('interface.saveSlotPrompt', 'Selecciona una ranura de guardado para registrar tu progreso antes de salir:')}
-                </p>
-                
-                <div className="flex flex-col gap-2.5 mb-5 vn-save-slots-container">
-                  {[0, 1, 2].map((slotIndex) => {
-                    const save = saves[slotIndex];
-                    const hasSave = !!save;
-                    let saveName = t('interface.emptySlot', 'Espacio Vacío');
-                    let saveTime = '';
-                    if (hasSave) {
-                      const chTitle = t(`historia.${save.chapterId}.titulo`, save.chapterId);
-                      const scTitle = t(`historia.${save.chapterId}.escenas.${save.sceneId}.titulo_escena`, save.sceneId);
-                      saveName = `${chTitle} - ${scTitle}`;
-                      const dateLocale = i18n.language === 'my' ? 'es-MX' : i18n.language;
-                      saveTime = new Date(save.timestamp).toLocaleString(dateLocale);
-                    }
-
-                    return (
-                      <button
-                        key={slotIndex}
-                        onClick={() => handleSaveAndExit(slotIndex)}
-                        className="w-full text-left p-3 rounded border border-neutral-800 bg-neutral-950/70 hover:bg-neutral-900 hover:border-amber-400 transition-all group flex flex-col gap-1 cursor-pointer vn-save-slot-btn"
-                      >
-                        <div className="flex justify-between items-center w-full vn-save-slot-header">
-                          <span className="text-[10px] font-bold text-neutral-500 group-hover:text-amber-400 vn-save-slot-label">
-                            {t('interface.saveSlot', 'Ranura').toUpperCase()} 0{slotIndex + 1}
-                          </span>
-                          {saveTime && (
-                            <span className="text-[9px] text-neutral-500 vn-save-slot-time">{saveTime}</span>
-                          )}
-                        </div>
-                        <span className={`text-xs truncate max-w-full vn-save-slot-text ${hasSave ? 'text-neutral-200' : 'text-neutral-600 italic'}`}>
-                          {saveName}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-                
-                <div className="flex justify-between gap-3 pt-1 border-t border-neutral-800 vn-save-modal-actions">
-                  <button
-                    onClick={handleExitWithoutSaving}
-                    className="px-3 py-1.5 border border-red-900/40 bg-red-950/10 hover:bg-red-900/30 text-red-400 text-[10px] font-bold uppercase tracking-wider rounded transition-all cursor-pointer vn-save-modal-exit-btn"
-                  >
-                    {t('interface.exitWithoutSaving', 'SALIR SIN GUARDAR')}
-                  </button>
-                  <button
-                    onClick={() => setShowSaveModal(false)}
-                    className="px-3 py-1.5 border border-neutral-700 bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-[10px] font-bold uppercase tracking-wider rounded transition-all cursor-pointer vn-save-modal-cancel-btn"
-                  >
-                    {t('interface.cancel', 'CANCELAR')}
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+          <SaveModal
+            isOpen={showSaveModal}
+            onClose={() => setShowSaveModal(false)}
+            onSaveAndExit={handleSaveAndExit}
+            onExitWithoutSaving={handleExitWithoutSaving}
+          />
           <DialogueLogModal
             isOpen={showLogModal}
             onClose={() => setShowLogModal(false)}

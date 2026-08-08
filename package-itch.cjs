@@ -46,31 +46,18 @@ let success = false;
 // Método A: Intentar usar 'tar' (disponible nativamente en Windows 10/11, macOS y Linux)
 try {
   console.log('Intentando comprimir usando "tar"...');
-  // -a autodetecta compresión zip por la extensión .zip
-  execSync(`tar -a -c -f "${zipName}" -C dist .`, { stdio: 'ignore' });
+  // Se requiere entrar a dist y usar * para evitar barras invertidas en el ZIP, 
+  // asegurando compatibilidad POSIX para los servidores Linux de itch.io.
+  execSync(`cd dist && tar -a -c -f ../${zipName} *`, { stdio: 'ignore' });
   if (fs.existsSync(zipPath)) {
     console.log('✅ Archivo ZIP creado exitosamente usando "tar".');
     success = true;
   }
 } catch (err) {
-  console.log('ℹ️ "tar" no disponible o falló, intentando método alternativo...');
+  console.log('ℹ️ "tar" no disponible o falló, intentando método alternativo en bash...');
 }
 
-// Método B: Si falló 'tar' y estamos en Windows, usar PowerShell Compress-Archive
-if (!success && process.platform === 'win32') {
-  try {
-    console.log('Intentando comprimir usando PowerShell Compress-Archive...');
-    execSync(`powershell -Command "Compress-Archive -Path dist\\* -DestinationPath '${zipName}' -Force"`, { stdio: 'inherit' });
-    if (fs.existsSync(zipPath)) {
-      console.log('✅ Archivo ZIP creado exitosamente usando PowerShell.');
-      success = true;
-    }
-  } catch (err) {
-    console.error('❌ Falló PowerShell Compress-Archive:', err.message);
-  }
-}
-
-// Método C: Si falló y estamos en Unix, intentar usar command line 'zip'
+// Método B: Si falló 'tar' y estamos en Unix, intentar usar command line 'zip'
 if (!success && process.platform !== 'win32') {
   try {
     console.log('Intentando comprimir usando "zip"...');

@@ -1,0 +1,32 @@
+{
+  "name": "vidente-del-agua-game-desktop",
+  "productName": "La Vidente del Agua",
+  "version": "1.0.0",
+  "description": "Versión portable de la novela visual La Vidente del Agua",
+  "main": "main.cjs",
+  "author": "INAH",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "mx.gob.inah.videntedelagua",
+    "productName": "La Vidente del Agua",
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "portable",
+      "icon": "icon.ico"
+    },
+    "files": [
+      "main.cjs",
+      "dist/**/*"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^43.3.0",
+    "electron-builder": "^26.15.3"
+  }
+}

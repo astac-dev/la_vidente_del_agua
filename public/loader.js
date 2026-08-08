@@ -9,9 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let assetsToLoad = [];
     let totalAssets = 0;
     let assetsLoaded = 0;
+    const CONCURRENCY_LIMIT = 6;
+
+    function updateProgressUI(fileProgress = 0) {
+        if (totalAssets === 0) return;
+        const overallProgress = Math.min(
+            Math.round(((assetsLoaded + fileProgress) / totalAssets) * 100),
+            100 
+        );
+        progressBar.style.width = `${overallProgress}%`;
+        loadingPercentage.textContent = `${overallProgress}%`;
+    }
 
     // Función para descargar un recurso y reportar progreso real de bytes
-    async function loadAssetWithProgress(asset, index) {
+    async function loadAssetWithProgress(asset) {
         try {
             const response = await fetch(asset.url);
             if (!response.ok) {
@@ -45,32 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Si conocemos el tamaño total del archivo, reportamos progreso intermedio
                 if (totalBytes > 0) {
                     const fileProgress = loadedBytes / totalBytes;
-                    // Progreso total ponderado: (recursos_completados + progreso_del_actual) / total
-                    const overallProgress = Math.min(
-                        Math.round(((index + fileProgress) / totalAssets) * 100),
-                        99 // Dejar 100% para cuando termine completamente
-                    );
-                    progressBar.style.width = `${overallProgress}%`;
-                    loadingPercentage.textContent = `${overallProgress}%`;
+                    updateProgressUI(fileProgress);
                 }
             }
 
             assetsLoaded++;
-            const completedProgress = Math.round((assetsLoaded / totalAssets) * 100);
-            progressBar.style.width = `${completedProgress}%`;
-            loadingPercentage.textContent = `${completedProgress}%`;
+            updateProgressUI(0);
 
         } catch (error) {
             console.warn(`Error al precargar recurso: ${asset.name} (${asset.url})`, error);
             // Si falla, incrementamos de todos modos para no colgar la pantalla de carga
             assetsLoaded++;
-            const completedProgress = Math.round((assetsLoaded / totalAssets) * 100);
-            progressBar.style.width = `${completedProgress}%`;
-            loadingPercentage.textContent = `${completedProgress}%`;
+            updateProgressUI(0);
         }
     }
 
-    // Inicia el proceso de carga real de forma secuencial
+    // Inicia el proceso de carga real con concurrencia controlada
     async function startLoading() {
         try {
             loadingStatus.textContent = 'Analizando recursos...';
@@ -87,8 +88,17 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error al cargar manifest.json', e);
         }
 
-        for (let i = 0; i < totalAssets; i++) {
-            await loadAssetWithProgress(assetsToLoad[i], i);
+        if (totalAssets > 0) {
+            let currentIndex = 0;
+            const workers = Array(CONCURRENCY_LIMIT).fill(0).map(async () => {
+                while (currentIndex < totalAssets) {
+                    const asset = assetsToLoad[currentIndex++];
+                    if (asset) {
+                        await loadAssetWithProgress(asset);
+                    }
+                }
+            });
+            await Promise.all(workers);
         }
 
         loadingStatus.textContent = 'Recursos listos. Iniciando juego...';
