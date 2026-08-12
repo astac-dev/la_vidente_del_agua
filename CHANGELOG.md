@@ -1,5 +1,13 @@
 # Historial de Cambios
 
+## [0.3.34] - 2026-08-11
+
+### Añadido
+- **Pantalla de QR de Invitación (`custom_message`)**:
+  - Se implementó un contador de 100 segundos visible en pantalla que retorna automáticamente al menú principal al expirar.
+  - Se integró un botón interactivo "VOLVER AL MENÚ" en la parte inferior para agilizar la salida del jugador.
+  - Se solucionó un error potencial de referencias nulas (`bgmAudioRef` indefinido) al invocar transiciones de audio al salir de la pantalla de QR, reemplazándolo por el hook estable `stopBgmAndFade`.
+
 ## [0.3.33] - 2026-08-07
 
 ### Corregido

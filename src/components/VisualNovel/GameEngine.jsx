@@ -54,6 +54,7 @@ const GameEngine = ({ onNavigate }) => {
   const [isFullscreen, setIsFullscreen] = useState(!!getFullscreenElement());
   const [fullscreenError, setFullscreenError] = useState('');
   const [scriptData, setScriptData] = useState(null);
+  const [qrCountdown, setQrCountdown] = useState(100);
   const containerRef = useRef(null);
 
   // Hook del motor adaptado para recibir scriptData cargado dinámicamente
@@ -156,6 +157,21 @@ const GameEngine = ({ onNavigate }) => {
       fallbackText: currentLine.texto
     });
   }, [currentLine, isChoice, gameState.currentChapter, gameState.currentSceneId, gameState.dialogueIndex, addToHistory]);
+
+  // Cuenta regresiva para la pantalla QR
+  useEffect(() => {
+    let timer;
+    if (currentScene?.type === 'custom_message' && currentScene?.showQR) {
+      if (qrCountdown > 0) {
+        timer = setTimeout(() => setQrCountdown(prev => prev - 1), 1000);
+      } else {
+        stopBgmAndFade(1500, () => onNavigate('mainMenu'));
+      }
+    } else {
+      if (qrCountdown !== 100) setQrCountdown(100);
+    }
+    return () => clearTimeout(timer);
+  }, [currentScene, qrCountdown, stopBgmAndFade, onNavigate]);
 
   const handleHomeClick = () => {
     if (isFullscreen) return;
@@ -552,31 +568,15 @@ const GameEngine = ({ onNavigate }) => {
 
           {currentScene.type === 'custom_message' && (
             <div 
-              className="absolute inset-0 z-[210] flex items-center justify-center bg-black pointer-events-auto cursor-pointer animate-[fadeIn_1s_ease-out_forwards]"
+              className="absolute inset-0 z-[210] flex flex-col items-center justify-center bg-black pointer-events-auto cursor-pointer animate-[fadeIn_1s_ease-out_forwards]"
               onClick={(e) => {
                 e.stopPropagation();
                 if (currentScene.next === 'mainMenu') {
-                  if (bgmAudioRef.current) {
-                    fadeAudio(bgmAudioRef.current, 0, 1500, () => {
-                      if (bgmAudioRef.current) {
-                        bgmAudioRef.current.pause();
-                        bgmAudioRef.current.src = '';
-                      }
-                    });
-                  }
-                  onNavigate('mainMenu');
+                  stopBgmAndFade(1500, () => onNavigate('mainMenu'));
                 } else if (currentScene.next) {
                   advance();
                 } else {
-                  if (bgmAudioRef.current) {
-                    fadeAudio(bgmAudioRef.current, 0, 1500, () => {
-                      if (bgmAudioRef.current) {
-                        bgmAudioRef.current.pause();
-                        bgmAudioRef.current.src = '';
-                      }
-                    });
-                  }
-                  onNavigate('mainMenu');
+                  stopBgmAndFade(1500, () => onNavigate('mainMenu'));
                 }
               }}
             >
@@ -593,6 +593,23 @@ const GameEngine = ({ onNavigate }) => {
                   </div>
                 )}
               </div>
+
+              {currentScene.showQR && (
+                <div className="absolute bottom-12 flex items-center justify-center gap-4 z-[220]">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      stopBgmAndFade(1500, () => onNavigate('mainMenu'));
+                    }}
+                    className="px-6 py-3 bg-neutral-900 border border-amber-500 rounded text-amber-500 hover:bg-amber-500 hover:text-black transition-colors font-mono font-bold tracking-wider shadow-lg uppercase"
+                  >
+                    {t('interface.backToMenu', 'Volver al Menú')}
+                  </button>
+                  <div className="flex items-center justify-center px-4 py-3 bg-neutral-900 border border-neutral-700 rounded text-neutral-400 font-mono font-bold tracking-widest min-w-[80px]">
+                    {qrCountdown}s
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
